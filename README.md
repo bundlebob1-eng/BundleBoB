@@ -1,22 +1,46 @@
-# BundleBoB
-bundlebob-portfolio/
-├── app/
-│   ├── layout.tsx          ← Syne + DM Sans fonts, SEO metadata, Header/Footer wrappers
-│   ├── page.tsx            ← Main homepage (all sections wired up)
-│   ├── about/page.tsx      ← /about route
-│   └── contact/page.tsx    ← /contact route
-├── components/
-│   ├── Header/             ← Sticky nav, BundleBOB logo + pulsing dot, hamburger menu
-│   ├── Hero/               ← Big headline, stats row (50+, 98%, 4x ROI)
-│   ├── Brands/             ← Dual scrolling marquee (services + tech stack)
-│   ├── Features/           ← 6-card services grid with icons + tags
-│   ├── Video/              ← 4-step process section
-│   ├── About/              ← About copy + tech pills + "Why BundleBOB" box
-│   ├── Testimonials/       ← 4 client quote cards
-│   ├── Pricing/            ← 3-tier pricing (Starter / Growth / Enterprise)
-│   ├── Contact/            ← CTA band → Calendly + trust badges
-│   ├── Footer/             ← Full footer with links + Irving TX address
-│   ├── Common/Breadcrumb   ← Reusable page header for inner pages
-│   └── ScrollToTop/        ← Floating back-to-top button
-├── styles/index.css        ← CSS variables, noise overlay, marquee + reveal animations
-└── tailwind.config.js      ← Custom colors (accent: #b8ff57), font variables, container
+# Startup - Free Next.js Startup Website Template
+
+ - [Demo](https://themewagon.github.io/startup-nextjs/)
+
+#### Download
+ - [Download from ThemeWagon](https://themewagon.com/themes/startup-nextjs/)
+ 
+
+## Getting Started
+
+1. Clone Repository
+
+```
+git clone https://github.com/themewagon/startup-nextjs.git
+```
+
+2. Install Dependencies
+
+```
+npm i
+```
+
+3. Run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+## Author
+
+Design and code are completely written by TailGrids and UIdeck design and development team.  
+
+
+## License
+
+ - Design and Code is Copyright &copy; [UIdeck](https://uideck.com/)
+ - Licensed under [MIT]
+ - Distributed by [ThemeWagon](https://themewagon.com)
+
+
