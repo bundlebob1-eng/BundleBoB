@@ -20,11 +20,11 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "BundleBOB — AI Solutions for Your Business",
+  title: "BundleBOB",
   description:
     "BundleBOB builds mobile apps, websites, AI solutions, chatbots, and business automation for modern companies ready to grow.",
   openGraph: {
-    title: "BundleBOB — AI Solutions for Your Business",
+    title: "BundleBOB - AI Solutions for Your Business",
     description:
       "Mobile apps, websites, AI chatbots, and business automation. Built for the AI era.",
     type: "website",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BundleBOB — AI Solutions for Your Business",
+    title: "BundleBOB - AI Solutions for Your Business",
     description:
       "Mobile apps, websites, AI chatbots, and business automation. Built for the AI era.",
   },
