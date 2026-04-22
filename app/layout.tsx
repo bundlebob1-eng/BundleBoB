@@ -3,7 +3,7 @@ import { Syne, DM_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import "@/styles/globals.css";
+import "@/styles/index.css";
 
 const syne = Syne({
   subsets: ["latin"],
