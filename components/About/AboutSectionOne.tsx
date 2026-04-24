@@ -56,9 +56,9 @@ const AboutSectionOne = () => {
             <div className="space-y-5 text-[15px] leading-[1.85] text-gray-400">
               <p>
                 BundleBOB is a{" "}
-                <strong className="font-medium text-white">US-registered LLC</strong> of
+                <strong className="font-medium text-white">US-Based Company</strong> of
                 engineers, designers, and AI specialists who are obsessed with building
-                things that actually work. We don&apos;t just consult — we build, ship,
+                things that actually work. We don&apos;t just consult - we build, ship,
                 and deliver measurable results.
               </p>
               <p>
@@ -67,7 +67,7 @@ const AboutSectionOne = () => {
                 <strong className="font-medium text-white">
                   your revenue and growth goals
                 </strong>{" "}
-                — not just a tech spec on paper.
+                - not just a tech spec on paper.
               </p>
               <p>
                 We&apos;ve helped startups and established businesses reduce operational
