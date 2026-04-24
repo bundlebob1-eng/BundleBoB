@@ -18,16 +18,16 @@ const Footer = () => {
             </p>
             <div className="space-y-2">
               <a
-                href="mailto:contact@bundlebob.com"
+                href="mailto:bundlebob1@gmail.com"
                 className="block text-[13px] text-gray-500 transition hover:text-[#b8ff57]"
               >
                 contact@bundlebob.com
               </a>
               <a
-                href="tel:+15550000000"
+                href="tel:+19726520977"
                 className="block text-[13px] text-gray-500 transition hover:text-[#b8ff57]"
               >
-                +1 (555) 000-0000
+                +1 (972) 652-0977
               </a>
               <span className="block text-[13px] text-gray-500">Irving, Texas, USA</span>
             </div>
