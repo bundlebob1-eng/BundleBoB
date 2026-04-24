@@ -29,7 +29,7 @@ const Footer = () => {
               >
                 +1 (972) 652-0977
               </a>
-              <span className="block text-[13px] text-gray-500">Irving, Texas, USA</span>
+              <span className="block text-[13px] text-gray-500"> USA</span>
             </div>
           </div>
 
@@ -92,7 +92,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 py-6">
           <span className="text-[12px] text-gray-600">
-            © 2025 BundleBOB LLC. All rights reserved. Registered in the United States.
+            © 2026 BundleBOB LLC. All rights reserved. Registered in the United States.
           </span>
           <div className="flex gap-6">
             {["LinkedIn", "Twitter / X", "GitHub"].map((s) => (
