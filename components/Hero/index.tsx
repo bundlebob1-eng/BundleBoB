@@ -66,9 +66,9 @@ const Hero = () => {
         {/* Stats row */}
         <div className="mt-20 grid grid-cols-1 border border-white/10 sm:grid-cols-3">
           {[
-            { num: "50+", label: "Projects Delivered", sub: "Apps, websites & AI systems shipped" },
-            { num: "98%", label: "Client Satisfaction", sub: "Measured across every engagement" },
-            { num: "4x", label: "Avg. ROI for Clients", sub: "Revenue impact in the first year" },
+            { num: "2+", label: "Projects Delivered", sub: "Apps, websites & AI systems shipped" },
+            { num: "99%", label: "Client Satisfaction", sub: "Measured across every engagement" },
+            { num: "2x", label: "Avg. ROI for Clients", sub: "Revenue impact in the first year" },
           ].map((stat, i) => (
             <div
               key={i}
