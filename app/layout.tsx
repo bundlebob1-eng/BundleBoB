@@ -3,7 +3,6 @@ import { Syne, DM_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import AnimatedCursor from "@/components/AnimatedCursor";
 import "@/styles/index.css";
 
 const syne = Syne({
@@ -23,25 +22,32 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "BundleBOB — AI Solutions for Your Business",
   description:
-    "BundleBOB builds mobile apps, websites, AI chatbots, and business automation for companies ready to grow in the AI era.",
+    "BundleBOB builds mobile apps, websites, AI solutions, chatbots, and business automation for modern companies ready to grow.",
   openGraph: {
     title: "BundleBOB — AI Solutions for Your Business",
-    description: "Mobile apps, websites, AI chatbots, and business automation. Built for the AI era.",
+    description:
+      "Mobile apps, websites, AI chatbots, and business automation. Built for the AI era.",
     type: "website",
     url: "https://bundlebob.com",
   },
   twitter: {
     card: "summary_large_image",
     title: "BundleBOB — AI Solutions for Your Business",
-    description: "Mobile apps, websites, AI chatbots, and business automation. Built for the AI era.",
+    description:
+      "Mobile apps, websites, AI chatbots, and business automation. Built for the AI era.",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${syne.variable} ${dmSans.variable}`}>
-        <AnimatedCursor />
+      <body
+        className={`${syne.variable} ${dmSans.variable} bg-[#080808] text-white`}
+      >
         <Header />
         {children}
         <Footer />
