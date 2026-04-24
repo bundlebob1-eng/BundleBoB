@@ -1,8 +1,8 @@
 import Hero from "@/components/Hero";
-import MarqueeBrands from "@/components/Brands";
+import Brands from "@/components/Brands";
 import Services from "@/components/Features";
-import Video from "@/components/Video";
-import AboutSectionOne from "@/components/About/AboutSectionOne";
+import Process from "@/components/Video";
+import About from "@/components/About/AboutSectionOne";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
@@ -11,10 +11,10 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <MarqueeBrands />
+      <Brands />
       <Services />
-      <Video />
-      <AboutSectionOne />
+      <Process />
+      <About />
       <Testimonials />
       <Pricing />
       <Contact />
