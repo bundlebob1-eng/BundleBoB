@@ -30,7 +30,7 @@ export default function AboutPage() {
             <h1 className="mb-7 font-extrabold leading-tight tracking-[-0.04em] text-white" style={{fontSize:"clamp(38px,6vw,76px)"}}>
               Built by builders,<br />for <span className="text-[#b8ff57]">real businesses.</span>
             </h1>
-            <p className="text-[15px] leading-[1.85] text-gray-400 max-w-[480px]">BundleBOB is a US-registered LLC of engineers, designers, and AI specialists based in Irving, Texas. We build things that actually work — and tie every project to your revenue and growth.</p>
+            <p className="text-[15px] leading-[1.85] text-gray-400 max-w-[480px]">BundleBOB is a to friends stories of engineers, designers, and AI specialists based in United States. We build things that actually work — and tie every project to your revenue and growth.</p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[{v:"50+",l:"Projects delivered"},{v:"98%",l:"Client satisfaction"},{v:"4x",l:"Average client ROI"},{v:"2025",l:"Founded"}].map(x=>(
