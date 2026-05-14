@@ -12,7 +12,7 @@ const team = [
 ];
 
 const values = [
-  { t:"Ship fast, ship right",     d:"We believe speed and quality aren't opposites. We move fast without cutting corners — because your time and reputation matter." },
+  { t:"Ship fast, ship right",     d:"We believe speed and quality aren't opposites. We move fast without cutting corners - because your time and reputation matter." },
   { t:"AI-native thinking",        d:"We don't bolt AI on at the end. We start every engagement by asking how AI can make it fundamentally better." },
   { t:"Radical transparency",      d:"No surprises. No vague estimates. Fixed scopes, honest timelines, and direct communication from day one." },
   { t:"Outcomes over outputs",     d:"We measure success by your business results — not lines of code or features shipped." },
