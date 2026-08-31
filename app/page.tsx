@@ -38,23 +38,22 @@ export default function Home() {
       {/* The arc */}
       <section className="border-b border-line">
         <div className="container mx-auto px-5 py-16 md:py-24">
-          <p className="label" data-reveal>
+          <p className="label">
             The arc
           </p>
           <h2
-            data-reveal
             className="mt-4 max-w-[20ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(26px,4vw,40px)" }}
           >
             One engagement, three stages
           </h2>
-          <p data-reveal className="mt-3 max-w-[55ch] text-[15px] leading-[1.7] text-muted">
+          <p className="mt-3 max-w-[55ch] text-[15px] leading-[1.7] text-muted">
             We do not skip ahead. There is no useful intelligence on data you cannot trust yet.
           </p>
 
           <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-3">
             {ARC.map((s) => (
-              <div key={s.n} data-reveal className="bg-bg p-6">
+              <div key={s.n} className="bg-bg p-6">
                 <div className="font-mono text-[12px] text-accent">{s.n}</div>
                 <div className="mt-1 font-display text-[18px] font-semibold text-white">{s.name}</div>
                 <p className="mt-3 text-[13.5px] leading-[1.6] text-white/85">{s.line}</p>
@@ -70,7 +69,6 @@ export default function Home() {
 
           <Link
             href="/how-it-works"
-            data-reveal
             className="mt-8 inline-block border border-line px-5 py-3 font-mono text-[11px] uppercase tracking-[0.1em] text-muted transition-colors hover:border-accent hover:text-accent"
           >
             The arc in detail →
@@ -81,7 +79,7 @@ export default function Home() {
       {/* Advisory */}
       <section className="border-b border-line bg-bg-2">
         <div className="container mx-auto grid grid-cols-1 gap-10 px-5 py-16 md:grid-cols-[1fr_1.4fr] md:py-24">
-          <div data-reveal>
+          <div>
             <p className="label">Advisory, not autonomous</p>
             <h2
               className="mt-4 font-display font-semibold tracking-[-0.03em] text-white"
@@ -90,7 +88,7 @@ export default function Home() {
               Every number traces back to a source record
             </h2>
           </div>
-          <div data-reveal className="space-y-4 text-[14.5px] leading-[1.75] text-muted">
+          <div className="space-y-4 text-[14.5px] leading-[1.75] text-muted">
             <p>
               A financial figure you see on a screen is only useful if you can click into the invoice, timecard,
               or commitment it was built from. That is the standard: no summary number without its line items.
@@ -106,7 +104,7 @@ export default function Home() {
       {/* Who */}
       <section className="border-b border-line">
         <div className="container mx-auto grid grid-cols-1 gap-px border-y border-line bg-line px-0 md:grid-cols-2">
-          <div data-reveal className="bg-bg p-8 md:p-10">
+          <div className="bg-bg p-8 md:p-10">
             <h2 className="font-display text-[20px] font-semibold text-white">Who this is for</h2>
             <p className="mt-3 text-[13.5px] leading-[1.7] text-muted">
               Mid-market general contractors who already run Procore, Sage, Foundation, or QuickBooks and do not
@@ -114,7 +112,7 @@ export default function Home() {
               them into a decision.
             </p>
           </div>
-          <div data-reveal className="bg-bg p-8 md:p-10">
+          <div className="bg-bg p-8 md:p-10">
             <h2 className="font-display text-[20px] font-semibold text-white">Who it is not for</h2>
             <p className="mt-3 text-[13.5px] leading-[1.7] text-muted">
               Not startups. Not retail, SaaS, or e-commerce. Not firms looking for a website, an app, or a
@@ -129,13 +127,12 @@ export default function Home() {
       <section>
         <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
-            data-reveal
             className="max-w-[22ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(24px,3.5vw,40px)" }}
           >
             If month-end is where you find out what a job made, we should talk.
           </h2>
-          <Link href="/contact" data-reveal className="btn mt-8">
+          <Link href="/contact" className="btn mt-8">
             Contact
           </Link>
         </div>
