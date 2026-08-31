@@ -54,18 +54,18 @@ const STAGES = [
 export default function HowItWorks() {
   return (
     <>
-      <section className="border-b border-line">
+      <section className="border-b border-white/[0.06]">
         <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
           <p className="label">
             How it works
           </p>
           <h1
-            className="mt-5 max-w-[20ch] font-display font-semibold tracking-[-0.03em] text-white"
+            className="mt-5 max-w-[20ch] font-syne font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(30px,5vw,52px)" }}
           >
             One engagement, three stages, in order
           </h1>
-          <p className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
+          <p className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-white/50">
             One Forward Deployed Engineer (FDE) — also known as an AI Integrator — runs the same arc in every
             firm: make the data trustworthy, then make it legible, then make it answer questions. Each stage
             stands on the one before it.
@@ -74,29 +74,29 @@ export default function HowItWorks() {
       </section>
 
       {STAGES.map((s) => (
-        <section key={s.n} className="border-b border-line">
+        <section key={s.n} className="border-b border-white/[0.06]">
           <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[1fr_1.3fr] md:py-20">
             <div>
               <div className="flex items-baseline gap-3">
                 <span className="font-mono text-[13px] text-accent">{s.n}</span>
-                <h2 className="font-display text-[24px] font-semibold text-white">{s.name}</h2>
+                <h2 className="font-syne text-[24px] font-semibold text-white">{s.name}</h2>
               </div>
               <p className="mt-4 max-w-[40ch] text-[15px] leading-[1.7] text-white/85">{s.goal}</p>
-              <div className="mt-6 border border-line bg-bg-2 p-4">
+              <div className="mt-6 border border-white/[0.06] bg-bg2 p-4">
                 <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent/80">Example deliverable</div>
-                <p className="mt-2 text-[13px] leading-[1.7] text-muted">{s.example}</p>
+                <p className="mt-2 text-[13px] leading-[1.7] text-white/50">{s.example}</p>
               </div>
             </div>
             <div>
-              <div className="border border-line">
-                <div className="border-b border-line px-5 py-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+              <div className="border border-white/[0.06]">
+                <div className="border-b border-white/[0.06] px-5 py-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">
                   What the FDE does
                 </div>
                 {s.what.map((w, j) => (
                   <div
                     key={j}
-                    className={`flex gap-3 px-5 py-3.5 text-[13px] leading-[1.6] text-muted ${
-                      j < s.what.length - 1 ? "border-b border-line" : ""
+                    className={`flex gap-3 px-5 py-3.5 text-[13px] leading-[1.6] text-white/50 ${
+                      j < s.what.length - 1 ? "border-b border-white/[0.06]" : ""
                     }`}
                   >
                     <span className="text-accent">→</span>
@@ -109,12 +109,12 @@ export default function HowItWorks() {
         </section>
       ))}
 
-      <section className="border-b border-line bg-bg-2">
+      <section className="border-b border-white/[0.06] bg-bg2">
         <div className="container mx-auto px-5 py-14 md:py-20">
           <p className="label">
             How long each stage takes
           </p>
-          <p className="mt-4 max-w-[58ch] text-[14px] leading-[1.7] text-muted">
+          <p className="mt-4 max-w-[58ch] text-[14px] leading-[1.7] text-white/50">
             This depends on how many systems you run and the state they are in.
           </p>
           <div className="mt-4 max-w-[70ch]">
@@ -130,13 +130,13 @@ export default function HowItWorks() {
       <section>
         <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
-            className="max-w-[24ch] font-display font-semibold tracking-[-0.03em] text-white"
+            className="max-w-[24ch] font-syne font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(22px,3.2vw,34px)" }}
           >
             The output at every stage is something a person on your team reads and acts on.
           </h2>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/pricing" className="btn">
+            <Link href="/pricing" className="btn btn-shine">
               What it costs
             </Link>
             <Link href="/contact" className="btn btn-ghost">
