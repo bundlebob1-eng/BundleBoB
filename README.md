@@ -40,22 +40,24 @@ python3 -m http.server 8080     # then open http://localhost:8080
 
 ## Demo / placeholder content — replace before any commercial launch
 
-This is a **design demo on a domain that is not in commercial use**. The
-following are on-brand placeholders, not real facts, and must be replaced with
-real, named, checkable content before the site is used commercially:
+This is a **design demo on a domain that is not in commercial use**. Every gap
+is disclosed honestly on the page itself (no `[ TO CONFIRM ]` brackets):
 
-- **`index.html`** — the testimonial cards ("Name on approval", placeholder
-  avatars). Real quotes go in only once a named client approves the wording.
+- **`index.html`** — "We don't have client testimonials yet"; the Work preview
+  shows the *shape* of an engagement with no week numbers.
 - **`portfolio.html` / `portfolio-single.html`** — labelled "illustrative" /
   "demo content". No named client, no measured results.
 - **`blog.html` / `blog-details.html`** — labelled "nothing published yet".
 - **`about.html`** — founder / FDE bio, entity name + US state, team location.
-- **`contact.html`** — real inbox + reply time; then re-add `/contact` to the
+- **`contact.html`** — real inbox + reply time; then re-add `Contact` to the
   nav (it is intentionally omitted from the header/footer nav until then).
-- **`security.html`** — the isolation model, encryption specifics, hosting
-  region, model providers and SOC 2 / pen-test / BAA status should be confirmed
-  by whoever owns the infrastructure before they are treated as commitments.
+- **`security.html`** — every card states whether it is an implemented control
+  or a **design intent not yet validated against a real client**. Do not
+  upgrade a card to a present-tense fact until it actually is one.
 - **Newsletter / contact forms** submit nowhere (template demo behaviour).
+
+**`LAUNCH-CHECKLIST.md`** is the single list of what must become real before the
+"Demo site — not in commercial use" footer label may be removed.
 
 ## Deploy
 
