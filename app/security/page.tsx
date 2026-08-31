@@ -38,15 +38,13 @@ const SECTIONS = [
   },
   {
     h: "What is not in place yet",
-    intro:
-      "This buyer reads silence as evasion, so we state the gaps directly.",
+    intro: "This buyer reads silence as evasion, so we state the gaps directly.",
     pending:
       "an honest list — e.g. “no SOC 2 report today; targeting [date]”, “no third-party penetration test yet”, “no formal BAA” — paired with what IS true instead (written policies, the isolation model above, background checks, whatever applies).",
   },
   {
     h: "If an engagement ends",
-    intro:
-      "You keep what was built. Your data is returned or destroyed on your instruction.",
+    intro: "You keep what was built. Your data is returned or destroyed on your instruction.",
     pending:
       "the actual offboarding terms: format your data is returned in, deletion timeline and confirmation, what documentation and code transfers to you, and how long any backups persist afterward.",
   },
@@ -54,45 +52,55 @@ const SECTIONS = [
 
 export default function Security() {
   return (
-    <>
-      <section className="rule-b">
-        <div className="container py-16 md:py-24">
-          <p className="label">Security &amp; data</p>
-          <h1 className="mt-5 max-w-[24ch] text-[36px] leading-tight md:text-[48px]">
+    <div className="pt-24">
+      <section className="border-b border-white/[0.06] bg-[#040406] px-4 py-20">
+        <div className="container mx-auto">
+          <div className="mb-6 flex items-center gap-2.5">
+            <span className="h-px w-8 bg-[#b8ff57]" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8ff57]">Security &amp; data</span>
+          </div>
+          <h1
+            className="mb-6 max-w-[26ch] font-syne font-extrabold leading-tight tracking-[-0.04em] text-white"
+            style={{ fontSize: "clamp(32px,6vw,68px)" }}
+          >
             We will be inside your accounting and subcontractor data. Here is how that is handled.
           </h1>
-          <p className="mt-6 lead">
-            This page is written to be checkable. Where a control is real, it is
-            stated plainly. Where it is not in place yet, that is stated too, next
-            to what is true instead.
+          <p className="max-w-[600px] text-[15px] leading-[1.85] text-gray-400">
+            This page is written to be checkable. Where a control is real, it is stated plainly. Where it is not in place
+            yet, that is stated too, next to what is true instead.
           </p>
         </div>
       </section>
 
-      {SECTIONS.map((s) => (
-        <section key={s.h} className="rule-b">
-          <div className="container grid gap-6 py-12 md:grid-cols-[16rem_1fr] md:py-16">
-            <h2 className="text-[20px]">{s.h}</h2>
-            <div className="max-w-prose prose-block">
-              <p className="text-ink-soft">{s.intro}</p>
+      {SECTIONS.map((s, i) => (
+        <section key={s.h} className={`border-b border-white/[0.06] px-4 py-16 ${i % 2 === 0 ? "bg-[#040406]" : "bg-[#07070a]"}`}>
+          <div className="container mx-auto grid grid-cols-1 gap-8 lg:grid-cols-[300px_1fr]">
+            <h2 className="font-syne text-[20px] font-bold text-white">{s.h}</h2>
+            <div className="max-w-[640px] space-y-4">
+              <p className="text-[14px] leading-[1.85] text-gray-400">{s.intro}</p>
               <Pending block>{s.pending}</Pending>
             </div>
           </div>
         </section>
       ))}
 
-      <section>
-        <div className="container py-16 md:py-20">
-          <h2 className="max-w-[24ch] text-[24px] md:text-[30px]">
+      <section className="bg-[#040406] px-4 py-24">
+        <div className="container mx-auto">
+          <h2
+            data-reveal
+            className="mb-8 max-w-[26ch] font-syne font-extrabold leading-[1.1] tracking-[-0.03em] text-white"
+            style={{ fontSize: "clamp(24px,4vw,38px)" }}
+          >
             Send us your security questionnaire. We would rather answer it before you ask than after.
           </h2>
-          <div className="mt-8">
-            <Link href="/contact" className="btn">
-              Contact
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="btn-shine inline-flex bg-[#b8ff57] px-8 py-4 font-mono text-[12px] font-bold uppercase tracking-widest text-black transition hover:shadow-[0_0_40px_rgba(184,255,87,0.3)]"
+          >
+            Contact →
+          </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

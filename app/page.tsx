@@ -1,5 +1,6 @@
 import Link from "next/link";
-import Pending from "@/components/Pending";
+import Hero3D from "@/components/Hero3D";
+import Brands from "@/components/Brands";
 
 const ARC = [
   {
@@ -28,158 +29,137 @@ const ARC = [
   },
 ];
 
-const SYSTEMS = ["Procore", "Sage 300 CRE", "Foundation", "QuickBooks", "Excel / Google Sheets", "Autodesk / PlanGrid field data"];
-
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="rule-b">
-        <div className="container py-20 md:py-28">
-          <p className="label">Embedded engineer &middot; commercial construction</p>
-          <h1 className="mt-6 max-w-[18ch] text-[40px] leading-[1.1] md:text-[56px]">
-            An engineer who works inside your construction business, not a tool you log into.
-          </h1>
-          <div className="mt-8 prose-block">
-            <p className="lead">
-              We place one person in your firm to connect Procore, Sage, Foundation,
-              QuickBooks, and your spreadsheets, then build the layer on top that
-              shows where your margin is leaking &mdash; Capture, then Control, then
-              Intelligence, in that order.
-            </p>
-            <p className="lead">
-              You are adding a data engineer who understands job costing to your
-              headcount budget. You are not buying another piece of software.
-            </p>
-          </div>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/contact" className="btn">
-              Talk to us about an engagement
-            </Link>
-            <Link href="/how-it-works" className="btn btn-ghost">
-              How it works
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Hero3D />
+      <Brands />
 
       {/* The arc */}
-      <section className="rule-b">
-        <div className="container py-16 md:py-20">
-          <h2 className="text-[28px] md:text-[34px]">The arc</h2>
-          <p className="mt-3 max-w-prose text-ink-soft">
-            One engagement, three stages. We do not skip ahead &mdash; there is no
-            useful intelligence on data you cannot trust yet.
+      <section className="border-b border-white/[0.06] bg-[#040406] px-4 py-24">
+        <div className="container mx-auto">
+          <div data-reveal className="mb-4">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#b8ff57]">/ The arc</span>
+          </div>
+          <h2
+            data-reveal
+            data-delay="60"
+            className="mb-4 font-syne font-extrabold leading-[1.05] tracking-[-0.03em] text-white"
+            style={{ fontSize: "clamp(30px,5vw,52px)" }}
+          >
+            One engagement, three stages
+          </h2>
+          <p data-reveal data-delay="100" className="mb-16 max-w-[560px] text-[15px] leading-[1.85] text-gray-400">
+            We do not skip ahead. There is no useful intelligence on data you cannot trust yet.
           </p>
 
-          <div className="mt-12 space-y-12">
-            {ARC.map((s) => (
-              <div key={s.n} className="grid gap-6 md:grid-cols-[7rem_1fr]">
-                <div>
-                  <div className="label">{s.n}</div>
-                  <div className="mt-1 font-serif text-2xl">{s.name}</div>
+          <div className="grid grid-cols-1 border border-white/[0.06] md:grid-cols-3">
+            {ARC.map((s, i) => (
+              <div
+                key={s.n}
+                data-reveal
+                data-delay={`${i * 90}`}
+                className={`group relative p-8 transition hover:bg-[#b8ff57]/[0.03] ${i < 2 ? "border-b border-white/[0.06] md:border-b-0 md:border-r" : ""}`}
+              >
+                <div className="mb-5 flex h-11 w-11 items-center justify-center border border-white/10 bg-[#040406] font-mono text-base font-bold text-[#b8ff57] transition group-hover:border-[#b8ff57] group-hover:bg-[#b8ff57] group-hover:text-black">
+                  {s.n}
                 </div>
-                <div className="prose-block">
-                  <p className="text-[19px] leading-snug">{s.line}</p>
-                  <p className="text-ink-soft">{s.body}</p>
-                  <p className="border-l-2 border-rule pl-4 text-[15px] text-ink-soft">
-                    <span className="label">Example</span>
-                    <br />
-                    {s.example}
-                  </p>
+                <div className="font-syne text-xl font-bold text-white">{s.name}</div>
+                <p className="mt-3 text-[13px] leading-[1.7] text-gray-300">{s.line}</p>
+                <p className="mt-3 text-[13px] leading-[1.7] text-gray-500">{s.body}</p>
+                <div className="mt-5 border-l border-[#b8ff57]/30 pl-4">
+                  <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#b8ff57]/70">Example</div>
+                  <p className="mt-1.5 font-mono text-[11px] leading-[1.7] text-gray-500">{s.example}</p>
                 </div>
+                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#b8ff57] transition-all duration-500 group-hover:w-full" />
               </div>
             ))}
+          </div>
+
+          <div data-reveal className="mt-8">
+            <Link
+              href="/how-it-works"
+              className="inline-flex items-center gap-2 border border-white/10 px-6 py-3 font-mono text-[10px] uppercase tracking-wider text-gray-400 transition hover:border-[#b8ff57]/50 hover:text-[#b8ff57]"
+            >
+              The arc in detail →
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Advisory, not autonomous */}
-      <section className="rule-b bg-[color:var(--paper-2)]">
-        <div className="container py-16 md:py-20">
-          <h2 className="text-[26px] md:text-[32px]">Every number traces back to a source record</h2>
-          <div className="mt-4 prose-block">
-            <p className="text-ink-soft">
-              A financial figure a client sees on a screen is only useful if you can
-              click into the invoice, timecard, or commitment it was built from. That
-              is the standard we hold: no summary number without its line items.
+      <section className="border-b border-white/[0.06] bg-[#07070a] px-4 py-24">
+        <div className="container mx-auto grid grid-cols-1 gap-14 lg:grid-cols-2">
+          <div>
+            <div data-reveal className="mb-6">
+              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#b8ff57]">/ Advisory, not autonomous</span>
+            </div>
+            <h2
+              data-reveal
+              data-delay="60"
+              className="font-syne font-extrabold leading-[1.1] tracking-[-0.03em] text-white"
+              style={{ fontSize: "clamp(26px,4vw,40px)" }}
+            >
+              Every number traces back to a source record
+            </h2>
+          </div>
+          <div data-reveal data-delay="120" className="space-y-4 text-[14px] leading-[1.85] text-gray-400">
+            <p>
+              A financial figure you see on a screen is only useful if you can click into the invoice, timecard, or
+              commitment it was built from. That is the standard: no summary number without its line items.
             </p>
-            <p className="text-ink-soft">
-              The AI drafts answers, alerts, and suggested next steps. It does not
-              send email, move money, update your ERP, or notify a subcontractor. A
-              named person approves each action first.
+            <p>
+              The AI drafts answers, alerts, and suggested next steps. It does not send email, move money, update your
+              ERP, or notify a subcontractor. A named person approves each action first.
             </p>
           </div>
         </div>
       </section>
 
       {/* Who */}
-      <section className="rule-b">
-        <div className="container grid gap-10 py-16 md:grid-cols-2 md:py-20">
-          <div className="prose-block">
-            <h2 className="text-[24px]">Who this is for</h2>
-            <p className="text-ink-soft">
-              Mid-market general contractors who already run Procore, Sage,
-              Foundation, or QuickBooks and do not have anyone whose job is to make
-              those systems agree with each other &mdash; or to turn what comes out
-              of them into a decision.
+      <section className="border-b border-white/[0.06] bg-[#040406] px-4 py-24">
+        <div className="container mx-auto grid grid-cols-1 border border-white/[0.06] md:grid-cols-2">
+          <div data-reveal className="border-b border-white/[0.06] p-10 md:border-b-0 md:border-r">
+            <h2 className="mb-4 font-syne text-[22px] font-bold text-white">Who this is for</h2>
+            <p className="text-[13px] leading-[1.85] text-gray-400">
+              Mid-market general contractors who already run Procore, Sage, Foundation, or QuickBooks and do not have
+              anyone whose job is to make those systems agree with each other — or to turn what comes out of them into a
+              decision.
             </p>
           </div>
-          <div className="prose-block">
-            <h2 className="text-[24px]">Who it is not for</h2>
-            <p className="text-ink-soft">
-              Not startups. Not retail, SaaS, or e-commerce. Not firms looking for a
-              website, an app, or a chatbot. If an offer would make sense for a
-              company outside commercial construction, it is not this one.
+          <div data-reveal data-delay="80" className="p-10">
+            <h2 className="mb-4 font-syne text-[22px] font-bold text-white">Who it is not for</h2>
+            <p className="text-[13px] leading-[1.85] text-gray-400">
+              Not startups. Not retail, SaaS, or e-commerce. Not firms looking for a website, an app, or a chatbot. If an
+              offer would make sense for a company outside commercial construction, it is not this one.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Systems */}
-      <section className="rule-b">
-        <div className="container py-16 md:py-20">
-          <h2 className="text-[24px]">Systems we connect</h2>
-          <p className="mt-3 max-w-prose text-ink-soft">
-            The question that matters is whether this works with what you already
-            own. These are the systems we expect to sit on top of. If yours is not
-            listed, tell us what you run.
-          </p>
-          <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 md:grid-cols-3">
-            {SYSTEMS.map((s) => (
-              <li key={s} className="rule-b py-2 font-mono text-[14px]">
-                {s}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Stage */}
-      <section className="rule-b">
-        <div className="container py-16 md:py-20">
-          <h2 className="text-[24px]">Where we are right now</h2>
-          <div className="mt-4 max-w-prose">
-            <Pending block>
-              honest one-line statement of current stage &mdash; e.g. &ldquo;running
-              our first pilot with a mid-market GC in the Southwest&rdquo;, or
-              &ldquo;pre-pilot; founder is doing this work directly with two firms&rdquo;.
-              Do not publish a number of clients or a result until one is real and
-              named.
-            </Pending>
           </div>
         </div>
       </section>
 
       {/* Close */}
-      <section>
-        <div className="container py-16 md:py-20">
-          <h2 className="max-w-[20ch] text-[28px] md:text-[34px]">
-            If your month-end close is where you find out what a job actually made, we should talk.
+      <section className="relative overflow-hidden border-b border-white/[0.06] bg-[#07070a] px-4 py-28 text-center">
+        {[280, 500, 700].map((s, i) => (
+          <div
+            key={i}
+            className="pointer-events-none absolute left-1/2 top-1/2 rounded-full border border-[#b8ff57]/[0.07]"
+            style={{ width: s, height: s, animation: `pulseRing ${2.5 + i * 0.6}s ease-in-out infinite`, animationDelay: `${i * 0.35}s` }}
+          />
+        ))}
+        <div className="container relative mx-auto">
+          <h2
+            data-reveal
+            className="mx-auto mb-8 max-w-[20ch] font-syne font-extrabold leading-[1.05] tracking-[-0.04em] text-white"
+            style={{ fontSize: "clamp(30px,5vw,56px)" }}
+          >
+            If month-end is where you find out what a job made, we should talk.
           </h2>
-          <div className="mt-8">
-            <Link href="/contact" className="btn">
-              Contact
+          <div data-reveal data-delay="120">
+            <Link
+              href="/contact"
+              className="btn-shine inline-flex items-center gap-2 bg-[#b8ff57] px-10 py-4 font-mono text-[12px] font-bold uppercase tracking-widest text-black transition hover:shadow-[0_0_60px_rgba(184,255,87,0.4)]"
+            >
+              Contact →
             </Link>
           </div>
         </div>
