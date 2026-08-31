@@ -31,49 +31,49 @@ const EMBEDDED_MEANS = [
 
 export default function Pricing() {
   return (
-    <div className="pt-24">
-      <section className="border-b border-white/[0.06] bg-[#040406] px-4 py-20">
-        <div className="container mx-auto">
-          <div className="mb-6 flex items-center gap-2.5">
-            <span className="h-px w-8 bg-[#b8ff57]" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8ff57]">Engagement model</span>
-          </div>
+    <>
+      <section className="border-b border-line">
+        <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
+          <p className="label" data-reveal>
+            Engagement model
+          </p>
           <h1
-            className="mb-6 max-w-[22ch] font-syne font-extrabold leading-tight tracking-[-0.04em] text-white"
-            style={{ fontSize: "clamp(36px,7vw,80px)" }}
+            data-reveal
+            className="mt-5 max-w-[22ch] font-display font-semibold tracking-[-0.03em] text-white"
+            style={{ fontSize: "clamp(30px,5vw,52px)" }}
           >
             Priced against a hire, not a project
           </h1>
-          <p className="max-w-[560px] text-[15px] leading-[1.85] text-gray-400">
-            The right comparison is not &ldquo;what does this software cost.&rdquo; It is &ldquo;what would it cost to
-            hire a data engineer who understands construction operations, and how long until they are useful.&rdquo;
+          <p data-reveal className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
+            The right comparison is not &ldquo;what does this software cost.&rdquo; It is &ldquo;what would it
+            cost to hire a data engineer who understands construction operations, and how long until they are
+            useful.&rdquo;
           </p>
         </div>
       </section>
 
-      {/* Comparison */}
-      <section className="border-b border-white/[0.06] bg-[#040406] px-4 py-20">
-        <div className="container mx-auto grid grid-cols-1 border border-white/[0.06] md:grid-cols-2">
-          <div className="border-b border-white/[0.06] p-10 md:border-b-0 md:border-r">
-            <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-gray-500">Hiring your own</div>
-            <h2 className="mt-1 font-syne text-[22px] font-bold text-white">Data / analytics engineer</h2>
+      <section className="border-b border-line">
+        <div className="container mx-auto grid grid-cols-1 gap-px border-y border-line bg-line md:grid-cols-2">
+          <div data-reveal className="bg-bg p-8 md:p-10">
+            <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Hiring your own</div>
+            <h2 className="mt-1 font-display text-[20px] font-semibold text-white">Data / analytics engineer</h2>
             <dl className="mt-6 space-y-5">
               {HIRE.map((r) => (
                 <div key={r.dt}>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-gray-500">{r.dt}</dt>
-                  <dd className="mt-1 text-[13px] leading-[1.75] text-gray-300">{r.dd}</dd>
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">{r.dt}</dt>
+                  <dd className="mt-1 text-[13px] leading-[1.7] text-white/85">{r.dd}</dd>
                 </div>
               ))}
             </dl>
           </div>
-          <div className="bg-[#07070a] p-10">
-            <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#b8ff57]">BundleBoB engagement</div>
-            <h2 className="mt-1 font-syne text-[22px] font-bold text-white">An embedded engineer</h2>
+          <div data-reveal className="bg-bg-2 p-8 md:p-10">
+            <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">BundleBoB engagement</div>
+            <h2 className="mt-1 font-display text-[20px] font-semibold text-white">An embedded engineer</h2>
             <dl className="mt-6 space-y-5">
               {EMBED.map((r) => (
                 <div key={r.dt}>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-gray-500">{r.dt}</dt>
-                  <dd className="mt-1 text-[13px] leading-[1.75] text-gray-300">{r.dd}</dd>
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">{r.dt}</dt>
+                  <dd className="mt-1 text-[13px] leading-[1.7] text-white/85">{r.dd}</dd>
                 </div>
               ))}
             </dl>
@@ -81,55 +81,47 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* What embedded means */}
-      <section className="border-b border-white/[0.06] bg-[#07070a] px-4 py-20">
-        <div className="container mx-auto">
-          <div data-reveal className="mb-8">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8ff57]">/ What &ldquo;embedded&rdquo; means in practice</span>
-          </div>
-          <div className="grid grid-cols-1 border border-white/[0.06] sm:grid-cols-2">
-            {EMBEDDED_MEANS.map((x, i) => (
-              <div
-                key={x.l}
-                className={`p-8 ${i % 2 === 0 ? "sm:border-r sm:border-white/[0.06]" : ""} ${i < 2 ? "border-b border-white/[0.06]" : ""}`}
-              >
-                <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-gray-500">{x.l}</div>
-                <div className="mt-2 text-[13px] leading-[1.75] text-gray-300">{x.v}</div>
+      <section className="border-b border-line bg-bg-2">
+        <div className="container mx-auto px-5 py-14 md:py-20">
+          <p className="label" data-reveal>
+            What &ldquo;embedded&rdquo; means in practice
+          </p>
+          <div className="mt-6 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
+            {EMBEDDED_MEANS.map((x) => (
+              <div key={x.l} data-reveal className="bg-bg-2 p-6">
+                <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{x.l}</div>
+                <div className="mt-2 text-[13px] leading-[1.7] text-white/85">{x.v}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* What we don't do */}
-      <section className="border-b border-white/[0.06] bg-[#040406] px-4 py-20">
-        <div className="container mx-auto">
-          <h2 className="mb-5 font-syne text-[22px] font-bold text-white">What we do not do</h2>
-          <ul className="max-w-[620px] space-y-3 text-[13px] leading-[1.8] text-gray-400">
-            <li className="flex gap-3"><span className="text-[#b8ff57]">→</span> No fixed-scope project quotes — &ldquo;$X for a dashboard, $Y for an integration.&rdquo;</li>
-            <li className="flex gap-3"><span className="text-[#b8ff57]">→</span> No menu of deliverables. There is one offer: the embedded engineer and the arc.</li>
-            <li className="flex gap-3"><span className="text-[#b8ff57]">→</span> No per-seat software licensing. You are paying for a person and the work they do.</li>
+      <section className="border-b border-line">
+        <div className="container mx-auto px-5 py-14 md:py-20">
+          <h2 data-reveal className="font-display text-[20px] font-semibold text-white">What we do not do</h2>
+          <ul data-reveal className="mt-4 max-w-[60ch] space-y-2.5 text-[13px] leading-[1.7] text-muted">
+            <li className="flex gap-3"><span className="text-accent">→</span> No fixed-scope project quotes — &ldquo;$X for a dashboard, $Y for an integration.&rdquo;</li>
+            <li className="flex gap-3"><span className="text-accent">→</span> No menu of deliverables. There is one offer: the embedded engineer and the arc.</li>
+            <li className="flex gap-3"><span className="text-accent">→</span> No per-seat software licensing. You are paying for a person and the work they do.</li>
           </ul>
         </div>
       </section>
 
-      <section className="bg-[#07070a] px-4 py-24">
-        <div className="container mx-auto">
+      <section>
+        <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
             data-reveal
-            className="mb-8 max-w-[26ch] font-syne font-extrabold leading-[1.1] tracking-[-0.03em] text-white"
-            style={{ fontSize: "clamp(26px,4vw,42px)" }}
+            className="max-w-[26ch] font-display font-semibold tracking-[-0.03em] text-white"
+            style={{ fontSize: "clamp(22px,3.2vw,34px)" }}
           >
             Tell us the role you have been trying to fill, and we will show you the comparison on your numbers.
           </h2>
-          <Link
-            href="/contact"
-            className="btn-shine inline-flex bg-[#b8ff57] px-8 py-4 font-mono text-[12px] font-bold uppercase tracking-widest text-black transition hover:shadow-[0_0_40px_rgba(184,255,87,0.3)]"
-          >
-            Contact →
+          <Link href="/contact" data-reveal className="btn mt-8">
+            Contact
           </Link>
         </div>
       </section>
-    </div>
+    </>
   );
 }

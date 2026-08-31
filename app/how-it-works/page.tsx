@@ -53,54 +53,54 @@ const STAGES = [
 
 export default function HowItWorks() {
   return (
-    <div className="pt-24">
-      <section className="border-b border-white/[0.06] bg-[#040406] px-4 py-20">
-        <div className="container mx-auto">
-          <div className="mb-6 flex items-center gap-2.5">
-            <span className="h-px w-8 bg-[#b8ff57]" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8ff57]">How it works</span>
-          </div>
+    <>
+      <section className="border-b border-line">
+        <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
+          <p className="label" data-reveal>
+            How it works
+          </p>
           <h1
-            className="mb-6 max-w-[20ch] font-syne font-extrabold leading-tight tracking-[-0.04em] text-white"
-            style={{ fontSize: "clamp(36px,7vw,80px)" }}
+            data-reveal
+            className="mt-5 max-w-[20ch] font-display font-semibold tracking-[-0.03em] text-white"
+            style={{ fontSize: "clamp(30px,5vw,52px)" }}
           >
             One engagement, three stages, in order
           </h1>
-          <p className="max-w-[560px] text-[15px] leading-[1.85] text-gray-400">
-            The embedded engineer runs the same arc in every firm: make the data trustworthy, then make it legible, then
-            make it answer questions. Each stage stands on the one before it.
+          <p data-reveal className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
+            The embedded engineer runs the same arc in every firm: make the data trustworthy, then make it
+            legible, then make it answer questions. Each stage stands on the one before it.
           </p>
         </div>
       </section>
 
-      {STAGES.map((s, i) => (
-        <section key={s.n} className={`border-b border-white/[0.06] px-4 py-20 ${i % 2 === 0 ? "bg-[#040406]" : "bg-[#07070a]"}`}>
-          <div className="container mx-auto grid grid-cols-1 gap-12 lg:grid-cols-2">
-            <div data-reveal-left>
-              <div className="mb-4 flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center border border-[#b8ff57]/40 bg-[#b8ff57]/10 font-mono text-xl font-black text-[#b8ff57]">
-                  {s.n}
-                </div>
-                <div className="font-syne text-[22px] font-bold text-white">{s.name}</div>
+      {STAGES.map((s) => (
+        <section key={s.n} className="border-b border-line">
+          <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[1fr_1.3fr] md:py-20">
+            <div data-reveal>
+              <div className="flex items-baseline gap-3">
+                <span className="font-mono text-[13px] text-accent">{s.n}</span>
+                <h2 className="font-display text-[24px] font-semibold text-white">{s.name}</h2>
               </div>
-              <p className="mb-6 text-[15px] leading-[1.85] text-gray-300">{s.goal}</p>
-              <div className="border border-[#b8ff57]/20 bg-[#b8ff57]/5 p-5">
-                <div className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[#b8ff57]">Example deliverable</div>
-                <p className="text-[13px] leading-[1.8] text-gray-300">{s.example}</p>
+              <p className="mt-4 max-w-[40ch] text-[15px] leading-[1.7] text-white/85">{s.goal}</p>
+              <div className="mt-6 border border-line bg-bg-2 p-4">
+                <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent/80">Example deliverable</div>
+                <p className="mt-2 text-[13px] leading-[1.7] text-muted">{s.example}</p>
               </div>
             </div>
-            <div data-reveal-right>
-              <div className="border border-white/[0.07]">
-                <div className="border-b border-white/[0.07] px-6 py-4 font-mono text-[9px] uppercase tracking-[0.16em] text-gray-500">
+            <div data-reveal>
+              <div className="border border-line">
+                <div className="border-b border-line px-5 py-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
                   What the engineer does
                 </div>
                 {s.what.map((w, j) => (
                   <div
                     key={j}
-                    className={`flex items-start gap-3 px-6 py-4 transition hover:bg-[#b8ff57]/[0.03] ${j < s.what.length - 1 ? "border-b border-white/[0.07]" : ""}`}
+                    className={`flex gap-3 px-5 py-3.5 text-[13px] leading-[1.6] text-muted ${
+                      j < s.what.length - 1 ? "border-b border-line" : ""
+                    }`}
                   >
-                    <span className="mt-0.5 shrink-0 text-[#b8ff57]">→</span>
-                    <span className="text-[13px] leading-[1.7] text-gray-300">{w}</span>
+                    <span className="text-accent">→</span>
+                    <span>{w}</span>
                   </div>
                 ))}
               </div>
@@ -109,49 +109,43 @@ export default function HowItWorks() {
         </section>
       ))}
 
-      <section className="border-b border-white/[0.06] bg-[#07070a] px-4 py-20">
-        <div className="container mx-auto">
-          <div data-reveal className="mb-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8ff57]">/ How long each stage takes</span>
-          </div>
-          <p className="mb-4 max-w-[560px] text-[14px] leading-[1.85] text-gray-400">
+      <section className="border-b border-line bg-bg-2">
+        <div className="container mx-auto px-5 py-14 md:py-20">
+          <p className="label" data-reveal>
+            How long each stage takes
+          </p>
+          <p data-reveal className="mt-4 max-w-[58ch] text-[14px] leading-[1.7] text-muted">
             This depends on how many systems you run and the state they are in.
           </p>
-          <div className="max-w-[720px]">
+          <div data-reveal className="mt-4 max-w-[70ch]">
             <Pending block>
-              realistic ranges from actual engagements once they exist — e.g. &ldquo;Capture: weeks 1&ndash;6; Control:
-              weeks 4&ndash;12, overlapping; Intelligence: from around week 10&rdquo;. Do not publish a timeline you have
-              not delivered against.
+              realistic ranges from actual engagements once they exist — e.g. &ldquo;Capture: weeks 1&ndash;6;
+              Control: weeks 4&ndash;12, overlapping; Intelligence: from around week 10&rdquo;. Do not publish a
+              timeline you have not delivered against.
             </Pending>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#040406] px-4 py-24">
-        <div className="container mx-auto">
+      <section>
+        <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
             data-reveal
-            className="mb-8 max-w-[24ch] font-syne font-extrabold leading-[1.1] tracking-[-0.03em] text-white"
-            style={{ fontSize: "clamp(26px,4vw,42px)" }}
+            className="max-w-[24ch] font-display font-semibold tracking-[-0.03em] text-white"
+            style={{ fontSize: "clamp(22px,3.2vw,34px)" }}
           >
             The output at every stage is something a person on your team reads and acts on.
           </h2>
-          <div data-reveal data-delay="120" className="flex flex-wrap gap-4">
-            <Link
-              href="/pricing"
-              className="btn-shine bg-[#b8ff57] px-8 py-4 font-mono text-[12px] font-bold uppercase tracking-widest text-black transition hover:shadow-[0_0_40px_rgba(184,255,87,0.3)]"
-            >
-              What it costs →
+          <div data-reveal className="mt-8 flex flex-wrap gap-3">
+            <Link href="/pricing" className="btn">
+              What it costs
             </Link>
-            <Link
-              href="/contact"
-              className="border border-white/10 px-8 py-4 font-mono text-[12px] font-semibold text-white transition hover:border-[#b8ff57]/40 hover:text-[#b8ff57]"
-            >
-              Contact →
+            <Link href="/contact" className="btn btn-ghost">
+              Contact
             </Link>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
