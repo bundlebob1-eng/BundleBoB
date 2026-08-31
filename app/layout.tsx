@@ -1,37 +1,36 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop";
-import AnimatedCursor from "@/components/AnimatedCursor";
-import RevealProvider from "@/components/Common/RevealProvider";
 import "@/styles/index.css";
 
-const syne = Syne({ subsets:["latin"], weight:["400","500","600","700","800"], variable:"--font-syne", display:"swap" });
-const dmSans = DM_Sans({ subsets:["latin"], weight:["300","400","500"], variable:"--font-dm-sans", display:"swap" });
-
 export const metadata: Metadata = {
-  title: { default:"BundleBOB — AI Solutions Agency", template:"%s | BundleBOB" },
-  description:"BundleBOB builds mobile apps, websites, AI chatbots, and business automation for companies ready to grow in the AI era. Based in Irving, Texas.",
-  keywords:["AI agency","mobile app development","chatbot","business automation","Irving Texas","Next.js","React"],
-  openGraph: {
-    title:"BundleBOB — AI Solutions Agency",
-    description:"Mobile apps, websites, AI chatbots, and automation. Built for the AI era.",
-    type:"website", url:"https://bundlebob.com",
+  metadataBase: new URL("https://bundlebob.com"),
+  title: {
+    default: "BundleBoB — an embedded margin engineer for mid-market construction",
+    template: "%s — BundleBoB",
   },
-  twitter:{ card:"summary_large_image", title:"BundleBOB — AI Solutions Agency", description:"Mobile apps, websites, AI chatbots, and automation." },
+  description:
+    "We embed one engineer inside a mid-market general contractor to connect Procore, Sage, Foundation, QuickBooks and the spreadsheets nobody owns — then build the layer on top that shows where the margin is leaking. A headcount line, not a software subscription.",
+  openGraph: {
+    title: "BundleBoB — an embedded margin engineer for mid-market construction",
+    description:
+      "One engineer, embedded in your firm. Connect your systems, get job costing and cash on current data, then plain-English answers a person approves.",
+    type: "website",
+    url: "https://bundlebob.com",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${syne.variable} ${dmSans.variable}`}>
-        <AnimatedCursor />
-        <RevealProvider />
+    <html lang="en">
+      <body>
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-3 focus:py-2 focus:text-paper">
+          Skip to content
+        </a>
         <Header />
-        <main className="page-enter">{children}</main>
+        <main id="main">{children}</main>
         <Footer />
-        <ScrollToTop />
       </body>
     </html>
   );
