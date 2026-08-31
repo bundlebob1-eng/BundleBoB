@@ -1,67 +1,63 @@
-# BundleBoB — marketing site
+# BundleBoB — marketing site (static)
 
-Public site for BundleBoB. The offer is a single role: one **Forward Deployed
-Engineer (FDE)** — also known as an **AI Integrator** — placed inside a
-mid-market commercial general contractor to connect its systems (Procore, Sage,
-Foundation, QuickBooks, spreadsheets), then build the layer on top that shows
-where margin is leaking — **Capture → Control → Intelligence**. A headcount
-line, not a software subscription.
+Public-facing site for BundleBoB: **one Forward Deployed Engineer (also known as
+an AI Integrator)** placed inside a mid-market commercial general contractor to
+connect its systems (Procore, Sage, Foundation, QuickBooks, spreadsheets), then
+build the layer on top that shows where margin is leaking — **Capture → Control
+→ Intelligence**. A headcount line, not a software subscription.
 
-This repo is **the marketing site only**. It is a static Next.js site with no
-backend, database, auth, or integrations.
+## What this is
 
-## Stack
+A **static HTML site**, built on the Nexora Bootstrap 5 template
+([ThemeWagon](https://themewagon.com/), MIT licence). No build step, no
+framework, no backend. Just HTML + `css/custom.css` + `js/main.js`, with
+Bootstrap, Bootstrap Icons and Google Fonts loaded from CDNs.
 
-- Next.js 13 (App Router), React 18, TypeScript
-- Tailwind CSS 3
-- System font stack (Georgia for display, system-ui for text) — no web fonts
-- Deploys as a static/SSG Next.js app
+> This replaced an earlier Next.js version of the site. The template's original
+> style and UI are kept as-is; only the text content was rewritten to BundleBoB.
 
-## Run
+## Run locally
 
 ```bash
-npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
-npm run lint
+python3 -m http.server 8080     # then open http://localhost:8080
 ```
 
 ## Pages
 
-| Route            | Purpose |
-|------------------|---------|
-| `/`              | The arc and the headcount-not-software framing |
-| `/how-it-works`  | Capture / Control / Intelligence in detail |
-| `/pricing`       | Engagement model, priced against hiring your own data/analytics engineer |
-| `/proof`         | Honest statement of stage; no manufactured social proof |
-| `/security`      | Data isolation, encryption, access, and what is not in place yet |
-| `/about`         | Who is doing the work |
-| `/contact`       | Holding page — no public channel yet (unlinked from nav) |
+| File | Purpose |
+|---|---|
+| `index.html` | Home — the arc, who it's for, integration posture |
+| `about.html` | Why one FDE; the harvest loop; team (placeholder) |
+| `services.html` | The Arc — Capture / Control / Intelligence overview |
+| `service-details.html` | The Arc in detail, with example deliverables |
+| `pricing.html` | Priced against a hire, not a project |
+| `portfolio.html` | Work — illustrative engagement scenarios by stage |
+| `portfolio-single.html` | A first engagement, walked through (demo) |
+| `blog.html` | Notes — planned field-note topics (nothing published) |
+| `blog-details.html` | One note outline (demo) |
+| `security.html` | Security & data — posture, plainly, including gaps |
+| `contact.html` | Holding page — no public inbox yet |
 
-## Facts still to fill in with real values
+## Demo / placeholder content — replace before any commercial launch
 
-The site now ships with honest "not yet published" copy anywhere a real fact is
-missing. Nothing is fabricated. When the operator has real values, replace the
-holding copy in these places:
+This is a **design demo on a domain that is not in commercial use**. The
+following are on-brand placeholders, not real facts, and must be replaced with
+real, named, checkable content before the site is used commercially:
 
-- **`company_email`** — no inbox yet. `/contact` is a holding page and is
-  removed from the header/footer nav and the header CTA until a real address
-  exists. Restore the nav entries + the real `mailto:` on `/contact` when it does.
-- **`entity_name_and_state`** — footer + `/about` + `/contact` "company details".
-- **`founder_background`** — `/about` and `/proof` (keep in sync).
-- **`current_stage` / pilot status** — hero stage line + `/proof`.
-- **`team_location`**, **`reply_time`**, **`stage_timeline`**.
-- **`monthly_fee`**, **`hire_fully_loaded_cost`** — `/pricing` (numbers only from
-  the operator).
-- **Security specifics** — `/security` states principles + "shared on request";
-  the isolation model, encryption versions, hosting region, model providers, and
-  SOC 2 / pen-test / BAA status should be confirmed by whoever owns the infra
-  before they are treated as commitments.
+- **`index.html`** — the testimonial cards ("Name on approval", placeholder
+  avatars). Real quotes go in only once a named client approves the wording.
+- **`portfolio.html` / `portfolio-single.html`** — labelled "illustrative" /
+  "demo content". No named client, no measured results.
+- **`blog.html` / `blog-details.html`** — labelled "nothing published yet".
+- **`about.html`** — founder / FDE bio, entity name + US state, team location.
+- **`contact.html`** — real inbox + reply time; then re-add `/contact` to the
+  nav (it is intentionally omitted from the header/footer nav until then).
+- **`security.html`** — the isolation model, encryption specifics, hosting
+  region, model providers and SOC 2 / pen-test / BAA status should be confirmed
+  by whoever owns the infrastructure before they are treated as commitments.
+- **Newsletter / contact forms** submit nowhere (template demo behaviour).
 
-Verify before every deploy: `grep -rn "TO CONFIRM" .next` returns nothing.
+## Deploy
 
-## Deliberately absent
-
-No blog, no careers page, no case-studies section, no legal/privacy pages —
-nothing that exists only to look complete. Add them when there is something real
-to put there, and only link them once the page exists.
+Static hosting. `vercel.json` sets `framework: null` with no build step and
+serves the repo root.
