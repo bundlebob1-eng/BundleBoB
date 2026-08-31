@@ -55,17 +55,16 @@ export default function Security() {
     <>
       <section className="border-b border-line">
         <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
-          <p className="label" data-reveal>
+          <p className="label">
             Security &amp; data
           </p>
           <h1
-            data-reveal
             className="mt-5 max-w-[26ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(26px,4.4vw,46px)" }}
           >
             We will be inside your accounting and subcontractor data. Here is how that is handled.
           </h1>
-          <p data-reveal className="mt-5 max-w-[60ch] text-[15px] leading-[1.7] text-muted">
+          <p className="mt-5 max-w-[60ch] text-[15px] leading-[1.7] text-muted">
             This page is written to be checkable. Where a control is real, it is stated plainly. Where it is not
             in place yet, that is stated too, next to what is true instead.
           </p>
@@ -75,8 +74,8 @@ export default function Security() {
       {SECTIONS.map((s) => (
         <section key={s.h} className="border-b border-line">
           <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-12 md:grid-cols-[280px_1fr] md:py-16">
-            <h2 data-reveal className="font-display text-[19px] font-semibold text-white">{s.h}</h2>
-            <div data-reveal className="max-w-[64ch] space-y-4">
+            <h2 className="font-display text-[19px] font-semibold text-white">{s.h}</h2>
+            <div className="max-w-[64ch] space-y-4">
               <p className="text-[14px] leading-[1.75] text-muted">{s.intro}</p>
               <Pending block>{s.pending}</Pending>
             </div>
@@ -87,13 +86,12 @@ export default function Security() {
       <section>
         <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
-            data-reveal
             className="max-w-[28ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(20px,3vw,30px)" }}
           >
             Send us your security questionnaire. We would rather answer it before you ask than after.
           </h2>
-          <Link href="/contact" data-reveal className="btn mt-8">
+          <Link href="/contact" className="btn mt-8">
             Contact
           </Link>
         </div>

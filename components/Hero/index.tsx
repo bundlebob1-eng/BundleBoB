@@ -11,19 +11,18 @@ export default function Hero() {
   return (
     <section className="border-b border-line">
       <div className="container mx-auto px-5 pb-20 pt-36 md:pb-28 md:pt-44">
-        <p className="label" data-reveal>
+        <p className="label">
           Forward Deployed Engineer · commercial construction
         </p>
 
         <h1
-          data-reveal
           className="mt-6 max-w-[20ch] font-display font-semibold leading-[1.08] tracking-[-0.03em] text-white"
           style={{ fontSize: "clamp(34px,5.5vw,60px)" }}
         >
           One Forward Deployed Engineer inside your construction business — not a tool you log into.
         </h1>
 
-        <div data-reveal className="mt-7 max-w-[62ch] space-y-4 text-[16px] leading-[1.7] text-muted">
+        <div className="mt-7 max-w-[62ch] space-y-4 text-[16px] leading-[1.7] text-muted">
           <p>
             We place one Forward Deployed Engineer (FDE) — also known as an AI Integrator — in your firm to
             connect Procore, Sage, Foundation, QuickBooks and your spreadsheets, then build the layer on top
@@ -35,7 +34,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div data-reveal className="mt-9 flex flex-wrap gap-3">
+        <div className="mt-9 flex flex-wrap gap-3">
           <Link href="/contact" className="btn">
             Talk to us
           </Link>
@@ -48,7 +47,6 @@ export default function Hero() {
           {ARC.map((s, i) => (
             <div
               key={s.n}
-              data-reveal
               className={`px-1 py-6 sm:px-6 ${i < 2 ? "border-b border-line sm:border-b-0 sm:border-r" : ""} ${i === 0 ? "sm:pl-0" : ""}`}
             >
               <div className="font-mono text-[12px] text-accent">{s.n}</div>
@@ -58,7 +56,7 @@ export default function Hero() {
           ))}
         </div>
 
-        <div data-reveal className="mt-10 border border-line bg-bg-2 p-5">
+        <div className="mt-10 border border-line bg-bg-2 p-5">
           <div className="label !text-muted">Where we are right now</div>
           <div className="mt-2 max-w-[70ch]">
             <Pending block>

@@ -34,17 +34,16 @@ export default function Pricing() {
     <>
       <section className="border-b border-line">
         <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
-          <p className="label" data-reveal>
+          <p className="label">
             Engagement model
           </p>
           <h1
-            data-reveal
             className="mt-5 max-w-[22ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(30px,5vw,52px)" }}
           >
             Priced against a hire, not a project
           </h1>
-          <p data-reveal className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
+          <p className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
             The right comparison is not &ldquo;what does this software cost.&rdquo; It is &ldquo;what would it
             cost to hire a data engineer who understands construction operations, and how long until they are
             useful.&rdquo;
@@ -54,7 +53,7 @@ export default function Pricing() {
 
       <section className="border-b border-line">
         <div className="container mx-auto grid grid-cols-1 gap-px border-y border-line bg-line md:grid-cols-2">
-          <div data-reveal className="bg-bg p-8 md:p-10">
+          <div className="bg-bg p-8 md:p-10">
             <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Hiring your own</div>
             <h2 className="mt-1 font-display text-[20px] font-semibold text-white">Data / analytics engineer</h2>
             <dl className="mt-6 space-y-5">
@@ -66,7 +65,7 @@ export default function Pricing() {
               ))}
             </dl>
           </div>
-          <div data-reveal className="bg-bg-2 p-8 md:p-10">
+          <div className="bg-bg-2 p-8 md:p-10">
             <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">BundleBoB engagement · a.k.a. AI Integrator</div>
             <h2 className="mt-1 font-display text-[20px] font-semibold text-white">One Forward Deployed Engineer</h2>
             <dl className="mt-6 space-y-5">
@@ -83,12 +82,12 @@ export default function Pricing() {
 
       <section className="border-b border-line bg-bg-2">
         <div className="container mx-auto px-5 py-14 md:py-20">
-          <p className="label" data-reveal>
+          <p className="label">
             What &ldquo;embedded&rdquo; means in practice
           </p>
           <div className="mt-6 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
             {EMBEDDED_MEANS.map((x) => (
-              <div key={x.l} data-reveal className="bg-bg-2 p-6">
+              <div key={x.l} className="bg-bg-2 p-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{x.l}</div>
                 <div className="mt-2 text-[13px] leading-[1.7] text-white/85">{x.v}</div>
               </div>
@@ -99,8 +98,8 @@ export default function Pricing() {
 
       <section className="border-b border-line">
         <div className="container mx-auto px-5 py-14 md:py-20">
-          <h2 data-reveal className="font-display text-[20px] font-semibold text-white">What we do not do</h2>
-          <ul data-reveal className="mt-4 max-w-[60ch] space-y-2.5 text-[13px] leading-[1.7] text-muted">
+          <h2 className="font-display text-[20px] font-semibold text-white">What we do not do</h2>
+          <ul className="mt-4 max-w-[60ch] space-y-2.5 text-[13px] leading-[1.7] text-muted">
             <li className="flex gap-3"><span className="text-accent">→</span> No fixed-scope project quotes — &ldquo;$X for a dashboard, $Y for an integration.&rdquo;</li>
             <li className="flex gap-3"><span className="text-accent">→</span> No menu of deliverables. There is one offer: one Forward Deployed Engineer and the arc.</li>
             <li className="flex gap-3"><span className="text-accent">→</span> No per-seat software licensing. You are paying for a person and the work they do.</li>
@@ -111,13 +110,12 @@ export default function Pricing() {
       <section>
         <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
-            data-reveal
             className="max-w-[26ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(22px,3.2vw,34px)" }}
           >
             Tell us the role you have been trying to fill, and we will show you the comparison on your numbers.
           </h2>
-          <Link href="/contact" data-reveal className="btn mt-8">
+          <Link href="/contact" className="btn mt-8">
             Contact
           </Link>
         </div>

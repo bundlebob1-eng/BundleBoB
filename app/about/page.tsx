@@ -13,17 +13,16 @@ export default function About() {
     <>
       <section className="border-b border-line">
         <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
-          <p className="label" data-reveal>
+          <p className="label">
             About
           </p>
           <h1
-            data-reveal
             className="mt-5 max-w-[24ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(28px,4.6vw,48px)" }}
           >
             Built by people who have done construction operations, not just software
           </h1>
-          <p data-reveal className="mt-5 max-w-[62ch] text-[15px] leading-[1.7] text-muted">
+          <p className="mt-5 max-w-[62ch] text-[15px] leading-[1.7] text-muted">
             The reason this works is that the person in your office already knows what a WIP schedule is, why a
             change order sits for six weeks, and where job-cost data goes wrong. That is the background this page
             needs to show.
@@ -33,8 +32,8 @@ export default function About() {
 
       <section className="border-b border-line">
         <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[280px_1fr] md:py-20">
-          <h2 data-reveal className="font-display text-[20px] font-semibold text-white">Who is doing this work</h2>
-          <div data-reveal className="max-w-[64ch]">
+          <h2 className="font-display text-[20px] font-semibold text-white">Who is doing this work</h2>
+          <div className="max-w-[64ch]">
             <Pending block>
               real name(s) of the founder and the Forward Deployed Engineer(s) who do the embedding. For each:
               years and firms in commercial construction operations or accounting, the specific PM / ERP systems
@@ -47,10 +46,10 @@ export default function About() {
 
       <section className="border-b border-line bg-bg-2">
         <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[280px_1fr] md:py-20">
-          <h2 data-reveal className="font-display text-[20px] font-semibold text-white">
+          <h2 className="font-display text-[20px] font-semibold text-white">
             Why one Forward Deployed Engineer
           </h2>
-          <div data-reveal className="max-w-[64ch] space-y-4 text-[14px] leading-[1.75] text-muted">
+          <div className="max-w-[64ch] space-y-4 text-[14px] leading-[1.75] text-muted">
             <p>
               The offer is a single role: a Forward Deployed Engineer, also known as an AI Integrator. Not a
               team, not a platform, not a rotating bench — one named person embedded in your firm.
@@ -72,8 +71,8 @@ export default function About() {
 
       <section className="border-b border-line">
         <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[280px_1fr] md:py-20">
-          <h2 data-reveal className="font-display text-[20px] font-semibold text-white">The company</h2>
-          <div data-reveal className="max-w-[64ch] space-y-3">
+          <h2 className="font-display text-[20px] font-semibold text-white">The company</h2>
+          <div className="max-w-[64ch] space-y-3">
             <p className="text-[14px] leading-[1.75] text-muted">
               <Pending>legal entity name, structure, US state of registration, and year formed — only stated once it is checkable</Pending>
             </p>
@@ -87,13 +86,12 @@ export default function About() {
       <section>
         <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
-            data-reveal
             className="max-w-[28ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(22px,3.2vw,34px)" }}
           >
             If your background is construction finance and this is the job you wish existed, talk to us too.
           </h2>
-          <Link href="/contact" data-reveal className="btn mt-8">
+          <Link href="/contact" className="btn mt-8">
             Contact
           </Link>
         </div>

@@ -56,17 +56,16 @@ export default function HowItWorks() {
     <>
       <section className="border-b border-line">
         <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
-          <p className="label" data-reveal>
+          <p className="label">
             How it works
           </p>
           <h1
-            data-reveal
             className="mt-5 max-w-[20ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(30px,5vw,52px)" }}
           >
             One engagement, three stages, in order
           </h1>
-          <p data-reveal className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
+          <p className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
             One Forward Deployed Engineer (FDE) — also known as an AI Integrator — runs the same arc in every
             firm: make the data trustworthy, then make it legible, then make it answer questions. Each stage
             stands on the one before it.
@@ -77,7 +76,7 @@ export default function HowItWorks() {
       {STAGES.map((s) => (
         <section key={s.n} className="border-b border-line">
           <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[1fr_1.3fr] md:py-20">
-            <div data-reveal>
+            <div>
               <div className="flex items-baseline gap-3">
                 <span className="font-mono text-[13px] text-accent">{s.n}</span>
                 <h2 className="font-display text-[24px] font-semibold text-white">{s.name}</h2>
@@ -88,7 +87,7 @@ export default function HowItWorks() {
                 <p className="mt-2 text-[13px] leading-[1.7] text-muted">{s.example}</p>
               </div>
             </div>
-            <div data-reveal>
+            <div>
               <div className="border border-line">
                 <div className="border-b border-line px-5 py-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
                   What the FDE does
@@ -112,13 +111,13 @@ export default function HowItWorks() {
 
       <section className="border-b border-line bg-bg-2">
         <div className="container mx-auto px-5 py-14 md:py-20">
-          <p className="label" data-reveal>
+          <p className="label">
             How long each stage takes
           </p>
-          <p data-reveal className="mt-4 max-w-[58ch] text-[14px] leading-[1.7] text-muted">
+          <p className="mt-4 max-w-[58ch] text-[14px] leading-[1.7] text-muted">
             This depends on how many systems you run and the state they are in.
           </p>
-          <div data-reveal className="mt-4 max-w-[70ch]">
+          <div className="mt-4 max-w-[70ch]">
             <Pending block>
               realistic ranges from actual engagements once they exist — e.g. &ldquo;Capture: weeks 1&ndash;6;
               Control: weeks 4&ndash;12, overlapping; Intelligence: from around week 10&rdquo;. Do not publish a
@@ -131,13 +130,12 @@ export default function HowItWorks() {
       <section>
         <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
-            data-reveal
             className="max-w-[24ch] font-display font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(22px,3.2vw,34px)" }}
           >
             The output at every stage is something a person on your team reads and acts on.
           </h2>
-          <div data-reveal className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/pricing" className="btn">
               What it costs
             </Link>
