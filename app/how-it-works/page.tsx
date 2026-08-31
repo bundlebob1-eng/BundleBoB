@@ -53,82 +53,105 @@ const STAGES = [
 
 export default function HowItWorks() {
   return (
-    <>
-      <section className="rule-b">
-        <div className="container py-16 md:py-24">
-          <p className="label">How it works</p>
-          <h1 className="mt-5 max-w-[20ch] text-[36px] leading-tight md:text-[48px]">
+    <div className="pt-24">
+      <section className="border-b border-white/[0.06] bg-[#040406] px-4 py-20">
+        <div className="container mx-auto">
+          <div className="mb-6 flex items-center gap-2.5">
+            <span className="h-px w-8 bg-[#b8ff57]" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8ff57]">How it works</span>
+          </div>
+          <h1
+            className="mb-6 max-w-[20ch] font-syne font-extrabold leading-tight tracking-[-0.04em] text-white"
+            style={{ fontSize: "clamp(36px,7vw,80px)" }}
+          >
             One engagement, three stages, in order
           </h1>
-          <p className="mt-6 lead">
-            The embedded engineer runs the same arc in every firm: make the data
-            trustworthy, then make it legible, then make it answer questions. Each
-            stage stands on the one before it.
+          <p className="max-w-[560px] text-[15px] leading-[1.85] text-gray-400">
+            The embedded engineer runs the same arc in every firm: make the data trustworthy, then make it legible, then
+            make it answer questions. Each stage stands on the one before it.
           </p>
         </div>
       </section>
 
-      {STAGES.map((s) => (
-        <section key={s.n} className="rule-b">
-          <div className="container grid gap-8 py-14 md:grid-cols-[8rem_1fr] md:py-20">
-            <div>
-              <div className="label">{s.n}</div>
-              <div className="mt-1 font-serif text-3xl">{s.name}</div>
+      {STAGES.map((s, i) => (
+        <section key={s.n} className={`border-b border-white/[0.06] px-4 py-20 ${i % 2 === 0 ? "bg-[#040406]" : "bg-[#07070a]"}`}>
+          <div className="container mx-auto grid grid-cols-1 gap-12 lg:grid-cols-2">
+            <div data-reveal-left>
+              <div className="mb-4 flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center border border-[#b8ff57]/40 bg-[#b8ff57]/10 font-mono text-xl font-black text-[#b8ff57]">
+                  {s.n}
+                </div>
+                <div className="font-syne text-[22px] font-bold text-white">{s.name}</div>
+              </div>
+              <p className="mb-6 text-[15px] leading-[1.85] text-gray-300">{s.goal}</p>
+              <div className="border border-[#b8ff57]/20 bg-[#b8ff57]/5 p-5">
+                <div className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[#b8ff57]">Example deliverable</div>
+                <p className="text-[13px] leading-[1.8] text-gray-300">{s.example}</p>
+              </div>
             </div>
-            <div>
-              <p className="text-[20px] leading-snug">{s.goal}</p>
-
-              <div className="mt-6 label">What the engineer does</div>
-              <ul className="mt-3 space-y-3">
-                {s.what.map((w) => (
-                  <li key={w} className="flex gap-3 text-ink-soft">
-                    <span aria-hidden className="mt-2 h-px w-4 shrink-0 bg-rule" />
-                    <span>{w}</span>
-                  </li>
+            <div data-reveal-right>
+              <div className="border border-white/[0.07]">
+                <div className="border-b border-white/[0.07] px-6 py-4 font-mono text-[9px] uppercase tracking-[0.16em] text-gray-500">
+                  What the engineer does
+                </div>
+                {s.what.map((w, j) => (
+                  <div
+                    key={j}
+                    className={`flex items-start gap-3 px-6 py-4 transition hover:bg-[#b8ff57]/[0.03] ${j < s.what.length - 1 ? "border-b border-white/[0.07]" : ""}`}
+                  >
+                    <span className="mt-0.5 shrink-0 text-[#b8ff57]">→</span>
+                    <span className="text-[13px] leading-[1.7] text-gray-300">{w}</span>
+                  </div>
                 ))}
-              </ul>
-
-              <div className="mt-6 border-l-2 border-rule pl-4">
-                <div className="label">Example deliverable</div>
-                <p className="mt-2 text-[15px] text-ink-soft">{s.example}</p>
               </div>
             </div>
           </div>
         </section>
       ))}
 
-      <section className="rule-b bg-[color:var(--paper-2)]">
-        <div className="container py-14 md:py-20">
-          <h2 className="text-[24px]">How long each stage takes</h2>
-          <p className="mt-3 max-w-prose text-ink-soft">
+      <section className="border-b border-white/[0.06] bg-[#07070a] px-4 py-20">
+        <div className="container mx-auto">
+          <div data-reveal className="mb-6">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8ff57]">/ How long each stage takes</span>
+          </div>
+          <p className="mb-4 max-w-[560px] text-[14px] leading-[1.85] text-gray-400">
             This depends on how many systems you run and the state they are in.
           </p>
-          <div className="mt-4 max-w-prose">
+          <div className="max-w-[720px]">
             <Pending block>
-              realistic ranges from actual engagements once they exist — e.g.
-              &ldquo;Capture: weeks 1&ndash;6; Control: weeks 4&ndash;12, overlapping;
-              Intelligence: from around week 10&rdquo;. Do not publish a timeline you
-              have not delivered against.
+              realistic ranges from actual engagements once they exist — e.g. &ldquo;Capture: weeks 1&ndash;6; Control:
+              weeks 4&ndash;12, overlapping; Intelligence: from around week 10&rdquo;. Do not publish a timeline you have
+              not delivered against.
             </Pending>
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="container py-16 md:py-20">
-          <h2 className="max-w-[24ch] text-[26px] md:text-[32px]">
+      <section className="bg-[#040406] px-4 py-24">
+        <div className="container mx-auto">
+          <h2
+            data-reveal
+            className="mb-8 max-w-[24ch] font-syne font-extrabold leading-[1.1] tracking-[-0.03em] text-white"
+            style={{ fontSize: "clamp(26px,4vw,42px)" }}
+          >
             The output at every stage is something a person on your team reads and acts on.
           </h2>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/pricing" className="btn">
-              What it costs
+          <div data-reveal data-delay="120" className="flex flex-wrap gap-4">
+            <Link
+              href="/pricing"
+              className="btn-shine bg-[#b8ff57] px-8 py-4 font-mono text-[12px] font-bold uppercase tracking-widest text-black transition hover:shadow-[0_0_40px_rgba(184,255,87,0.3)]"
+            >
+              What it costs →
             </Link>
-            <Link href="/contact" className="btn btn-ghost">
-              Contact
+            <Link
+              href="/contact"
+              className="border border-white/10 px-8 py-4 font-mono text-[12px] font-semibold text-white transition hover:border-[#b8ff57]/40 hover:text-[#b8ff57]"
+            >
+              Contact →
             </Link>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

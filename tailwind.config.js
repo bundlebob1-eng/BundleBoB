@@ -3,28 +3,29 @@ const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
-      screens: { sm: "640px", md: "768px", lg: "1024px", xl: "1120px", "2xl": "1120px" },
+      padding: "1rem",
+      screens: {
+        sm:  "640px",
+        md:  "768px",
+        lg:  "1024px",
+        xl:  "1280px",
+        "2xl": "1280px",
+      },
     },
     extend: {
       colors: {
-        paper: "var(--paper)",
-        ink: "var(--ink)",
-        "ink-soft": "var(--ink-soft)",
-        rule: "var(--rule)",
-        accent: "var(--accent)",
+        accent:  "#b8ff57",
+        accent2: "#57c8ff",
       },
       fontFamily: {
-        serif: ["Georgia", '"Times New Roman"', "serif"],
-        sans: ["system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
-        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
-      },
-      maxWidth: {
-        prose: "68ch",
+        syne:    ["var(--font-syne)",    "sans-serif"],
+        "dm-sans": ["var(--font-dm-sans)", "sans-serif"],
       },
     },
   },
