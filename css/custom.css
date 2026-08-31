@@ -30,20 +30,20 @@
   --n-gradient-dark: linear-gradient(135deg, #14212B 0%, #12426B 100%);
 
   /* Typography */
-  --n-font-display: 'Sora', sans-serif;
-  --n-font-body: 'Inter', sans-serif;
+  --n-font-display: 'Figtree', 'Sora', system-ui, sans-serif;
+  --n-font-body: 'Inter', system-ui, sans-serif;
 
   /* Spacing rhythm (8px base) */
   --n-space-xs: 0.5rem;
   --n-space-sm: 1rem;
   --n-space-md: 1.5rem;
   --n-space-lg: 2.5rem;
-  --n-space-xl: 4rem;
-  --n-space-2xl: 6rem;
+  --n-space-xl: 5rem;   /* standard section padding (80px) */
+  --n-space-2xl: 7rem;  /* large section padding (112px) */
 
   /* Radius */
   --n-radius-sm: 8px;
-  --n-radius-md: 14px;
+  --n-radius-md: 12px;
   --n-radius-lg: 20px;
   --n-radius-pill: 100px;
 
@@ -950,4 +950,188 @@ a { text-decoration: none; }
   background: var(--n-bg);
   border-radius: var(--n-radius-md);
   height: 100%;
+}
+
+/* =====================================================
+   OCTANNER PASS — restraint-led refinement
+   Layered as overrides. Design language borrowed
+   (type discipline, borderless cards, dark bands, nav
+   island); no content, brand or imagery copied.
+   ===================================================== */
+
+/* ---- Container: wider, roomier gutters ---- */
+.container {
+  max-width: 1328px;
+  padding-left: 56px;
+  padding-right: 56px;
+}
+@media (max-width: 767.98px) {
+  .container { padding-left: 24px; padding-right: 24px; }
+}
+
+/* ---- Type: tight tracking, 1.1 leading, weight 500 ---- */
+body { font-size: 16px; line-height: 1.55; font-weight: 400; }
+
+h1, h2, h3, h4 {
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+h1 { font-size: clamp(40px, 5vw, 60px); letter-spacing: -0.05em; }
+h2 { font-size: clamp(32px, 3.6vw, 44px); }
+h3 { font-size: 28px; letter-spacing: -0.04em; }
+
+.hero h1 { font-size: clamp(40px, 5vw, 60px); line-height: 1.1; }
+@media (max-width: 991.98px) { .hero h1 { font-size: clamp(34px, 8vw, 44px); } }
+
+p { line-height: 1.55; }
+
+.section-title { letter-spacing: -0.045em; }
+.section-subtitle { font-size: 1.15rem; line-height: 1.5; max-width: 62ch; }
+.lede { font-size: 1.5rem; line-height: 1.45; font-weight: 400; color: var(--n-slate); }
+.figure-lg {
+  font-size: 3.375rem; font-weight: 400; line-height: 1;
+  letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  color: var(--n-navy);
+}
+.measure-prose { max-width: 768px; margin-left: auto; margin-right: auto; }
+table, .table { font-variant-numeric: tabular-nums; }
+
+/* ---- Eyebrow: plain uppercase label, no chip ---- */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--n-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--n-slate);
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+.eyebrow::before { content: none; }
+
+/* ---- Buttons: flat, 12px radius, calm motion ---- */
+.btn { border-radius: var(--n-radius-md); font-weight: 500; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
+.btn i { margin-left: 0.75rem !important; }
+.btn-primary {
+  background: var(--n-primary);
+  border: none;
+  box-shadow: none;
+  color: #fff;
+}
+.btn-primary:hover { background: var(--n-primary-dark); box-shadow: none; transform: none; color: #fff; }
+.btn-light-custom:hover { transform: none; }
+.btn-lg-custom { padding: 1rem 1.6rem; }
+
+/* ---- Cards: white, no border, no shadow, large radius ---- */
+.card-premium,
+.pricing-card,
+.testimonial-card,
+.widget {
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: var(--n-radius-lg);
+}
+.card-premium { padding: 28px; }
+.card-premium:hover { box-shadow: none !important; transform: translateY(-2px); border-color: transparent; }
+.pricing-card:hover { box-shadow: none !important; transform: none; }
+.pricing-card.featured {
+  background: var(--n-bg-alt);
+  color: inherit;
+  transform: none;
+}
+.pricing-card.featured .price,
+.pricing-card.featured h3 { color: var(--n-navy); }
+.pricing-card.featured .text-slate { color: var(--n-slate) !important; }
+.pricing-card.featured ul li { color: var(--n-slate); }
+.pricing-card.featured .pricing-divider { border-color: var(--n-border); }
+.pricing-badge { background: var(--n-primary); }
+.hero-mock-card { box-shadow: none; border: 1px solid var(--n-border); }
+.feature-grid-item { background: var(--n-bg); }
+
+/* ---- Content links: engineering blue, weight 500, no underline ---- */
+.section p a,
+.accordion-body a,
+.card-premium p a { color: var(--n-primary); font-weight: 500; text-decoration: none; }
+.section p a:hover,
+.accordion-body a:hover { text-decoration: underline; }
+
+/* ---- Decorative blur blobs off ---- */
+.hero::before, .hero::after, .page-header::before, .cta-section::before { display: none !important; }
+
+/* ---- Page header: warm paper, dark text (matches light-first layout) ---- */
+.page-header {
+  background: var(--n-bg);
+  padding: 9.5rem 0 3.5rem;
+}
+.page-header h1 { color: var(--n-navy); }
+.breadcrumb-custom { color: var(--n-slate); }
+.breadcrumb-custom a { color: var(--n-slate); }
+.breadcrumb-custom a:hover { color: var(--n-primary); }
+.breadcrumb-custom .active { color: var(--n-slate-light); }
+
+/* ---- Full-bleed dark band (used on ≤2 sections sitewide) ---- */
+.section-dark { background: var(--n-navy); color: rgba(255,255,255,0.78); }
+.section-dark h1, .section-dark h2, .section-dark h3, .section-dark strong { color: #fff; }
+.section-dark .text-navy { color: #fff !important; }
+.section-dark .section-subtitle,
+.section-dark p { color: rgba(255,255,255,0.72); }
+.section-dark .eyebrow { color: rgba(255,255,255,0.55); }
+.section-dark .list-check i { color: var(--n-secondary); }
+.section-dark .btn-primary { background: #fff; color: var(--n-navy); }
+.section-dark .btn-primary:hover { background: rgba(255,255,255,0.88); color: var(--n-navy); }
+
+/* keep the closing CTA in the same dark language, flat not gradient */
+.cta-section { background: var(--n-navy); }
+
+/* =====================================================
+   NAV ISLAND — floating dark rounded bar
+   ===================================================== */
+.navbar-nexora {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: 0 !important;
+  padding: 0 !important;
+}
+.navbar-nexora.fixed-top { top: 22px; }
+
+.navbar-nexora > .container {
+  max-width: 1180px;
+  padding: 0 14px 0 26px;
+  min-height: 68px;
+  background: var(--n-navy);
+  border-radius: var(--n-radius-lg);
+  transition: min-height 0.2s ease, box-shadow 0.2s ease;
+}
+.navbar-nexora.scrolled > .container {
+  min-height: 60px;
+  box-shadow: 0 10px 30px rgba(20, 33, 43, 0.22);
+}
+
+.navbar-nexora .navbar-brand-custom { color: #fff !important; }
+.navbar-nexora .navbar-brand-custom span { color: var(--n-secondary); }
+
+.navbar-nexora .nav-link {
+  color: rgba(255,255,255,0.68) !important;
+  font-weight: 500;
+}
+.navbar-nexora .nav-link:hover,
+.navbar-nexora .nav-link.active {
+  color: #fff !important;
+  background: rgba(255,255,255,0.10);
+}
+
+.navbar-nexora .btn-primary { background: #fff; color: var(--n-navy); }
+.navbar-nexora .btn-primary:hover { background: rgba(255,255,255,0.88); color: var(--n-navy); }
+
+.navbar-toggler-custom { background: rgba(255,255,255,0.14); }
+.navbar-toggler-custom .bar { background: #fff; }
+
+/* mobile: expanded menu sits inside the dark island */
+@media (max-width: 991.98px) {
+  .navbar-nexora > .container { border-radius: var(--n-radius-md); padding: 0 16px; }
+  .navbar-nexora .navbar-collapse { padding: 0.5rem 0 1rem; }
+  .navbar-nexora .nav-link { padding: 0.6rem 0.75rem !important; }
 }
