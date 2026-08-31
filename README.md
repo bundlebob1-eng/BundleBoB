@@ -59,6 +59,21 @@ is disclosed honestly on the page itself (no `[ TO CONFIRM ]` brackets):
 **`LAUNCH-CHECKLIST.md`** is the single list of what must become real before the
 "Demo site — not in commercial use" footer label may be removed.
 
+## Palette
+
+Three colours over a warm-neutral scale, all defined as CSS custom properties
+at the top of `css/custom.css` — change them there, not in the pages:
+
+| Token | Hex | Use |
+|---|---|---|
+| `--n-primary` | `#12426B` | engineering blue — headings accents, buttons, links, dark surfaces |
+| `--n-secondary` | `#B9782B` | warm ochre — sparing accent only (wordmark dot, small marks, nav hover) |
+| `--n-navy` | `#14212B` | ink — display headings |
+| `--n-bg` | `#F6F4EF` | warm paper — alternating section backgrounds |
+| `--n-bg-alt` | `#EAF0F5` | pale blue — eyebrow chips, tinted tiles |
+| `--n-border` | `#E6E1D6` | warm hairline |
+| `--n-slate` / `--n-slate-light` | `#56606C` / `#8B929C` | body / meta text |
+
 ## Deploy
 
 Static hosting. `vercel.json` sets `framework: null` with no build step and

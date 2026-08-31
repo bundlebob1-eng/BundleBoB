@@ -4,23 +4,30 @@
    ===================================================== */
 
 :root {
-  /* Color system */
-  --n-primary: #155EEF;
-  --n-primary-dark: #0E3FB0;
-  --n-secondary: #6941C6;
-  --n-navy: #0B1437;
-  --n-success: #12B76A;
-  --n-slate: #667085;
-  --n-slate-light: #98A2B3;
-  --n-bg: #F7F9FC;
-  --n-bg-alt: #EEF2FF;
-  --n-border: #E4E7EC;
+  /* ---------------------------------------------------------------
+     BundleBoB palette — three colours over a warm-neutral scale:
+       Engineering blue  #12426B  — headings accents, buttons, links
+       Warm ochre        #B9782B  — sparing accent only (wordmark dot,
+                                    small marks, active states)
+       Ink               #14212B  — display headings
+     Neutrals: warm paper, warm hairline, warm-grey text.
+     --------------------------------------------------------------- */
+  --n-primary: #12426B;
+  --n-primary-dark: #0C2E4C;
+  --n-secondary: #B9782B;
+  --n-navy: #14212B;
+  --n-success: #2E7D5B;
+  --n-slate: #56606C;
+  --n-slate-light: #8B929C;
+  --n-bg: #F6F4EF;
+  --n-bg-alt: #EAF0F5;
+  --n-border: #E6E1D6;
   --n-white: #FFFFFF;
 
   /* Gradients */
-  --n-gradient-primary: linear-gradient(135deg, #155EEF 0%, #6941C6 100%);
-  --n-gradient-soft: linear-gradient(135deg, #EEF2FF 0%, #F4F0FF 100%);
-  --n-gradient-dark: linear-gradient(135deg, #0B1437 0%, #1A2456 100%);
+  --n-gradient-primary: linear-gradient(135deg, #12426B 0%, #1C5E8F 100%);
+  --n-gradient-soft: linear-gradient(135deg, #EAF0F5 0%, #F6F4EF 100%);
+  --n-gradient-dark: linear-gradient(135deg, #14212B 0%, #12426B 100%);
 
   /* Typography */
   --n-font-display: 'Sora', sans-serif;
@@ -41,14 +48,14 @@
   --n-radius-pill: 100px;
 
   /* Shadows */
-  --n-shadow-sm: 0 2px 8px rgba(11, 20, 55, 0.06);
-  --n-shadow-md: 0 8px 24px rgba(11, 20, 55, 0.08);
-  --n-shadow-lg: 0 20px 48px rgba(11, 20, 55, 0.12);
-  --n-shadow-primary: 0 12px 28px rgba(21, 94, 239, 0.25);
+  --n-shadow-sm: 0 2px 8px rgba(20, 33, 43, 0.06);
+  --n-shadow-md: 0 8px 24px rgba(20, 33, 43, 0.08);
+  --n-shadow-lg: 0 20px 48px rgba(20, 33, 43, 0.12);
+  --n-shadow-primary: 0 12px 28px rgba(18, 66, 107, 0.22);
 
   /* Bootstrap overrides */
-  --bs-primary: #155EEF;
-  --bs-primary-rgb: 21, 94, 239;
+  --bs-primary: #12426B;
+  --bs-primary-rgb: 18, 66, 107;
   --bs-body-font-family: var(--n-font-body);
   --bs-body-color: var(--n-slate);
   --bs-body-bg: var(--n-white);
@@ -220,24 +227,21 @@ a { text-decoration: none; }
   letter-spacing: -0.02em;
 }
 
-.navbar-brand-custom span { color: var(--n-primary); }
+.navbar-brand-custom span { color: var(--n-secondary); }
 
 .navbar-nexora .nav-link {
   font-family: var(--n-font-display);
   font-weight: 600;
   font-size: 0.95rem;
-  color: rgb(152, 119, 119) !important;
+  color: var(--n-slate) !important;
   padding: 0.5rem 1.1rem !important;
   border-radius: var(--n-radius-sm);
   transition: all 0.2s ease;
 }
 
-.nav2{
-  color: yellow !important;;
-}
 .navbar-nexora .nav-link:hover,
 .navbar-nexora .nav-link.active {
-  color: rgb(15, 15, 64) !important;
+  color: var(--n-primary) !important;
   background: var(--n-bg-alt);
 }
 
@@ -410,8 +414,8 @@ a { text-decoration: none; }
 }
 
 .icon-box-primary { background: var(--n-bg-alt); color: var(--n-primary); }
-.icon-box-secondary { background: #F4F0FF; color: var(--n-secondary); }
-.icon-box-success { background: #E7F9F0; color: var(--n-success); }
+.icon-box-secondary { background: #F5EDE0; color: var(--n-secondary); }
+.icon-box-success { background: #E7F1EC; color: var(--n-success); }
 
 .icon-box-lg { width: 72px; height: 72px; font-size: 2rem; border-radius: var(--n-radius-md); }
 
