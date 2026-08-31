@@ -12,7 +12,7 @@ export default function Hero() {
     <section className="border-b border-line">
       <div className="container mx-auto px-5 pb-20 pt-36 md:pb-28 md:pt-44">
         <p className="label" data-reveal>
-          Embedded engineer · commercial construction
+          Forward Deployed Engineer · commercial construction
         </p>
 
         <h1
@@ -20,17 +20,17 @@ export default function Hero() {
           className="mt-6 max-w-[20ch] font-display font-semibold leading-[1.08] tracking-[-0.03em] text-white"
           style={{ fontSize: "clamp(34px,5.5vw,60px)" }}
         >
-          An engineer inside your construction business — not a tool you log into.
+          One Forward Deployed Engineer inside your construction business — not a tool you log into.
         </h1>
 
         <div data-reveal className="mt-7 max-w-[62ch] space-y-4 text-[16px] leading-[1.7] text-muted">
           <p>
-            We place one person in your firm to connect Procore, Sage, Foundation, QuickBooks and your
-            spreadsheets, then build the layer on top that shows where your margin is leaking — Capture, then
-            Control, then Intelligence, in that order.
+            We place one Forward Deployed Engineer (FDE) — also known as an AI Integrator — in your firm to
+            connect Procore, Sage, Foundation, QuickBooks and your spreadsheets, then build the layer on top
+            that shows where your margin is leaking. Capture, then Control, then Intelligence, in that order.
           </p>
           <p className="text-[15px]">
-            You are adding a data engineer who understands job costing to your headcount budget. You are not
+            You are adding one FDE to your headcount budget — a person who understands job costing. You are not
             buying another piece of software.
           </p>
         </div>

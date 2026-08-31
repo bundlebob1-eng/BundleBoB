@@ -12,29 +12,30 @@ const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variab
 export const metadata: Metadata = {
   metadataBase: new URL("https://bundlebob.com"),
   title: {
-    default: "BundleBoB — an embedded margin engineer for mid-market construction",
+    default: "BundleBoB — a Forward Deployed Engineer for mid-market construction",
     template: "%s | BundleBoB",
   },
   description:
-    "We embed one engineer inside a mid-market general contractor to connect Procore, Sage, Foundation, QuickBooks and the spreadsheets nobody owns — then build the layer on top that shows where the margin is leaking. A headcount line, not a software subscription.",
+    "We place one Forward Deployed Engineer (FDE) — also known as an AI Integrator — inside a mid-market general contractor to connect Procore, Sage, Foundation, QuickBooks and the spreadsheets nobody owns, then build the layer on top that shows where the margin is leaking. A headcount line, not a software subscription.",
   keywords: [
+    "Forward Deployed Engineer",
+    "AI Integrator",
     "construction job costing",
     "general contractor analytics",
     "Procore Sage integration",
     "WIP schedule",
     "margin fade",
-    "embedded engineer",
   ],
   openGraph: {
-    title: "BundleBoB — an embedded margin engineer for mid-market construction",
+    title: "BundleBoB — a Forward Deployed Engineer for mid-market construction",
     description:
-      "One engineer, embedded in your firm. Connect your systems, get job costing and cash on current data, then plain-English answers a person approves.",
+      "One Forward Deployed Engineer, embedded in your firm. Connect your systems, get job costing and cash on current data, then plain-English answers a person approves.",
     type: "website",
     url: "https://bundlebob.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BundleBoB — embedded margin engineer for construction",
+    title: "BundleBoB — a Forward Deployed Engineer for construction",
     description: "Connect your systems. See where the margin leaks. A person approves every action.",
   },
   robots: { index: true, follow: true },

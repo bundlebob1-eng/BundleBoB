@@ -1,10 +1,11 @@
 # BundleBoB — marketing site
 
-Public site for BundleBoB: an embedded margin engineer for mid-market commercial
-general contractors. We place one engineer inside a firm to connect its systems
-(Procore, Sage, Foundation, QuickBooks, spreadsheets), then build the layer on
-top that shows where margin is leaking — **Capture → Control → Intelligence**.
-The offer is a headcount line, not a software subscription.
+Public site for BundleBoB. The offer is a single role: one **Forward Deployed
+Engineer (FDE)** — also known as an **AI Integrator** — placed inside a
+mid-market commercial general contractor to connect its systems (Procore, Sage,
+Foundation, QuickBooks, spreadsheets), then build the layer on top that shows
+where margin is leaking — **Capture → Control → Intelligence**. A headcount
+line, not a software subscription.
 
 This repo is **the marketing site only**. It is a static Next.js site with no
 backend, database, auth, or integrations.
@@ -31,7 +32,7 @@ npm run lint
 |------------------|---------|
 | `/`              | The arc and the headcount-not-software framing |
 | `/how-it-works`  | Capture / Control / Intelligence in detail |
-| `/pricing`       | Engagement model, priced against hiring an analytics engineer |
+| `/pricing`       | Engagement model, priced against hiring your own data/analytics engineer |
 | `/proof`         | Honest statement of stage; no manufactured social proof |
 | `/security`      | Data isolation, encryption, access, and what is not in place yet |
 | `/about`         | Who is doing the work |

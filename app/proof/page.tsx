@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 const SECTIONS = [
   {
-    h: "The people doing the work",
+    h: "The Forward Deployed Engineer",
     intro:
-      "The trust anchor for this buyer is whether the person in their office has actually done construction operations or job-cost data work before. That belongs here, in specifics.",
+      "One role, embedded in your firm — the Forward Deployed Engineer, also known as an AI Integrator. The trust anchor for this buyer is whether that person has actually done construction operations or job-cost data work before. That belongs here, in specifics.",
     pending:
-      "founder / lead engineer background — real name, and the concrete history: years in construction operations or accounting, the ERP and PM systems worked in directly, data / analytics engineering experience, and any job-cost or WIP responsibility held. Link to a real profile. No claim that cannot be checked.",
+      "founder / Forward Deployed Engineer background — real name, and the concrete history: years in construction operations or accounting, the ERP and PM systems worked in directly, data / analytics engineering experience, and any job-cost or WIP responsibility held. Link to a real profile. No claim that cannot be checked.",
   },
   {
     h: "Engagements in progress",
