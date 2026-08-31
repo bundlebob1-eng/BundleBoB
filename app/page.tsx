@@ -139,9 +139,7 @@ export default function Home() {
           >
             If month-end is where you find out what a job made, we should talk.
           </h2>
-          <Link href="/contact" className="btn btn-shine mt-8">
-            Contact
-          </Link>
+          <Link href="/contact" className="btn btn-shine mt-8">How to reach us</Link>
         </div>
       </section>
     </>

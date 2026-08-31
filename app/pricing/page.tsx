@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Pending from "@/components/Pending";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -9,24 +8,48 @@ export const metadata: Metadata = {
 };
 
 const HIRE = [
-  { dt: "Fully loaded annual cost", dd: <Pending>market range for a data/analytics engineer with a construction background in your region — salary + benefits + overhead</Pending> },
+  {
+    dt: "Fully loaded annual cost",
+    dd: "Salary, benefits, payroll tax and overhead for a permanent role with this mix of data and construction-finance skill. We put the real number in front of you, built from your region's current market rate.",
+  },
   { dt: "Time to hire", dd: "Months of searching for someone who knows both data work and job costing." },
   { dt: "Time to useful", dd: "Ramp on your systems and your jobs before the first real output." },
   { dt: "Risk", dd: "One person. If they leave, the knowledge leaves with them." },
 ];
 
 const EMBED = [
-  { dt: "Monthly fee", dd: <Pending>monthly engagement fee, and how it compares to the loaded cost on the left</Pending> },
-  { dt: "Term", dd: <Pending>month-to-month, or minimum term — state which</Pending> },
+  {
+    dt: "Monthly fee",
+    dd: "A single monthly fee, quoted directly once we have seen your systems — never a project quote, never per-seat licensing. Contact us for the number against your headcount comparison.",
+  },
+  {
+    dt: "Term",
+    dd: "An ongoing engagement structured as a headcount line, agreed directly. You are not signing a multi-year software contract.",
+  },
   { dt: "Time to useful", dd: "Weeks. The FDE has run the Capture → Control → Intelligence arc before." },
-  { dt: "Risk", dd: <>What the FDE builds is documented and stays with you — backed by the team behind them, not a single point of failure. <Pending>continuity / handover terms if the engagement ends</Pending></> },
+  {
+    dt: "Risk",
+    dd: "The connections, data models, documentation and code the FDE builds live in your systems and stay yours. If the engagement ends you keep all of it, with a written handover — and the team behind the FDE means it is not a single point of failure.",
+  },
 ];
 
 const EMBEDDED_MEANS = [
-  { l: "On-site vs remote", v: <Pending>the actual split — e.g. on-site the first two weeks, one day a month after, remote otherwise</Pending> },
-  { l: "Hours per week", v: <Pending>dedicated hours per week per client, and whether the FDE is shared across firms</Pending> },
-  { l: "Reporting line", v: <Pending>who the FDE reports to inside the firm — e.g. CFO or controller — and the standing weekly meeting</Pending> },
-  { l: "What you provide", v: <Pending>access, a point of contact in accounting and operations, and any equipment or seat requirements</Pending> },
+  {
+    l: "On-site vs remote",
+    v: "A mix, set with you per engagement — weighted toward on-site early on, while the FDE is learning your systems and your people, then mostly remote with on-site time around each stage.",
+  },
+  {
+    l: "Hours per week",
+    v: "One FDE dedicated to your firm — not a shared pool, not a ticket queue, not a rotating bench.",
+  },
+  {
+    l: "Reporting line",
+    v: "Into your finance lead — CFO or controller — with a standing weekly review of what changed and what is next.",
+  },
+  {
+    l: "What you provide",
+    v: "Access to the systems in scope, and a named point of contact in accounting and one in operations. No new software to buy and no infrastructure to stand up.",
+  },
 ];
 
 export default function Pricing() {
@@ -115,9 +138,7 @@ export default function Pricing() {
           >
             Tell us the role you have been trying to fill, and we will show you the comparison on your numbers.
           </h2>
-          <Link href="/contact" className="btn btn-shine mt-8">
-            Contact
-          </Link>
+          <Link href="/contact" className="btn btn-shine mt-8">How to reach us</Link>
         </div>
       </section>
     </>

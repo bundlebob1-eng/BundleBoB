@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Pending from "@/components/Pending";
 
 export const metadata: Metadata = {
   title: "About",
@@ -34,12 +33,11 @@ export default function About() {
         <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[280px_1fr] md:py-20">
           <h2 className="font-syne text-[20px] font-semibold text-white">Who is doing this work</h2>
           <div className="max-w-[64ch]">
-            <Pending block>
-              real name(s) of the founder and the Forward Deployed Engineer(s) who do the embedding. For each:
-              years and firms in commercial construction operations or accounting, the specific PM / ERP systems
-              worked in, data or analytics engineering background, and any direct job-cost, WIP, or estimating
-              responsibility. Link each person to a real profile.
-            </Pending>
+            <p className="text-[14px] leading-[1.75] text-white/80">
+              Team bios are not published here yet. We will name the person doing the work — with their
+              construction-operations and data-engineering background, and a profile you can check — before any
+              firm is asked to sign. Ask us directly in the meantime.
+            </p>
           </div>
         </div>
       </section>
@@ -73,11 +71,12 @@ export default function About() {
         <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[280px_1fr] md:py-20">
           <h2 className="font-syne text-[20px] font-semibold text-white">The company</h2>
           <div className="max-w-[64ch] space-y-3">
-            <p className="text-[14px] leading-[1.75] text-white/50">
-              <Pending>legal entity name, structure, US state of registration, and year formed — only stated once it is checkable</Pending>
+            <p className="text-[14px] leading-[1.75] text-white/80">
+              The registered entity name, structure, and US state of registration are not published here yet.
+              They will be listed once they are on record and checkable.
             </p>
-            <p className="text-[14px] leading-[1.75] text-white/50">
-              <Pending>where the team is based, and where clients are located today</Pending>
+            <p className="text-[14px] leading-[1.75] text-white/80">
+              Where the team and its first clients are based is not published yet.
             </p>
           </div>
         </div>
@@ -91,9 +90,7 @@ export default function About() {
           >
             If your background is construction finance and this is the job you wish existed, talk to us too.
           </h2>
-          <Link href="/contact" className="btn btn-shine mt-8">
-            Contact
-          </Link>
+          <Link href="/contact" className="btn btn-shine mt-8">How to reach us</Link>
         </div>
       </section>
     </>

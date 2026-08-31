@@ -3,13 +3,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+// /contact is intentionally omitted until a real inbox exists — see /contact page.
 const NAV = [
   { label: "How it works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
   { label: "Proof", href: "/proof" },
   { label: "Security", href: "/security" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
@@ -64,10 +64,10 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/contact"
+              href="/how-it-works"
               className="btn-shine hidden border border-accent/50 px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-accent transition hover:bg-accent hover:text-black lg:block"
             >
-              Talk to us
+              How it works
             </Link>
             <button
               onClick={() => setOpen(!open)}

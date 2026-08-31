@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Pending from "@/components/Pending";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Reach us directly by email. Tell us the systems you run and the role you have been trying to fill.",
+    "A public contact channel for BundleBoB is being set up. This page will carry the address once it is live.",
+  robots: { index: false, follow: true },
 };
 
 export default function Contact() {
@@ -12,40 +12,29 @@ export default function Contact() {
     <>
       <section className="border-b border-white/[0.06]">
         <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
-          <p className="label">
-            Contact
-          </p>
+          <p className="label">Contact</p>
           <h1
-            className="mt-5 max-w-[20ch] font-syne font-semibold tracking-[-0.03em] text-white"
-            style={{ fontSize: "clamp(30px,5vw,52px)" }}
+            className="mt-5 max-w-[22ch] font-syne font-semibold tracking-[-0.03em] text-white"
+            style={{ fontSize: "clamp(28px,5vw,48px)" }}
           >
-            Email us directly
+            A direct channel isn&rsquo;t open yet
           </h1>
-          <p className="mt-5 max-w-[52ch] text-[15px] leading-[1.7] text-white/50">
-            No form that goes nowhere. Write to the address below and a person replies.
+          <p className="mt-5 max-w-[56ch] text-[15px] leading-[1.7] text-white/50">
+            We are not taking inbound enquiries through the site yet. Rather than publish an address that
+            nobody is reading, this page will carry a real inbox — and a reply-time we can hold to — once that
+            is in place. Check back, or reach us through a warm introduction in the meantime.
           </p>
-
-          <div className="mt-8 max-w-[52ch] border border-white/[0.06] bg-bg2 p-6">
-            <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">Email</div>
-            <div className="mt-2 text-[16px] text-white">
-              <Pending>real company inbox, e.g. hello@bundlebob.com — must be a mailbox someone actually reads</Pending>
-            </div>
-            <div className="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">Reply time</div>
-            <div className="mt-2 text-[13px] text-white/50">
-              <Pending>an expected reply time you can actually hold to, e.g. &ldquo;within two business days&rdquo;</Pending>
-            </div>
-          </div>
         </div>
       </section>
 
       <section className="border-b border-white/[0.06] bg-bg2">
         <div className="container mx-auto px-5 py-14 md:py-20">
-          <h2 className="font-syne text-[20px] font-semibold text-white">What to put in the email</h2>
+          <h2 className="font-syne text-[20px] font-semibold text-white">When the channel is live, tell us</h2>
           <ul className="mt-4 max-w-[60ch] space-y-2.5 text-[13px] leading-[1.7] text-white/50">
-            <li className="flex gap-3"><span className="text-accent">→</span> Your firm, roughly your annual revenue, and the type of work you do.</li>
-            <li className="flex gap-3"><span className="text-accent">→</span> The systems you run — project management, accounting/ERP, payroll, field apps.</li>
-            <li className="flex gap-3"><span className="text-accent">→</span> The role you have been trying to hire, or the report you keep not getting.</li>
-            <li className="flex gap-3"><span className="text-accent">→</span> Where month-end currently hurts most: job costing, cash, change orders, retainage.</li>
+            <li className="flex gap-3"><span className="text-accent">&rarr;</span> Your firm, roughly your annual revenue, and the type of work you do.</li>
+            <li className="flex gap-3"><span className="text-accent">&rarr;</span> The systems you run &mdash; project management, accounting/ERP, payroll, field apps.</li>
+            <li className="flex gap-3"><span className="text-accent">&rarr;</span> The role you have been trying to hire, or the report you keep not getting.</li>
+            <li className="flex gap-3"><span className="text-accent">&rarr;</span> Where month-end currently hurts most: job costing, cash, change orders, retainage.</li>
           </ul>
         </div>
       </section>
@@ -53,14 +42,10 @@ export default function Contact() {
       <section>
         <div className="container mx-auto px-5 py-14 md:py-20">
           <h2 className="font-syne text-[20px] font-semibold text-white">Company details</h2>
-          <div className="mt-4 max-w-[60ch] space-y-3">
-            <p className="text-[14px] leading-[1.75] text-white/50">
-              <Pending>registered entity name and US state of registration</Pending>
-            </p>
-            <p className="text-[14px] leading-[1.75] text-white/50">
-              <Pending>mailing address or region, if one is public</Pending>
-            </p>
-          </div>
+          <p className="mt-4 max-w-[60ch] text-[14px] leading-[1.75] text-white/80">
+            The registered entity name, US state of registration, and mailing region are not published here
+            yet. They will be listed once they are on record and checkable.
+          </p>
         </div>
       </section>
     </>
