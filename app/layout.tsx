@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import AnimatedCursor from "@/components/AnimatedCursor";
 import RevealProvider from "@/components/Common/RevealProvider";
 import "@/styles/index.css";
 
-const syne = Syne({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-syne", display: "swap" });
-const dmSans = DM_Sans({ subsets: ["latin"], weight: ["300", "400", "500"], variable: "--font-dm-sans", display: "swap" });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-inter", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bundlebob.com"),
@@ -43,15 +42,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${syne.variable} ${dmSans.variable}`}>
-        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[999] focus:bg-accent focus:px-3 focus:py-2 focus:font-mono focus:text-[11px] focus:uppercase focus:text-black">
+    <html lang="en" className={`${inter.variable} ${mono.variable}`} suppressHydrationWarning>
+      <body>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[999] focus:bg-accent focus:px-3 focus:py-2 focus:font-mono focus:text-[11px] focus:uppercase focus:text-black"
+        >
           Skip to content
         </a>
-        <AnimatedCursor />
         <RevealProvider />
         <Header />
-        <main id="main" className="page-enter">{children}</main>
+        <main id="main">{children}</main>
         <Footer />
         <ScrollToTop />
       </body>

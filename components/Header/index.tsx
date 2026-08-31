@@ -14,104 +14,83 @@ const NAV = [
 
 export default function Header() {
   const path = usePathname();
-  const [sticky, setSticky] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const fn = () => setSticky(window.scrollY > 40);
+    const fn = () => setScrolled(window.scrollY > 8);
+    fn();
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
   return (
     <header
-      className={`left-0 top-0 z-[500] w-full transition-all duration-300 ${
-        sticky
-          ? "fixed border-b border-white/[0.06] bg-[#040406]/90 shadow-[0_4px_40px_rgba(0,0,0,0.6)] backdrop-blur-md"
-          : "absolute bg-transparent"
+      className={`fixed left-0 top-0 z-50 w-full transition-colors duration-200 ${
+        scrolled ? "border-b border-line bg-bg/90 backdrop-blur-md" : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className={`flex items-center justify-between transition-all ${sticky ? "py-4" : "py-6"}`}>
-          <Link href="/" className="group flex items-center gap-2" onClick={() => setOpen(false)}>
-            <span className="relative flex h-8 w-8 items-center justify-center border border-[#b8ff57]/40 bg-[#b8ff57]/10 font-mono text-[11px] font-black text-[#b8ff57] transition group-hover:bg-[#b8ff57] group-hover:text-black">
-              BB
-              <span
-                className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-[#b8ff57]"
-                style={{ animation: "glowPulse 2s ease-in-out infinite" }}
-              />
-            </span>
-            <span className="font-syne text-xl font-extrabold tracking-tight text-white">
-              Bundle<span className="text-[#b8ff57]">BoB</span>
-            </span>
+      <div className="container mx-auto flex items-center justify-between px-5 py-4">
+        <Link href="/" onClick={() => setOpen(false)} className="font-display text-[15px] font-semibold tracking-tight text-white">
+          Bundle<span className="text-accent">BoB</span>
+        </Link>
+
+        <nav className="hidden md:block">
+          <ul className="flex items-center gap-7">
+            {NAV.map((n) => (
+              <li key={n.href}>
+                <Link
+                  href={n.href}
+                  className={`font-mono text-[11px] uppercase tracking-[0.12em] transition-colors hover:text-white ${
+                    path === n.href ? "text-accent" : "text-muted"
+                  }`}
+                >
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <Link
+            href="/contact"
+            className="hidden border border-line px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white transition-colors hover:border-accent hover:text-accent md:block"
+          >
+            Talk to us
           </Link>
-
-          <nav className="hidden lg:block">
-            <ul className="flex items-center gap-7">
-              {NAV.map((n) => (
-                <li key={n.href}>
-                  <Link
-                    href={n.href}
-                    className={`relative font-mono text-[11px] uppercase tracking-[0.16em] transition-colors hover:text-[#b8ff57] ${
-                      path === n.href ? "text-[#b8ff57]" : "text-gray-400"
-                    }`}
-                  >
-                    {n.label}
-                    {path === n.href && <span className="absolute -bottom-1 left-0 h-px w-full bg-[#b8ff57]" />}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="btn-shine hidden border border-[#b8ff57]/50 px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#b8ff57] transition hover:bg-[#b8ff57] hover:text-black lg:block"
-            >
-              Talk to us →
-            </Link>
-
-            <button
-              onClick={() => setOpen(!open)}
-              className="flex flex-col gap-[5px] p-2 lg:hidden"
-              aria-label="menu"
-              aria-expanded={open}
-            >
-              <span className={`h-px w-6 bg-white transition-all ${open ? "translate-y-[7px] rotate-45" : ""}`} />
-              <span className={`h-px w-6 bg-white transition-all ${open ? "opacity-0" : ""}`} />
-              <span className={`h-px w-6 bg-white transition-all ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
-            </button>
-          </div>
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex flex-col gap-[5px] p-1.5 md:hidden"
+            aria-label="Menu"
+            aria-expanded={open}
+          >
+            <span className={`h-px w-6 bg-white transition-all ${open ? "translate-y-[6px] rotate-45" : ""}`} />
+            <span className={`h-px w-6 bg-white transition-all ${open ? "opacity-0" : ""}`} />
+            <span className={`h-px w-6 bg-white transition-all ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
+          </button>
         </div>
-
-        {open && (
-          <div className="absolute left-0 right-0 top-full border-t border-white/[0.07] bg-[#040406]/98 px-6 py-8 backdrop-blur-xl lg:hidden">
-            <ul className="mb-8 flex flex-col gap-6">
-              {NAV.map((n) => (
-                <li key={n.href}>
-                  <Link
-                    href={n.href}
-                    onClick={() => setOpen(false)}
-                    className={`font-mono text-sm font-bold uppercase tracking-widest transition hover:text-[#b8ff57] ${
-                      path === n.href ? "text-[#b8ff57]" : "text-white"
-                    }`}
-                  >
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
-              className="inline-block border border-[#b8ff57] px-6 py-3 font-mono text-[11px] font-bold uppercase tracking-widest text-[#b8ff57]"
-            >
-              Talk to us →
-            </Link>
-          </div>
-        )}
       </div>
+
+      {open && (
+        <div className="border-t border-line bg-bg px-5 py-6 md:hidden">
+          <ul className="flex flex-col gap-1">
+            {NAV.map((n) => (
+              <li key={n.href}>
+                <Link
+                  href={n.href}
+                  onClick={() => setOpen(false)}
+                  className={`block py-2.5 font-mono text-[13px] uppercase tracking-[0.1em] ${
+                    path === n.href ? "text-accent" : "text-white"
+                  }`}
+                >
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 }
