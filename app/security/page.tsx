@@ -25,7 +25,7 @@ const SECTIONS = [
   {
     h: "Access — who can see what",
     intro:
-      "Access is limited to the embedded engineer assigned to your firm and named individuals who support them. Access is least-privilege and logged.",
+      "Access is limited to the Forward Deployed Engineer assigned to your firm and named individuals who support them. Access is least-privilege and logged.",
     pending:
       "the real list: which roles can read client financial data, how access is granted and revoked, whether access is logged and reviewable by the client, and your policy on using client data for any internal purpose (default answer should be: we do not).",
   },

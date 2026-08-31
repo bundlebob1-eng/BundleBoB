@@ -67,8 +67,9 @@ export default function HowItWorks() {
             One engagement, three stages, in order
           </h1>
           <p data-reveal className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
-            The embedded engineer runs the same arc in every firm: make the data trustworthy, then make it
-            legible, then make it answer questions. Each stage stands on the one before it.
+            One Forward Deployed Engineer (FDE) — also known as an AI Integrator — runs the same arc in every
+            firm: make the data trustworthy, then make it legible, then make it answer questions. Each stage
+            stands on the one before it.
           </p>
         </div>
       </section>
@@ -90,7 +91,7 @@ export default function HowItWorks() {
             <div data-reveal>
               <div className="border border-line">
                 <div className="border-b border-line px-5 py-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
-                  What the engineer does
+                  What the FDE does
                 </div>
                 {s.what.map((w, j) => (
                   <div

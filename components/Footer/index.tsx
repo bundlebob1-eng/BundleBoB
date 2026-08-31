@@ -19,8 +19,8 @@ export default function Footer() {
             Bundle<span className="text-accent">BoB</span>
           </div>
           <p className="mt-3 max-w-[34ch] text-[13px] leading-[1.7] text-muted">
-            An embedded margin engineer for mid-market general contractors. Capture, then Control, then
-            Intelligence.
+            One Forward Deployed Engineer (also known as an AI Integrator) for mid-market general contractors.
+            Capture, then Control, then Intelligence.
           </p>
           <div className="mt-4 space-y-2 text-[12px]">
             <div>

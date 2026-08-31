@@ -5,7 +5,7 @@ import Pending from "@/components/Pending";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Who is doing this work, and why an embedded engineer is the right shape for mid-market construction — real names and real backgrounds.",
+    "Who is doing this work, and why one Forward Deployed Engineer (AI Integrator) is the right shape for mid-market construction — real names and real backgrounds.",
 };
 
 export default function About() {
@@ -36,10 +36,10 @@ export default function About() {
           <h2 data-reveal className="font-display text-[20px] font-semibold text-white">Who is doing this work</h2>
           <div data-reveal className="max-w-[64ch]">
             <Pending block>
-              real names and roles of the founder(s) and any engineers. For each: years and firms in commercial
-              construction operations or accounting, the specific PM / ERP systems worked in, data or analytics
-              engineering background, and any direct job-cost, WIP, or estimating responsibility. Link each
-              person to a real profile.
+              real name(s) of the founder and the Forward Deployed Engineer(s) who do the embedding. For each:
+              years and firms in commercial construction operations or accounting, the specific PM / ERP systems
+              worked in, data or analytics engineering background, and any direct job-cost, WIP, or estimating
+              responsibility. Link each person to a real profile.
             </Pending>
           </div>
         </div>
@@ -48,19 +48,23 @@ export default function About() {
       <section className="border-b border-line bg-bg-2">
         <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[280px_1fr] md:py-20">
           <h2 data-reveal className="font-display text-[20px] font-semibold text-white">
-            Why embedded, and why one person
+            Why one Forward Deployed Engineer
           </h2>
           <div data-reveal className="max-w-[64ch] space-y-4 text-[14px] leading-[1.75] text-muted">
+            <p>
+              The offer is a single role: a Forward Deployed Engineer, also known as an AI Integrator. Not a
+              team, not a platform, not a rotating bench — one named person embedded in your firm.
+            </p>
             <p>
               A consultancy sends a team, writes a report, and leaves. A software vendor sells you a login and a
               support queue. Neither one sits with your controller long enough to learn how your firm actually
               runs.
             </p>
             <p>
-              One engineer, embedded, accountable to your finance lead, is the smallest thing that can connect
-              the systems and stay long enough to make the output trustworthy. Anything we build for a third
-              client that would help every client becomes part of the core — so each engagement starts further
-              along than the last, instead of from zero.
+              One Forward Deployed Engineer, accountable to your finance lead, is the smallest thing that can
+              connect the systems and stay long enough to make the output trustworthy. Anything we build for a
+              third client that would help every client becomes part of the core — so each engagement starts
+              further along than the last, instead of from zero.
             </p>
           </div>
         </div>
