@@ -27,18 +27,18 @@ const SECTIONS = [
 export default function Proof() {
   return (
     <>
-      <section className="border-b border-line">
+      <section className="border-b border-white/[0.06]">
         <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
           <p className="label">
             Proof
           </p>
           <h1
-            className="mt-5 max-w-[22ch] font-display font-semibold tracking-[-0.03em] text-white"
+            className="mt-5 max-w-[22ch] font-syne font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(30px,5vw,52px)" }}
           >
             What is actually true today
           </h1>
-          <p className="mt-5 max-w-[60ch] text-[15px] leading-[1.7] text-muted">
+          <p className="mt-5 max-w-[60ch] text-[15px] leading-[1.7] text-white/50">
             We do not have named client testimonials or published case studies yet. When a general contractor is
             willing to go on record, their name and results will be on this page. Until then, here is what is
             real.
@@ -47,23 +47,23 @@ export default function Proof() {
       </section>
 
       {SECTIONS.map((s) => (
-        <section key={s.h} className="border-b border-line">
+        <section key={s.h} className="border-b border-white/[0.06]">
           <div className="container mx-auto grid grid-cols-1 gap-8 px-5 py-14 md:grid-cols-[280px_1fr] md:py-20">
-            <h2 className="font-display text-[20px] font-semibold text-white">{s.h}</h2>
+            <h2 className="font-syne text-[20px] font-semibold text-white">{s.h}</h2>
             <div className="max-w-[64ch] space-y-4">
-              {s.intro && <p className="text-[14px] leading-[1.75] text-muted">{s.intro}</p>}
+              {s.intro && <p className="text-[14px] leading-[1.75] text-white/50">{s.intro}</p>}
               <Pending block>{s.pending}</Pending>
             </div>
           </div>
         </section>
       ))}
 
-      <section className="border-b border-line bg-bg-2">
+      <section className="border-b border-white/[0.06] bg-bg2">
         <div className="container mx-auto px-5 py-14 md:py-20">
-          <h2 className="font-display text-[20px] font-semibold text-white">
+          <h2 className="font-syne text-[20px] font-semibold text-white">
             What we will not put on this page
           </h2>
-          <ul className="mt-4 max-w-[60ch] space-y-2.5 text-[13px] leading-[1.7] text-muted">
+          <ul className="mt-4 max-w-[60ch] space-y-2.5 text-[13px] leading-[1.7] text-white/50">
             <li className="flex gap-3"><span className="text-accent">→</span> Satisfaction percentages or ROI multiples with no named source.</li>
             <li className="flex gap-3"><span className="text-accent">→</span> Quotes attributed to &ldquo;a COO&rdquo; or &ldquo;a GC in the Midwest&rdquo; with no real name behind them.</li>
             <li className="flex gap-3"><span className="text-accent">→</span> A &ldquo;case studies&rdquo; heading over anything that is not a documented, client-approved case.</li>
@@ -74,13 +74,13 @@ export default function Proof() {
       <section>
         <div className="container mx-auto px-5 py-20 md:py-28">
           <h2
-            className="max-w-[28ch] font-display font-semibold tracking-[-0.03em] text-white"
+            className="max-w-[28ch] font-syne font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(22px,3.2vw,34px)" }}
           >
             If you would be an early client and are willing to be a reference later, that is the conversation we
             want.
           </h2>
-          <Link href="/contact" className="btn mt-8">
+          <Link href="/contact" className="btn btn-shine mt-8">
             Contact
           </Link>
         </div>

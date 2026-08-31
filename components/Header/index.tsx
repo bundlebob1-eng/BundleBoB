@@ -14,11 +14,11 @@ const NAV = [
 
 export default function Header() {
   const path = usePathname();
-  const [scrolled, setScrolled] = useState(false);
+  const [sticky, setSticky] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 8);
+    const fn = () => setSticky(window.scrollY > 40);
     fn();
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
@@ -26,71 +26,82 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full transition-colors duration-200 ${
-        scrolled ? "border-b border-line bg-bg/90 backdrop-blur-md" : "border-b border-transparent bg-transparent"
+      className={`fixed left-0 top-0 z-[500] w-full transition-all duration-300 ${
+        sticky
+          ? "border-b border-white/[0.06] bg-[#040406]/90 shadow-[0_4px_40px_rgba(0,0,0,0.6)] backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-5 py-4">
-        <Link href="/" onClick={() => setOpen(false)} className="font-display text-[15px] font-semibold tracking-tight text-white">
-          Bundle<span className="text-accent">BoB</span>
-        </Link>
-
-        <nav className="hidden md:block">
-          <ul className="flex items-center gap-7">
-            {NAV.map((n) => (
-              <li key={n.href}>
-                <Link
-                  href={n.href}
-                  className={`font-mono text-[11px] uppercase tracking-[0.12em] transition-colors hover:text-white ${
-                    path === n.href ? "text-accent" : "text-muted"
-                  }`}
-                >
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <Link
-            href="/contact"
-            className="hidden border border-line px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white transition-colors hover:border-accent hover:text-accent md:block"
-          >
-            Talk to us
+      <div className="container mx-auto px-4">
+        <div className={`flex items-center justify-between transition-all ${sticky ? "py-3.5" : "py-6"}`}>
+          <Link href="/" onClick={() => setOpen(false)} className="group flex items-center gap-2">
+            <span className="relative flex h-8 w-8 items-center justify-center border border-accent/40 bg-accent/10 font-mono text-[11px] font-black text-accent transition group-hover:bg-accent group-hover:text-black">
+              BB
+              <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-accent" style={{ animation: "glowPulse 2s ease-in-out infinite" }} />
+            </span>
+            <span className="font-syne text-xl font-extrabold tracking-tight text-white">
+              Bundle<span className="text-accent">BoB</span>
+            </span>
           </Link>
-          <button
-            onClick={() => setOpen(!open)}
-            className="flex flex-col gap-[5px] p-1.5 md:hidden"
-            aria-label="Menu"
-            aria-expanded={open}
-          >
-            <span className={`h-px w-6 bg-white transition-all ${open ? "translate-y-[6px] rotate-45" : ""}`} />
-            <span className={`h-px w-6 bg-white transition-all ${open ? "opacity-0" : ""}`} />
-            <span className={`h-px w-6 bg-white transition-all ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
-          </button>
-        </div>
-      </div>
 
-      {open && (
-        <div className="border-t border-line bg-bg px-5 py-6 md:hidden">
-          <ul className="flex flex-col gap-1">
-            {NAV.map((n) => (
-              <li key={n.href}>
-                <Link
-                  href={n.href}
-                  onClick={() => setOpen(false)}
-                  className={`block py-2.5 font-mono text-[13px] uppercase tracking-[0.1em] ${
-                    path === n.href ? "text-accent" : "text-white"
-                  }`}
-                >
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <nav className="hidden lg:block">
+            <ul className="flex items-center gap-7">
+              {NAV.map((n) => (
+                <li key={n.href}>
+                  <Link
+                    href={n.href}
+                    className={`relative font-mono text-[11px] uppercase tracking-[0.14em] transition-colors hover:text-accent ${
+                      path === n.href ? "text-accent" : "text-white/45"
+                    }`}
+                  >
+                    {n.label}
+                    {path === n.href && <span className="absolute -bottom-1 left-0 h-px w-full bg-accent" />}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <Link
+              href="/contact"
+              className="btn-shine hidden border border-accent/50 px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-accent transition hover:bg-accent hover:text-black lg:block"
+            >
+              Talk to us
+            </Link>
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex flex-col gap-[5px] p-2 lg:hidden"
+              aria-label="Menu"
+              aria-expanded={open}
+            >
+              <span className={`h-px w-6 bg-white transition-all ${open ? "translate-y-[7px] rotate-45" : ""}`} />
+              <span className={`h-px w-6 bg-white transition-all ${open ? "opacity-0" : ""}`} />
+              <span className={`h-px w-6 bg-white transition-all ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
+            </button>
+          </div>
         </div>
-      )}
+
+        {open && (
+          <div className="border-t border-white/[0.07] bg-[#040406]/98 px-2 py-6 backdrop-blur-xl lg:hidden">
+            <ul className="flex flex-col">
+              {NAV.map((n) => (
+                <li key={n.href} className="border-b border-white/[0.06] last:border-b-0">
+                  <Link
+                    href={n.href}
+                    onClick={() => setOpen(false)}
+                    className={`block py-3 font-mono text-[13px] font-bold uppercase tracking-widest ${
+                      path === n.href ? "text-accent" : "text-white"
+                    }`}
+                  >
+                    {n.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
