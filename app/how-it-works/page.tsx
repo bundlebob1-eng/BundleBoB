@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Pending from "@/components/Pending";
 
 export const metadata: Metadata = {
   title: "How it works",
@@ -118,11 +117,12 @@ export default function HowItWorks() {
             This depends on how many systems you run and the state they are in.
           </p>
           <div className="mt-4 max-w-[70ch]">
-            <Pending block>
-              realistic ranges from actual engagements once they exist — e.g. &ldquo;Capture: weeks 1&ndash;6;
-              Control: weeks 4&ndash;12, overlapping; Intelligence: from around week 10&rdquo;. Do not publish a
-              timeline you have not delivered against.
-            </Pending>
+            <p className="text-[14px] leading-[1.75] text-white/80">
+              We are not quoting week-by-week ranges yet — we have not run enough engagements to give a number we
+              would stand behind. What is fixed is the order: Capture is finished before Control leans on it, and
+              Intelligence only starts once the underlying data is trusted. We will scope a realistic schedule
+              for your systems on the first call.
+            </p>
           </div>
         </div>
       </section>
@@ -139,9 +139,7 @@ export default function HowItWorks() {
             <Link href="/pricing" className="btn btn-shine">
               What it costs
             </Link>
-            <Link href="/contact" className="btn btn-ghost">
-              Contact
-            </Link>
+            <Link href="/contact" className="btn btn-ghost">How to reach us</Link>
           </div>
         </div>
       </section>

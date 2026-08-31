@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Pending from "@/components/Pending";
 
 export const metadata: Metadata = {
   title: "Proof",
@@ -12,15 +11,15 @@ const SECTIONS = [
   {
     h: "The Forward Deployed Engineer",
     intro:
-      "One role, embedded in your firm — the Forward Deployed Engineer, also known as an AI Integrator. The trust anchor for this buyer is whether that person has actually done construction operations or job-cost data work before. That belongs here, in specifics.",
-    pending:
-      "founder / Forward Deployed Engineer background — real name, and the concrete history: years in construction operations or accounting, the ERP and PM systems worked in directly, data / analytics engineering experience, and any job-cost or WIP responsibility held. Link to a real profile. No claim that cannot be checked.",
+      "One role, embedded in your firm — the Forward Deployed Engineer, also known as an AI Integrator. The trust anchor for this buyer is whether that person has actually done construction operations or job-cost data work before.",
+    detail:
+      "Team bios are not published here yet. We will name the person doing the work — with their construction-operations and data-engineering background, and a profile you can check — before any firm is asked to sign. Ask us directly in the meantime.",
   },
   {
     h: "Engagements in progress",
     intro: null,
-    pending:
-      "current pilot / engagement status — e.g. “running our first pilot with a mid-market GC in [region]; roughly [N] active jobs on the Capture stage”. If there is no pilot yet, say that plainly: “pre-pilot — the founder is doing this work directly with [N] firms while we formalise the engagement.” Do not imply a product screenshot or a finished case study exists if it does not.",
+    detail:
+      "We are not publishing a client count, a pilot location, or results yet. When there is a named engagement we can point to, it will be on this page — with the client's agreement, not before.",
   },
 ];
 
@@ -29,9 +28,7 @@ export default function Proof() {
     <>
       <section className="border-b border-white/[0.06]">
         <div className="container mx-auto px-5 pb-14 pt-36 md:pb-20 md:pt-44">
-          <p className="label">
-            Proof
-          </p>
+          <p className="label">Proof</p>
           <h1
             className="mt-5 max-w-[22ch] font-syne font-semibold tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(30px,5vw,52px)" }}
@@ -52,7 +49,7 @@ export default function Proof() {
             <h2 className="font-syne text-[20px] font-semibold text-white">{s.h}</h2>
             <div className="max-w-[64ch] space-y-4">
               {s.intro && <p className="text-[14px] leading-[1.75] text-white/50">{s.intro}</p>}
-              <Pending block>{s.pending}</Pending>
+              <p className="text-[14px] leading-[1.75] text-white/80">{s.detail}</p>
             </div>
           </div>
         </section>
@@ -60,9 +57,7 @@ export default function Proof() {
 
       <section className="border-b border-white/[0.06] bg-bg2">
         <div className="container mx-auto px-5 py-14 md:py-20">
-          <h2 className="font-syne text-[20px] font-semibold text-white">
-            What we will not put on this page
-          </h2>
+          <h2 className="font-syne text-[20px] font-semibold text-white">What we will not put on this page</h2>
           <ul className="mt-4 max-w-[60ch] space-y-2.5 text-[13px] leading-[1.7] text-white/50">
             <li className="flex gap-3"><span className="text-accent">→</span> Satisfaction percentages or ROI multiples with no named source.</li>
             <li className="flex gap-3"><span className="text-accent">→</span> Quotes attributed to &ldquo;a COO&rdquo; or &ldquo;a GC in the Midwest&rdquo; with no real name behind them.</li>
@@ -80,9 +75,7 @@ export default function Proof() {
             If you would be an early client and are willing to be a reference later, that is the conversation we
             want.
           </h2>
-          <Link href="/contact" className="btn btn-shine mt-8">
-            Contact
-          </Link>
+          <Link href="/contact" className="btn btn-shine mt-8">How to reach us</Link>
         </div>
       </section>
     </>

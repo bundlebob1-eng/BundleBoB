@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Pending from "@/components/Pending";
 
 const NAV = [
   { label: "How it works", href: "/how-it-works" },
@@ -7,7 +6,6 @@ const NAV = [
   { label: "Proof", href: "/proof" },
   { label: "Security", href: "/security" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -28,13 +26,9 @@ export default function Footer() {
               One Forward Deployed Engineer (also known as an AI Integrator) for mid-market general contractors.
               Capture, then Control, then Intelligence.
             </p>
-            <div className="space-y-2 text-[12px]">
-              <div>
-                <Pending>company email that actually receives mail</Pending>
-              </div>
-              <div>
-                <Pending>US entity name and registration state</Pending>
-              </div>
+            <div className="space-y-1.5 font-mono text-[11px] text-white/40">
+              <div>Direct contact channel not open yet.</div>
+              <div>Registered entity details not yet published.</div>
             </div>
           </div>
 

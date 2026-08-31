@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Pending from "@/components/Pending";
 
 const ARC = [
   { n: "01", name: "Capture", sub: "Unify project, accounting, field and spreadsheet data into one place you can trust." },
@@ -75,11 +74,11 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-4" style={{ animation: "heroFadeUp .8s ease both", animationDelay: ".25s" }}>
-              <Link href="/contact" className="btn btn-shine">
-                Talk to us
-              </Link>
-              <Link href="/how-it-works" className="btn btn-ghost">
+              <Link href="/how-it-works" className="btn btn-shine">
                 How it works
+              </Link>
+              <Link href="/pricing" className="btn btn-ghost">
+                Pricing
               </Link>
             </div>
           </div>
@@ -109,13 +108,14 @@ export default function Hero() {
           style={{ animation: "heroFadeUp .9s ease both", animationDelay: ".4s" }}
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/35">Where we are right now</div>
-          <div className="mt-2 max-w-[70ch]">
-            <Pending block>
-              honest one-line statement of current stage — e.g. &ldquo;running our first pilot with a
-              mid-market GC in the Southwest&rdquo;, or &ldquo;pre-pilot; the founder is doing this work
-              directly with two firms&rdquo;. No client count or result until one is real and named.
-            </Pending>
-          </div>
+          <p className="mt-2 max-w-[70ch] text-[13px] leading-[1.7] text-white/60">
+            Early stage. We are not publishing a client count, a pilot location, or results yet — when there is a
+            named engagement we can point to, it will be on the{" "}
+            <Link href="/proof" className="text-accent underline underline-offset-2">
+              Proof
+            </Link>{" "}
+            page, with the client&rsquo;s agreement and not before.
+          </p>
         </div>
       </div>
     </section>

@@ -36,23 +36,29 @@ npm run lint
 | `/proof`         | Honest statement of stage; no manufactured social proof |
 | `/security`      | Data isolation, encryption, access, and what is not in place yet |
 | `/about`         | Who is doing the work |
-| `/contact`       | Direct email |
+| `/contact`       | Holding page — no public channel yet (unlinked from nav) |
 
-## Unverified facts — read before launch
+## Facts still to fill in with real values
 
-Anything not yet confirmed is wrapped in the `<Pending>` component
-(`components/Pending`) and renders on the page as a conspicuous
-`[ TO CONFIRM: ... ]` marker. **The site must not go live with any `Pending`
-marker still rendering.** Find them all:
+The site now ships with honest "not yet published" copy anywhere a real fact is
+missing. Nothing is fabricated. When the operator has real values, replace the
+holding copy in these places:
 
-```bash
-grep -rn "Pending" app components
-```
+- **`company_email`** — no inbox yet. `/contact` is a holding page and is
+  removed from the header/footer nav and the header CTA until a real address
+  exists. Restore the nav entries + the real `mailto:` on `/contact` when it does.
+- **`entity_name_and_state`** — footer + `/about` + `/contact` "company details".
+- **`founder_background`** — `/about` and `/proof` (keep in sync).
+- **`current_stage` / pilot status** — hero stage line + `/proof`.
+- **`team_location`**, **`reply_time`**, **`stage_timeline`**.
+- **`monthly_fee`**, **`hire_fully_loaded_cost`** — `/pricing` (numbers only from
+  the operator).
+- **Security specifics** — `/security` states principles + "shared on request";
+  the isolation model, encryption versions, hosting region, model providers, and
+  SOC 2 / pen-test / BAA status should be confirmed by whoever owns the infra
+  before they are treated as commitments.
 
-Each one needs a real value: company email, legal entity name and state,
-founder/engineer names and construction background, pilot status, and the
-concrete security posture (isolation model, encryption specifics, access policy,
-SOC 2 status, offboarding terms).
+Verify before every deploy: `grep -rn "TO CONFIRM" .next` returns nothing.
 
 ## Deliberately absent
 
