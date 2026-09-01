@@ -1138,6 +1138,35 @@ table, .table { font-variant-numeric: tabular-nums; }
   .navbar-nexora .nav-link { padding: 0.6rem 0.75rem !important; }
 }
 
+/* ---- Self-select cards ("what's costing you most at month-end") ---- */
+.select-card {
+  color: var(--n-navy);
+  padding: 24px;
+  min-height: 200px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.select-card .select-card-text {
+  font-family: var(--n-font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.select-card .select-card-arrow {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--n-bg-alt);
+  color: var(--n-primary);
+  font-size: 0.85rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.select-card:hover { background: var(--n-bg-alt); transform: translateY(-2px); }
+.select-card:hover .select-card-arrow { background: var(--n-primary); color: #fff; transform: translateX(2px); }
+
 /* =====================================================
    QA AUDIT FIXES (Chrome end-to-end review, 2026-08-31)
    ===================================================== */
