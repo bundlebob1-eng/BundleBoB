@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About | BundleBoB</title>
+<title>What breaks when you sync Vista and Procore | BundleBoB</title>
 <meta name="description" content="One Forward Deployed Engineer (also known as an AI Integrator) embedded in a mid-market general contractor: connects Procore, Sage, Foundation, Vista, CMiC, QuickBooks and the spreadsheets, then builds the layer that shows where margin is leaking. Advisory, not autonomous. Pre-pilot demo — not in commercial use.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231E2A78'/%3E%3Ctext x='16' y='22' font-size='18' font-family='Arial' font-weight='800' fill='%23F0A03C' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,58 +78,90 @@
   </div>
 </div>
 
-<header class="phero">
+<header class="phero" style="padding-bottom:64px">
   <div class="blueprint"></div>
   <div class="wrap">
-    <nav class="crumbs"><a href="/">Home</a> <span>/</span> <span>About</span></nav>
-    <span class="eyebrow">About</span>
-    <h1 class="d1">Built by people who have done construction operations, not just software</h1>
-    <p class="lede">The reason this works is that the person in your office already knows what a WIP schedule is, why a change order sits for six weeks, and where job-cost data goes wrong.</p>
+    <nav class="crumbs"><a href="/">Home</a> <span>/</span> <a href="/resources">Notes</a> <span>/</span> <span>Outline</span></nav>
+    <span class="eyebrow">Field note &middot; Outline, not published</span>
+    <h1 class="d2" style="max-width:22ch">What breaks when you sync Vista and Procore</h1>
+    <p class="lede">A working outline of the failure modes we expect between a construction ERP and a project-management platform, and how each one should be handled rather than hidden. This is design intent, not a report from the field &mdash; there is no deployment behind it yet.</p>
   </div>
 </header>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head rv" style="margin-bottom:0">
-      <span class="eyebrow">Who is doing this work</span>
-      <h2 class="d2">Bios published before we ask anyone to sign.</h2>
-      <p class="lede">Team bios are not published here yet. We will name the person doing the work — with their construction-operations and data-engineering background, and a profile you can check — before any firm is asked to sign. Ask us directly in the meantime.</p>
+    <div class="artlayout">
+      <aside class="toc rv">
+        <h4>Contents</h4>
+        <ul>
+          <li><a href="#drift">1. Cost-code drift</a></li>
+          <li><a href="#vendors">2. Duplicate vendors</a></li>
+          <li><a href="#retention">3. Retainage mismatch</a></li>
+          <li><a href="#co">4. Change-order timing</a></li>
+          <li><a href="#dates">5. Period dates</a></li>
+          <li><a href="#silent">6. Silent failure</a></li>
+        </ul>
+      </aside>
+
+      <div class="prose rv">
+        <div class="artmeta">
+          <span class="k">Outline</span>
+          <span>Not yet published</span>
+          <span>Design intent, pre-pilot</span>
+        </div>
+
+        <p><strong>Note:</strong> this piece will be rewritten from real deployments once there are real deployments. Until then it describes how we intend the integration layer to behave, so you can judge the approach before there is a track record to judge.</p>
+        <p>Every integration demo shows the happy path: two systems, one record, a green check. Production is a vendor entered four different ways across six years, and a controller who is right not to trust a sync until she sees what it does when the two sides disagree. Here is what we expect to break, in roughly the order a firm would meet it.</p>
+
+        <h2 id="drift">1. Cost-code drift</h2>
+        <p>Somebody adds a cost code in Procore mid-job because the crew needed somewhere to put hours on Thursday. It does not exist in the ERP. By the time accounting notices, weeks of labour have landed in a code the ERP has never heard of.</p>
+        <p>The wrong fix is to let the sync create the code in the ERP automatically &mdash; that turns the chart of accounts into whatever the field typed at 4pm. The intended behaviour is to hold those hours in a staging bucket, flag them to the controller with the crew and the amount, and let a person decide whether the code is legitimate.</p>
+
+        <h2 id="vendors">2. Duplicate vendors</h2>
+        <p>The same supplier exists as three records because someone typed the name with a comma, then without, then with &ldquo;Inc.&rdquo; on the end. Neither system has a shared key, so a naive match on name creates a fourth.</p>
+        <p>The intended approach is a crosswalk table built during onboarding &mdash; tax ID first, then fuzzy name match proposed for human confirmation. It is unglamorous work, and it is most of why an onboarding period exists at all.</p>
+
+        <h2 id="retention">3. Retainage mismatch</h2>
+        <p>One system holds retainage at the contract level; the other may hold it per line. Both are defensible. Sync the invoice amount without reconciling how retainage was computed and you get a number that is off by a few percent &mdash; worse than an obviously wrong number, because nobody catches it until closeout.</p>
+        <p>The intended behaviour is to calculate retainage on both sides independently and compare. If they differ by more than a cent, the record does not post &mdash; it goes to a conflict log with both figures and the rule each side applied.</p>
+
+        <h2 id="co">4. Change-order timing</h2>
+        <p>A change order is approved in the field platform on the 29th and entered in the ERP on the 3rd. Whichever system you ask, the month is wrong. This is a period problem, not a data problem, and it is a common reason a PM says the numbers are lying.</p>
+        <p>The intended behaviour is to track the approval date separately from the posting date. The cost-to-complete projection uses the approval date; accounting still closes on the posting date. Both are right for their own purpose.</p>
+
+        <h2 id="dates">5. Period dates and payroll weeks</h2>
+        <p>Payroll runs Monday to Sunday. Accounting closes on the calendar month. The last week of most months is split across two periods, and a sync that does not know that will drop labour into the wrong month a meaningful share of the time.</p>
+        <p>Every engagement should start by writing down the payroll calendar. It takes ten minutes and it prevents an argument in month two.</p>
+
+        <h2 id="silent">6. Silent failure</h2>
+        <p>The worst one. A sync stops running &mdash; a credential expires, an API deprecates &mdash; and nothing tells anyone. Numbers stop updating but the screen still shows numbers, so everybody keeps trusting them. Two weeks later a PM makes a call on data from before the outage.</p>
+        <p>The intended answer is a freshness stamp on every screen and a dead-man alert: if a sync has not completed in its expected window, the layer says so loudly, on the page, before it says anything else. A view that admits it is stale is worth more than one that quietly is.</p>
+
+        <h2>What this adds up to</h2>
+        <p>None of these are exotic. They are the ordinary friction of two systems built by different people for different jobs. Integrations fail not because of the API but because nobody planned for disagreement. Plan for disagreement and the rest is plumbing.</p>
+
+        <div class="inlinecta">
+          <div>
+            <h3>Want to pressure-test this?</h3>
+            <p>If you run these systems and think we have a failure mode wrong, tell us.</p>
+          </div>
+          <a class="btn btn-ink" href="/demo">Talk to us</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="split2">
-      <div class="panel rv">
-        <h3>Why one Forward Deployed Engineer</h3>
-        <p>A consultancy sends a team, writes a report and leaves. A software vendor sells you a login and a support queue. Neither one sits with your controller long enough to learn how your firm actually runs. One engineer, embedded and accountable to your finance lead, is the smallest thing that can connect the systems and stay long enough to make the output trustworthy.</p>
-        <a class="link-arrow" href="/services">See how the engagement works <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
-      </div>
-      <div class="panel rv">
-        <h3>Why not an agency</h3>
-        <p>Anything we build for a third client that would help every client becomes part of the core — so each engagement starts further along than the last, instead of from zero. Bespoke-per-client work that cannot generalise is the failure mode that turns this into an agency instead of a product.</p>
-        <a class="link-arrow" href="/compare">Why an FDE, not a tool <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
-      </div>
+    <div class="sec-head rv"><span class="eyebrow">Notes</span><h2 class="d2">More planned notes</h2></div>
+    <div class="rgrid rv">
+      <article class="rcard"><div class="rthumb art-1"><div class="blueprint"></div></div><div class="rbody"><span class="rkind">Planned</span><h3>Mapping a cost structure before day one</h3><p>The prep with your controller that makes a short rollout possible.</p></div></article>
+      <article class="rcard"><div class="rthumb art-2"><div class="blueprint"></div></div><div class="rbody"><span class="rkind">Planned</span><h3>Why the WIP schedule lands two weeks late</h3><p>It is rarely accounting &mdash; it is the handoff before them.</p></div></article>
+      <article class="rcard"><div class="rthumb art-3"><div class="blueprint"></div></div><div class="rbody"><span class="rkind">Planned</span><h3>Advisory, not autonomous: where the line sits</h3><p>What the system drafts, and what a person must approve.</p></div></article>
     </div>
-  </div>
-</section>
-
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">The company</span>
-      <h2 class="d3">Details published once they are checkable</h2>
-      <p class="lede">The registered entity name, structure and US state of registration are not published here yet. They will be listed once they are on record and checkable. Where the team and its first clients are based is not published yet either.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head rv"><span class="eyebrow">Client feedback</span><h2 class="d2">We don't have testimonials yet.</h2>
-      <p class="lede">We do not publish a quote until a named person has approved the wording. When a contractor goes on record, their words will replace this section.</p>
-    </div>
+    <p style="margin-top:32px"><a class="link-arrow" href="/resources">All notes <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a></p>
   </div>
 </section>
 
@@ -137,8 +169,8 @@
   <div class="wrap">
     <div class="ctaband rv">
       <div class="blueprint"></div>
-      <h2 class="d2">If your background is construction finance and this is the job you wish existed, talk to us too.</h2>
-      <p>Early clients and early engineers — same conversation.</p>
+      <h2 class="d2">Bring us your worst month-end.</h2>
+      <p>If you run a mid-market GC and the systems do not agree at close, that is the conversation to have.</p>
       <div class="row">
         <a class="btn btn-light" href="/demo">Talk to us <svg class="chev" width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
         <a class="btn btn-ghost-dark" href="/platform">See the arc</a>

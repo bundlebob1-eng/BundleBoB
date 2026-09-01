@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Arc | BundleBoB</title>
+<meta name="description" content="One Forward Deployed Engineer (also known as an AI Integrator) embedded in a mid-market general contractor: connects Procore, Sage, Foundation, Vista, CMiC, QuickBooks and the spreadsheets, then builds the layer that shows where margin is leaking. Advisory, not autonomous. Pre-pilot demo — not in commercial use.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231E2A78'/%3E%3Ctext x='16' y='22' font-size='18' font-family='Arial' font-weight='800' fill='%23F0A03C' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<div class="navshell" id="navshell">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="2" y="2" width="13" height="13" rx="3"/>
+        <path d="M17 2h13v13H17zM2 17h13v13H2zM17 17h13v13H17z" opacity=".9"/>
+      </svg>
+      BundleBoB
+    </a>
+
+    <div class="navlinks">
+      <div class="navitem" data-menu>
+        <button class="navbtn" aria-expanded="false">The Arc <span class="caret" aria-hidden="true">
+          <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></button>
+        <div class="mega">
+          <a href="/platform"><span class="mt">01 · Capture</span><span class="ms">Unify project, accounting and field data you can trust</span></a>
+          <a href="/platform"><span class="mt">02 · Control</span><span class="ms">Job costing, labour, subs, cash and retainage — on current data</span></a>
+          <a href="/platform"><span class="mt">03 · Intelligence</span><span class="ms">Plain-English answers a person approves</span></a>
+          <a href="/integrations"><span class="mt">Systems we connect</span><span class="ms">Procore, Sage, Foundation, Vista, CMiC, QuickBooks</span></a>
+          <a href="/compare"><span class="mt">Security &amp; data</span><span class="ms">How client data is isolated, and what is not in place yet</span></a>
+        </div>
+      </div>
+      <div class="navitem" data-menu>
+        <button class="navbtn" aria-expanded="false">By trade <span class="caret" aria-hidden="true">
+          <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></button>
+        <div class="mega">
+          <a href="/solutions"><span class="mt">Mechanical &amp; plumbing</span><span class="ms">Spool and hanger cost, tracked to install</span></a>
+          <a href="/solutions"><span class="mt">Electrical</span><span class="ms">Gear releases and switchgear lead times against the job</span></a>
+          <a href="/solutions"><span class="mt">Fire protection</span><span class="ms">Fabrication and inspection cost in one place</span></a>
+          <a href="/solutions"><span class="mt">General contractors</span><span class="ms">One margin view across every trade partner</span></a>
+        </div>
+      </div>
+      <a class="navbtn" href="/compare">Why an FDE</a>
+      <a class="navbtn" href="/resources">Notes</a>
+      <div class="navitem" data-menu>
+        <button class="navbtn" aria-expanded="false">Company <span class="caret" aria-hidden="true">
+          <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></button>
+        <div class="mega">
+          <a href="/about"><span class="mt">About</span><span class="ms">Who is doing the work, and why one embedded engineer</span></a>
+          <a href="/client-story"><span class="mt">Proof</span><span class="ms">Honest statement of where we are — pre-pilot</span></a>
+          <a href="/demo"><span class="mt">Contact</span><span class="ms">A direct channel is not open yet</span></a>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn btn-amber" href="/demo">Talk to us
+      <svg class="chev" width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </a>
+
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobilepanel">
+    <a href="/platform">The Arc</a>
+    <a href="/solutions">By trade</a>
+    <a href="/compare">Why an FDE</a>
+    <a href="/resources">Notes</a>
+    <a href="/about">Company</a>
+    <a class="btn btn-amber" href="/demo">Talk to us</a>
+  </div>
+</div>
+
+<header class="phero">
+  <div class="blueprint"></div>
+  <div class="wrap">
+    <nav class="crumbs"><a href="/">Home</a> <span>/</span> <span>The Arc</span></nav>
+    <span class="eyebrow">The arc, in detail</span>
+    <h1 class="d1">Trustworthy data first, then decisions</h1>
+    <p class="lede">One Forward Deployed Engineer runs the same three stages in every firm. Capture makes the data trustworthy. Control makes it legible. Intelligence makes it answer questions — with a person approving every action.</p>
+    <div class="row">
+      <a class="btn btn-amber" href="/demo">Talk to us <svg class="chev" width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
+      <a class="btn btn-ghost-dark" href="/compare">Why an FDE, not a tool</a>
+    </div>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">What the FDE does</span>
+      <h2 class="d2">Three stages, in order, then a person in the loop</h2>
+      <p class="sub">Each stage stands on the one before it. There is no useful intelligence on data you cannot trust yet.</p>
+    </div>
+
+    <div class="explorer rv">
+      <div class="tablist" role="tablist" aria-label="The arc">
+        <button role="tab" aria-selected="true" data-tab="t1"><b>01 · Capture</b>Data you can trust</button>
+        <button role="tab" aria-selected="false" data-tab="t2"><b>02 · Control</b>The picture, on current data</button>
+        <button role="tab" aria-selected="false" data-tab="t3"><b>03 · Intelligence</b>Answers, with a person</button>
+        <button role="tab" aria-selected="false" data-tab="t4"><b>Advisory, not autonomous</b>A person approves each action</button>
+        <button role="tab" aria-selected="false" data-tab="t5"><b>Yours to keep</b>Built in your systems</button>
+      </div>
+
+      <div class="tabpanels">
+        <div class="tabpanel" id="t1" data-active="1" role="tabpanel">
+          <h3>01 · Capture</h3>
+          <p>Inventory every system you run, connect them, and reconcile on a schedule. The first visible output is small and honest: a daily list of the jobs where two systems disagree, and why.</p>
+          <ul class="featlist">
+            <li><span class="dot">&#10003;</span><span><b>Inventory the systems</b> — project management, ERP/accounting, payroll, field apps, and the spreadsheets on someone's desktop.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Stand up connections</b> — through their APIs where they exist, through an integration layer where that is cleaner than building a connector ourselves.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Reconcile nightly</b> — committed cost, invoiced-to-date and approved change orders matched across Procore and Sage into one table.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Surface the disagreements</b> — the specific jobs where the systems do not line up, named, with both values.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Fix the data-entry gaps</b> behind the disagreements, with your PMs and accounting team. The list gets shorter.</span></li>
+          </ul>
+        </div>
+        <div class="tabpanel" id="t2" role="tabpanel">
+          <h3>02 · Control</h3>
+          <p>With the data trusted, the operational and financial picture — measured the same way on every job, updated daily instead of at month-end.</p>
+          <ul class="featlist">
+            <li><span class="dot">&#10003;</span><span><b>Job costing and margin</b> by job, phase and cost code — one method every job.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Labour productivity</b> against budgeted hours; where the field is losing time and on which activities.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Subcontractor performance</b> — on-time, rework, change-order volume, default-risk signals.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Change-order and RFI cycle time</b> — how long paper sits, and where.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Cash</b> — WIP, over/under billing, retainage held and owed, and a forward view.</span></li>
+          </ul>
+        </div>
+        <div class="tabpanel" id="t3" role="tabpanel">
+          <h3>03 · Intelligence</h3>
+          <p>Ask in plain language and get answers computed against your data, with the underlying records attached.</p>
+          <ul class="featlist">
+            <li><span class="dot">&#10003;</span><span><b>Plain-English questions</b> answered against your data — &ldquo;which jobs are fading margin faster than last month, and why?&rdquo;</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Margin-leak alerts</b> — jobs fading faster than trend, unbilled work aging, productivity dropping on a crew or activity.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Cost-to-complete and cash forecasts</b> that update as the source data changes.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Suggested next steps</b> a named person reviews and approves before anything happens.</span></li>
+          </ul>
+        </div>
+        <div class="tabpanel" id="t4" role="tabpanel">
+          <h3>Advisory, not autonomous</h3>
+          <p>The AI drafts. It does not act. Every figure a client sees can be followed back to the record it came from.</p>
+          <ul class="featlist">
+            <li><span class="dot">&#10003;</span><span><b>A model never originates a number.</b> Displayed figures are computed from your records, with the line items attached.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Nothing is sent, moved or changed</b> — no email, no ERP update, no subcontractor notification — without a named person approving it.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>Where an LLM drafts a summary</b>, it runs only against your scoped data, and its output is reviewed before anyone acts.</span></li>
+          </ul>
+        </div>
+        <div class="tabpanel" id="t5" role="tabpanel">
+          <h3>Yours to keep</h3>
+          <p>The engagement is one person, priced against a hire — not a licence to a product you rent.</p>
+          <ul class="featlist">
+            <li><span class="dot">&#10003;</span><span><b>The connections, data models, documentation and code</b> the FDE builds live in your systems and stay yours.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>If the engagement ends</b> you keep all of it, with a written handover.</span></li>
+            <li><span class="dot">&#10003;</span><span><b>One monthly fee</b>, reporting into your CFO or controller with a standing weekly review. See <a href="/services">how the engagement works</a>.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Why one Forward Deployed Engineer</span>
+      <h2 class="d2">A person who has done construction operations, not just software</h2>
+    </div>
+    <div class="vgrid rv">
+      <div class="vcard"><span class="vn">01</span><h3>One named person</h3><p>Not a team, not a rotating bench, not a ticket queue. One engineer embedded in your firm, accountable to your finance lead.</p></div>
+      <div class="vcard"><span class="vn">02</span><h3>Construction-native</h3><p>Retention, cost types, change orders and WIP are the starting vocabulary. Nobody has to explain what a cost code is.</p></div>
+      <div class="vcard"><span class="vn">03</span><h3>Honest about disagreements</h3><p>When two systems disagree we surface it and name both values. Silent failure is how people stop trusting a number.</p></div>
+      <div class="vcard"><span class="vn">04</span><h3>The harvest loop</h3><p>Anything built for a third client that would help every client becomes core — so each engagement starts further along than the last.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="ctaband rv" style="padding:56px 48px">
+      <div class="blueprint"></div>
+      <h2 class="d3" style="margin-bottom:14px">How does an FDE compare to a tool, or to hiring your own?</h2>
+      <p>An honest side-by-side — including where an embedded engineer is not the right call.</p>
+      <div class="row"><a class="btn btn-light" href="/compare">See the comparison <svg class="chev" width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="marquee-sec" style="border-top:1px solid var(--line)">
+  <div class="wrap cap"><span class="eyebrow">Sits on top of the systems you already run</span></div>
+  <div class="marquee"><div class="marquee-track">
+    <span class="logo-word"><i></i>Procore</span><span class="logo-word"><i></i>Sage 300 CRE</span>
+    <span class="logo-word"><i></i>Foundation</span><span class="logo-word"><i></i>Viewpoint Vista</span>
+    <span class="logo-word"><i></i>CMiC</span><span class="logo-word"><i></i>QuickBooks</span>
+    <span class="logo-word"><i></i>Autodesk / PlanGrid</span><span class="logo-word"><i></i>Excel / Google Sheets</span>
+  </div></div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">Client feedback</span><h2 class="d2">We don't have testimonials yet.</h2>
+      <p class="lede">We do not publish a quote until a named person has approved the wording. When a contractor goes on record, their words will be here.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">Notes</span><h2 class="d2">Planned — nothing published yet</h2></div>
+    <div class="rgrid rv">
+      <article class="rcard rfeat"><div class="rthumb art-1"><div class="blueprint"></div></div><div class="rbody"><span class="rkind">Planned</span><h3>What breaks when you sync Vista and Procore</h3><p>The real failure modes — cost-code drift, vendor duplicates, retainage mismatches — and how the FDE reconciles each one.</p><a class="link-arrow" href="/article">See the outline <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a></div></article>
+      <article class="rcard"><div class="rthumb art-2"><div class="blueprint"></div></div><div class="rbody"><span class="rkind">Planned</span><h3>Why your job-cost report is three weeks stale</h3><p>It is rarely accounting. It is the handoff before them.</p><a class="link-arrow" href="/resources">All planned notes <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a></div></article>
+      <article class="rcard"><div class="rthumb art-3"><div class="blueprint"></div></div><div class="rbody"><span class="rkind">Planned</span><h3>Margin fade: catching it while you can still act</h3><p>Spotting the jobs fading faster than trend, and tracing the reason to line items.</p><a class="link-arrow" href="/resources">All planned notes <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="ctaband rv">
+      <div class="blueprint"></div>
+      <h2 class="d2">Bring us your worst month-end.</h2>
+      <p>Tell us the systems you run and where the close hurts most, and we will tell you honestly whether an embedded FDE is the right fix — or not. No deck.</p>
+      <div class="row">
+        <a class="btn btn-light" href="/demo">Talk to us <svg class="chev" width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L1 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
+        <a class="btn btn-ghost-dark" href="/compare">Why an FDE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a class="brand" href="/">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="2" y="2" width="13" height="13" rx="3"/>
+            <path d="M17 2h13v13H17zM2 17h13v13H2zM17 17h13v13H17z" opacity=".9"/>
+          </svg>
+          BundleBoB
+        </a>
+        <p>One Forward Deployed Engineer (also known as an AI Integrator) for mid-market general contractors. Capture, then Control, then Intelligence.</p>
+      </div>
+      <div>
+        <h4>The Arc</h4>
+        <ul>
+          <li><a href="/platform">Capture</a></li>
+          <li><a href="/platform">Control</a></li>
+          <li><a href="/platform">Intelligence</a></li>
+          <li><a href="/integrations">Systems we connect</a></li>
+          <li><a href="/compare">Security &amp; data</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>By trade</h4>
+        <ul>
+          <li><a href="/solutions">Mechanical &amp; plumbing</a></li>
+          <li><a href="/solutions">Electrical</a></li>
+          <li><a href="/solutions">Fire protection</a></li>
+          <li><a href="/solutions">General contractors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Notes</h4>
+        <ul>
+          <li><a href="/resources">Field notes</a></li>
+          <li><a href="/article">Sample outline</a></li>
+          <li><a href="/compare">Why an FDE</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/client-story">Proof</a></li>
+          <li><a href="/demo">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>&copy; 2026 BundleBoB. Demo site — not in commercial use.</span>
+      <span class="lg">
+        <span>Pre-pilot · honest about what is not built yet</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
