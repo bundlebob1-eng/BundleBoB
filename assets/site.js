@@ -53,10 +53,10 @@ setTimeout(function(){
     function draw(){
       var w = cv.offsetWidth, h = cv.offsetHeight, s = 46;
       cx.clearRect(0,0,w,h);
-      cx.strokeStyle = 'rgba(160,180,255,.16)'; cx.lineWidth = 1;
+      cx.strokeStyle = 'rgba(120,170,210,.16)'; cx.lineWidth = 1;
       for (var x = -s + (t % s); x < w + s; x += s){ cx.beginPath(); cx.moveTo(x,0); cx.lineTo(x,h); cx.stroke(); }
       for (var y = -s + (t*0.4 % s); y < h + s; y += s){ cx.beginPath(); cx.moveTo(0,y); cx.lineTo(w,y); cx.stroke(); }
-      cx.strokeStyle = 'rgba(240,160,60,.34)'; cx.lineWidth = 1.6;
+      cx.strokeStyle = 'rgba(185,120,43,.40)'; cx.lineWidth = 1.6;
       for (var i=0;i<5;i++){
         var yy = ((t*0.9 + i*190) % (h+260)) - 130;
         cx.beginPath(); cx.moveTo(w*0.06, yy); cx.lineTo(w*0.34, yy - 66); cx.lineTo(w*0.62, yy - 20); cx.stroke();
@@ -298,5 +298,29 @@ document.addEventListener('click', function(e){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 110, behavior: reduce ? 'auto':'smooth'});
 });
+
+/* ====== ISOMETRIC LAYERS DIAGRAM — pointer parallax + hover zoom ====== */
+(function(){
+  var iso = document.getElementById('iso'), stage = document.getElementById('iso-stage');
+  if (!iso || !stage) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(max-width: 720px)').matches) return;
+  var raf = 0, px = 0, py = 0, zoom = 0;
+  function apply(){
+    raf = 0;
+    stage.style.setProperty('--px', px.toFixed(2) + 'deg');
+    stage.style.setProperty('--py', py.toFixed(2) + 'deg');
+    stage.style.setProperty('--zoom', zoom.toFixed(1) + 'px');
+  }
+  function schedule(){ if (!raf) raf = requestAnimationFrame(apply); }
+  iso.addEventListener('pointerenter', function(){ zoom = 84; schedule(); });
+  iso.addEventListener('pointermove', function(e){
+    var r = iso.getBoundingClientRect();
+    px = ((e.clientX - r.left) / r.width - 0.5) * 14;
+    py = ((e.clientY - r.top) / r.height - 0.5) * -10;
+    schedule();
+  });
+  iso.addEventListener('pointerleave', function(){ px = 0; py = 0; zoom = 0; schedule(); });
+})();
 
 })();
