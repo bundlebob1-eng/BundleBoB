@@ -18,7 +18,7 @@
   --n-navy: #14212B;
   --n-success: #2E7D5B;
   --n-slate: #56606C;
-  --n-slate-light: #8B929C;
+  --n-slate-light: #6E7681; /* AA on white/paper; was #8B929C (failed) */
   --n-bg: #F6F4EF;
   --n-bg-alt: #EAF0F5;
   --n-border: #E6E1D6;
@@ -1014,7 +1014,7 @@ table, .table { font-variant-numeric: tabular-nums; }
 
 /* ---- Buttons: flat, 12px radius, calm motion ---- */
 .btn { border-radius: var(--n-radius-md); font-weight: 500; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
-.btn i { margin-left: 0.75rem !important; }
+.btn i { margin-left: 1.5rem !important; } /* 24px label→chevron gap (ref) */
 .btn-primary {
   background: var(--n-primary);
   border: none;
@@ -1095,18 +1095,19 @@ table, .table { font-variant-numeric: tabular-nums; }
   border-bottom: 0 !important;
   padding: 0 !important;
 }
-.navbar-nexora.fixed-top { top: 22px; }
+.navbar-nexora.fixed-top { top: 32px; }
+@media (max-width: 991.98px) { .navbar-nexora.fixed-top { top: 16px; } }
 
 .navbar-nexora > .container {
-  max-width: 1180px;
+  max-width: 1200px;
   padding: 0 14px 0 26px;
-  min-height: 68px;
+  min-height: 76px;
   background: var(--n-navy);
-  border-radius: var(--n-radius-lg);
+  border-radius: 24px;
   transition: min-height 0.2s ease, box-shadow 0.2s ease;
 }
 .navbar-nexora.scrolled > .container {
-  min-height: 60px;
+  min-height: 64px;
   box-shadow: 0 10px 30px rgba(20, 33, 43, 0.22);
 }
 
@@ -1133,5 +1134,26 @@ table, .table { font-variant-numeric: tabular-nums; }
 @media (max-width: 991.98px) {
   .navbar-nexora > .container { border-radius: var(--n-radius-md); padding: 0 16px; }
   .navbar-nexora .navbar-collapse { padding: 0.5rem 0 1rem; }
+  .navbar-nexora .navbar-collapse.show { max-height: calc(100vh - 120px); overflow-y: auto; }
   .navbar-nexora .nav-link { padding: 0.6rem 0.75rem !important; }
+}
+
+/* =====================================================
+   QA AUDIT FIXES (Chrome end-to-end review, 2026-08-31)
+   ===================================================== */
+
+/* No mobile horizontal scroll: .row.g-5 negative margins vs .container padding. */
+@media (max-width: 767.98px) {
+  .row.g-5 { --bs-gutter-x: 1.5rem; }
+  .container { padding-left: 20px; padding-right: 20px; }
+}
+
+/* Portfolio scenario captions were hover-only — invisible on touch devices. */
+@media (hover: none), (pointer: coarse) {
+  .portfolio-overlay { opacity: 1; }
+}
+
+/* Centred hero lede should actually centre (had margin:0 + max-width). */
+@media (max-width: 991.98px) {
+  .hero p { margin-left: auto; margin-right: auto; }
 }

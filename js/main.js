@@ -2,6 +2,14 @@
    NEXORA — UI Interactions (Vanilla JS)
    ===================================================== */
 
+/* Failsafe (runs independently of everything below): if the scroll-reveal
+   observer never fires — JS error, blocked script, no IntersectionObserver —
+   force every .reveal block visible so the page can never render blank. */
+setTimeout(function () {
+  var els = document.querySelectorAll('.reveal:not(.is-visible)');
+  for (var i = 0; i < els.length; i++) els[i].classList.add('is-visible');
+}, 2500);
+
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Sticky navbar on scroll ---------- */
