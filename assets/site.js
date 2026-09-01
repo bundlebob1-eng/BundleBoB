@@ -53,10 +53,10 @@ setTimeout(function(){
     function draw(){
       var w = cv.offsetWidth, h = cv.offsetHeight, s = 46;
       cx.clearRect(0,0,w,h);
-      cx.strokeStyle = 'rgba(160,180,255,.16)'; cx.lineWidth = 1;
+      cx.strokeStyle = 'rgba(120,170,210,.16)'; cx.lineWidth = 1;
       for (var x = -s + (t % s); x < w + s; x += s){ cx.beginPath(); cx.moveTo(x,0); cx.lineTo(x,h); cx.stroke(); }
       for (var y = -s + (t*0.4 % s); y < h + s; y += s){ cx.beginPath(); cx.moveTo(0,y); cx.lineTo(w,y); cx.stroke(); }
-      cx.strokeStyle = 'rgba(240,160,60,.34)'; cx.lineWidth = 1.6;
+      cx.strokeStyle = 'rgba(185,120,43,.40)'; cx.lineWidth = 1.6;
       for (var i=0;i<5;i++){
         var yy = ((t*0.9 + i*190) % (h+260)) - 130;
         cx.beginPath(); cx.moveTo(w*0.06, yy); cx.lineTo(w*0.34, yy - 66); cx.lineTo(w*0.62, yy - 20); cx.stroke();
