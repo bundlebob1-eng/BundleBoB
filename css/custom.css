@@ -643,20 +643,39 @@ a { text-decoration: none; }
   display: block;
 }
 
-/* Logo cloud */
+/* Systems strip ("sits on top of the systems you already run") */
 .logo-cloud-item {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.6rem;
   font-family: var(--n-font-display);
-  font-weight: 800;
-  font-size: 1.25rem;
-  color: var(--n-slate-light);
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: var(--n-slate);
+  transition: color 0.2s ease;
 }
 
-.logo-cloud-item:hover { opacity: 1; color: var(--n-navy); }
+.sys-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: var(--n-radius-sm);
+  background: var(--n-bg-alt);
+  color: var(--n-primary);
+  font-family: var(--n-font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.logo-cloud-item:hover { color: var(--n-navy); }
+.logo-cloud-item:hover .sys-badge { background: var(--n-primary); color: #fff; }
 
 /* =====================================================
    FORMS
