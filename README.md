@@ -2,19 +2,36 @@
 
 Public-facing site for BundleBoB: **one Forward Deployed Engineer (also known as
 an AI Integrator)** placed inside a mid-market commercial general contractor to
-connect its systems (Procore, Sage, Foundation, QuickBooks, spreadsheets), then
-build the layer on top that shows where margin is leaking — **Capture → Control
-→ Intelligence**. A headcount line, not a software subscription.
+connect its systems (Procore, Sage 300 CRE, Foundation, Viewpoint Vista, CMiC,
+QuickBooks, spreadsheets), then build the layer on top that shows where margin
+is leaking — **Capture → Control → Intelligence, in that order**. A headcount
+line, not a software subscription. Advisory, not autonomous.
 
 ## What this is
 
-A **static HTML site**, built on the Nexora Bootstrap 5 template
-([ThemeWagon](https://themewagon.com/), MIT licence). No build step, no
-framework, no backend. Just HTML + `css/custom.css` + `js/main.js`, with
-Bootstrap, Bootstrap Icons and Google Fonts loaded from CDNs.
+A **static HTML site**. No build step, no framework, no backend. Page content
+is plain HTML; all styling is in `assets/site.css` and all behaviour in
+`assets/site.js` (one dependency-free IIFE). Only Google Fonts (Archivo, IBM
+Plex Sans, IBM Plex Mono) load from a CDN.
 
-> This replaced an earlier Next.js version of the site. The template's original
-> style and UI are kept as-is; only the text content was rewritten to BundleBoB.
+> This is the third design of the site. It adopts a pasted static template
+> (`bundlebobsite/`, O.C. Tanner–inspired) for structure and design system;
+> every page's copy was rewritten to the BundleBoB FDE positioning and the
+> honesty rules below. The earlier Nexora-template and Next.js versions are
+> gone.
+
+### Design system
+
+- Tokens: `--paper #F0EEE7`, `--ink #14161B`, `--indigo #1E2A78`,
+  `--amber #F0A03C`, `--muted #63666F`.
+- Type: Archivo (display, 700–800), IBM Plex Sans (body), IBM Plex Mono
+  (eyebrows / data).
+- Three-state theming: bare `:root` is the light palette; dark is redefined
+  under `@media (prefers-color-scheme: dark)` guarded `:root:not([data-theme="light"])`
+  and again under `:root[data-theme="dark"]`.
+- Fixed dark floating nav island; `.rv` scroll-reveal with a `<noscript>`
+  fallback and a `setTimeout` failsafe in `site.js` so a JS error can never
+  leave the page blank.
 
 ## Run locally
 
@@ -22,59 +39,67 @@ Bootstrap, Bootstrap Icons and Google Fonts loaded from CDNs.
 python3 -m http.server 8080     # then open http://localhost:8080
 ```
 
+Deployed on Vercel (`vercel.json`: `framework: null`, `cleanUrls: true`,
+`trailingSlash: false`, `outputDirectory: "."`, no install/build step).
+`cleanUrls` is why internal links are extensionless (`/platform`, not
+`/platform.html`).
+
 ## Pages
 
-| File | Purpose |
-|---|---|
-| `index.html` | Home — the arc, who it's for, integration posture |
-| `about.html` | Why one FDE; the harvest loop; team (placeholder) |
-| `services.html` | The Arc — Capture / Control / Intelligence overview |
-| `service-details.html` | The Arc in detail, with example deliverables |
-| `pricing.html` | Priced against a hire, not a project |
-| `portfolio.html` | Work — illustrative engagement scenarios by stage |
-| `portfolio-single.html` | A first engagement, walked through (demo) |
-| `blog.html` | Notes — planned field-note topics (nothing published) |
-| `blog-details.html` | One note outline (demo) |
-| `security.html` | Security & data — posture, plainly, including gaps |
-| `contact.html` | Holding page — no public inbox yet |
+| File | Route | Purpose |
+|---|---|---|
+| `index.html` | `/` | Home — the arc, self-select block, honest state |
+| `platform.html` | `/platform` | The Arc in detail — Capture / Control / Intelligence, why one FDE |
+| `solutions.html` | `/solutions` | By trade — the same arc read in each trade's language |
+| `integrations.html` | `/integrations` | Systems we connect — priority vs. on-request, nothing in production yet |
+| `services.html` | `/services` | The engagement — what the FDE does, priced against a hire |
+| `compare.html` | `/compare` | Why an FDE vs. hire-your-own / SaaS / consultancy; **Security & data** section (`#security`) |
+| `resources.html` | `/resources` | Notes — planned topics, nothing published |
+| `article.html` | `/article` | One note *outline* ("What breaks when you sync Vista and Procore"), labelled not-published |
+| `client-story.html` | `/client-story` | Proof — honest "no named client yet, pre-pilot" |
+| `about.html` | `/about` | About — why one embedded engineer; bios/entity not published yet |
+| `demo.html` | `/demo` | Contact — holding page, no form, "a direct channel isn't open yet" |
 
-## Demo / placeholder content — replace before any commercial launch
+`/demo` is intentionally kept out of the header/footer nav until a monitored
+inbox exists; it is reachable from the "Talk to us" buttons.
 
-This is a **design demo on a domain that is not in commercial use**. Every gap
-is disclosed honestly on the page itself (no `[ TO CONFIRM ]` brackets):
+## Honesty rules (the site is a demo, not in commercial use)
 
-- **`index.html`** — "We don't have client testimonials yet"; the Work preview
-  shows the *shape* of an engagement with no week numbers.
-- **`portfolio.html` / `portfolio-single.html`** — labelled "illustrative" /
-  "demo content". No named client, no measured results.
-- **`blog.html` / `blog-details.html`** — labelled "nothing published yet".
-- **`about.html`** — founder / FDE bio, entity name + US state, team location.
-- **`contact.html`** — real inbox + reply time; then re-add `Contact` to the
-  nav (it is intentionally omitted from the header/footer nav until then).
-- **`security.html`** — every card states whether it is an implemented control
-  or a **design intent not yet validated against a real client**. Do not
-  upgrade a card to a present-tense fact until it actually is one.
-- **Newsletter / contact forms** submit nowhere (template demo behaviour).
+Every page footer reads **"© 2026 BundleBoB. Demo site — not in commercial
+use."** While that label is up, the site must contain **no fabricated facts**:
+no invented names, prices, dates, client counts, certifications, testimonials,
+case studies, or specific technical claims presented as fact. Where something
+does not exist yet, the page says so plainly ("not published yet", "pre-pilot",
+"design intent — not yet in place").
+
+Current honest "not yet" states:
+
+- **`client-story.html`** — no named client; pre-pilot; no published figures.
+- **`index.html` / `solutions.html` / `services.html` / `compare.html`** — "We
+  don't have testimonials yet."
+- **`resources.html` / `article.html`** — "nothing published yet"; the article
+  is an *outline* describing design intent, not a report from a deployment.
+- **`about.html`** — team bios, legal entity name + US state, team/client
+  location: not published yet.
+- **`integrations.html`** — every system is "Priority" (first wave to build) or
+  "On request"; nothing is running in production.
+- **`compare.html` → Security & data** — split into "In place now" vs. "Design
+  intent — not yet in place". SOC 2 / SSO / SCIM / audit logging / pen testing /
+  named entity are all in the second column. Do not move an item to the first
+  column until it is implemented and checkable.
+- **`demo.html`** — no working form; no public inbox; company details withheld
+  until on record.
+- **`.mock` UI blocks** are `aria-hidden` illustrations of what the product
+  would look like — not screenshots of real client data.
 
 **`LAUNCH-CHECKLIST.md`** is the single list of what must become real before the
-"Demo site — not in commercial use" footer label may be removed.
+"Demo site — not in commercial use" label may be removed.
 
-## Palette
+## Pre-deploy check (every deploy)
 
-Three colours over a warm-neutral scale, all defined as CSS custom properties
-at the top of `css/custom.css` — change them there, not in the pages:
-
-| Token | Hex | Use |
-|---|---|---|
-| `--n-primary` | `#12426B` | engineering blue — headings accents, buttons, links, dark surfaces |
-| `--n-secondary` | `#B9782B` | warm ochre — sparing accent only (wordmark dot, small marks, nav hover) |
-| `--n-navy` | `#14212B` | ink — display headings |
-| `--n-bg` | `#F6F4EF` | warm paper — alternating section backgrounds |
-| `--n-bg-alt` | `#EAF0F5` | pale blue — eyebrow chips, tinted tiles |
-| `--n-border` | `#E6E1D6` | warm hairline |
-| `--n-slate` / `--n-slate-light` | `#56606C` / `#8B929C` | body / meta text |
-
-## Deploy
-
-Static hosting. `vercel.json` sets `framework: null` with no build step and
-serves the repo root.
+```sh
+grep -rn "REPLACE\|TO CONFIRM\|Placeholder attribution" *.html   # must be zero
+grep -rn 'href="#"' *.html                                       # must be zero
+grep -rn "<form" *.html                                          # must be zero
+grep -rn 'href="[a-z-]*\.html"' *.html                           # must be zero (cleanUrls)
+```
