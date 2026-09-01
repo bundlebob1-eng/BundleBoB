@@ -50,7 +50,6 @@ Deployed on Vercel (`vercel.json`: `framework: null`, `cleanUrls: true`,
 |---|---|---|
 | `index.html` | `/` | Home — the arc, self-select block, honest state |
 | `platform.html` | `/platform` | The Arc in detail — Capture / Control / Intelligence, why one FDE |
-| `solutions.html` | `/solutions` | By trade — the same arc read in each trade's language |
 | `integrations.html` | `/integrations` | Systems we connect — priority vs. on-request, nothing in production yet |
 | `services.html` | `/services` | The engagement — what the FDE does, priced against a hire |
 | `compare.html` | `/compare` | Why an FDE vs. hire-your-own / SaaS / consultancy; **Security & data** section (`#security`) |
@@ -75,7 +74,7 @@ does not exist yet, the page says so plainly ("not published yet", "pre-pilot",
 Current honest "not yet" states:
 
 - **`client-story.html`** — no named client; pre-pilot; no published figures.
-- **`index.html` / `solutions.html` / `services.html` / `compare.html`** — "We
+- **`index.html` / `services.html` / `compare.html`** — "We
   don't have testimonials yet."
 - **`resources.html` / `article.html`** — "nothing published yet"; the article
   is an *outline* describing design intent, not a report from a deployment.

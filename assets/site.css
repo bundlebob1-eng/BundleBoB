@@ -696,10 +696,22 @@ footer{background:#14212B;color:var(--on-dark);padding:82px 0 40px;margin-top:10
   font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.06em;
   text-transform:uppercase; color:var(--muted-2);
 }
-@media (max-width:720px){
-  .iso{perspective:none; height:auto; max-width:340px}
-  .iso-stage{position:static; transform:none; display:flex; flex-direction:column; gap:16px}
-  .iso-plane{position:static; left:auto; top:auto; width:100%; aspect-ratio:16/9; transform:none!important}
-  .iso-beam{display:none}
+@keyframes iso-float{
+  0%,100%{transform:translateZ(0) rotateX(52deg) rotateZ(-46deg)}
+  50%    {transform:translateZ(30px) rotateX(50deg) rotateZ(-37deg)}
 }
-@media (prefers-reduced-motion:reduce){ .iso-stage{transition:none; --zoom:0px!important} }
+@media (max-width:720px){
+  /* keep the 3D on phones — just shrink it and let it drift on its own (no hover) */
+  .iso{max-width:min(92vw,380px); height:clamp(340px,86vw,440px); margin:36px auto 0; perspective:1050px; cursor:default}
+  .iso-stage{transform:translateZ(0) rotateX(52deg) rotateZ(-44deg); animation:iso-float 9s ease-in-out infinite}
+  .iso:hover .iso-stage{transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+  .iso-plane{width:min(82%,300px)}
+  .iso-base{transform:translate(-50%,-50%) translateZ(-54px)}
+  .iso-mid {transform:translate(-50%,-50%) translateZ(8px)}
+  .iso-top {transform:translate(-50%,-50%) translateZ(74px)}
+  .iso-tiles{padding:14px; gap:7px}
+  .iso-tiles span{font-size:10px; padding:7px 6px}
+  .iso-beam{height:190px}
+  .iso-tag{font-size:8.5px; letter-spacing:.13em; top:-20px}
+}
+@media (prefers-reduced-motion:reduce){ .iso-stage{transition:none; animation:none!important; --zoom:0px!important} }
