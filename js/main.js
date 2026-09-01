@@ -90,12 +90,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- Set active nav link based on current page ---------- */
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  // Normalise both sides to an extensionless path ("/", "/about", ...).
+  const norm = p => {
+    p = (p || '/').split('?')[0].split('#')[0];
+    p = p.replace(/\/index(\.html)?$/, '/').replace(/\.html$/, '');
+    return p === '' ? '/' : p;
+  };
+  const here = norm(window.location.pathname);
   document.querySelectorAll('.navbar-nexora .nav-link').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage) {
-      link.classList.add('active');
-    }
+    if (norm(link.getAttribute('href')) === here) link.classList.add('active');
   });
 
 });

@@ -3,5 +3,7 @@
   "framework": null,
   "installCommand": "echo skip-install",
   "buildCommand": "echo skip-build",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false
 }
