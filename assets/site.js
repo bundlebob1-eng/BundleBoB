@@ -299,28 +299,28 @@ document.addEventListener('click', function(e){
   window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 110, behavior: reduce ? 'auto':'smooth'});
 });
 
-/* ============ ISOMETRIC DIAGRAM — subtle pointer parallax ============ */
+/* ====== ISOMETRIC LAYERS DIAGRAM — pointer parallax + hover zoom ====== */
 (function(){
   var iso = document.getElementById('iso'), stage = document.getElementById('iso-stage');
   if (!iso || !stage) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (window.matchMedia('(max-width: 720px)').matches) return;
-  var raf = 0, px = 0, py = 0;
+  var raf = 0, px = 0, py = 0, zoom = 0;
+  function apply(){
+    raf = 0;
+    stage.style.setProperty('--px', px.toFixed(2) + 'deg');
+    stage.style.setProperty('--py', py.toFixed(2) + 'deg');
+    stage.style.setProperty('--zoom', zoom.toFixed(1) + 'px');
+  }
+  function schedule(){ if (!raf) raf = requestAnimationFrame(apply); }
+  iso.addEventListener('pointerenter', function(){ zoom = 84; schedule(); });
   iso.addEventListener('pointermove', function(e){
     var r = iso.getBoundingClientRect();
-    px = ((e.clientX - r.left) / r.width - 0.5) * 12;
-    py = ((e.clientY - r.top) / r.height - 0.5) * -9;
-    if (raf) return;
-    raf = requestAnimationFrame(function(){
-      raf = 0;
-      stage.style.setProperty('--px', px.toFixed(2) + 'deg');
-      stage.style.setProperty('--py', py.toFixed(2) + 'deg');
-    });
+    px = ((e.clientX - r.left) / r.width - 0.5) * 14;
+    py = ((e.clientY - r.top) / r.height - 0.5) * -10;
+    schedule();
   });
-  iso.addEventListener('pointerleave', function(){
-    stage.style.setProperty('--px', '0deg');
-    stage.style.setProperty('--py', '0deg');
-  });
+  iso.addEventListener('pointerleave', function(){ px = 0; py = 0; zoom = 0; schedule(); });
 })();
 
 })();
