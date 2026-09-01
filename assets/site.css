@@ -697,21 +697,34 @@ footer{background:#14212B;color:var(--on-dark);padding:82px 0 40px;margin-top:10
   text-transform:uppercase; color:var(--muted-2);
 }
 @keyframes iso-float{
-  0%,100%{transform:translateZ(0) rotateX(52deg) rotateZ(-46deg)}
-  50%    {transform:translateZ(30px) rotateX(50deg) rotateZ(-37deg)}
+  0%,100%{transform:scale(.9) rotateX(54deg) rotateZ(-38deg)}
+  50%    {transform:scale(.9) rotateX(52deg) rotateZ(-30deg)}
 }
 @media (max-width:720px){
-  /* keep the 3D on phones — just shrink it and let it drift on its own (no hover) */
-  .iso{max-width:min(92vw,380px); height:clamp(340px,86vw,440px); margin:36px auto 0; perspective:1050px; cursor:default}
-  .iso-stage{transform:translateZ(0) rotateX(52deg) rotateZ(-44deg); animation:iso-float 9s ease-in-out infinite}
+  /* keep the 3D on phones — shrink it, contain it, let it drift (no hover) */
+  .sec-iso .wrap{overflow:hidden}
+  .iso{
+    width:100%; max-width:none; margin:24px auto 0;
+    height:clamp(300px,72vw,360px);
+    perspective:900px; perspective-origin:50% 46%; cursor:default;
+  }
+  .iso-stage{transform:scale(.9) rotateX(54deg) rotateZ(-38deg); animation:iso-float 9s ease-in-out infinite}
   .iso:hover .iso-stage{transition:transform .4s cubic-bezier(.22,.61,.36,1)}
-  .iso-plane{width:min(82%,300px)}
-  .iso-base{transform:translate(-50%,-50%) translateZ(-54px)}
-  .iso-mid {transform:translate(-50%,-50%) translateZ(8px)}
-  .iso-top {transform:translate(-50%,-50%) translateZ(74px)}
-  .iso-tiles{padding:14px; gap:7px}
-  .iso-tiles span{font-size:10px; padding:7px 6px}
-  .iso-beam{height:190px}
-  .iso-tag{font-size:8.5px; letter-spacing:.13em; top:-20px}
+  .iso-plane{width:min(54vw,205px)}
+  .iso-base{transform:translate(-50%,-50%) translateZ(-38px)}
+  .iso-mid {transform:translate(-50%,-50%) translateZ(6px)}
+  .iso-top {transform:translate(-50%,-50%) translateZ(48px)}
+  .iso-tag{display:none}
+  .iso-tiles{padding:11px; gap:6px}
+  .iso-tiles span{font-size:9px; padding:6px 5px; letter-spacing:0}
+  .iso-slab b{font-size:14px}
+  .iso-slab-role{font-size:11px}
+  .iso-slab small{font-size:8.5px; letter-spacing:.06em}
+  .iso-panel{padding:14px}
+  .iso-panel-h{font-size:9px}
+  .iso-pr{font-size:10px; gap:7px}
+  .iso-pr span:first-child{width:44px}
+  .iso-beam{height:150px}
+  .iso-cap{margin-top:16px}
 }
 @media (prefers-reduced-motion:reduce){ .iso-stage{transition:none; animation:none!important; --zoom:0px!important} }
