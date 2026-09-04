@@ -1,9 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "echo skip-install",
-  "buildCommand": "echo skip-build",
-  "outputDirectory": ".",
+  "installCommand": "echo skip-root-install",
+  "buildCommand": "cd scroll3d && npm ci && npm run build",
+  "outputDirectory": "scroll3d/dist",
   "cleanUrls": true,
   "trailingSlash": false
 }
