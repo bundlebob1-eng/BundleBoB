@@ -204,3 +204,43 @@ wall installation actually looks like.
 
 `Handover.tsx` content is **placeholder and labelled as such**. Do not ship it
 as real endorsements.
+
+---
+
+## Verifying a beat change
+
+Camera work cannot be judged from source. `scripts/shots.mjs` drives the built
+site in real Chrome and screenshots every beat.
+
+```bash
+npm run build
+npx serve dist -l 8200         # or: cd dist && python3 -m http.server 8200
+npx playwright@latest install chromium   # first run only
+node scripts/shots.mjs         # writes /tmp/shots/b000.png … b100.png
+```
+
+Two things it handles that catch people out:
+
+- **Headless Chrome reports `prefers-reduced-motion: reduce` by default**, so a
+  naive run silently tests the static fallback and never touches the 3D. The
+  script passes `reducedMotion: 'no-preference'`.
+- **Progress 1.0 is not the bottom of the document.** The scrub ends when the
+  spacer's bottom reaches the viewport bottom; the handover section scrolls
+  after that. Scrolling to "50% of `document.body.scrollHeight`" lands at a
+  materially different progress. The script computes the spacer's extent and
+  scrolls to `progress × (spacerBottom − viewportHeight)` instead.
+
+## Two non-obvious mechanics
+
+**The loader waits on rendered frames, not asset progress.** The scene is
+entirely procedural — no textures, no models — so `THREE.DefaultLoadingManager`
+never fires and drei's `useProgress()` sits at `0` forever. `ReadySignal`
+(`scene/Ready.tsx`) counts frames inside the canvas instead, and `Loader` also
+carries an unconditional 4s failsafe. If you later add real assets,
+`useProgress` starts reporting and the loader uses it automatically.
+
+**The truck tracks the camera during the haul.** Beat 3's camera accelerates
+down the curve toward the site far faster than any plausible truck speed, so a
+fixed truck path loses the subject behind the lens. `Truck.tsx` samples the
+lookAt curve and positions the truck relative to it — which is what a real
+tracking shot does.

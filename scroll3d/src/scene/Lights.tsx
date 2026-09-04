@@ -44,7 +44,7 @@ export function Lights() {
         shadow-bias={-0.0005}
       />
       {/* warm practicals spilling out of the tower at dusk */}
-      <pointLight ref={warm} position={[0, 24, -92]} color="#FFC978" intensity={0} distance={120} decay={2} />
+      <pointLight ref={warm} position={[0, 24, -62]} color="#FFC978" intensity={0} distance={120} decay={2} />
     </>
   )
 }

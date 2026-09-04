@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { ContactShadows, AdaptiveDpr, Preload } from '@react-three/drei'
 import { Rig } from './Rig'
+import { ReadySignal } from './Ready'
 import { Lights } from './Lights'
 import { Yard } from './objects/Yard'
 import { FlatbedTruck } from './objects/Truck'
@@ -18,13 +19,14 @@ export function Scene() {
   return (
     <Suspense fallback={null}>
       <Rig />
+      <ReadySignal />
       <Lights />
 
       {/* Beats 1-2 — the white void. Contact shadow only, no ground plane. */}
       <ContactShadows
         position={[0, 0, 0]}
-        opacity={0.34}
-        scale={54}
+        opacity={0.42}
+        scale={130}
         blur={2.1}
         far={13}
         resolution={512}

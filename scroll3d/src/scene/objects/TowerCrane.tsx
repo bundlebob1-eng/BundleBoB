@@ -36,7 +36,7 @@ export function TowerCrane() {
   })
 
   return (
-    <group ref={group} position={[-30, 0, -92]}>
+    <group ref={group} position={[-30, 0, -62]}>
       {/* mast */}
       <mesh material={M.hivis} position={[0, 26, 0]} castShadow>
         <boxGeometry args={[1.7, 52, 1.7]} />
