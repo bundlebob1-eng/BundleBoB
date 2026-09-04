@@ -66,7 +66,7 @@ export const BEATS: Beat[] = [
     id: 'yard',
     label: '1 · The yard',
     range: [0.0, 0.15],
-    camera: { position: [-24, 5, 17], lookAt: [0, 2.5, 0], fov: 24 },
+    camera: { position: [-30, 5, 20], lookAt: [-14, 3, 0], fov: 24 },
     environment: {
       background: PALETTE.void,
       fog: PALETTE.void,
@@ -131,7 +131,7 @@ export const BEATS: Beat[] = [
     id: 'arrival',
     label: '4 · Arrival',
     range: [0.45, 0.62],
-    camera: { position: [0, 35, -50], lookAt: [0, 0, -56], fov: 44 },
+    camera: { position: [0, 36, -50], lookAt: [0, 0, -60], fov: 44 },
     environment: {
       background: PALETTE.concrete,
       fog: PALETTE.concrete,
@@ -158,7 +158,7 @@ export const BEATS: Beat[] = [
     id: 'rise',
     label: '5 · The rise',
     range: [0.62, 0.85],
-    camera: { position: [2, 27, -28], lookAt: [0, 9, -92], fov: 46 },
+    camera: { position: [4, 24, -20], lookAt: [0, 10, -62], fov: 46 },
     environment: {
       background: PALETTE.dusk,
       fog: PALETTE.dusk,
@@ -195,7 +195,7 @@ export const BEATS: Beat[] = [
     id: 'handover',
     label: '6 · Handover',
     range: [0.85, 1.0],
-    camera: { position: [36, 13, -32], lookAt: [0, 17, -92], fov: 46 },
+    camera: { position: [34, 13, -12], lookAt: [0, 16, -62], fov: 46 },
     environment: {
       background: PALETTE.dusk,
       fog: PALETTE.dusk,
@@ -216,8 +216,8 @@ export const BEATS: Beat[] = [
  * beats so the final beat has somewhere to travel TO.
  */
 export const FINAL_CAMERA: BeatCamera = {
-  position: [44, 15, -18],
-  lookAt: [0, 18, -92],
+  position: [42, 14, 2],
+  lookAt: [0, 17, -62],
   fov: 46,
 }
 

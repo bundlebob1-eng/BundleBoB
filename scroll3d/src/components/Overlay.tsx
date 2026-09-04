@@ -27,7 +27,9 @@ export function Overlay() {
         const el = refs.current.get(`beat-${b.id}`)
         if (!el || !b.content.headline) continue
         const [a, z] = b.range
-        const o = fadeWindow(p, a, z, 0.035)
+        // The first beat starts at p=0, so a normal fade-in would leave the
+        // hero copy invisible at the top of the page. Start its window early.
+        const o = fadeWindow(p, a === 0 ? -0.06 : a, z, 0.035)
         el.style.opacity = String(o)
         el.style.transform = `translate3d(0, ${lerp(28, 0, o)}px, 0)`
         el.style.visibility = o < 0.01 ? 'hidden' : 'visible'

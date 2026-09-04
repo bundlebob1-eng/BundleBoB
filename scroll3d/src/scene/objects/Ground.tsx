@@ -131,7 +131,7 @@ export function SiteWorks() {
   })
 
   return (
-    <group ref={group} position={[0, 0, -92]}>
+    <group ref={group} position={[0, 0, -62]}>
       <instancedMesh ref={bars} args={[undefined, undefined, BARS]} material={M.steel} castShadow>
         <boxGeometry args={[44, 0.09, 0.09]} />
       </instancedMesh>

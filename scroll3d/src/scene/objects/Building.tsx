@@ -106,7 +106,7 @@ export function Building() {
   })
 
   return (
-    <group ref={group} position={[0, 0, -92]}>
+    <group ref={group} position={[0, 0, -62]}>
       <instancedMesh
         ref={plates}
         args={[undefined, undefined, FLOORS]}

@@ -23,25 +23,25 @@ export function DisplayType() {
     const vis = fadeWindow(p, 0.3, 0.46, 0.035)
     group.current.visible = vis > 0.01
     if (textRef.current) {
-      textRef.current.fillOpacity = vis * 0.14
-      textRef.current.outlineOpacity = vis * 0.85
+      textRef.current.fillOpacity = vis * 0.10
+      textRef.current.outlineOpacity = vis * 0.7
     }
   })
 
   return (
-    <group ref={group} position={[2.5, 0.04, -34]} rotation={[-Math.PI / 2, 0, 0]}>
+    <group ref={group} position={[2.5, 0.04, -30]} rotation={[-Math.PI / 2, 0, 0]}>
       <Text
         ref={textRef}
-        fontSize={9}
+        fontSize={3.1}
         letterSpacing={-0.04}
-        maxWidth={70}
+        maxWidth={25}
         textAlign="center"
         anchorX="center"
         anchorY="middle"
         color={PALETTE.ink}
-        outlineWidth={0.13}
+        outlineWidth="2.2%"
         outlineColor={PALETTE.ink}
-        fillOpacity={0.14}
+        fillOpacity={0.10}
       >
         BUILT TO{'\n'}SEQUENCE
       </Text>

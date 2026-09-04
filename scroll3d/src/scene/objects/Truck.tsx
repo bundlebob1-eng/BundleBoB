@@ -4,6 +4,7 @@ import * as THREE from 'three'
 import { M } from '../materials'
 import { scroll } from '../progress'
 import { fadeWindow, lerp, rangeT, smoothstep } from '../../lib/math'
+import { sampleCamera } from '../curve'
 
 /**
  * BEATS 2-4 — the flatbed. Side-on in the white void at beat 2, then the
@@ -22,8 +23,18 @@ export function FlatbedTruck() {
     group.current.visible = vis > 0.01
 
     // Travel: parked in the yard, then hauls down the road through beat 3.
-    const haul = smoothstep(0, 1, rangeT(p, 0.28, 0.5))
-    group.current.position.set(lerp(13, 2.5, haul), 0, lerp(0, -46, haul))
+    //
+    // During the haul the truck TRACKS the camera's aim rather than running a
+    // fixed path. A fixed path loses the shot — the camera accelerates down
+    // the curve toward the site far faster than any sane truck speed, and the
+    // subject ends up behind the lens. This is what a real tracking shot does.
+    const haul = smoothstep(0, 1, rangeT(p, 0.28, 0.34))
+    const { lookAt } = sampleCamera(p)
+    group.current.position.set(
+      lerp(13, 2.5, haul),
+      0,
+      lerp(0, lookAt.z + 5, haul)
+    )
 
     // Turn the wheels off real scroll speed.
     const speed = Math.abs(scroll.velocity)
