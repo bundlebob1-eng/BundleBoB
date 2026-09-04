@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    margin: 0;
+    color: #101215;
+    font-family: Inter, system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  /* The custom ring replaces the pointer on fine-pointer devices only. */
+  @media (pointer: fine) {
+    body,
+    a,
+    button {
+      cursor: none;
+    }
+  }
+  /* Keyboard focus must stay visible even with the custom cursor. */
+  :focus-visible {
+    outline: 2px solid #ffb800;
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: #ffb800;
+    color: #101215;
+  }
+}
+
+/* Reduced motion: no scrub, no smooth scroll, no custom cursor. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  @media (pointer: fine) {
+    body,
+    a,
+    button {
+      cursor: auto;
+    }
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
