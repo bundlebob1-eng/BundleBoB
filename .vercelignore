@@ -1,0 +1,8 @@
+# The 3D site (scroll3d/) is not deployed while vercel.json serves the static
+# site from the repo root. Without this, /scroll3d resolves to its UNBUILT
+# index.html — a page that references /src/main.tsx and can never load.
+#
+# To deploy the 3D site again, delete this file and set in vercel.json:
+#   "buildCommand":    "cd scroll3d && npm ci && npm run build"
+#   "outputDirectory": "scroll3d/dist"
+scroll3d/
