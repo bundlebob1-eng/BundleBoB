@@ -48,7 +48,7 @@ Deployed on Vercel (`vercel.json`: `framework: null`, `cleanUrls: true`,
 
 | File | Route | Purpose |
 |---|---|---|
-| `index.html` | `/` | Home — the arc, self-select block, honest state |
+| `index.html` | `/` | Home — hero, three stages (stacked), objection block, self-select, disqualifiers, honest state |
 | `platform.html` | `/platform` | The Arc in detail — Capture / Control / Intelligence, why one FDE |
 | `integrations.html` | `/integrations` | Systems we connect — priority vs. on-request, nothing in production yet |
 | `services.html` | `/services` | The engagement — what the FDE does, priced against a hire |
@@ -74,8 +74,8 @@ does not exist yet, the page says so plainly ("not published yet", "pre-pilot",
 Current honest "not yet" states:
 
 - **`client-story.html`** — no named client; pre-pilot; no published figures.
-- **`index.html` / `services.html` / `compare.html`** — "We
-  don't have testimonials yet."
+- **`services.html` / `compare.html`** — "We don't have testimonials yet."
+  (removed from `index.html` — Rev 03 RL-06: it appeared on four pages)
 - **`resources.html` / `article.html`** — "nothing published yet"; the article
   is an *outline* describing design intent, not a report from a deployment.
 - **`about.html`** — team bios, legal entity name + US state, team/client
