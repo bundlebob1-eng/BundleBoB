@@ -195,27 +195,26 @@ img,svg{max-width:100%}
 }
 .rail-nav button:hover:not(:disabled){background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .rail-nav button:disabled{opacity:.28;cursor:default}
+/* Stacked, not carouselled: all three stages visible at rest (RL-14). */
 .rail{
-  display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;
-  padding:4px 28px 22px;margin:0 -28px;scrollbar-width:none;
+  display:grid;grid-template-columns:1fr;gap:22px;
+  padding:4px 0 8px;margin:0;
 }
-.rail::-webkit-scrollbar{display:none}
 .pcard{
-  scroll-snap-align:start;flex:0 0 min(660px,84vw);min-height:560px;border-radius:var(--r-xl);
-  position:relative;overflow:hidden;color:var(--on-dark);display:flex;flex-direction:column;
-  justify-content:space-between;padding:40px;background:#1B2A34;box-shadow:var(--shadow);
-  transition:transform .3s ease;
+  border-radius:var(--r-xl);position:relative;overflow:hidden;color:var(--on-dark);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:44px;
+  padding:44px;background:#1B2A34;box-shadow:var(--shadow);
 }
-.pcard:hover{transform:translateY(-4px)}
 .pcard .bgart{position:absolute;inset:0;z-index:0}
-.pcard .inner{position:relative;z-index:2;max-width:330px}
+.pcard .inner{position:relative;z-index:2;max-width:46ch}
 .pcard h3{font-size:clamp(28px,2.6vw,38px);margin-bottom:14px}
 .pcard p{color:rgba(242,240,234,.8);font-size:16px;line-height:1.5;margin-bottom:26px}
 .pcard .btn{background:rgba(242,240,234,.15);color:var(--on-dark);backdrop-filter:blur(8px);border-color:rgba(242,240,234,.22)}
 .pcard .btn:hover{background:var(--on-dark);color:#14212B}
+/* Top-left: the right edge now belongs to the output panel. */
 .pcard .num{
-  position:absolute;top:34px;right:38px;z-index:2;font-family:"IBM Plex Mono",monospace;
-  font-size:12px;letter-spacing:.16em;color:rgba(242,240,234,.5)
+  position:absolute;top:30px;left:44px;z-index:3;font-family:"IBM Plex Mono",monospace;
+  font-size:12px;letter-spacing:.16em;color:rgba(242,240,234,.72)
 }
 /* card art gradients */
 .art-1{background:linear-gradient(145deg,#12426B 0%,#141724 62%)}
@@ -230,11 +229,11 @@ img,svg{max-width:100%}
 
 /* mini product UIs inside cards */
 .mock{
-  position:absolute;right:-30px;bottom:-14px;width:min(380px,54%);z-index:1;
-  background:#FBFAF7;color:#14212B;border-radius:16px 0 0 0;padding:18px;
-  box-shadow:-18px -18px 60px rgba(0,0,0,.42);font-size:12.5px;
+  position:relative;z-index:1;width:100%;
+  background:#FBFAF7;color:#14212B;border-radius:var(--r-md);padding:22px;
+  box-shadow:0 24px 60px rgba(0,0,0,.42);font-size:14px;
 }
-.mock .mh{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:#63666F;margin-bottom:13px}
+.mock .mh{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#63666F;margin-bottom:13px}
 .mrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid rgba(20,33,43,.09)}
 .mrow:first-of-type{border-top:0}
 .mrow .lbl{font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -386,7 +385,7 @@ footer{background:#14212B;color:var(--on-dark);padding:82px 0 40px;margin-top:10
 .rv.in{opacity:1;transform:none}
 
 /* ============ RESPONSIVE ============ */
-@media (max-width:1080px){
+@media (max-width:920px){
   .navlinks,.nav .btn{display:none}
   .burger{display:block}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -717,3 +716,10 @@ footer{background:#14212B;color:var(--on-dark);padding:82px 0 40px;margin-top:10
   .iso-cap{margin-top:16px}
 }
 @media (prefers-reduced-motion:reduce){ .iso-stage{transition:none; animation:none!important; --zoom:0px!important} }
+
+/* Stage cards stack to one column before the copy gets too narrow to read. */
+@media (max-width:900px){
+  .pcard{grid-template-columns:1fr;gap:28px;padding:32px}
+  .pcard .inner{max-width:none}
+  .pcard .num{top:20px;left:32px}
+}
