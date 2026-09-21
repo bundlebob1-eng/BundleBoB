@@ -1,5 +1,8 @@
 bundlebobsite/
 .DS_Store
 *.pem
-.env
-.env*.local
+.env*
+!.env.example
+node_modules/
+dist/
+audit/

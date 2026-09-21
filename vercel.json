@@ -1,9 +1,25 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "echo skip-install",
-  "buildCommand": "echo skip-build",
-  "outputDirectory": ".",
+  "installCommand": "echo No production dependencies",
+  "buildCommand": "node scripts/build.mjs",
+  "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {"source":"/platform","destination":"/how-it-works","permanent":true},
+    {"source":"/integrations","destination":"/how-it-works#integrations","permanent":true},
+    {"source":"/services","destination":"/why-bundlebob","permanent":true},
+    {"source":"/compare","destination":"/why-bundlebob","permanent":true},
+    {"source":"/demo","destination":"/contact","permanent":true},
+    {"source":"/article","destination":"/resources/when-systems-disagree","permanent":true},
+    {"source":"/client-story","destination":"/about","permanent":true}
+  ],
+  "headers": [{"source":"/(.*)","headers":[
+    {"key":"X-Content-Type-Options","value":"nosniff"},
+    {"key":"X-Frame-Options","value":"DENY"},
+    {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
+    {"key":"Permissions-Policy","value":"camera=(), microphone=(), geolocation=()"},
+    {"key":"Content-Security-Policy","value":"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'"}
+  ]}]
 }
