@@ -27,6 +27,8 @@
   --r-sm:8px; --r-md:14px; --r-lg:24px; --r-xl:34px; --r-pill:999px;
   --maxw:1240px;
   --nav-h:74px;
+  --good:#2C6E49;
+  --flag:#9B3A26;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -39,6 +41,7 @@
     --on-dark:#F2F0EA; --on-dark-mute:#9DA0A8;
     --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -12px rgba(0,0,0,.6);
     --shadow-lg:0 2px 4px rgba(0,0,0,.5),0 32px 70px -28px rgba(0,0,0,.75);
+    --good:#6FBF8E; --flag:#E08065;
   }
 }
 :root[data-theme="dark"]{
@@ -51,6 +54,7 @@
   --on-dark:#F2F0EA; --on-dark-mute:#9DA0A8;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -12px rgba(0,0,0,.6);
   --shadow-lg:0 2px 4px rgba(0,0,0,.5),0 32px 70px -28px rgba(0,0,0,.75);
+  --good:#6FBF8E; --flag:#E08065;
 }
 
 /* ============ BASE ============ */
@@ -722,4 +726,95 @@ footer{background:#14212B;color:var(--on-dark);padding:82px 0 40px;margin-top:10
   .pcard{grid-template-columns:1fr;gap:28px;padding:32px}
   .pcard .inner{max-width:none}
   .pcard .num{top:20px;left:32px}
+}
+
+/* ============ T15 · RECONCILIATION MOMENT ============
+   Two systems holding the same commitment at different values, and the
+   conflict log catching it. Animates once on scroll into view; never loops.
+   Every element is in normal flow — only opacity and transform animate, so
+   there is no layout shift. Correct and readable at rest with JS disabled
+   or motion reduced. */
+.recon{margin-top:44px}
+.recon-frame{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.recon-head{
+  display:flex;flex-wrap:wrap;gap:10px 22px;align-items:baseline;
+  padding:16px 22px;border-bottom:1px solid var(--line);background:var(--card-2);
+}
+.recon-head b{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.recon-head span{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;color:var(--ink-soft)}
+.recon-rows{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.recon-row{background:var(--card);padding:20px 22px 22px}
+.recon-src{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);display:block;margin-bottom:12px;
+}
+.recon-val{
+  font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,40px);
+  letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums;
+}
+.recon-note{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.45;min-height:2.9em}
+.recon-row[data-state="drift"] .recon-val{color:var(--flag)}
+.recon-row[data-state="hold"] .recon-val{color:var(--ink)}
+
+/* the gap, drawn — informative, not ornament */
+.recon-gap{
+  display:flex;align-items:center;gap:12px;padding:14px 22px;
+  border-top:1px solid var(--line);background:var(--card-2);
+}
+.recon-gap svg{flex-shrink:0;color:var(--flag)}
+.recon-gap b{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;font-weight:600;
+  letter-spacing:.06em;color:var(--flag);font-variant-numeric:tabular-nums;
+}
+.recon-gap span{font-size:13.5px;color:var(--muted)}
+
+/* conflict log */
+.recon-log{
+  border-top:1px solid var(--line);padding:18px 22px 20px;background:var(--card);
+}
+.recon-log-h{
+  display:flex;align-items:center;gap:9px;margin-bottom:12px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--flag);
+}
+.recon-log-h i{width:7px;height:7px;border-radius:2px;background:var(--flag);flex-shrink:0}
+.recon-log dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 18px;font-size:13.5px}
+.recon-log dt{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted-2);white-space:nowrap;padding-top:2px;
+}
+.recon-log dd{margin:0;color:var(--ink-soft);line-height:1.45}
+.recon-log dd b{font-variant-numeric:tabular-nums;font-weight:600}
+.recon-cap{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.05em;
+  color:var(--muted-2);margin-top:14px;
+}
+
+/* ── motion: opacity + transform only, so nothing reflows ── */
+.recon [data-anim]{opacity:1;transform:none}
+.recon.armed [data-anim]{opacity:0}
+.recon.armed [data-anim="row"]{transform:translateY(10px)}
+.recon.armed [data-anim="gap"],
+.recon.armed [data-anim="log"]{transform:translateY(14px)}
+.recon.play [data-anim]{
+  opacity:1;transform:none;
+  transition:opacity .5s cubic-bezier(.2,.7,.3,1),transform .5s cubic-bezier(.2,.7,.3,1);
+}
+.recon.play [data-anim="row"]:nth-of-type(2){transition-delay:.12s}
+.recon.play [data-anim="gap"]{transition-delay:1.15s}
+.recon.play [data-anim="log"]{transition-delay:1.45s}
+
+@media (max-width:720px){
+  .recon-rows{grid-template-columns:1fr}
+  .recon-log dl{grid-template-columns:1fr;gap:3px 0}
+  .recon-log dt{padding-top:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .recon [data-anim],.recon.armed [data-anim]{opacity:1!important;transform:none!important;transition:none!important}
 }
