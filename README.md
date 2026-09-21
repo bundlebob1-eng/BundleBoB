@@ -67,6 +67,7 @@ After `npm ci` and installing a Playwright browser, keep `npm start` running and
 
 ```sh
 npm run verify
+node scripts/accessibility.mjs
 node scripts/lighthouse.mjs
 ```
 

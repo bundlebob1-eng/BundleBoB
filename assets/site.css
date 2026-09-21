@@ -19,6 +19,6 @@
 .process-section[data-stage="0"] .flow-sources>span{border-color:var(--accent-ink)}
 .process-section[data-stage="1"] .flow-engine{box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
 .process-section[data-stage="2"] .flow-result{border-color:var(--positive)}
-@media(max-width:640px){.reconciliation{overflow:auto;padding-bottom:4px}.reconciliation>svg{min-width:550px}.reconciliation figcaption{position:sticky;left:0;max-width:100%;font-size:10px}}
+.recon-narrow{display:none}@media(max-width:640px){.recon-wide{display:none}.recon-narrow{display:block}.reconciliation figcaption{font-size:10px}}
 .prose{min-width:0}
 @media(max-width:640px){.article-layout{grid-template-columns:minmax(0,1fr)}}

@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 const {default:lighthouse}=await import(process.env.LIGHTHOUSE_MODULE||'lighthouse');
 const {createRequire}=await import('node:module');
 const require=createRequire(process.env.LIGHTHOUSE_MODULE||import.meta.url);
-const launcher=require('chrome-launcher');
+const launcher=await import(require.resolve('chrome-launcher'));
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 await fs.mkdir(path.join(root,'audit'),{recursive:true});
 const chrome=await launcher.launch({...(process.env.CHROME_PATH?{chromePath:process.env.CHROME_PATH}:{}),chromeFlags:['--headless','--no-sandbox']});

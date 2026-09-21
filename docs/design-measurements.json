@@ -1,0 +1,32 @@
+{
+  "contrast": {
+    "light": {
+      "ink/paper": 12.98,
+      "muted/paper": 5.75,
+      "accent-ink/paper": 6.7,
+      "positive/paper": 6.08,
+      "ink/surface": 14.4,
+      "muted/surface": 6.38
+    },
+    "dark": {
+      "ink/paper": 14.25,
+      "muted/paper": 8.72,
+      "accent-ink/paper": 8.87,
+      "positive/paper": 9.97,
+      "ink/surface": 12.03,
+      "muted/surface": 7.36
+    }
+  },
+  "motion": {
+    "heroJS": 1810,
+    "scrollJS": 1568,
+    "reconciliationMarkup": 3648,
+    "reconciliationCSS": 1717,
+    "microCSS": 1836
+  },
+  "payload": {
+    "jsRaw": 12119,
+    "jsGzip": 4601,
+    "cssGzip": 9667
+  }
+}

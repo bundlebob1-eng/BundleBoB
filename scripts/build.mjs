@@ -12,6 +12,7 @@ export async function build(){
  if(booking&&new URL(booking).protocol!=='https:')throw new Error('BOOKING_URL must use HTTPS');
  const config={email,booking};
  const routes=[['/','Know the job before the close',home()],['/how-it-works','How it works',how()],['/solutions','Solutions for businesses that run on jobs',solutions()],['/why-bundlebob','Why BundleBoB',why()],['/resources','Practical guides to clearer job reporting',resources()],...content.resources.map(r=>['/resources/'+r.id,r.title,article(r.id)]),['/about','About BundleBoB',about()],['/contact','Start a conversation',contact(config)],['/system','Design system',system()]];
+ await fs.rm(output,{recursive:true,force:true});
  await fs.mkdir(output,{recursive:true});
  for(const [url,title,body] of routes){const destination=path.join(output,url==='/'?'index.html':url.slice(1)+'.html');await fs.mkdir(path.dirname(destination),{recursive:true});await fs.writeFile(destination,layout({title,path:url,body,config,noindex:url==='/system'}));}
  for(const [from,to] of Object.entries(aliases)){await fs.writeFile(path.join(output,from.slice(1)+'.html'),`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="https://bundlebob.com${to.split('#')[0]}"><title>Page moved | BundleBoB</title><body><p>This page has moved. <a href="${to}">Continue to BundleBoB</a>.</p></body></html>`)}

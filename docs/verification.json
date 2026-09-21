@@ -1,0 +1,123 @@
+{
+  "measuredAt": "2026-09-21T13:26:12.976Z",
+  "lighthouse": {
+    "version": "12.6.1",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcpMs": 949,
+    "cls": 0,
+    "totalBlockingTimeMs": 0
+  },
+  "browser": {
+    "combinations": 44,
+    "links": 49,
+    "errors": [],
+    "horizontalOverflowCases": 0,
+    "interactions": {
+      "railKeyboard": true,
+      "mobileMenu": true,
+      "mobileEscape": true,
+      "searchEmpty": true,
+      "searchReset": true,
+      "invalidForm": true,
+      "inquiryDownload": true,
+      "noUnintendedSubmission": true
+    },
+    "motion": {
+      "idleTaskPercent": 0.051089725540007944,
+      "scrollProgress": {
+        "before": "0.0009",
+        "after": "0.9991"
+      },
+      "reduced": {
+        "canvasHidden": true,
+        "counts": [
+          "2",
+          "$11,850",
+          "1"
+        ],
+        "animated": 0
+      },
+      "reducedVideoPaused": true,
+      "scriptFailureContent": {
+        "mainText": 3788,
+        "hiddenHeadings": 0
+      }
+    },
+    "video": {
+      "mp4": {
+        "duration": 8,
+        "width": 960,
+        "height": 540,
+        "played": true
+      },
+      "webm": {
+        "duration": 8,
+        "width": 960,
+        "height": 540,
+        "played": true
+      }
+    },
+    "externalRequests": []
+  },
+  "accessibility": {
+    "pageThemePairs": 22,
+    "violations": 0
+  },
+  "design": {
+    "contrast": {
+      "light": {
+        "ink/paper": 12.98,
+        "muted/paper": 5.75,
+        "accent-ink/paper": 6.7,
+        "positive/paper": 6.08,
+        "ink/surface": 14.4,
+        "muted/surface": 6.38
+      },
+      "dark": {
+        "ink/paper": 14.25,
+        "muted/paper": 8.72,
+        "accent-ink/paper": 8.87,
+        "positive/paper": 9.97,
+        "ink/surface": 12.03,
+        "muted/surface": 7.36
+      }
+    },
+    "motion": {
+      "heroJS": 1810,
+      "scrollJS": 1568,
+      "reconciliationMarkup": 3648,
+      "reconciliationCSS": 1717,
+      "microCSS": 1836
+    },
+    "payload": {
+      "jsRaw": 12119,
+      "jsGzip": 4601,
+      "cssGzip": 9667
+    }
+  },
+  "video": {
+    "durationSeconds": 8,
+    "fps": 24,
+    "width": 960,
+    "height": 540,
+    "frames": 192,
+    "sizes": {
+      "reconciliation.mp4": 92393,
+      "reconciliation.webm": 113145,
+      "reconciliation-poster.png": 53192
+    },
+    "technique": "Authored Canvas frames encoded with ffmpeg",
+    "reproduce": "npm run video (Playwright and ffmpeg installed)"
+  },
+  "limits": [
+    "Built output served locally, not production hosting latency.",
+    "Idle CPU is a Chrome main-thread task-time proxy on this machine, not a calibrated mid-range laptop benchmark.",
+    "No supplied contact delivery destination; form prepares a downloadable inquiry.",
+    "No manual screen-reader or physical touch-device session."
+  ]
+}
