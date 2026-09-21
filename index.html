@@ -135,6 +135,54 @@
       <h2 class="d2">Software that stays accurate.</h2>
       <p class="sub">Connecting two systems is the easy part. Keeping them agreeing is not &mdash; systems get upgraded, cost codes change, people leave. That is the work, and it is why every account has a named engineer assigned to it and a standing weekly review with your finance lead.</p>
     </div>
+
+    <!-- T15 · the reconciliation moment. Final values are in the markup, so the
+         block is correct and readable with JS disabled or motion reduced. -->
+    <div class="recon" id="recon">
+      <div class="recon-frame">
+        <div class="recon-head">
+          <b>One commitment, two systems</b>
+          <span>Commitment C-2418-07</span>
+          <span>Cost code 01-200</span>
+          <span>Vendor V-4471</span>
+        </div>
+
+        <div class="recon-rows">
+          <div class="recon-row" data-anim="row" data-state="drift">
+            <span class="recon-src">Operations system</span>
+            <div class="recon-val" data-recon-count data-from="184600">$196,450</div>
+            <p class="recon-note">Committed cost, including change order #14 &mdash; approved 12 Sep.</p>
+          </div>
+          <div class="recon-row" data-anim="row" data-state="hold">
+            <span class="recon-src">ERP</span>
+            <div class="recon-val">$184,600</div>
+            <p class="recon-note">Committed cost. Change order #14 has not been posted.</p>
+          </div>
+        </div>
+
+        <div class="recon-gap" data-anim="gap">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M9 1.6 17 16H1L9 1.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M9 7v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="9" cy="13.4" r=".95" fill="currentColor"/>
+          </svg>
+          <b>$11,850</b>
+          <span>apart on a single commitment, and neither system says so.</span>
+        </div>
+
+        <div class="recon-log" data-anim="log">
+          <div class="recon-log-h"><i></i>Conflict log</div>
+          <dl>
+            <dt>Record</dt><dd>Commitment C-2418-07 &middot; cost code 01-200 &middot; vendor V-4471</dd>
+            <dt>Operations</dt><dd><b>$196,450</b> &mdash; rule: sums approved change orders</dd>
+            <dt>ERP</dt><dd><b>$184,600</b> &mdash; rule: sums posted transactions only</dd>
+            <dt>Difference</dt><dd><b>$11,850</b> &mdash; change order #14, approved but not posted</dd>
+            <dt>Action</dt><dd>Flagged for a person. Nothing is written back without approval.</dd>
+          </dl>
+          <p class="recon-cap">Illustrative record on synthetic data &middot; not a live client</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -323,4 +323,40 @@ document.addEventListener('click', function(e){
   iso.addEventListener('pointerleave', function(){ px = 0; py = 0; zoom = 0; schedule(); });
 })();
 
+
+/* ====== T15 · RECONCILIATION MOMENT — plays once, never loops ====== */
+(function(){
+  var el = document.getElementById('recon');
+  if (!el) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;   // markup already holds the rest state
+
+  el.classList.add('armed');
+  var num = el.querySelector('[data-recon-count]');
+  var to = num ? parseInt(num.textContent.replace(/[^0-9]/g, ''), 10) : 0;
+  var from = num ? parseInt(num.getAttribute('data-from'), 10) : 0;
+  var fmt = function(n){ return '$' + n.toLocaleString('en-US'); };
+  if (num) num.textContent = fmt(from);
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      io.disconnect();
+      el.classList.remove('armed');
+      el.classList.add('play');
+      if (!num) return;
+      var start = 0, dur = 900, delay = 620;
+      setTimeout(function(){
+        requestAnimationFrame(function tick(now){
+          if (!start) start = now;
+          var p = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - p, 3);
+          num.textContent = fmt(Math.round(from + (to - from) * e));
+          if (p < 1) requestAnimationFrame(tick);
+        });
+      }, delay);
+    });
+  }, { threshold: 0.35 });
+  io.observe(el);
+})();
+
 })();
