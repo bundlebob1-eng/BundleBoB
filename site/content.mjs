@@ -38,6 +38,28 @@ export const content = {
     ours:['The BundleBoB platform','The integrations','The reconciliation engine','Ongoing maintenance and upgrades'],
     explanation:'Your business information remains yours. BundleBoB owns and maintains the technology that keeps it connected. Continued service keeps the platform operating and the mappings accurate as your systems and processes change.',
   },
+  fit: {
+    yes: [
+      'You run projects or jobs, and your accounting system and your operations system do not talk to each other.',
+      'You find out whether a job made money after it is finished, not while you can still act on it.',
+      'Someone on your team re-enters the same record into two systems every week.',
+      'You have tried to hire for exactly this and could not find the right person.',
+    ],
+    no: [
+      'You already have two or more developers who know your systems and will still be there next year.',
+      'You want a fully autonomous system that acts without a person in the loop.',
+    ],
+    note: 'We work with businesses across industries \u2014 anywhere jobs carry costs, and the reporting on those costs arrives too late to use.',
+  },
+  conflictLog: {
+    record: 'Commitment C-2418-07 \u00b7 cost code 01-200 \u00b7 vendor V-4471',
+    rows: [
+      ['Operations', '$196,450', 'sums approved changes'],
+      ['Accounting', '$184,600', 'sums posted transactions only'],
+      ['Difference', '$11,850', 'approved change not yet posted'],
+    ],
+    action: 'Flagged for a person. Nothing is written back without approval.',
+  },
   compliance: {
     intro:'Client work begins after entity formation and completion of the data-handling agreement and hosting documentation.',
     items:[['Data processing agreement','In preparation','A standard agreement will define the processing purpose, responsibilities, subprocessors, and deletion requirements.'],['U.S. data residency','Documentation in progress','The hosting and data-flow documentation will identify where source records, reports, backups, and support data are processed.'],['Legal entity','Formation in progress','The contracting entity will be established before client work begins.']],

@@ -44,3 +44,15 @@ html{scroll-padding-top:160px}body{line-height:1.5}h1,h2,h3{font-weight:500;lett
 @media(max-width:640px){.editorial-hero h1 br{display:none}}
 
 .hero-media{position:absolute;inset:0;z-index:-3}.editorial-hero .hero-media .hero-photograph{z-index:auto}
+
+/* Restored conflict log — the labelled record beside the film. */
+.conflict-log{margin:16px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 20px}
+.conflict-log dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.62;white-space:nowrap;padding-top:2px}
+.conflict-log dd{margin:0;line-height:1.45}
+.conflict-log dd b{font-variant-numeric:tabular-nums}
+[data-conflict-log]{margin-top:40px}
+.conflict-log dd{max-width:60ch}
+@media (max-width:720px){
+  .conflict-log{grid-template-columns:1fr;gap:2px 0}
+  .conflict-log dt{padding-top:10px}
+}
