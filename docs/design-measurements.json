@@ -1,20 +1,20 @@
 {
   "contrast": {
     "light": {
-      "ink/paper": 12.98,
-      "muted/paper": 5.75,
-      "accent-ink/paper": 6.7,
-      "positive/paper": 6.08,
-      "ink/surface": 14.4,
-      "muted/surface": 6.38
+      "ink/paper": 18.54,
+      "muted/paper": 8.91,
+      "accent-ink/paper": 5.71,
+      "positive/paper": 6.6,
+      "ink/surface": 19.91,
+      "muted/surface": 9.57
     },
     "dark": {
-      "ink/paper": 14.25,
-      "muted/paper": 8.72,
-      "accent-ink/paper": 8.87,
-      "positive/paper": 9.97,
-      "ink/surface": 12.03,
-      "muted/surface": 7.36
+      "ink/paper": 17.57,
+      "muted/paper": 10.96,
+      "accent-ink/paper": 10.54,
+      "positive/paper": 11.45,
+      "ink/surface": 14.79,
+      "muted/surface": 9.22
     }
   },
   "motion": {
@@ -25,8 +25,15 @@
     "microCSS": 1836
   },
   "payload": {
-    "jsRaw": 12119,
-    "jsGzip": 4601,
-    "cssGzip": 9667
-  }
+    "jsRaw": 13852,
+    "jsGzip": 5037,
+    "cssGzip": 17386
+  },
+  "fonts": {
+    "montserrat-latin-variable.woff2": 35508,
+    "roboto-slab-latin-variable.woff2": 34160
+  },
+  "heroWebpBytes": 87336,
+  "mobileHeroWebpBytes": 38740,
+  "posterWebpBytes": 23272
 }

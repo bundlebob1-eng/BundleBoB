@@ -1,20 +1,23 @@
 {
-  "measuredAt": "2026-09-21T13:26:12.976Z",
+  "measuredAt": "2026-09-22T03:44:18.723Z",
+  "baseline": "86eaaff",
+  "reference": "https://www.octanner.com/",
   "lighthouse": {
     "version": "12.6.1",
     "scores": {
-      "performance": 100,
+      "performance": 99,
       "accessibility": 100,
       "best-practices": 100,
       "seo": 100
     },
-    "lcpMs": 949,
+    "lcpMs": 2027,
+    "fcpMs": 902,
     "cls": 0,
     "totalBlockingTimeMs": 0
   },
   "browser": {
     "combinations": 44,
-    "links": 49,
+    "links": 50,
     "errors": [],
     "horizontalOverflowCases": 0,
     "interactions": {
@@ -28,7 +31,7 @@
       "noUnintendedSubmission": true
     },
     "motion": {
-      "idleTaskPercent": 0.051089725540007944,
+      "idleTaskPercent": 0.3253904452228817,
       "scrollProgress": {
         "before": "0.0009",
         "after": "0.9991"
@@ -44,7 +47,7 @@
       },
       "reducedVideoPaused": true,
       "scriptFailureContent": {
-        "mainText": 3788,
+        "mainText": 5887,
         "hiddenHeadings": 0
       }
     },
@@ -64,6 +67,83 @@
     },
     "externalRequests": []
   },
+  "editorial": {
+    "navigation": {
+      "keyboardAndEscape": true,
+      "outsideAndSingleOpen": true,
+      "themeToggle": true
+    },
+    "industries": {
+      "keyboard": true,
+      "allPanels": true
+    },
+    "widths": [
+      {
+        "width": 320,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 900,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 1024,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 1280,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "offenders": []
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/workshop-mobile.webp",
+        "status": 200
+      },
+      {
+        "src": "/assets/images/workshop-768.webp",
+        "status": 200
+      },
+      {
+        "src": "/assets/images/fabrication-768.webp",
+        "status": 200
+      },
+      {
+        "src": "/assets/images/field-service-768.webp",
+        "status": 200
+      }
+    ],
+    "fonts": [
+      {
+        "family": "Montserrat",
+        "status": "loaded"
+      },
+      {
+        "family": "Roboto Slab",
+        "status": "loaded"
+      }
+    ],
+    "withoutJavaScript": "Content and all four industry examples remain visible"
+  },
   "accessibility": {
     "pageThemePairs": 22,
     "violations": 0
@@ -71,20 +151,20 @@
   "design": {
     "contrast": {
       "light": {
-        "ink/paper": 12.98,
-        "muted/paper": 5.75,
-        "accent-ink/paper": 6.7,
-        "positive/paper": 6.08,
-        "ink/surface": 14.4,
-        "muted/surface": 6.38
+        "ink/paper": 18.54,
+        "muted/paper": 8.91,
+        "accent-ink/paper": 5.71,
+        "positive/paper": 6.6,
+        "ink/surface": 19.91,
+        "muted/surface": 9.57
       },
       "dark": {
-        "ink/paper": 14.25,
-        "muted/paper": 8.72,
-        "accent-ink/paper": 8.87,
-        "positive/paper": 9.97,
-        "ink/surface": 12.03,
-        "muted/surface": 7.36
+        "ink/paper": 17.57,
+        "muted/paper": 10.96,
+        "accent-ink/paper": 10.54,
+        "positive/paper": 11.45,
+        "ink/surface": 14.79,
+        "muted/surface": 9.22
       }
     },
     "motion": {
@@ -95,10 +175,17 @@
       "microCSS": 1836
     },
     "payload": {
-      "jsRaw": 12119,
-      "jsGzip": 4601,
-      "cssGzip": 9667
-    }
+      "jsRaw": 13852,
+      "jsGzip": 5037,
+      "cssGzip": 17386
+    },
+    "fonts": {
+      "montserrat-latin-variable.woff2": 35508,
+      "roboto-slab-latin-variable.woff2": 34160
+    },
+    "heroWebpBytes": 87336,
+    "mobileHeroWebpBytes": 38740,
+    "posterWebpBytes": 23272
   },
   "video": {
     "durationSeconds": 8,
@@ -115,9 +202,11 @@
     "reproduce": "npm run video (Playwright and ffmpeg installed)"
   },
   "limits": [
-    "Built output served locally, not production hosting latency.",
-    "Idle CPU is a Chrome main-thread task-time proxy on this machine, not a calibrated mid-range laptop benchmark.",
-    "No supplied contact delivery destination; form prepares a downloadable inquiry.",
+    "Local Chrome measurements, not production hosting or physical-device results.",
+    "LCP is 2.027 seconds, slightly above the original brief\u2019s strict sub-2.0-second target.",
+    "Approved open fonts approximate Gotham SSm and Sentinel; they are not those commercial font files.",
+    "Photographic hero is a still image; the original procedural video remains in the walkthrough sections.",
+    "Contact still prepares a downloadable inquiry until an actual monitored destination is configured.",
     "No manual screen-reader or physical touch-device session."
   ]
 }

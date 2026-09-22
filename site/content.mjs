@@ -3,7 +3,7 @@ export const content = {
   description: 'A current picture of job profitability. Connect your existing systems, reconcile the differences, and understand work in progress before month-end.',
   home: {
     eyebrow: 'A clearer picture of work in progress',
-    title: 'Your work moves fast.\nYour numbers arrive late.',
+    title: 'Because every job\nshould add up.',
     intro: 'Connect your existing systems. See what each job is making while there’s still time to act.',
     outcomes: [
       ['01', 'Know where you stand.', 'Understand costs, commitments, and margin before the job is over.'],

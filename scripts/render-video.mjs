@@ -33,12 +33,10 @@ text('Addition A-14 is approved in operations, but is not yet posted in accounti
 text('Both values retained. Flagged for review. No automatic write-back.',76,448,12,colors.accent);
 ctx.globalAlpha=1;text('Synthetic data. A demonstration of the method, not a customer result.',52,516,10,colors.muted);text('8 SECOND LOOP',798,516,9,colors.muted,400,mono);
 };
-window.renderShare=()=>{canvas.width=1200;canvas.height=630;ctx.fillStyle='#f5f3ed';ctx.fillRect(0,0,1200,630);ctx.strokeStyle='#d8dfd8';for(let x=800;x<1200;x+=32){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,630);ctx.stroke()}text('BundleBoB.',64,82,36,'#172d32',700);text('JOB PROFITABILITY / WORK IN PROGRESS',66,156,13,'#94371d',500,mono);text('Your work moves fast.',60,257,65,'#172d32',550);text('Your numbers arrive late.',60,333,65,'#94371d',550);text('Bring the work and the numbers into the same frame.',64,405,23,'#516267');rounded(65,472,450,59,7,'#172d32');text('For businesses that run on jobs.',89,510,20,'#f5f3ed',500);text('bundlebob.com',64,594,15,'#516267',400,mono);};
 });
 try{
  for(let i=0;i<192;i++){await page.evaluate(t=>window.renderFrame(t),i/24);await page.locator('canvas').screenshot({path:path.join(frames,String(i).padStart(4,'0')+'.png')});if(i%48===0)console.log(`Rendered ${i}/192 frames`)}
  await page.evaluate(()=>window.renderFrame(5.4));await page.locator('canvas').screenshot({path:path.join(output,'reconciliation-poster.png')});
- await page.setViewportSize({width:1200,height:630});await page.evaluate(()=>window.renderShare());await page.locator('canvas').screenshot({path:path.join(root,'assets/og-image.png')});
 }finally{await browser.close()}
 const ffmpeg=process.env.FFMPEG_PATH||'ffmpeg';
 async function encode(args){await new Promise((resolve,reject)=>{const p=spawn(ffmpeg,['-hide_banner','-loglevel','error','-y','-framerate','24','-i',path.join(frames,'%04d.png'),...args],{stdio:'inherit'});p.on('error',reject);p.on('exit',code=>code===0?resolve():reject(new Error(`ffmpeg exited ${code}`)))})}
