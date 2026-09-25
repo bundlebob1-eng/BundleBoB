@@ -1,3 +1,18 @@
+# September 24 studio revision verification
+
+The current design is documented in [studio-direction.md](studio-direction.md). `npm run build` produces 13 pages and 6 redirects. This is a local preview, not a deployment.
+
+- Automated accessibility: zero violations across 26 page/theme pairs after contrast and heading-order fixes.
+- Browser acceptance: 52 page/theme/viewport combinations; 53 local links; no layout, link, or browser errors.
+- Inquiry validation/download, resource search, mobile menu, native disclosures, and both video formats passed.
+- Responsive review: 320, 390, 768, 900, 1024, 1440, and 1920px; no horizontal page overflow.
+- Keyboard menus, Escape/focus restoration, pointer tilt, reduced-motion reset, and disclosures without JavaScript passed.
+- Reduced-motion home: zero running animations. Idle main-thread use: approximately 0.04% in the local browser sample.
+
+The older Lighthouse scores below belong to the previous design and are not measurements of this revision.
+
+---
+
 # BundleBoB final draft verification
 
 This draft continues the site and video checkpoint at `86eaaff`, applying the O.C. Tanner visual direction requested by the user. Montserrat and Roboto Slab are the approved open-font alternatives. The implementation and reference mapping are in [visual-direction.md](visual-direction.md); generated image paths and prompts are in [image-prompts.md](image-prompts.md).

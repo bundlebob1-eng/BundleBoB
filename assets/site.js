@@ -45,3 +45,66 @@ function palette(){const swatches=$$('[data-color]');if(!swatches.length)return;
 palette();
 $$('[data-demo]').forEach(b=>b.addEventListener('click',async()=>{const status=$('.demo-status');if(b.dataset.demo==='loading'){const old=b.textContent;b.disabled=true;b.setAttribute('aria-busy','true');b.textContent='Preparing…';status.textContent='Example loading state.';await new Promise(r=>setTimeout(r,800));b.textContent=old;b.disabled=false;b.removeAttribute('aria-busy');status.textContent='Ready. Example completed.'}else status.textContent='Success. Your action completed.'}));
 })();
+
+// Tilt the authored system model only while a fine pointer interacts with it.
+(() => {
+ const surface=document.querySelector('.system-sculpture');
+ const model=document.querySelector('.sculpture-object');
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ if(surface&&model){
+  surface.addEventListener('pointermove',event=>{
+   if(reduced.matches||event.pointerType!=='mouse')return;
+   const box=surface.getBoundingClientRect();
+   const x=(event.clientX-box.left)/box.width-.5;
+   const y=(event.clientY-box.top)/box.height-.5;
+   model.style.transform=`translate(-50%,-50%) rotateX(${57-y*12}deg) rotateZ(${-34+x*16}deg)`;
+  },{passive:true});
+  const reset=()=>model.style.removeProperty('transform');
+  surface.addEventListener('pointerleave',reset);
+  reduced.addEventListener('change',reset);
+ }
+})();
+
+// Progressively enhance the source-to-review walkthrough. All steps remain readable without JS.
+(() => {
+ document.querySelectorAll('[data-tour]').forEach(tour=>{
+  const tabs=[...tour.querySelectorAll('[data-tour-tab]')];
+  const panels=[...tour.querySelectorAll('[data-tour-panel]')];
+  const controls=tour.querySelector('.tour-controls');
+  const navigation=tour.querySelector('.tour-navigation');
+  const names=['Source records','The difference','Human review'];
+  let current=0;
+  navigation.setAttribute('role','tablist');
+  navigation.setAttribute('aria-orientation','vertical');
+  function select(index,focus=false){
+   current=index;
+   tabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;panels[i].hidden=i!==index;});
+   controls.querySelector('[data-tour-status]').textContent=`Step ${index+1} of 3 · ${names[index]}`;
+   controls.querySelector('[data-tour-direction="-1"]').disabled=index===0;
+   controls.querySelector('[data-tour-direction="1"]').disabled=index===tabs.length-1;
+   if(focus)tabs[index].focus();
+  }
+  tabs.forEach((tab,i)=>{
+   tab.id=`tour-tab-${i}`;tab.setAttribute('role','tab');tab.setAttribute('aria-controls',panels[i].id);
+   panels[i].setAttribute('role','tabpanel');panels[i].setAttribute('aria-labelledby',tab.id);panels[i].tabIndex=0;
+   tab.addEventListener('click',event=>{event.preventDefault();select(i)});
+   tab.addEventListener('keydown',event=>{
+    let next=i;
+    if(event.key==='ArrowDown'||event.key==='ArrowRight')next=(i+1)%tabs.length;
+    else if(event.key==='ArrowUp'||event.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;
+    else if(event.key==='Home')next=0;
+    else if(event.key==='End')next=tabs.length-1;
+    else return;
+    event.preventDefault();select(next,true);
+   });
+  });
+  controls.querySelectorAll('[data-tour-direction]').forEach(button=>button.addEventListener('click',()=>{
+   select(Math.max(0,Math.min(tabs.length-1,current+Number(button.dataset.tourDirection))));
+   // Keep focus on the visible panel when the pressed boundary control becomes disabled.
+   if(button.disabled)panels[current].focus({preventScroll:true});
+  }));
+  function syncHash(){const i=panels.findIndex(panel=>'#'+panel.id===location.hash);if(i>=0)select(i)}
+  document.querySelectorAll('a[href^="#tour-"]:not([data-tour-tab])').forEach(link=>link.addEventListener('click',()=>{const i=panels.findIndex(panel=>'#'+panel.id===link.getAttribute('href'));if(i>=0)select(i)}));
+  controls.hidden=false;select(0);syncHash();window.addEventListener('hashchange',syncHash);
+ });
+})();

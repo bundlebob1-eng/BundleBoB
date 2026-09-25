@@ -9,7 +9,6 @@
   "redirects": [
     {"source":"/platform","destination":"/how-it-works","permanent":true},
     {"source":"/integrations","destination":"/how-it-works#integrations","permanent":true},
-    {"source":"/services","destination":"/why-bundlebob","permanent":true},
     {"source":"/compare","destination":"/why-bundlebob","permanent":true},
     {"source":"/demo","destination":"/contact","permanent":true},
     {"source":"/article","destination":"/resources/when-systems-disagree","permanent":true},

@@ -1,6 +1,6 @@
 export const content = {
   brand: 'BundleBoB',
-  description: 'A current picture of job profitability. Connect your existing systems, reconcile the differences, and understand work in progress before month-end.',
+  description: 'BundleBoB builds custom software, practical AI solutions, and connected systems around your business, with a special focus on construction technology.',
   home: {
     eyebrow: 'A clearer picture of work in progress',
     title: 'Because every job\nshould add up.',
@@ -70,8 +70,8 @@ export const content = {
     {id:'mapping-first',category:'Explainer',title:'Agree on the job before comparing the numbers.',description:'Why a shared job identifier and a written mapping come before the first useful report.',time:'4 minute read'},
   ],
   contact: {
-    title:'Start with the gap.',
-    intro:'Tell us where your numbers stop agreeing. A useful first conversation starts with the systems you run and the question you cannot answer.',
+    title:'Tell us what gets in the way.',
+    intro:'Tell us about the process, the problem, or the idea. We’ll work with you to find a useful starting point.',
     privacy:'Share business contact details and a description of the problem only. Keep customer records, financial exports, passwords, and access tokens out of this inquiry.',
   },
 };
