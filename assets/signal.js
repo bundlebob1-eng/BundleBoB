@@ -40,7 +40,7 @@
     '  p.z += 3.05;',
     '  float persp = 2.55 / max(p.z, 0.25);',
     '  gl_Position = vec4(p.x*persp/uAspect + uShift, p.y*persp + 0.06, 0.0, 1.0);',
-    '  gl_PointSize = (2.6 + diff*6.0) * persp * uDpr;',
+    '  gl_PointSize = (3.0 + diff*8.5) * persp * uDpr;',
     '  vDiff = diff; vStream = aStream;',
     '  vFade = clamp(persp*0.72, 0.30, 1.0);',
     '}'
@@ -57,7 +57,7 @@
     '  float a = smoothstep(0.25,0.015,d);',
     '  vec3 col = mix(uOps,uAcct,vStream);',
     '  col = mix(col,uDif,vDiff);',
-    '  gl_FragColor = vec4(col, a*vFade*(0.80 + vDiff*0.20));',
+    '  gl_FragColor = vec4(col, a*vFade*(0.74 + vDiff*0.26));',
     '}'
   ].join('\n');
 
@@ -99,9 +99,9 @@
       uDpr = gl.getUniformLocation(prog, 'uDpr'),
       uTilt = gl.getUniformLocation(prog, 'uTilt'),
       uShift = gl.getUniformLocation(prog, 'uShift');
-  gl.uniform3f(gl.getUniformLocation(prog, 'uOps'), 0.24, 0.88, 1.0);
-  gl.uniform3f(gl.getUniformLocation(prog, 'uAcct'), 0.66, 0.55, 1.0);
-  gl.uniform3f(gl.getUniformLocation(prog, 'uDif'), 1.0, 0.69, 0.13);
+  gl.uniform3f(gl.getUniformLocation(prog, 'uOps'), 0.96, 0.95, 0.92);
+  gl.uniform3f(gl.getUniformLocation(prog, 'uAcct'), 0.58, 0.64, 0.68);
+  gl.uniform3f(gl.getUniformLocation(prog, 'uDif'), 1.0, 0.83, 0.0);
 
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.SRC_ALPHA, gl.ONE);   /* additive: the overlaps glow */
@@ -166,4 +166,30 @@
   raf = requestAnimationFrame(frame);
 
   window.addEventListener('pagehide', function () { cancelAnimationFrame(raf); });
+})();
+
+/* ---- scroll reveal, the behaviour from the live site ----
+   Sections rise as they enter. Failsafe: anything still hidden
+   after 2.5s is revealed, so a script error can never leave the
+   page blank. Reduced motion skips it entirely (CSS handles it). */
+(function () {
+  var items = document.querySelectorAll('.rv');
+  if (!items.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  for (var k = 0; k < items.length; k++) io.observe(items[k]);
+  setTimeout(function () {
+    var left = document.querySelectorAll('.rv:not(.in)');
+    for (var n = 0; n < left.length; n++) left[n].classList.add('in');
+  }, 2500);
 })();
