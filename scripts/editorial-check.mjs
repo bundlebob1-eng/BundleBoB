@@ -16,9 +16,20 @@ try{
  results.navigation.keyboardAndEscape=true;
  await services.click();await page.locator('.nav-item summary').filter({hasText:'Solutions'}).click();assert.equal(await page.locator('.nav-item[open]').count(),1);
  await page.mouse.click(30,750);assert.equal(await page.locator('.nav-item[open]').count(),0);results.navigation.outsideAndSingleOpen=true;
- const model=page.locator('.sculpture-object');const surface=page.locator('.system-sculpture');
- await surface.hover({position:{x:80,y:100}});assert.match(await model.getAttribute('style'),/rotateX/);results.interactions.pointerTilt=true;
- await page.emulateMedia({reducedMotion:'reduce'});await page.waitForFunction(()=>!document.querySelector('.sculpture-object').style.transform);assert.equal(await model.getAttribute('style'),'');await surface.hover({position:{x:120,y:140}});assert.equal(await model.getAttribute('style'),'');results.interactions.reducedMotion=true;
+ // Hero is now a live WebGL field (assets/signal.js), not the CSS-3D sculpture.
+ const field=page.locator('[data-signal]');
+ assert.equal(await field.count(),1);
+ assert.equal(await field.evaluate(c=>!!(c.getContext('webgl')||c.getContext('experimental-webgl'))),true);
+ assert.equal(await field.evaluate(c=>c.width>0&&c.height>0),true);
+ await page.mouse.move(1100,300);await page.waitForTimeout(600);
+ const gapEl=page.locator('[data-sg-gap]');
+ const a=await gapEl.textContent();await page.waitForTimeout(900);const b2=await gapEl.textContent();
+ assert.ok(a!==b2,'hero readout should be live');results.interactions.pointerTilt=true;
+ // reduced motion: field retires, markup still states the figure
+ await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await page.waitForTimeout(500);
+ assert.equal(await field.evaluate(c=>getComputedStyle(c).display),'none');
+ assert.match(await gapEl.textContent(),/\$11,850/);results.interactions.reducedMotion=true;
+ await page.emulateMedia({reducedMotion:'no-preference'});
  for(const width of [320,390,768,900,1024,1440,1920]){
   await page.setViewportSize({width,height:900});await page.goto(base);await page.evaluate(()=>document.fonts.ready);
   const scrollWidth=await page.evaluate(()=>document.documentElement.scrollWidth);assert.ok(scrollWidth<=width,`Overflow at ${width}: ${scrollWidth}`);results.widths.push({width,scrollWidth});

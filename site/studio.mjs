@@ -12,7 +12,24 @@ export const steps=[['Listen','Understand the work before the brief.','We walk t
 export function process(){return `<section class="studio-process section" id="process"><div class="wrap"><div class="studio-section-head"><div><p class="studio-kicker">03 / HOW WE WORK</p><h2>First, we listen.<br>Then, we build.</h2></div><p>A real conversation. A clear plan. Working software.<br>People who take responsibility for the details.</p></div><div class="studio-steps">${steps.map(([title,head,copy,out],i)=>`<article><span class="studio-index">0${i+1} / ${title}</span><h3>${head}</h3><p>${copy}</p><small>YOU LEAVE WITH</small><b>${out}</b></article>`).join('')}</div></div></section>`;}
 export function studioClosing(){return `<section class="studio-closing"><div class="wrap"><p class="studio-kicker">LET’S FIND THE RIGHT STARTING POINT</p><h2>What’s slowing<br>your business <em>down?</em></h2><div><p>Bring us the messy process, the disconnected tools,<br>or the idea you haven’t quite figured out.</p>${link('/contact','Let’s work through it')}</div></div></section>`;}
 function sculpture(){return `<div class="system-sculpture" aria-label="A three-dimensional illustration of connected business systems"><div class="sculpture-topline"><span><i></i> CONNECTING THE MOVING PARTS</span><span>BB — 01</span></div><div class="sculpture-space" aria-hidden="true"><div class="sculpture-orbit"></div><div class="sculpture-object"><div class="system-layer layer-bottom"><span>YOUR SYSTEMS</span><div class="layer-grid"></div></div><div class="system-layer layer-middle"><span>PEOPLE + PROCESS</span><div class="layer-grid"></div></div><div class="system-layer layer-top"><span>${mark} BundleBoB</span><b>Better<br>together.</b><small>TECHNOLOGY THAT FITS.</small></div></div><span class="sculpture-label label-left">01 — UNDERSTAND</span><span class="sculpture-label label-right">02 — CONNECT</span><span class="sculpture-label label-bottom">03 — MAKE IT WORK</span></div><div class="sculpture-bottomline"><span>Complexity, thoughtfully connected.</span><span>↗</span></div></div>`;}
-export function studioHome(){return `<header class="studio-hero wrap"><div class="studio-hero-copy"><p class="studio-kicker"><span class="orange-dot"></span> YOUR TECHNOLOGY PARTNER</p><h1>Real problems.<br>Thoughtful tech.<br><em>Built for you.</em></h1><p class="studio-intro">We build custom software, practical AI, and connected systems around the way your business works.</p><div class="actions">${link('/contact','Tell us what’s getting in the way')}${link('#work','Explore our work','studio-text-link')}</div><p class="hero-signoff">Human-led. Purpose-built. With you beyond launch.</p></div>${sculpture()}</header>
+export function studioHome(){return `<header class="sg-hero">
+<canvas class="sg-canvas" data-signal aria-hidden="true"></canvas>
+<div class="wrap">
+  <p class="sg-kicker"><i></i> Live \u00b7 operations vs accounting \u00b7 synthetic data</p>
+  <h1>Two systems.<br>One job.<br><em>One honest number.</em></h1>
+  <p class="sg-lede">Your operations system and your accounting system describe the same work differently. We connect them, reconcile them nightly, and show you exactly where \u2014 and why \u2014 they disagree, while there is still time to act.</p>
+  <div class="sg-actions">
+    <a class="sg-btn" href="/contact">Show us where yours disagree ${arrow}</a>
+    <a class="sg-btn sg-btn-ghost" href="#work">See it happen</a>
+  </div>
+  <div class="sg-readout" aria-hidden="true">
+    <span><b class="on">OPERATIONS</b> $196,450</span>
+    <span><b class="ac">ACCOUNTING</b> $184,600</span>
+    <span><b>GAP</b> <b data-sg-gap class="df">$11,850</b></span>
+    <span data-sg-state class="df">DIFFERENCE OPEN</span>
+  </div>
+</div>
+</header>
 <nav class="studio-page-nav" aria-label="Explore BundleBoB"><div class="wrap"><span>BUILT AROUND YOUR BUSINESS</span><a href="#services">What we do</a><a href="#work">Construction expertise</a><a href="#process">How we work</a><a href="/contact">Let’s talk ↗</a></div></nav>
 <div class="studio-discipline-strip wrap"><span>BUSINESS FIRST. TECHNOLOGY WITH PURPOSE.</span><div><span>AI solutions</span><i>↗</i><span>Custom software</span><i>↗</i><span>Systems integration</span></div></div>
 <section class="section wrap" id="services"><div class="studio-section-head"><div><p class="studio-kicker">01 / WHAT WE CAN HELP WITH</p><h2>Your business is unique.<br>Your technology should fit.</h2></div><p>The best solution starts with the problem.<br>We bring the design, engineering, and care<br>to turn it into something useful.</p></div>${serviceCards()}</section>
