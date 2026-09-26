@@ -1,4 +1,5 @@
-import {servicesPage,approachPage} from '../site/studio.mjs';
+import {industriesPage,fdePage} from '../site/partnership.mjs';
+import {servicesOverview,serviceDetail,constructionPage,enterpriseApproach,enterpriseClosing} from '../site/enterprise.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -12,14 +13,14 @@ export async function build(){
  if(email&&!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))throw new Error('CONTACT_EMAIL must be a valid business email address');
  if(booking&&new URL(booking).protocol!=='https:')throw new Error('BOOKING_URL must use HTTPS');
  const config={email,booking};
- const styles=(await Promise.all(['site.css','editorial.css','studio.css','signal.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
- const routes=[['/','Custom software, practical AI & connected systems',home()],['/services','Technology services',servicesPage()],['/approach','Our approach',approachPage()],['/how-it-works','How it works',how()],['/solutions','Solutions for businesses that run on jobs',solutions()],['/why-bundlebob','Why BundleBoB',why()],['/resources','Practical guides to clearer job reporting',resources()],...content.resources.map(r=>['/resources/'+r.id,r.title,article(r.id)]),['/about','About BundleBoB',about()],['/contact','Start a conversation',contact(config)],['/system','Design system',system()]];
+ const styles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
+ const routes=[['/','Custom software, practical AI & connected systems',home()],['/services','Technology services',servicesOverview()],['/approach','Our approach',enterpriseApproach()],['/services/ai-solutions','Applied AI services',serviceDetail('ai')],['/services/custom-software','Custom software development',serviceDetail('software')],['/services/integrations','Systems integration services',serviceDetail('systems')],['/construction','Construction technology',constructionPage()],['/how-it-works','How it works',how()],['/solutions','Technology solutions across industries',industriesPage()+enterpriseClosing()],['/forward-deployed-engineering','An FDE working directly with your team',fdePage()+enterpriseClosing()],['/why-bundlebob','Why BundleBoB',why()],['/resources','Practical guides to clearer job reporting',resources()],...content.resources.map(r=>['/resources/'+r.id,r.title,article(r.id)]),['/about','About BundleBoB',about()],['/contact','Start a conversation',contact(config)],['/system','Design system',system()]];
  await fs.rm(output,{recursive:true,force:true});
  await fs.mkdir(output,{recursive:true});
  for(const [url,title,body] of routes){const destination=path.join(output,url==='/'?'index.html':url.slice(1)+'.html');await fs.mkdir(path.dirname(destination),{recursive:true});await fs.writeFile(destination,layout({title,path:url,body,config,styles,noindex:url==='/system'}));}
  for(const [from,to] of Object.entries(aliases)){await fs.writeFile(path.join(output,from.slice(1)+'.html'),`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="https://bundlebob.com${to.split('#')[0]}"><title>Page moved | BundleBoB</title><body><p>This page has moved. <a href="${to}">Continue to BundleBoB</a>.</p></body></html>`)}
  await fs.mkdir(path.join(output,'assets'),{recursive:true});
- const assets=['site.css','editorial.css','studio.css','signal.css','site.js','signal.js','theme.js','favicon.svg','og-image.png'];
+ const assets=['site.css','editorial.css','studio.css','enterprise.css','signal.css','site.js','enterprise.js','signal.js','theme.js','favicon.svg','og-image.png'];
  for(const asset of assets)await fs.copyFile(path.join(root,'assets',asset),path.join(output,'assets',asset));
  for(const folder of ['video','fonts','images'])await fs.cp(path.join(root,'assets',folder),path.join(output,'assets',folder),{recursive:true});
  await fs.writeFile(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://bundlebob.com/sitemap.xml\n');

@@ -1,6 +1,6 @@
 export const content = {
   brand: 'BundleBoB',
-  description: 'BundleBoB builds custom software, practical AI solutions, and connected systems around your business, with a special focus on construction technology.',
+  description: 'BundleBoB builds custom software, practical AI, and connected systems across industries. A forward-deployed engineer works directly with your team, from understanding the problem to delivering the solution.',
   home: {
     eyebrow: 'A clearer picture of work in progress',
     title: 'Because every job\nshould add up.',

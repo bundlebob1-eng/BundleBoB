@@ -110,23 +110,39 @@
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} }
 
-/* ── enforce the three-colour rule over the legacy sheets ──────
-   signal.css is concatenated last, so these win. Fills and marks
-   become hi-vis; accent *text* becomes a dark ochre, because
-   hi-vis on paper is unreadable and the a11y gate would catch it. */
+/* ── enforce the three colours + the display face over enterprise.css ──
+   signal.css is concatenated last, so these win. The enterprise sheet
+   is a light ground with an orange accent and Montserrat headings;
+   all three are replaced here. */
+
+h1,h2,h3,h4,.en-section h2{font-family:var(--sg-display)!important;letter-spacing:-.035em}
+
 :root{
-  --accent:#FFD400;
+  --accent:#FFD400;          /* hi-vis fills */
   --accent-ink:#7A5E00;      /* accent text on paper */
-  --spectrum:var(--ink);
+  --positive:#20201f;        /* three colours means no fourth hue */
 }
-/* On the dark ground the ochre drops to ~2.3:1, so accent text
-   becomes hi-vis there. All three theme states are covered. */
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){ --accent-ink:#FFD400 }
 }
-:root[data-theme="dark"]{ --accent-ink:#FFD400 }
+:root[data-theme="dark"]{ --accent:#FFD400; --accent-ink:#FFD400; --positive:#f8f6f1 }
 :root[data-theme="light"]{ --accent-ink:#7A5E00 }
-.nav-cta{background:var(--hivis)!important;border-color:var(--hivis)!important;color:var(--ink)!important}
-.nav-cta:hover{background:var(--paper)!important;border-color:var(--paper)!important}
-.button-dark{background:var(--ink)}
-.orange-dot,.studio-kicker .orange-dot{background:var(--hivis)!important}
+
+/* hi-vis reads as a safety fill with ink on top, never as text on paper */
+.en-button-primary{background:var(--accent)!important;color:#20201f!important}
+.en-button-primary:hover{background:#20201f!important;color:#faf9f6!important}
+
+/* ── the interactive field, now its own section (video owns the hero) ── */
+.sg-field{position:relative;isolation:isolate;overflow:clip;border-radius:14px;
+  background:radial-gradient(112% 90% at 74% 18%,rgba(255,212,0,.07),transparent 60%),var(--ink-fieldbg,#0E1820);
+  color:#F4F1EA;padding:46px 40px 40px;min-height:520px;display:flex;align-items:flex-end}
+.sg-field .sg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.sg-field-copy{position:relative;z-index:2;max-width:46ch}
+.sg-field h3{font-family:var(--sg-display);font-weight:800;font-size:clamp(26px,3vw,40px);
+  line-height:1.05;letter-spacing:-.035em;margin:0 0 14px;color:#F4F1EA!important}
+.sg-field p{color:rgba(244,241,234,.7);font-size:16px;line-height:1.55;margin:0}
+.sg-field .sg-readout{position:absolute;right:40px;bottom:40px;z-index:2;text-align:right}
+@media(max-width:900px){
+  .sg-field{padding:32px 24px;min-height:600px}
+  .sg-field .sg-readout{position:static;text-align:left;margin-top:28px}
+}

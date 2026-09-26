@@ -1,3 +1,23 @@
+# September 26 cinematic enterprise verification
+
+Current implementation: [enterprise-direction.md](enterprise-direction.md). Media provenance: [media-sources.md](media-sources.md).
+
+- Build: 17 pages and 6 redirects.
+- Lighthouse 12.6.1 mobile lab audit on September 26: Performance 96, Accessibility 100, Best Practices 100, SEO 100. LCP 2.7s, total blocking time 0ms. These are local simulated results, not production field measurements.
+- Browser acceptance: 68 page/theme/viewport combinations and 77 local links; no layout, link, or browser errors.
+- Automated accessibility: zero violations across 34 page/theme pairs.
+- Hero video: muted playback, pause/resume, offscreen pause, and reduced-motion handling verified.
+- Reduced-motion visits do not download the background movie automatically; poster and text remain visible.
+- Construction tour: deep-linked steps, keyboard navigation, previous/next controls, and no-script fallback verified.
+- Service FAQs, mobile navigation, inquiry validation/download, resource search, and reconciliation playback passed.
+- Visual inspection: home at desktop/mobile, construction page, and AI service page. Evidence is in `audit/enterprise/` and `audit/screenshots/`.
+
+This is a local preview. Contact delivery and real project case studies still require the business inputs requested from the owner.
+
+Earlier measurements below are archived and refer to previous visual directions.
+
+---
+
 # September 24 studio revision verification
 
 The current design is documented in [studio-direction.md](studio-direction.md). `npm run build` produces 13 pages and 6 redirects. This is a local preview, not a deployment.
