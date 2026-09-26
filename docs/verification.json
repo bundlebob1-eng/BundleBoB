@@ -1,0 +1,212 @@
+{
+  "measuredAt": "2026-09-22T03:44:18.723Z",
+  "baseline": "86eaaff",
+  "reference": "https://www.octanner.com/",
+  "lighthouse": {
+    "version": "12.6.1",
+    "scores": {
+      "performance": 99,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcpMs": 2027,
+    "fcpMs": 902,
+    "cls": 0,
+    "totalBlockingTimeMs": 0
+  },
+  "browser": {
+    "combinations": 44,
+    "links": 50,
+    "errors": [],
+    "horizontalOverflowCases": 0,
+    "interactions": {
+      "railKeyboard": true,
+      "mobileMenu": true,
+      "mobileEscape": true,
+      "searchEmpty": true,
+      "searchReset": true,
+      "invalidForm": true,
+      "inquiryDownload": true,
+      "noUnintendedSubmission": true
+    },
+    "motion": {
+      "idleTaskPercent": 0.3253904452228817,
+      "scrollProgress": {
+        "before": "0.0009",
+        "after": "0.9991"
+      },
+      "reduced": {
+        "canvasHidden": true,
+        "counts": [
+          "2",
+          "$11,850",
+          "1"
+        ],
+        "animated": 0
+      },
+      "reducedVideoPaused": true,
+      "scriptFailureContent": {
+        "mainText": 5887,
+        "hiddenHeadings": 0
+      }
+    },
+    "video": {
+      "mp4": {
+        "duration": 8,
+        "width": 960,
+        "height": 540,
+        "played": true
+      },
+      "webm": {
+        "duration": 8,
+        "width": 960,
+        "height": 540,
+        "played": true
+      }
+    },
+    "externalRequests": []
+  },
+  "editorial": {
+    "navigation": {
+      "keyboardAndEscape": true,
+      "outsideAndSingleOpen": true,
+      "themeToggle": true
+    },
+    "industries": {
+      "keyboard": true,
+      "allPanels": true
+    },
+    "widths": [
+      {
+        "width": 320,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 900,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 1024,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 1280,
+        "overflow": false,
+        "offenders": []
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "offenders": []
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/workshop-mobile.webp",
+        "status": 200
+      },
+      {
+        "src": "/assets/images/workshop-768.webp",
+        "status": 200
+      },
+      {
+        "src": "/assets/images/fabrication-768.webp",
+        "status": 200
+      },
+      {
+        "src": "/assets/images/field-service-768.webp",
+        "status": 200
+      }
+    ],
+    "fonts": [
+      {
+        "family": "Montserrat",
+        "status": "loaded"
+      },
+      {
+        "family": "Roboto Slab",
+        "status": "loaded"
+      }
+    ],
+    "withoutJavaScript": "Content and all four industry examples remain visible"
+  },
+  "accessibility": {
+    "pageThemePairs": 22,
+    "violations": 0
+  },
+  "design": {
+    "contrast": {
+      "light": {
+        "ink/paper": 18.54,
+        "muted/paper": 8.91,
+        "accent-ink/paper": 5.71,
+        "positive/paper": 6.6,
+        "ink/surface": 19.91,
+        "muted/surface": 9.57
+      },
+      "dark": {
+        "ink/paper": 17.57,
+        "muted/paper": 10.96,
+        "accent-ink/paper": 10.54,
+        "positive/paper": 11.45,
+        "ink/surface": 14.79,
+        "muted/surface": 9.22
+      }
+    },
+    "motion": {
+      "heroJS": 1810,
+      "scrollJS": 1568,
+      "reconciliationMarkup": 3648,
+      "reconciliationCSS": 1717,
+      "microCSS": 1836
+    },
+    "payload": {
+      "jsRaw": 13852,
+      "jsGzip": 5037,
+      "cssGzip": 17386
+    },
+    "fonts": {
+      "montserrat-latin-variable.woff2": 35508,
+      "roboto-slab-latin-variable.woff2": 34160
+    },
+    "heroWebpBytes": 87336,
+    "mobileHeroWebpBytes": 38740,
+    "posterWebpBytes": 23272
+  },
+  "video": {
+    "durationSeconds": 8,
+    "fps": 24,
+    "width": 960,
+    "height": 540,
+    "frames": 192,
+    "sizes": {
+      "reconciliation.mp4": 92393,
+      "reconciliation.webm": 113145,
+      "reconciliation-poster.png": 53192
+    },
+    "technique": "Authored Canvas frames encoded with ffmpeg",
+    "reproduce": "npm run video (Playwright and ffmpeg installed)"
+  },
+  "limits": [
+    "Local Chrome measurements, not production hosting or physical-device results.",
+    "LCP is 2.027 seconds, slightly above the original brief\u2019s strict sub-2.0-second target.",
+    "Approved open fonts approximate Gotham SSm and Sentinel; they are not those commercial font files.",
+    "Photographic hero is a still image; the original procedural video remains in the walkthrough sections.",
+    "Contact still prepares a downloadable inquiry until an actual monitored destination is configured.",
+    "No manual screen-reader or physical touch-device session."
+  ]
+}

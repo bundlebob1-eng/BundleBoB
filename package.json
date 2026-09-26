@@ -1,0 +1,19 @@
+{
+  "name": "bundlebob-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/build.mjs && node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "video": "node scripts/render-video.mjs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "lighthouse": "12.6.1",
+    "playwright": "1.58.2"
+  }
+}

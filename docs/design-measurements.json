@@ -1,0 +1,39 @@
+{
+  "contrast": {
+    "light": {
+      "ink/paper": 18.54,
+      "muted/paper": 8.91,
+      "accent-ink/paper": 5.71,
+      "positive/paper": 6.6,
+      "ink/surface": 19.91,
+      "muted/surface": 9.57
+    },
+    "dark": {
+      "ink/paper": 17.57,
+      "muted/paper": 10.96,
+      "accent-ink/paper": 10.54,
+      "positive/paper": 11.45,
+      "ink/surface": 14.79,
+      "muted/surface": 9.22
+    }
+  },
+  "motion": {
+    "heroJS": 1810,
+    "scrollJS": 1568,
+    "reconciliationMarkup": 3648,
+    "reconciliationCSS": 1717,
+    "microCSS": 1836
+  },
+  "payload": {
+    "jsRaw": 13852,
+    "jsGzip": 5037,
+    "cssGzip": 17386
+  },
+  "fonts": {
+    "montserrat-latin-variable.woff2": 35508,
+    "roboto-slab-latin-variable.woff2": 34160
+  },
+  "heroWebpBytes": 87336,
+  "mobileHeroWebpBytes": 38740,
+  "posterWebpBytes": 23272
+}

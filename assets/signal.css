@@ -1,0 +1,192 @@
+/* ============================================================
+   SIGNAL — three colours, no more.
+
+   60  --ink     the ground
+   30  --paper   surfaces and type
+   10  --hivis   the accent, and the ONLY saturated colour anywhere
+
+   Hi-vis is this audience's own colour: it is what they already
+   wear and already mean by "look here". Because nothing else on
+   the page is saturated, the disagreement between two systems is
+   the single loudest thing on screen. That is the whole product.
+   ============================================================ */
+
+@font-face{font-family:Figtree;src:url(/assets/fonts/figtree-latin.woff2) format('woff2');font-weight:400 800;font-display:swap}
+@font-face{font-family:InterVF;src:url(/assets/fonts/inter-latin.woff2) format('woff2');font-weight:400 600;font-display:swap}
+@font-face{font-family:PlexMono;src:url(/assets/fonts/plexmono-latin.woff2) format('woff2');font-weight:400 500;font-display:swap}
+
+:root{
+  /* 60 — ground */
+  --ink:#0E1820;
+  --ink-2:#16242F;
+  --ink-3:#1E313E;
+
+  /* 30 — paper */
+  --paper:#F4F1EA;
+  --paper-2:rgba(244,241,234,.66);
+  --paper-3:rgba(244,241,234,.38);
+  --paper-line:rgba(244,241,234,.14);
+
+  /* 10 — hi-vis, the only saturated colour on the site */
+  --hivis:#FFD400;
+  --hivis-deep:#E0B400;
+
+  --sg-display:Figtree,"Helvetica Neue",Arial,sans-serif;
+  --sg-body:InterVF,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --sg-mono:PlexMono,ui-monospace,SFMono-Regular,monospace;
+}
+
+/* ── hero ─────────────────────────────────────────────────── */
+.sg-hero{
+  position:relative;isolation:isolate;overflow:clip;color:var(--paper);
+  background:
+    radial-gradient(118% 92% at 76% 16%,rgba(255,212,0,.055),transparent 60%),
+    var(--ink);
+  min-height:min(95svh,920px);display:flex;align-items:flex-end;
+  padding:150px 0 68px;
+}
+.sg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.sg-hero::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(112% 88% at 74% 18%,transparent 0%,rgba(14,24,32,.20) 62%,rgba(14,24,32,.74) 100%),
+    linear-gradient(180deg,rgba(14,24,32,.56) 0%,transparent 22%,transparent 64%,var(--ink) 99%);
+}
+.sg-hero > .wrap{position:relative;z-index:2;width:min(1240px,calc(100% - 56px));margin-inline:auto}
+
+.sg-kicker{
+  font-family:var(--sg-mono);font-size:11px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--paper-3);display:flex;align-items:center;gap:11px;margin:0 0 26px;
+}
+.sg-kicker i{width:7px;height:7px;border-radius:2px;background:var(--hivis);flex:none;
+  box-shadow:0 0 0 4px rgba(255,212,0,.15)}
+
+.sg-hero h1{
+  font-family:var(--sg-display);font-weight:800;
+  font-size:clamp(42px,6.6vw,88px);line-height:1.0;letter-spacing:-.035em;
+  margin:0;max-width:17ch;text-wrap:balance;
+}
+.sg-hero h1 em{font-style:normal;color:var(--hivis)}
+.sg-lede{
+  font-family:var(--sg-body);color:var(--paper-2);
+  font-size:clamp(16px,1.4vw,20px);line-height:1.55;max-width:56ch;margin:26px 0 0;
+}
+
+.sg-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.sg-btn{
+  display:inline-flex;align-items:center;gap:11px;min-height:52px;padding:0 26px;
+  border-radius:8px;font-family:var(--sg-body);font-weight:600;font-size:15px;
+  background:var(--hivis);color:var(--ink);border:1px solid transparent;
+  transition:transform .18s cubic-bezier(.2,.7,.3,1),background .18s;
+}
+.sg-btn:hover{transform:translateY(-2px);background:var(--paper)}
+.sg-btn-ghost{background:transparent;color:var(--paper);border-color:var(--paper-line)}
+.sg-btn-ghost:hover{background:transparent;border-color:var(--paper)}
+
+/* live readout — proves the thing is actually running */
+.sg-readout{
+  position:absolute;right:0;bottom:68px;z-index:2;
+  font-family:var(--sg-mono);font-size:11px;letter-spacing:.05em;color:var(--paper-3);
+  display:grid;gap:7px;text-align:right;
+}
+.sg-readout b{font-weight:500}
+.sg-readout span{display:block;font-variant-numeric:tabular-nums}
+.sg-readout .on{color:var(--paper)}            /* operations — bright paper */
+.sg-readout .ac{color:var(--paper-3)}          /* accounting — dim paper   */
+.sg-readout .df{color:var(--hivis)}            /* the difference — hi-vis  */
+.sg-readout .ok{color:var(--paper-3)}
+
+@media(max-width:900px){
+  .sg-hero{min-height:auto;padding:118px 0 54px}
+  .sg-readout{position:static;text-align:left;margin-top:38px;justify-items:start}
+}
+
+@media (prefers-reduced-motion:reduce){ .sg-canvas{display:none} }
+.no-js .sg-canvas{display:none}
+
+/* ── scroll reveal — the behaviour from the live site ──────── */
+.rv{opacity:0;transform:translateY(22px);
+  transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} }
+
+/* ── enforce the three colours + the display face over enterprise.css ──
+   signal.css is concatenated last, so these win. The enterprise sheet
+   is a light ground with an orange accent and its own display face;
+   all three are replaced here. */
+
+h1,h2,h3,h4,.en-section h2{font-family:var(--sg-display)!important;letter-spacing:-.035em}
+
+:root{
+  --accent:#FFD400;          /* hi-vis fills */
+  --accent-ink:#7A5E00;      /* accent text on paper */
+  --positive:#20201f;        /* three colours means no fourth hue */
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){ --accent-ink:#FFD400 }
+}
+:root[data-theme="dark"]{ --accent:#FFD400; --accent-ink:#FFD400; --positive:#f8f6f1 }
+:root[data-theme="light"]{ --accent-ink:#7A5E00 }
+
+/* hi-vis reads as a safety fill with ink on top, never as text on paper */
+.en-button-primary{background:var(--accent)!important;color:#20201f!important}
+.en-button-primary:hover{background:#20201f!important;color:#faf9f6!important}
+
+/* ── the interactive field, now its own section (video owns the hero) ── */
+.sg-field{position:relative;isolation:isolate;overflow:clip;border-radius:14px;
+  background:radial-gradient(112% 90% at 74% 18%,rgba(255,212,0,.07),transparent 60%),var(--ink-fieldbg,#0E1820);
+  color:#F4F1EA;padding:46px 40px 40px;min-height:520px;display:flex;align-items:flex-end}
+.sg-field .sg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.sg-field-copy{position:relative;z-index:2;max-width:46ch}
+.sg-field h3{font-family:var(--sg-display);font-weight:800;font-size:clamp(26px,3vw,40px);
+  line-height:1.05;letter-spacing:-.035em;margin:0 0 14px;color:#F4F1EA!important}
+.sg-field p{color:rgba(244,241,234,.7);font-size:16px;line-height:1.55;margin:0}
+.sg-field .sg-readout{position:absolute;right:40px;bottom:40px;z-index:2;text-align:right}
+@media(max-width:900px){
+  .sg-field{padding:32px 24px;min-height:600px}
+  .sg-field .sg-readout{position:static;text-align:left;margin-top:28px}
+}
+
+/* ── tap targets ───────────────────────────────────────────────
+   Measured at 390px: 25 controls came in under 44px, the smallest
+   25px tall. Applied only to coarse pointers, so the desktop
+   layout keeps its tighter rhythm. */
+@media (max-width:760px),(pointer:coarse){
+  .site-footer a,
+  .en-hero .wrap > a,
+  a.brand{
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+  /* matches the specificity of the existing 34px floor, and follows it */
+  .footer-grid>div>a:not(.brand){
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+  .site-footer a[aria-label],
+  .site-footer a>svg{min-width:44px}
+  .site-header .icon-button{min-width:44px;min-height:44px}
+}
+
+/* footer legal line */
+.footer-legal{display:flex;gap:18px;margin-top:10px}
+.footer-legal a{font-size:12px;opacity:.7}
+.footer-legal a:hover{opacity:1}
+
+/* ── closing panel ─────────────────────────────────────────────
+   Five vivid stops mapped onto one hue leave only a lightness
+   wash, which reads muddy. Ink ground with a single hi-vis glow
+   is both on-rule and the more expensive-looking of the two. */
+.en-closing{
+  background:
+    radial-gradient(118% 120% at 86% 10%,rgba(255,212,0,.17),transparent 62%),
+    linear-gradient(158deg,#1E313E 0%,#0E1820 68%)!important;
+  color:var(--paper)!important;
+}
+.en-closing .en-button-white{background:var(--hivis)!important;color:#0E1820!important}
+.en-closing .en-button-white:hover{background:var(--paper)!important;color:#0E1820!important}
+
+/* the 12px rule under the hero: a hi-vis edge, not a rainbow */
+.en-color-line{background:linear-gradient(90deg,var(--hivis),var(--hivis-deep) 55%,#6b5a00)!important}
