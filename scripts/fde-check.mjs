@@ -7,7 +7,7 @@ await fs.mkdir('audit/fde',{recursive:true});
 const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));const result={};
 try{
  await page.goto(base);await page.evaluate(()=>document.fonts.ready);
- result.fonts=await page.evaluate(()=>({display:getComputedStyle(document.querySelector('h1')).fontFamily,body:getComputedStyle(document.body).fontFamily,loaded:document.fonts.check('500 60px Montserrat')&&document.fonts.check('400 16px InterVF')}));assert.equal(result.fonts.loaded,true);assert.match(result.fonts.display,/Montserrat/);assert.match(result.fonts.body,/InterVF/);
+ result.fonts=await page.evaluate(()=>({display:getComputedStyle(document.querySelector('h1')).fontFamily,body:getComputedStyle(document.body).fontFamily,loaded:document.fonts.check('700 60px Figtree')&&document.fonts.check('400 16px InterVF')}));assert.equal(result.fonts.loaded,true);assert.match(result.fonts.display,/Figtree/);assert.match(result.fonts.body,/InterVF/);
  assert.equal(await page.locator('.en-industry-links a').count(),12);
  const scene=page.locator('[data-scroll-story]');
  await scene.evaluate(e=>scrollTo(0,e.offsetTop-130));await page.waitForTimeout(300);const start=await scene.getAttribute('data-scroll-progress');const first=await page.locator('.en-depth-stack').evaluate(e=>getComputedStyle(e).transform);

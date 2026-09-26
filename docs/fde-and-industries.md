@@ -4,7 +4,7 @@ BundleBoB is positioned as a cross-industry technology services business. Constr
 
 ## Typography
 
-Locally hosted Montserrat is the display face; Inter is the body and interface face. The revision increases small mobile labels to 10px, uses 15px for service descriptions, and reduces over-tight heading tracking. Browser checks verify both font families load. No prompt deliverable was requested: the owner clarified that “prompt” meant “font.”
+Locally hosted Figtree is the display face; Inter is the body and interface face, with IBM Plex Mono for figures. (Superseded: this revision originally set Montserrat. The owner asked for the production site's own faces, which are Figtree/Inter/Plex Mono; `scripts/fde-check.mjs` asserts those.) The revision increases small mobile labels to 10px, uses 15px for service descriptions, and reduces over-tight heading tracking. Browser checks verify both font families load. No prompt deliverable was requested: the owner clarified that “prompt” meant “font.”
 
 ## Scroll-driven 3D
 

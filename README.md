@@ -25,7 +25,8 @@ Produces `dist/`, the only deployment directory. Vercel uses this command and di
 - `site/tour.mjs` — original interface illustrations and the construction walkthrough.
 - `assets/studio.css` — warm ivory, charcoal, orange, responsive studio layouts, and CSS 3D geometry.
 - `site/editorial.mjs` — shared navigation and footer.
-- `assets/editorial.css` — Montserrat/Roboto Slab typography, floating black navigation, photographic sections, gradients, and responsive presentation.
+- `assets/editorial.css` — shared navigation and footer presentation, photographic sections, gradients, and responsive layout.
+- `assets/signal.css` / `assets/signal.js` — the three-colour system (ink / paper / hi-vis), the self-hosted display faces, the WebGL divergence field, and scroll reveal. Concatenated last so it governs the final palette and typography.
 - `site/content.mjs` — business copy, industry examples, ownership and compliance status, resource metadata.
 - `site/pages.mjs` — page composition, operational guides, and shared layout.
 - `site/art.mjs` — authored SVG icons, reconciliation sequence, and report/diagram markup.
@@ -36,7 +37,7 @@ Produces `dist/`, the only deployment directory. Vercel uses this command and di
 
 The page routes are `/`, `/services`, `/services/ai-solutions`, `/services/custom-software`, `/services/integrations`, `/construction`, `/approach`, `/how-it-works`, `/solutions`, `/why-bundlebob`, `/resources`, three resource details, `/about`, `/contact`, and `/system`. Previous marketing routes redirect to their equivalents. `/system` is marked noindex. The generated sitemap includes the other sixteen pages. `scroll3d/` is a retired experiment and is excluded from deployment.
 
-Typography uses locally hosted Montserrat for headlines and Inter for body and interface text, with monospace for record identifiers. Font licenses are included in `assets/fonts/`. The redesigned pages use licensed live-action stock footage and original interface demonstrations. Legacy image assets remain in the asset directory. There are no analytics scripts or runtime packages. The original diagrams and reconciliation video remain authored code assets. See `docs/enterprise-direction.md` for the current reference mapping.
+Typography uses locally hosted Figtree for headlines and Inter for body and interface text, with IBM Plex Mono for record identifiers and figures — the same three faces the current production site serves. Colour is restricted to three values: ink, paper, and hi-vis yellow, the only saturated colour anywhere. Font licenses are included in `assets/fonts/`. The redesigned pages use licensed live-action stock footage and original interface demonstrations. Legacy image assets remain in the asset directory. There are no analytics scripts or runtime packages. The original diagrams and reconciliation video remain authored code assets. See `docs/enterprise-direction.md` for the current reference mapping.
 
 ## Contact destination
 
