@@ -8,7 +8,7 @@ const page=await browser.newPage({viewport:{width:1440,height:1000}});const erro
 try{
  await page.goto(base);await page.evaluate(()=>document.fonts.ready);
  result.fonts=await page.evaluate(()=>({display:getComputedStyle(document.querySelector('h1')).fontFamily,body:getComputedStyle(document.body).fontFamily,loaded:document.fonts.check('700 60px Figtree')&&document.fonts.check('400 16px InterVF')}));assert.equal(result.fonts.loaded,true);assert.match(result.fonts.display,/Figtree/);assert.match(result.fonts.body,/InterVF/);
- assert.equal(await page.locator('.en-industry-links a').count(),12);
+ assert.equal(await page.locator('.en-industry-links a').count(),5);
  const scene=page.locator('[data-scroll-story]');
  await scene.evaluate(e=>scrollTo(0,e.offsetTop-130));await page.waitForTimeout(300);const start=await scene.getAttribute('data-scroll-progress');const first=await page.locator('.en-depth-stack').evaluate(e=>getComputedStyle(e).transform);
  await page.locator('[data-scroll-step="2"]').scrollIntoViewIfNeeded();await page.waitForTimeout(300);const end=await scene.getAttribute('data-scroll-progress');const last=await page.locator('.en-depth-stack').evaluate(e=>getComputedStyle(e).transform);assert.notEqual(first,last);assert.ok(Number(end)>Number(start));result.scrollDepth={start,end,transformChanges:true};

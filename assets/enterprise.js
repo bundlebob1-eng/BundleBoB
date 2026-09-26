@@ -3,16 +3,22 @@
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  document.querySelectorAll('[data-background-video]').forEach(video=>{
   const button=video.closest('header').querySelector('[data-video-toggle]');
-  let userPaused=false,visible=true,loaded=false;
-  const saveData=Boolean(navigator.connection?.saveData);
+  let userPaused=false,visible=true,loaded=false,userStarted=false;
+  // 6.2MB is not a thing to hand a phone uninvited: below 760px the
+  // poster stands in until the visitor asks for the film.
+  const compact=matchMedia('(max-width: 760px)');
+  const conn=navigator.connection;
+  // Save-Data, and also any connection that would make a 6MB file a
+  // punishment rather than a flourish.
+  const saveData=Boolean(conn?.saveData)||/(^|-)(2g|3g)$/.test(conn?.effectiveType||'');
   function label(){const paused=video.paused;button.setAttribute('aria-label',paused?'Play background video':'Pause background video');button.querySelector('[data-video-toggle-label]').textContent=paused?'Play film':'Pause film';button.querySelector('[data-video-toggle-icon]').textContent=paused?'▶':'Ⅱ';}
   async function play(){if(!loaded){video.src=video.dataset.src;loaded=true;video.load();}try{await video.play()}catch{}label();}
-  function sync(){if(reduced.matches||saveData||userPaused||!visible||document.hidden){video.pause();label();}else play();}
+  function sync(){if(reduced.matches||saveData||userPaused||!visible||document.hidden||(compact.matches&&!userStarted)){video.pause();label();}else play();}
   video.muted=true;button.hidden=false;
-  button.addEventListener('click',()=>{if(video.paused){userPaused=false;play()}else{userPaused=true;video.pause()}label()});
+  button.addEventListener('click',()=>{if(video.paused){userPaused=false;userStarted=true;play()}else{userPaused=true;video.pause()}label()});
   video.addEventListener('play',label);video.addEventListener('pause',label);
   video.addEventListener('error',()=>{button.hidden=true;video.removeAttribute('src');loaded=false;});
-  reduced.addEventListener('change',sync);document.addEventListener('visibilitychange',sync);
+  reduced.addEventListener('change',sync);compact.addEventListener('change',sync);document.addEventListener('visibilitychange',sync);
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()},{threshold:.05}).observe(video);
   sync();
  });

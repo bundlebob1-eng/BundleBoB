@@ -112,7 +112,7 @@
 
 /* ── enforce the three colours + the display face over enterprise.css ──
    signal.css is concatenated last, so these win. The enterprise sheet
-   is a light ground with an orange accent and Montserrat headings;
+   is a light ground with an orange accent and its own display face;
    all three are replaced here. */
 
 h1,h2,h3,h4,.en-section h2{font-family:var(--sg-display)!important;letter-spacing:-.035em}
@@ -146,3 +146,47 @@ h1,h2,h3,h4,.en-section h2{font-family:var(--sg-display)!important;letter-spacin
   .sg-field{padding:32px 24px;min-height:600px}
   .sg-field .sg-readout{position:static;text-align:left;margin-top:28px}
 }
+
+/* ── tap targets ───────────────────────────────────────────────
+   Measured at 390px: 25 controls came in under 44px, the smallest
+   25px tall. Applied only to coarse pointers, so the desktop
+   layout keeps its tighter rhythm. */
+@media (max-width:760px),(pointer:coarse){
+  .site-footer a,
+  .en-hero .wrap > a,
+  a.brand{
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+  /* matches the specificity of the existing 34px floor, and follows it */
+  .footer-grid>div>a:not(.brand){
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+  .site-footer a[aria-label],
+  .site-footer a>svg{min-width:44px}
+  .site-header .icon-button{min-width:44px;min-height:44px}
+}
+
+/* footer legal line */
+.footer-legal{display:flex;gap:18px;margin-top:10px}
+.footer-legal a{font-size:12px;opacity:.7}
+.footer-legal a:hover{opacity:1}
+
+/* ── closing panel ─────────────────────────────────────────────
+   Five vivid stops mapped onto one hue leave only a lightness
+   wash, which reads muddy. Ink ground with a single hi-vis glow
+   is both on-rule and the more expensive-looking of the two. */
+.en-closing{
+  background:
+    radial-gradient(118% 120% at 86% 10%,rgba(255,212,0,.17),transparent 62%),
+    linear-gradient(158deg,#1E313E 0%,#0E1820 68%)!important;
+  color:var(--paper)!important;
+}
+.en-closing .en-button-white{background:var(--hivis)!important;color:#0E1820!important}
+.en-closing .en-button-white:hover{background:var(--paper)!important;color:#0E1820!important}
+
+/* the 12px rule under the hero: a hi-vis edge, not a rainbow */
+.en-color-line{background:linear-gradient(90deg,var(--hivis),var(--hivis-deep) 55%,#6b5a00)!important}

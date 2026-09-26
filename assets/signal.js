@@ -37,10 +37,10 @@
     '  p = vec3(p.x, p.y*cx - p.z*sx, p.y*sx + p.z*cx);',
     '  float cy=cos(uTilt.x), sy=sin(uTilt.x);',
     '  p = vec3(p.x*cy + p.z*sy, p.y, -p.x*sy + p.z*cy);',
-    '  p.z += 3.05;',
-    '  float persp = 2.55 / max(p.z, 0.25);',
+    '  p.z += 2.62;',
+    '  float persp = 2.72 / max(p.z, 0.25);',
     '  gl_Position = vec4(p.x*persp/uAspect + uShift, p.y*persp + 0.06, 0.0, 1.0);',
-    '  gl_PointSize = (3.0 + diff*8.5) * persp * uDpr;',
+    '  gl_PointSize = (4.4 + diff*10.0) * persp * uDpr;',
     '  vDiff = diff; vStream = aStream;',
     '  vFade = clamp(persp*0.72, 0.30, 1.0);',
     '}'
@@ -57,7 +57,7 @@
     '  float a = smoothstep(0.25,0.015,d);',
     '  vec3 col = mix(uOps,uAcct,vStream);',
     '  col = mix(col,uDif,vDiff);',
-    '  gl_FragColor = vec4(col, a*vFade*(0.74 + vDiff*0.26));',
+    '  gl_FragColor = vec4(col, a*vFade*(0.88 + vDiff*0.12));',
     '}'
   ].join('\n');
 
@@ -74,7 +74,7 @@
   gl.useProgram(prog);
 
   /* ---- the field ---- */
-  var N = 2600, angle = [], rad = [], yy = [], stream = [], seed = [];
+  var N = 3600, angle = [], rad = [], yy = [], stream = [], seed = [];
   for (var i = 0; i < N; i++) {
     var s = i % 2;
     angle.push(Math.random() * Math.PI * 2);
