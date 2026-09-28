@@ -16,7 +16,7 @@ export async function build(){
  if(email&&!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))throw new Error('CONTACT_EMAIL must be a valid business email address');
  if(booking&&new URL(booking).protocol!=='https:')throw new Error('BOOKING_URL must use HTTPS');
  const config={email,booking};
- const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
+ const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css','typography.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
  const palette=enforcePalette(rawStyles);
  const type=enforceTypeFloor(palette.css);
  const styles=type.css;

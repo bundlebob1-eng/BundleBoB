@@ -1,0 +1,98 @@
+/* ============================================================
+   TYPOGRAPHY — heading hierarchy, rhythm, and AAA text.
+
+   Concatenated last, so it settles the defaults that the older
+   sheets disagree about. It deliberately does NOT set heading
+   font-sizes: an audit of 387 heading instances across 8 routes
+   and 3 breakpoints found every one already carrying an explicit
+   font-size and line-height (zero fell back to `normal`), scaling
+   properly from 96px to 46px on H1. Those per-component sizes are
+   tuned and are left alone.
+
+   What the audit did find was weight drift. enterprise.css sets
+   h1,h2,h3,h4{font-weight:500} as the base, so headings landed on
+   500, 600, 700 and 800 with no consistent rule -- including H1 at
+   500 on /about and /solutions, which is not a bold heading by any
+   reading. This file sets one ladder. Component rules carry class
+   selectors and therefore still win, so deliberate exceptions
+   (the hero's display treatment) survive.
+   ============================================================ */
+
+/* ── weight ladder ─────────────────────────────────────────────
+   Specificity (0,0,1): equal to the base rule in enterprise.css
+   but later in the cascade, so it wins there and loses to every
+   component rule, which is exactly the intent. */
+h1{font-weight:800}
+h2{font-weight:700}
+h3{font-weight:600}
+h4{font-weight:600}
+
+/* ── rhythm ────────────────────────────────────────────────────
+   :where() carries zero specificity, so these are floors, not
+   overrides: any existing margin in any sheet wins. That fills
+   the gaps where headings sat flush against the next element
+   without disturbing the grid and flex layouts that set their
+   own spacing on purpose.
+
+   Spacing is in em so it scales with each heading's own size
+   rather than imposing a fixed gap on a 96px hero and a 22px
+   card heading alike. */
+:where(h1){margin-block:0 .45em}
+:where(h2){margin-block:0 .5em}
+:where(h3){margin-block:0 .55em}
+:where(h4){margin-block:0 .6em}
+:where(h1,h2,h3,h4)+p,
+:where(h1,h2,h3,h4)+ul,
+:where(h1,h2,h3,h4)+ol{margin-top:0}
+
+/* A heading that follows body copy needs air above it, or the
+   previous paragraph reads as its subtitle. */
+:where(p,ul,ol,figure,table)+:where(h2){margin-top:1.1em}
+:where(p,ul,ol,figure,table)+:where(h3){margin-top:1.35em}
+
+/* ── AAA text colour ───────────────────────────────────────────
+   The brief asks for WCAG AAA: 7:1 for normal text, 4.5:1 for
+   large. Measured across 6 routes in both themes, the site was
+   98.0% AA and 85.5% AAA, and almost all of the shortfall came
+   from three tokens used for secondary text:
+
+     --muted      #5d666a   5.06-5.87:1   87 instances
+     --accent-ink #736100   5.26-6.10:1   19 instances
+
+   Replacements below were solved, not chosen: each is the
+   lightest value at its own hue and saturation that clears 7.0:1
+   against every background the site actually puts text on
+   (#fffffe, #f4f1ea and #efeee9).
+
+     --muted      #475056   7.09-8.23:1
+     --accent-ink #5c4f07   7.02-8.15:1
+
+   Specificity is (0,1,0) and it carries no theme selector, so it
+   sets the LIGHT default only. The dark themes declare these same
+   tokens at (0,2,0) via :root[data-theme="dark"] and the
+   prefers-color-scheme block, so their light-on-dark values are
+   untouched -- darkening those would invert the fix. */
+:root{
+  --muted:#475056;
+  --accent-ink:#5c4f07;
+}
+
+/* Three rules out-specify the :root default above and had to be
+   named. Two set --accent-ink again at higher specificity; the
+   third hard-codes a colour inside a report mockup. */
+:root[data-theme="light"]{
+  --muted:#475056;
+  --accent-ink:#5c4f07;
+}
+.en-service-copy .en-kicker{--accent-ink:#5c4f07}
+.preview-foot{color:#42515b}
+
+/* Two more that needed naming at full specificity: the caption
+   inside the service-card previews, and the label on the gold
+   depth layer, which was dark-on-hi-vis at 6.41:1. */
+.service-preview .preview-foot{color:#3c4a52}
+.en-depth-layer.en-depth-software span{color:#0E1820}
+
+/* /construction's H1 was still 500 from a component rule, making it
+   the only page-level H1 on the site lighter than semibold. */
+.en-construction-hero h1{font-weight:800}
