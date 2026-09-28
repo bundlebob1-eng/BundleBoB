@@ -1,98 +1,127 @@
 /* ============================================================
-   TYPOGRAPHY — heading hierarchy, rhythm, and AAA text.
+   TYPOGRAPHY — the reference type system, measured.
 
-   Concatenated last, so it settles the defaults that the older
-   sheets disagree about. It deliberately does NOT set heading
-   font-sizes: an audit of 387 heading instances across 8 routes
-   and 3 breakpoints found every one already carrying an explicit
-   font-size and line-height (zero fell back to `normal`), scaling
-   properly from 96px to 46px on H1. Those per-component sizes are
-   tuned and are left alone.
+   Both reference sites were loaded in a browser and their
+   computed styles read, rather than eyeballed from a screenshot:
 
-   What the audit did find was weight drift. enterprise.css sets
-   h1,h2,h3,h4{font-weight:500} as the base, so headings landed on
-   500, 600, 700 and 800 with no consistent rule -- including H1 at
-   500 on /about and /solutions, which is not a bold heading by any
-   reading. This file sets one ladder. Component rules carry class
-   selectors and therefore still win, so deliberate exceptions
-   (the hero's display treatment) survive.
+                 O.C. Tanner (primary/UI)   Avathon (context)
+     family      Gotham SSm, one family     Outfit, one family
+     base        16px                       17px
+     H1          84px  lh 1.10  w500        78px  lh 1.02  w250
+     H2          56px  lh 1.10  w500        82/40 lh 1.03  w250-300
+     H3          48/32/24/20/18px  w500     16px  w600
+     body        21/16/14/12px lh 1.4-1.5   21/15/14px lh 1.4-1.75
+     tracking    -3.6px on H1 (-0.043em)    -1.18px on H1
+
+   Two things carry across both, and they drove this file.
+
+   ONE FAMILY. Neither site mixes a display face with a separate
+   body face; both set everything in a single geometric sans. So
+   Outfit does both jobs here and Figtree and Inter are retired,
+   which also drops 67KB of font payload.
+
+   LIGHT DISPLAY WEIGHTS. Both references set large type at
+   250-500. This site was at 800 -- heavier than either, and the
+   main reason it read as a product page rather than a considered
+   brand site. The ladder below is 500 throughout, with tracking
+   tightened to the measured values.
+
+   Gotham SSm is commercial (Hoefler&Co) and cannot be licensed
+   here. Outfit is what Avathon actually serves, is SIL OFL, and
+   is the closest licensable relative of Gotham. Self-hosted, as
+   CSP font-src 'self' requires.
    ============================================================ */
 
-/* ── weight ladder ─────────────────────────────────────────────
-   Specificity (0,0,1): equal to the base rule in enterprise.css
-   but later in the cascade, so it wins there and loses to every
-   component rule, which is exactly the intent. */
-h1{font-weight:800}
-h2{font-weight:700}
-h3{font-weight:600}
-h4{font-weight:600}
+@font-face{
+  font-family:Outfit;
+  src:url(/assets/fonts/outfit-latin.woff2) format('woff2');
+  font-weight:100 900;
+  font-display:swap;
+}
+
+:root{
+  --ref-sans:Outfit,"Helvetica Neue",Arial,sans-serif;
+  --sg-display:var(--ref-sans);
+  --sg-body:var(--ref-sans);
+  --sans:var(--ref-sans);
+  --font-display:var(--ref-sans);
+
+  /* the measured scale, fluid between mobile and reference desktop */
+  --t-h1:clamp(42px,5.85vw,84px);
+  --t-h2:clamp(32px,3.9vw,56px);
+  --t-h3:clamp(23px,2.25vw,32px);
+  --t-h4:clamp(18px,1.4vw,20px);
+  --t-lede:clamp(18px,1.5vw,21px);
+  --t-body:16px;
+  --t-small:14px;
+  --t-label:12px;
+}
+
+body,button,input,select,textarea{font-family:var(--ref-sans)}
+
+/* ── the ladder ────────────────────────────────────────────────
+   Specificity (0,0,1): later than the base rule in enterprise.css
+   so it wins there, weaker than any component rule so tuned
+   exceptions survive. Weight 500 is the reference's own choice. */
+h1{font-family:var(--ref-sans);font-size:var(--t-h1);line-height:1.06;font-weight:500;letter-spacing:-.043em}
+h2{font-family:var(--ref-sans);font-size:var(--t-h2);line-height:1.10;font-weight:500;letter-spacing:-.05em}
+h3{font-family:var(--ref-sans);font-size:var(--t-h3);line-height:1.20;font-weight:500;letter-spacing:-.025em}
+h4{font-family:var(--ref-sans);font-size:var(--t-h4);line-height:1.30;font-weight:500;letter-spacing:-.015em}
+
+p{font-size:var(--t-body);line-height:1.5;font-weight:400}
+.lede,.en-large-copy,.ex-hero-lede{font-size:var(--t-lede);line-height:1.45;font-weight:400}
+
+/* Labels: the references set these small and in caps, and this is
+   the one place tracking opens up rather than tightening. */
+.eyebrow,.en-kicker,.ex-eyebrow{
+  font-size:var(--t-label);line-height:1.5;font-weight:500;
+  letter-spacing:.09em;text-transform:uppercase;
+}
 
 /* ── rhythm ────────────────────────────────────────────────────
-   :where() carries zero specificity, so these are floors, not
-   overrides: any existing margin in any sheet wins. That fills
-   the gaps where headings sat flush against the next element
-   without disturbing the grid and flex layouts that set their
-   own spacing on purpose.
-
-   Spacing is in em so it scales with each heading's own size
-   rather than imposing a fixed gap on a 96px hero and a 22px
-   card heading alike. */
-:where(h1){margin-block:0 .45em}
-:where(h2){margin-block:0 .5em}
+   :where() carries zero specificity, so these are floors that any
+   existing rule overrides. In em, so an 84px hero and a 23px card
+   heading each get proportional air. */
+:where(h1){margin-block:0 .42em}
+:where(h2){margin-block:0 .48em}
 :where(h3){margin-block:0 .55em}
 :where(h4){margin-block:0 .6em}
-:where(h1,h2,h3,h4)+p,
-:where(h1,h2,h3,h4)+ul,
-:where(h1,h2,h3,h4)+ol{margin-top:0}
-
-/* A heading that follows body copy needs air above it, or the
-   previous paragraph reads as its subtitle. */
+:where(h1,h2,h3,h4)+p,:where(h1,h2,h3,h4)+ul,:where(h1,h2,h3,h4)+ol{margin-top:0}
 :where(p,ul,ol,figure,table)+:where(h2){margin-top:1.1em}
 :where(p,ul,ol,figure,table)+:where(h3){margin-top:1.35em}
 
 /* ── AAA text colour ───────────────────────────────────────────
-   The brief asks for WCAG AAA: 7:1 for normal text, 4.5:1 for
-   large. Measured across 6 routes in both themes, the site was
-   98.0% AA and 85.5% AAA, and almost all of the shortfall came
-   from three tokens used for secondary text:
-
-     --muted      #5d666a   5.06-5.87:1   87 instances
-     --accent-ink #736100   5.26-6.10:1   19 instances
-
-   Replacements below were solved, not chosen: each is the
-   lightest value at its own hue and saturation that clears 7.0:1
-   against every background the site actually puts text on
-   (#fffffe, #f4f1ea and #efeee9).
-
-     --muted      #475056   7.09-8.23:1
-     --accent-ink #5c4f07   7.02-8.15:1
-
-   Specificity is (0,1,0) and it carries no theme selector, so it
-   sets the LIGHT default only. The dark themes declare these same
-   tokens at (0,2,0) via :root[data-theme="dark"] and the
-   prefers-color-scheme block, so their light-on-dark values are
-   untouched -- darkening those would invert the fix. */
-:root{
-  --muted:#475056;
-  --accent-ink:#5c4f07;
-}
-
-/* Three rules out-specify the :root default above and had to be
-   named. Two set --accent-ink again at higher specificity; the
-   third hard-codes a colour inside a report mockup. */
-:root[data-theme="light"]{
-  --muted:#475056;
-  --accent-ink:#5c4f07;
-}
+   Retained from the contrast pass: 85.5% -> 99.8% AAA. Each value
+   is the lightest at its own hue that clears 7.0:1 on every
+   background the site puts text on. No theme selector, so this is
+   the LIGHT default only; the dark themes declare the same tokens
+   at higher specificity and keep their light-on-dark values. */
+:root{--muted:#475056;--accent-ink:#5c4f07}
+:root[data-theme="light"]{--muted:#475056;--accent-ink:#5c4f07}
 .en-service-copy .en-kicker{--accent-ink:#5c4f07}
 .preview-foot{color:#42515b}
-
-/* Two more that needed naming at full specificity: the caption
-   inside the service-card previews, and the label on the gold
-   depth layer, which was dark-on-hi-vis at 6.41:1. */
 .service-preview .preview-foot{color:#3c4a52}
 .en-depth-layer.en-depth-software span{color:#0E1820}
 
-/* /construction's H1 was still 500 from a component rule, making it
-   the only page-level H1 on the site lighter than semibold. */
-.en-construction-hero h1{font-weight:800}
+/* ── the hero, brought to the reference ────────────────────────
+   The opening H1 was clamp(70px,7.5vw,120px) at weight 800, in
+   caps. Measured against the references that is wrong on three
+   counts: O.C. Tanner sets its H1 at 84px / lh 1.1 / weight 500
+   and Avathon at 78px / lh 1.02 / weight 250, and neither uses
+   uppercase for display copy. Caps at 120px is what made the
+   page shout rather than speak.
+
+   typography.css is concatenated after experience.css, so these
+   match its specificity and win on order. The clamp keeps the
+   responsive behaviour that the media-query rules provided. */
+.ex-hero h1,
+.en-hero h1,
+.en-construction-hero h1{
+  font-size:clamp(42px,5.85vw,84px);
+  line-height:1.06;
+  font-weight:500;
+  letter-spacing:-.043em;
+  text-transform:none;
+}
+.ex-hero h1 em,.ex-hero h1 span{font-weight:500}
+.ex-hero-lede{font-size:var(--t-lede);line-height:1.45;font-weight:400}
