@@ -16,6 +16,14 @@
   function sync(){if(reduced.matches||saveData||userPaused||!visible||document.hidden||(compact.matches&&!userStarted)){video.pause();label();}else play();}
   video.muted=true;button.hidden=false;
   button.addEventListener('click',()=>{if(video.paused){userPaused=false;userStarted=true;play()}else{userPaused=true;video.pause()}label()});
+  const region=video.closest('[data-video-region],header');
+  const chapters=[...region.querySelectorAll('[data-film-chapter]')];
+  const progress=region.querySelector('[data-film-progress]');
+  if(chapters.length)video.addEventListener('timeupdate',()=>{
+   const active=chapters.filter(chapter=>Number(chapter.dataset.filmChapter)<=video.currentTime).at(-1);
+   chapters.forEach(chapter=>chapter.classList.toggle('is-active',chapter===active));
+   if(progress)progress.style.transform='scaleX('+(video.currentTime/(video.duration||20))+')';
+  });
   video.addEventListener('play',label);video.addEventListener('pause',label);
   video.addEventListener('error',()=>{button.hidden=true;video.removeAttribute('src');loaded=false;});
   reduced.addEventListener('change',sync);compact.addEventListener('change',sync);document.addEventListener('visibilitychange',sync);

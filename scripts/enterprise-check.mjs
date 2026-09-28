@@ -30,7 +30,7 @@ try{
  await page.setViewportSize({width:1440,height:1000});await page.goto(base+'/construction');await page.screenshot({path:'audit/enterprise/construction-desktop-full.png',fullPage:true});
  await page.goto(base+'/services/ai-solutions');await page.screenshot({path:'audit/enterprise/ai-desktop-full.png',fullPage:true});await page.locator('.en-faq summary').first().click();assert.equal(await page.locator('.en-faq details').first().evaluate(e=>e.open),true);results.faq=true;
  const nojs=await browser.newContext({javaScriptEnabled:false});const fallback=await nojs.newPage();await fallback.goto(base+'/construction');assert.equal(await fallback.locator('[data-tour-panel]:visible').count(),3);assert.equal(await fallback.locator('[data-background-video]').getAttribute('src'),null);results.noScriptFallback=true;await nojs.close();
- const reduced=await browser.newContext({reducedMotion:'reduce'});const r=await reduced.newPage();const requested=[];r.on('request',req=>{if(req.url().endsWith('people-at-work.mp4'))requested.push(req.url())});await r.goto(base,{waitUntil:'networkidle'});assert.equal(requested.length,0);results.reducedSkipsVideoDownload=true;await reduced.close();
+ const reduced=await browser.newContext({reducedMotion:'reduce'});const r=await reduced.newPage();const requested=[];r.on('request',req=>{if(req.url().endsWith('.mp4'))requested.push(req.url())});await r.goto(base,{waitUntil:'networkidle'});assert.equal(requested.length,0);results.reducedSkipsVideoDownload=true;await reduced.close();
  assert.deepEqual(errors,[]);results.browserErrors=errors;
 }finally{await browser.close()}
 await fs.writeFile('audit/enterprise/results.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));

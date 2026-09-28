@@ -13,7 +13,8 @@
     "check:enterprise": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/enterprise-check.mjs",
     "check:fde": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/fde-check.mjs",
     "check": "npm run verify && npm run check:a11y && npm run check:experience && npm run check:enterprise && npm run check:fde",
-    "build:lab": "DESIGN_LAB=1 node scripts/build.mjs"
+    "build:lab": "DESIGN_LAB=1 node scripts/build.mjs",
+    "check:film": "node scripts/film-check.mjs"
   },
   "engines": {
     "node": ">=18"

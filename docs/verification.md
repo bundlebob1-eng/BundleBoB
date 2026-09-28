@@ -1,11 +1,13 @@
 # September 28 reference-led experience verification
 
+Film replacement verified: four scene boundaries, 20-second looping, pause/resume, mobile poster without automatic video download, and explicit mobile playback passed. Final optimized assets were checked with the 80-combination browser suite, 48 accessibility checks, and enterprise controls suite; no errors or violations. Desktop/mobile and individual scene captures are in `audit/film/`. The experience suite also passed all eleven responsive widths.
+
 Current direction: [reference-experience.md](reference-experience.md). This supersedes the visual measurements below.
 
 - Build: 20 pages and 6 redirects; palette lab, retired particle renderer, and generated business photographs are excluded from normal output.
 - Browser acceptance: 80 page/theme/viewport combinations; 96 local links; no browser, layout, link, or external-request errors.
 - Accessibility: zero automated violations in 48 checks — all 20 pages in both themes with reduced motion, plus the homepage, services, industries, and FDE page in both themes with normal motion. Spoken-label matching is explicitly enabled.
-- Lighthouse 12.6.1 mobile lab profile: Performance **94**, Accessibility **100**, Best Practices **100**, SEO **100**. LCP 3.0s, total blocking time 22ms, cumulative layout shift 0. These are local simulated measurements, not production field data.
+- Before the film replacement, Lighthouse 12.6.1 mobile lab profile: Performance **94**, Accessibility **100**, Best Practices **100**, SEO **100**. LCP 3.0s, total blocking time 22ms, cumulative layout shift 0. These are local simulated measurements, not production field data.
 - Reference-experience checks: actual globe frame changes, paused frames staying unchanged, capability selection by mouse and keyboard, service destinations, scroll depth, offscreen suspension, and the FDE film passed.
 - Responsive label/copy collision checks passed at 320, 390, 600, 760, 761, 900, 1024, 1100, 1280, 1440, and 1920px.
 - JavaScript-disabled and WebGL-unavailable visits keep the globe illustration, useful content, and service links. Reduced motion has no running animations.

@@ -7,7 +7,7 @@ BundleBoB is a technology service provider across industries. AI, custom softwar
 | Reference | Adopted in BundleBoB |
 | --- | --- |
 | User video `d013275f630f4286add8e7605009263b.MP4` — NRG scene | Immersive depth, full-viewport composition, minimal navigation, restrained motion. |
-| User video `7fef1724215641449b3a9330a6bb4f3d.MP4` — United Carriers globe | Large original geographic globe, strong display typography, orbital paths, atmospheric rim, capability controls. |
+| User video `7fef1724215641449b3a9330a6bb4f3d.MP4` — United Carriers | Strong display typography and capability controls. The globe it inspired was built and then removed on request; the renderer and its styles are kept as reference in `assets/legacy/`. |
 | [Avathon](https://avathon.com/) — business context | Operational problems first; industry-specific applications; context, useful action, and accountable decisions. BundleBoB remains a services business. Avathon's platform claims, customers, partnerships, and results are not copied. |
 | [O.C. Tanner](https://www.octanner.com/) | Real footage, strong media composition, generous spacing, complete navigation and supporting pages. |
 | [Kojo purchasing](https://www.usekojo.com/solutions/purchasing) and [Oracle Primavera](https://www.oracle.com/construction-engineering/primavera-p6/) | Concrete construction workflows, visible interface details, and a keyboard-accessible product walkthrough. |
@@ -23,7 +23,9 @@ BundleBoB is a technology service provider across industries. AI, custom softwar
 
 ## Experience and implementation
 
-The hero globe uses local Natural Earth geometry, authored WebGL shaders, and native scrolling. It rotates and changes depth during the opening scroll. The capability selector changes the description, destination, and highlighted routes. Its three controls support click, Enter/Space, arrows, Home, and End. Without JavaScript they remain direct service links.
+The opening is the film, the display headline and the capability selector. The selector changes the description, destination, and highlighted routes; its three controls support click, Enter/Space, arrows, Home, and End, and without JavaScript they remain direct service links. Scrolling is native throughout, with no capture and no continuous render loop.
+
+The WebGL globe was removed on request. Its renderer, styles and generator output are retained as reference in `assets/legacy/` and `scripts/make-business-globe.mjs`, and none of it is shipped: no canvas, no `globe-data.json`, no static SVG.
 
 Globe and video have separate pause controls. Animation stops offscreen and in hidden tabs. Reduced motion draws a static globe and removes scroll transforms; unavailable WebGL uses the static geographic SVG. The globe illustrates connected work, not office locations, customer deployments, or geographical service guarantees.
 
@@ -36,3 +38,9 @@ The globe is made with Natural Earth. Its map data is [public domain](https://ww
 Twenty pages plus six legacy redirects build to `dist/`. This includes service detail pages, thirteen potential industry applications, an FDE page with eight responsibilities and a five-step illustrative engagement, the construction walkthrough, guides, contact, privacy, terms, and the design system.
 
 The inquiry form prepares a local download. `CONTACT_EMAIL` can configure a reviewed email draft and `BOOKING_URL` a verified booking link. There is no automatic form delivery configured. The site does not invent customer proof; the existing pre-pilot disclosure and synthetic-data labels remain. This work does not deploy the site.
+
+## September 28 film replacement
+
+Replaced the repeated office background with an eight-second infrastructure hero loop and a separate twenty-second, four-scene real-footage film. The main film now occupies a wide uninterrupted stage below the FDE introduction. Synchronized chapter labels connect operations, human expertise, connected systems, and field work. Figtree/Inter typography, globe interaction, all-industry positioning, and the explicitly illustrative FDE story remain intact. See `media-sources.md` for licenses, edit points, and reproducible media scripts.
+
+The new hero video is approximately 2.2 MB, and the below-fold film 7.2 MB; its download is deferred until visible. Both use 1080p H.264. Mobile starts with a WebP still and explicit play. The old office MP4 is excluded from the deployment.

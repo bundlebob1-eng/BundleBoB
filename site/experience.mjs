@@ -5,13 +5,6 @@ export function experienceHero(video){return `<div class="ex-opening" data-exper
 <header class="en-hero ex-hero">
  ${video}<div class="ex-film-shade" aria-hidden="true"></div>
  <div class="ex-coordinate" aria-hidden="true">PEOPLE / PROCESS / POSSIBILITY</div>
- <div class="ex-globe" aria-hidden="true">
-  <img class="ex-globe-fallback" src="/assets/images/business-globe.svg" alt="" width="1000" height="1000" fetchpriority="high">
-  <canvas data-business-globe></canvas>
-  <span class="ex-orbit-label ex-orbit-label-a"><i></i> PEOPLE</span>
-  <span class="ex-orbit-label ex-orbit-label-b"><i></i> PROCESS</span>
-  <span class="ex-orbit-label ex-orbit-label-c"><i></i> TECHNOLOGY</span>
- </div>
  <div class="wrap ex-hero-layout">
   <div class="ex-hero-copy">
    <p class="ex-eyebrow"><span></span> AI & SOFTWARE FOR REAL-WORLD OPERATIONS</p>
@@ -32,13 +25,17 @@ export function experienceHero(video){return `<div class="ex-opening" data-exper
  <div class="wrap ex-hero-footer">
   <a href="#services" class="ex-scroll-link"><span>↓</span> SCROLL TO EXPLORE</a>
   <span class="ex-hero-footnote">Across industries. <a href="/construction">Deep in construction.</a></span>
-  <div class="ex-motion-controls"><button type="button" data-globe-toggle hidden aria-label="Pause 3D globe animation"><span data-globe-toggle-icon aria-hidden="true">Ⅱ</span><span data-globe-toggle-label>Pause 3D</span></button><button class="en-video-toggle" type="button" data-video-toggle hidden aria-label="Play film background video"><span data-video-toggle-icon aria-hidden="true">▶</span><span data-video-toggle-label>Play film</span></button></div>
+  <div class="ex-motion-controls"><button class="en-video-toggle" type="button" data-video-toggle hidden aria-label="Play film background video"><span data-video-toggle-icon aria-hidden="true">▶</span><span data-video-toggle-label>Play film</span></button></div>
  </div>
 </header></div>`;}
 
-export function fieldFilm(){return `<section class="ex-field-film" data-video-region aria-labelledby="ex-film-heading">
- <video class="ex-field-video" data-background-video muted loop playsinline preload="none" poster="/assets/images/people-at-work.webp" aria-hidden="true" tabindex="-1" data-src="/assets/video/people-at-work.mp4"></video>
- <div class="ex-field-shade"></div><div class="wrap ex-field-content"><p class="ex-eyebrow">THE PEOPLE BEHIND THE TECHNOLOGY</p><h2 id="ex-film-heading">We get inside<br>the problem.<br><em>Then we build.</em></h2><div><p>Your forward-deployed engineer works beside your team: observing the work, questioning the handoffs, and turning a real business need into working software.</p><a class="ex-button" href="/forward-deployed-engineering">Meet your working relationship ${icon('arrow',18)}</a></div></div>
- <span class="ex-film-caption">DISCOVER TOGETHER / BUILD TOGETHER / IMPROVE TOGETHER</span>
+export function fieldFilm(){return `<section class="ex-field-film" aria-labelledby="ex-film-heading">
+ <div class="wrap ex-field-content"><div><p class="ex-eyebrow">PEOPLE. PROCESS. TECHNOLOGY.</p><h2 id="ex-film-heading">Inside your world.<br><em>Alongside your team.</em></h2></div><div><p>Great software starts with understanding the work. Your forward-deployed engineer works directly with your team, from the first conversation to the systems you use every day.</p><a class="ex-button" href="/forward-deployed-engineering">How your FDE works ${icon('arrow',18)}</a></div></div>
+ <div class="ex-film-screen" data-video-region>
+ <video class="ex-field-video" data-background-video muted loop playsinline preload="none" poster="/assets/images/people-process-technology.webp" aria-hidden="true" tabindex="-1" data-src="/assets/video/people-process-technology.mp4"></video>
+ <div class="ex-field-shade" aria-hidden="true"></div>
+ <div class="ex-film-chapters" aria-hidden="true"><span data-film-chapter="0" class="is-active">01 / Real operations</span><span data-film-chapter="5">02 / Human expertise</span><span data-film-chapter="11">03 / Connected systems</span><span data-film-chapter="15">04 / In the field</span></div>
+ <div class="ex-film-progress" aria-hidden="true"><span data-film-progress></span></div>
  <button class="en-video-toggle ex-field-toggle" type="button" data-video-toggle hidden aria-label="Play film background video"><span data-video-toggle-icon aria-hidden="true">▶</span><span data-video-toggle-label>Play film</span></button>
+ </div><div class="wrap ex-film-note"><span>UNDERSTAND THE WORK. BUILD WHAT MATTERS.</span><span>Illustrative footage · Across industries</span></div>
 </section>`;}

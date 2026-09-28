@@ -1,6 +1,6 @@
 # BundleBoB
 
-Current design: [reference-led globe and operations experience](docs/reference-experience.md), with [licensed live-action media](docs/media-sources.md). An original interactive globe, real video, and scroll-driven depth introduce services across industries. Construction is the worked example.
+Current design: [reference-led operations experience](docs/reference-experience.md), with [licensed live-action media](docs/media-sources.md). An original interactive globe, real video, and scroll-driven depth introduce services across industries. Construction is the worked example.
 
 A service-led marketing site for custom software, practical AI, and systems integration. Construction technology is a featured specialty. The reconciliation demonstration uses synthetic data; client case studies await verified project details.
 
@@ -27,7 +27,7 @@ Produces `dist/`, the only deployment directory. Vercel uses this command and di
 - `site/editorial.mjs` — shared navigation and footer.
 - `assets/editorial.css` — shared navigation and footer presentation, photographic sections, gradients, and responsive layout.
 - `assets/signal.css` — active palette and self-hosted font tokens. Its old particle renderer in `signal.js` is retired and excluded from output.
-- `site/experience.mjs` / `assets/experience.css` / `assets/experience.js` — original globe, capability selector, cinematic opening and FDE film.
+- `site/experience.mjs` / `assets/experience.css` / `assets/experience.js` — capability selector, cinematic opening and FDE film.
 - `assets/typography.css` / `assets/motion.css` — heading hierarchy, contrast refinements, and native scroll animation.
 - `scripts/experience-check.mjs` — controls, motion, fallback, and responsive acceptance checks.
 - `site/content.mjs` — business copy, industry examples, ownership and compliance status, resource metadata.
@@ -98,3 +98,5 @@ These are meaningful browser acceptance checks, not a unit suite for static copy
 Only `dist/` is published. Source modules, documentation, scripts, local reports, environment files, and the retired experiment are excluded by the output boundary. Headers are specified in both the development server and `vercel.json`. The server explicitly rejects POST; CSP does not permit form submissions. Changing the inquiry to server delivery requires an intentional endpoint and policy change.
 
 The hosting account's commercial plan eligibility and production deployment remain operator decisions. This implementation does not publish itself.
+
+Video review: `npm run check:film` checks all four scene boundaries, looping, mobile poster-only loading, and explicit playback. Media provenance and native macOS rendering commands are recorded in `docs/media-sources.md`. The homepage uses separate hero and editorial films; real stock footage is labeled as illustrative.
