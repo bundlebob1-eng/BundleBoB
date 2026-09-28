@@ -9,6 +9,7 @@ import {enforcePalette} from './palette.mjs';
 import {enforceTypeFloor} from './typography.mjs';
 import {THEMES,tokenBlock} from './themes.mjs';
 import {privacy,terms} from '../site/legal.mjs';
+import {referenceHome} from '../site/reference-home.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const output=path.join(root,'dist');
 export const aliases={'/platform':'/how-it-works','/integrations':'/how-it-works#integrations','/compare':'/why-bundlebob','/demo':'/contact','/article':'/resources/when-systems-disagree','/client-story':'/about'};
@@ -17,13 +18,13 @@ export async function build(){
  if(email&&!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))throw new Error('CONTACT_EMAIL must be a valid business email address');
  if(booking&&new URL(booking).protocol!=='https:')throw new Error('BOOKING_URL must use HTTPS');
  const config={email,booking};
- const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css','typography.css','motion.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
+ const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css','typography.css','motion.css','reference.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
  const palette=enforcePalette(rawStyles);
  const type=enforceTypeFloor(palette.css);
  const styles=type.css;
  console.log(`Palette: normalised ${palette.remapped.size} off-palette colours onto ink/paper/hi-vis.`);
  console.log(`Type:    raised ${type.raised} declarations to a ${12}px floor (smallest was ${type.smallest}px).`);
- const routes=[['/','Custom software, practical AI & connected systems',home()],['/services','Technology services',servicesOverview()],['/approach','Our approach',enterpriseApproach()],['/services/ai-solutions','Applied AI services',serviceDetail('ai')],['/services/custom-software','Custom software development',serviceDetail('software')],['/services/integrations','Systems integration services',serviceDetail('systems')],['/construction','Construction technology',constructionPage()],['/how-it-works','How it works',how()],['/solutions','Technology solutions across industries',industriesPage()+enterpriseClosing()],['/forward-deployed-engineering','An FDE working directly with your team',fdePage()+enterpriseClosing()],['/why-bundlebob','Why BundleBoB',why()],['/resources','Practical guides to clearer job reporting',resources()],...content.resources.map(r=>['/resources/'+r.id,r.title,article(r.id)]),['/about','About BundleBoB',about()],['/contact','Start a conversation',contact(config)],['/privacy','Privacy',privacy()],['/terms','Terms',terms()],['/system','Design system',system()]];
+ const routes=[['/','Software for the work that runs your business',referenceHome()],['/services','Technology services',servicesOverview()],['/approach','Our approach',enterpriseApproach()],['/services/ai-solutions','Applied AI services',serviceDetail('ai')],['/services/custom-software','Custom software development',serviceDetail('software')],['/services/integrations','Systems integration services',serviceDetail('systems')],['/construction','Construction technology',constructionPage()],['/how-it-works','How it works',how()],['/solutions','Technology solutions across industries',industriesPage()+enterpriseClosing()],['/forward-deployed-engineering','An FDE working directly with your team',fdePage()+enterpriseClosing()],['/why-bundlebob','Why BundleBoB',why()],['/resources','Practical guides to clearer job reporting',resources()],...content.resources.map(r=>['/resources/'+r.id,r.title,article(r.id)]),['/about','About BundleBoB',about()],['/contact','Start a conversation',contact(config)],['/privacy','Privacy',privacy()],['/terms','Terms',terms()],['/system','Design system',system()]];
  await fs.rm(output,{recursive:true,force:true});
  await fs.mkdir(output,{recursive:true});
  for(const [url,title,body] of routes){const destination=path.join(output,url==='/'?'index.html':url.slice(1)+'.html');await fs.mkdir(path.dirname(destination),{recursive:true});await fs.writeFile(destination,layout({title,path:url,body,config,styles,noindex:url==='/system'}));}

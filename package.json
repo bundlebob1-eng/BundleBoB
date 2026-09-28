@@ -9,12 +9,12 @@
     "video": "node scripts/render-video.mjs",
     "verify": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/verify.mjs",
     "check:a11y": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/accessibility.mjs",
-    "check:experience": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/experience-check.mjs",
     "check:enterprise": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/enterprise-check.mjs",
     "check:fde": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/fde-check.mjs",
-    "check": "npm run verify && npm run check:a11y && npm run check:experience && npm run check:enterprise && npm run check:fde",
+    "check": "npm run verify && npm run check:a11y && npm run check:home && npm run check:enterprise && npm run check:fde",
     "build:lab": "DESIGN_LAB=1 node scripts/build.mjs",
-    "check:film": "node scripts/film-check.mjs"
+    "check:film": "node scripts/film-check.mjs",
+    "check:home": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/home-check.mjs"
   },
   "engines": {
     "node": ">=18"

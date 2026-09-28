@@ -17,19 +17,19 @@
 
 :root{
   /* 60 — ground */
-  --ink:#0E1820;
-  --ink-2:#16242F;
-  --ink-3:#1E313E;
+  --ink:#23262F;
+  --ink-2:#2C3039;
+  --ink-3:#343947;
 
   /* 30 — paper */
-  --paper:#F4F1EA;
+  --paper:#F4F5F2;
   --paper-2:rgba(244,241,234,.66);
   --paper-3:rgba(244,241,234,.38);
   --paper-line:rgba(244,241,234,.14);
 
   /* 10 — hi-vis, the only saturated colour on the site */
-  --hivis:#FFD400;
-  --hivis-deep:#E0B400;
+  --hivis:#B6FF2E;
+  --hivis-deep:#93D419;
 
   --sg-display:Figtree,"Helvetica Neue",Arial,sans-serif;
   --sg-body:InterVF,-apple-system,"Segoe UI",Roboto,sans-serif;

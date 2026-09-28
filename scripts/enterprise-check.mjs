@@ -11,8 +11,8 @@ try{
  await page.goto(base,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
  const video=page.locator('[data-background-video]').first();await page.waitForFunction(()=>document.querySelector('[data-background-video]').currentTime>.2);
  assert.equal(await video.evaluate(v=>v.muted),true);results.backgroundPlays=true;
- await page.locator('.ex-hero').getByRole('button',{name:'Pause film background video',exact:true}).click();assert.equal(await video.evaluate(v=>v.paused),true);results.pause=true;
- await page.locator('.ex-hero').getByRole('button',{name:'Play film background video',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('[data-background-video]').paused);results.resume=true;
+ await page.locator('.ref-hero').getByRole('button',{name:'Pause film background video',exact:true}).click();assert.equal(await video.evaluate(v=>v.paused),true);results.pause=true;
+ await page.locator('.ref-hero').getByRole('button',{name:'Play film background video',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('[data-background-video]').paused);results.resume=true;
  await page.screenshot({path:'audit/enterprise/home-desktop.png'});
  await page.locator('#services').scrollIntoViewIfNeeded();await page.waitForFunction(()=>document.querySelector('[data-background-video]').paused);results.offscreenPauses=true;
  await page.evaluate(()=>scrollTo(0,0));await page.waitForFunction(()=>!document.querySelector('[data-background-video]').paused);
