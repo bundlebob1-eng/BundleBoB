@@ -3,10 +3,18 @@ const arrow=icon('arrow',20);
 const link=(url,label)=>`<a class="en-button en-button-text" href="${url}"><span>${label}</span>${arrow}</a>`;
 export const sectors=[
  ['construction','Construction & real estate','Project information, approvals, and field-to-office handoffs.'],
- ['manufacturing','Manufacturing & fabrication','Production requests, quality records, and supplier workflows.'],
+ ['manufacturing','Manufacturing & fabrication','Connect production requests, quality records, and supplier updates so teams can see what needs attention.'],
+ ['logistics','Supply chain & logistics','Bring shipment milestones, warehouse exceptions, and supplier documents into a shared operational view.'],
+ ['retail','Retail & ecommerce','Connect orders, inventory, and service requests. Help staff resolve mismatches without rebuilding a report.'],
  ['field-service','Field service & repair','Work orders, technician updates, and billing readiness.'],
  ['professional-services','Professional services','Client intake, document workflows, and engagement tracking.'],
- ['energy','Energy & utilities','Service requests, maintenance records, and operational handoffs.']
+ ['energy','Energy & utilities','Make maintenance requests, asset records, and field-to-office handoffs easier to review.'],
+ ['healthcare','Healthcare operations','Improve administrative intake, scheduling handoffs, and document routing with access and privacy requirements defined in the scope.'],
+ ['finance','Finance & insurance','Support document intake, reconciliations, and exception review with source records and human approval.'],
+ ['education','Education & training','Connect enquiries, enrolment workflows, staff information, and recurring administrative tasks.'],
+ ['hospitality','Hospitality & travel','Bring service requests, property operations, and supplier communication into clearer workflows.'],
+ ['property','Property & facilities','Track maintenance requests, contractor updates, inspections, and approvals across buildings and teams.'],
+ ['nonprofits','Nonprofits & community','Simplify programme administration, volunteer coordination, and reporting across disconnected tools.']
 ];
 export function industryIntro(){return `<section class="en-section wrap en-industry-intro" id="industries"><div class="en-heading-row"><div><p class="en-kicker">ACROSS INDUSTRIES. CLOSE TO YOUR WORK.</p><h2>Your industry is the context. <br>Your challenge is the start.</h2></div><p>We shape AI, software, and integrations around your team’s workflow. Construction is one example of that approach.</p></div><div class="en-industry-links">${sectors.map(([id,label])=>`<a href="/solutions#${id}">${label}${icon('arrow',16)}</a>`).join('')}</div><div class="en-industry-note"><p>These are areas where the approach can apply. The scope, domain requirements, and data access are reviewed for each engagement.</p>${link('/solutions','Find your starting point')}</div></section>`;}
 export function scrollStory(){return `<section class="en-scroll-story" data-scroll-story id="working-together"><div class="wrap en-scroll-layout"><div class="en-scroll-visual"><p class="en-kicker">YOUR PEOPLE. OUR ENGINEERING. ONE TEAM.</p><h2>Close to the problem. <br>Connected to the build.</h2><div class="en-depth-stage" aria-hidden="true"><div class="en-depth-grid"></div><div class="en-depth-stack"><div class="en-depth-layer en-depth-people"><span>01 / YOUR PEOPLE</span><b>The way <br>work happens.</b><div class="en-depth-chips"><i>Operations</i><i>Customers</i><i>Finance</i></div></div><div class="en-depth-layer en-depth-workflow"><span>02 / SHARED UNDERSTANDING</span><b>A clearer <br>way forward.</b><div class="en-depth-flow"><i>Observe</i><i>Map</i><i>Prototype</i></div></div><div class="en-depth-layer en-depth-software"><span>${mark} 03 / WORKING SOFTWARE</span><b>Built with you. <br>Built to fit.</b><div class="en-depth-chips"><i>AI</i><i>Applications</i><i>Integrations</i></div></div></div></div><p class="en-scroll-caption">Understanding, design, and engineering brought together.</p></div><div class="en-scroll-steps">${[

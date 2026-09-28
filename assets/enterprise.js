@@ -34,13 +34,14 @@
   const clamp=x=>Math.min(1,Math.max(0,x));
   function render(){
    frame=0;
-   if(reduced.matches){section.removeAttribute('data-scroll-progress');['--scene-turn','--scene-tilt','--scene-gap','--scene-lift','--scene-spin'].forEach(p=>section.style.removeProperty(p));return;}
+   if(reduced.matches){section.removeAttribute('data-scroll-progress');steps.forEach(s=>s.removeAttribute('data-active'));['--scene-turn','--scene-tilt','--scene-gap','--scene-lift','--scene-spin'].forEach(p=>section.style.removeProperty(p));return;}
    if(!visible||document.hidden)return;
    const bounds=section.getBoundingClientRect();
    const first=steps[0].getBoundingClientRect(),last=steps.at(-1).getBoundingClientRect();
    // Compact screens use the visible illustration itself so movement never depends on an offscreen stage.
    const progress=compact.matches?clamp((innerHeight*.8-bounds.top)/(innerHeight*.8)):clamp((innerHeight*.55-first.top)/(last.top-first.top||1));
    section.dataset.scrollProgress=progress.toFixed(3);
+   steps.forEach((step,i)=>step.dataset.active=String(i===Math.min(2,Math.round(progress*2))));
    section.style.setProperty('--scene-turn',`${-12+progress*24}deg`);
    section.style.setProperty('--scene-tilt',`${52-progress*24}deg`);
    section.style.setProperty('--scene-gap',`${85-progress*62}px`);
