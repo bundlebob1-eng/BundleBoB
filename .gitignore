@@ -6,3 +6,6 @@ bundlebobsite/
 node_modules/
 dist/
 audit/
+
+# Reference material pasted in for design direction, not part of the build
+refrence videos/
