@@ -33,14 +33,24 @@
    Colours already in the palette are passed through untouched.
    ============================================================ */
 
-const KEEP = new Set([
-  '#f4f1ea', '#0e1820', '#ffd400', '#16242f', '#1e313e', '#e0b400'
-]);
-
-/* hue/saturation targets per family */
-const INK   = { h: 203, s: 0.30 };
-const PAPER = { h:  41, s: 0.22 };
-const HIVIS = { h:  51, s: 1.00 };
+/* The default palette: ink / paper / hi-vis, as shipped.
+   A caller can pass another one to retheme the whole site --
+   see scripts/themes.mjs. Hue and saturation are the targets
+   each family is normalised onto; `keep` is the set of exact
+   values that pass through untouched. */
+export const DEFAULT_PALETTE = {
+  id: 'hivis',
+  name: 'Ink / Paper / Hi-vis',
+  ink:    '#0E1820',
+  paper:  '#F4F1EA',
+  accent: '#FFD400',
+  families: {
+    ink:    { h: 203, s: 0.30 },
+    paper:  { h:  41, s: 0.22 },
+    accent: { h:  51, s: 1.00 }
+  },
+  keep: ['#f4f1ea', '#0e1820', '#ffd400', '#16242f', '#1e313e', '#e0b400']
+};
 
 /* Below this saturation a colour is a neutral: it carries no hue
    intent, so it joins the ink/paper ramp by lightness. Above it,
@@ -109,7 +119,7 @@ function lightnessForLuminance(h, s, targetY) {
 
 /* A neutral's saturation is scaled down toward the family target
    so near-greys stay near-grey and only pick up a tint. */
-function remapOne(hex) {
+function remapOne(hex, P, KEEP) {
   const lower = hex.toLowerCase();
   if (KEEP.has(lower)) return hex;
 
@@ -121,17 +131,19 @@ function remapOne(hex) {
     /* chromatic: the author wanted attention here, so it becomes
        hi-vis -- at the same luminance, so anything using it as
        text keeps the contrast ratio it had. */
-    const sat = Math.min(s, HIVIS.s);
-    return hslToHex(HIVIS.h, sat, lightnessForLuminance(HIVIS.h, sat, y));
+    const sat = Math.min(s, P.accent.s);
+    return hslToHex(P.accent.h, sat, lightnessForLuminance(P.accent.h, sat, y));
   }
 
   /* neutral: joins the ink ramp below mid-lightness, paper above */
-  const fam = l < 0.5 ? INK : PAPER;
+  const fam = l < 0.5 ? P.ink : P.paper;
   const tint = Math.min(s + 0.05, fam.s) * (l < 0.5 ? 1 : 0.7);
   return hslToHex(fam.h, tint, lightnessForLuminance(fam.h, tint, y));
 }
 
-export function enforcePalette(css) {
+export function enforcePalette(css, palette = DEFAULT_PALETTE) {
+  const P = palette.families;
+  const KEEP = new Set(palette.keep.map(c => c.toLowerCase()));
   const seen = new Map();
 
   /* Skip hex inside url(...) so encoded SVG data URIs are untouched. */
@@ -140,7 +152,7 @@ export function enforcePalette(css) {
   const out = parts.map((part, i) => {
     if (i % 2 === 1) return part;               // the url(...) captures
     return part.replace(/#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g, (m) => {
-      const to = remapOne(m);
+      const to = remapOne(m, P, KEEP);
       if (to.toLowerCase() !== m.toLowerCase()) seen.set(m.toLowerCase(), to);
       return to;
     });

@@ -1,3 +1,17 @@
+/* Palette bridge: the shaders below are written against the three
+   roles, not against fixed colours, so a theme change in CSS reaches
+   the WebGL layer too. Falls back to the shipped values if a token is
+   missing or unreadable. */
+function paletteVec(name, fallback){
+  try{
+    var v=getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    var m=/^#?([0-9a-f]{6})$/i.exec(v);
+    if(!m) return fallback;
+    var n=parseInt(m[1],16);
+    return [((n>>16)&255)/255, ((n>>8)&255)/255, (n&255)/255];
+  }catch(e){ return fallback; }
+}
+function glsl(v){ return 'vec3('+v.map(function(x){return x.toFixed(4)}).join(',')+')'; }
 /* An original, small WebGL globe. Geometry is local; the rest of the page
    remains ordinary HTML. No scroll interception or animation dependency. */
 (() => {
@@ -86,16 +100,18 @@
     const compile=(kind,src)=>{const shader=gl.createShader(kind);gl.shaderSource(shader,src);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))throw new Error('Globe shader unavailable');return shader};
     const p=gl.createProgram(),vs=compile(gl.VERTEX_SHADER,v),fs=compile(gl.FRAGMENT_SHADER,f);gl.attachShader(p,vs);gl.attachShader(p,fs);gl.linkProgram(p);gl.deleteShader(vs);gl.deleteShader(fs);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error('Globe unavailable');return p;
    }
+   const P_INK=paletteVec('--ink',[.035,.062,.083]),P_PAP=paletteVec('--paper',[.957,.945,.918]),
+         P_ACC=paletteVec('--hivis',[1,.831,0]),P_MUT=[(P_PAP[0]+P_INK[0])/2,(P_PAP[1]+P_INK[1])/2,(P_PAP[2]+P_INK[2])/2];
    const sphere=program(`attribute vec2 aPosition;varying vec2 vPosition;void main(){vPosition=aPosition;gl_Position=vec4(aPosition,0.,1.);}`,`
     precision mediump float;varying vec2 vPosition;uniform float uZoom;
-    void main(){vec2 p=vPosition/(.76*uZoom);float r=length(p);vec3 ink=vec3(.035,.062,.083);vec3 gold=vec3(1.,.831,0.);vec3 paper=vec3(.957,.945,.918);
+    void main(){vec2 p=vPosition/(.76*uZoom);float r=length(p);vec3 ink=${glsl(P_INK)};vec3 gold=${glsl(P_ACC)};vec3 paper=${glsl(P_PAP)};
     float light=clamp(.45+p.y*.4+p.x*.24,.0,1.);float rim=exp(-abs(r-1.)*95.);float halo=exp(-abs(r-1.)*20.)*.16;
     if(r>1.){gl_FragColor=vec4(mix(paper,gold,light),rim*.55+halo*.8);return;}
-    float edge=pow(r,14.);vec3 body=ink+vec3(.012,.013,.008)*(1.-r);body+=mix(paper,gold,light)*(edge*.12+rim*.7+halo*.15);gl_FragColor=vec4(body,.99);}`);
+    float edge=pow(r,14.);vec3 body=ink+${glsl(P_INK.map(function(x){return x*0.16}))}*(1.-r);body+=mix(paper,gold,light)*(edge*.12+rim*.7+halo*.15);gl_FragColor=vec4(body,.99);}`);
    const vertex=`attribute vec4 aPoint;uniform float uYaw,uPitch,uZoom,uDpr;varying float vDepth,vKind;
     void main(){float cy=cos(uYaw),sy=sin(uYaw),cx=cos(uPitch),sx=sin(uPitch);vec3 p=vec3(aPoint.x*cy+aPoint.z*sy,aPoint.y,aPoint.z*cy-aPoint.x*sy);p=vec3(p.x,p.y*cx-p.z*sx,p.y*sx+p.z*cx);vDepth=p.z;vKind=aPoint.w;gl_Position=vec4(p.xy*.76*uZoom,0.,1.);gl_PointSize=(.85+aPoint.w*1.35)*uDpr*(.65+max(p.z,0.)*.45);}`;
-   const land=program(vertex,`precision mediump float;varying float vDepth,vKind;void main(){if(vDepth<.015)discard;float a=1.-smoothstep(.3,.5,length(gl_PointCoord-vec2(.5)));vec3 c=mix(vec3(.38,.43,.46),vec3(.957,.945,.918),vKind);float opacity=mix(.16,.95,vKind)*(.3+vDepth*.7);gl_FragColor=vec4(c,a*opacity);}`);
-   const lines=program(vertex,`precision mediump float;varying float vDepth,vKind;uniform float uSelected,uPulse;void main(){if(vDepth<.02)discard;float on=1.-step(.1,abs(vKind-uSelected));vec3 c=mix(vec3(.957,.945,.918),vec3(1.,.831,0.),on);gl_FragColor=vec4(c,(.16+on*.65+uPulse*.2)*smoothstep(0.,.2,vDepth));}`);
+   const land=program(vertex,`precision mediump float;varying float vDepth,vKind;void main(){if(vDepth<.015)discard;float a=1.-smoothstep(.3,.5,length(gl_PointCoord-vec2(.5)));vec3 c=mix(${glsl(P_MUT)},${glsl(P_PAP)},vKind);float opacity=mix(.16,.95,vKind)*(.3+vDepth*.7);gl_FragColor=vec4(c,a*opacity);}`);
+   const lines=program(vertex,`precision mediump float;varying float vDepth,vKind;uniform float uSelected,uPulse;void main(){if(vDepth<.02)discard;float on=1.-step(.1,abs(vKind-uSelected));vec3 c=mix(${glsl(P_PAP)},${glsl(P_ACC)},on);gl_FragColor=vec4(c,(.16+on*.65+uPulse*.2)*smoothstep(0.,.2,vDepth));}`);
    const buffer=(a)=>{const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(a),gl.STATIC_DRAW);return b};
    const quad=buffer([-1,-1,1,-1,-1,1,1,1]);const dots=buffer(data);
    function unit(lat,lon){const a=lat*Math.PI/180,b=lon*Math.PI/180;return [Math.cos(a)*Math.sin(b),Math.sin(a),Math.cos(a)*Math.cos(b)]}

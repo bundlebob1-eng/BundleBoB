@@ -1,3 +1,17 @@
+/* Palette bridge: the shaders below are written against the three
+   roles, not against fixed colours, so a theme change in CSS reaches
+   the WebGL layer too. Falls back to the shipped values if a token is
+   missing or unreadable. */
+function paletteVec(name, fallback){
+  try{
+    var v=getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    var m=/^#?([0-9a-f]{6})$/i.exec(v);
+    if(!m) return fallback;
+    var n=parseInt(m[1],16);
+    return [((n>>16)&255)/255, ((n>>8)&255)/255, (n&255)/255];
+  }catch(e){ return fallback; }
+}
+function glsl(v){ return 'vec3('+v.map(function(x){return x.toFixed(4)}).join(',')+')'; }
 /* ============================================================
    SIGNAL — live hero field. Hand-written WebGL, no library.
    Two counter-rotating streams of records: operations (cyan)
@@ -99,9 +113,14 @@
       uDpr = gl.getUniformLocation(prog, 'uDpr'),
       uTilt = gl.getUniformLocation(prog, 'uTilt'),
       uShift = gl.getUniformLocation(prog, 'uShift');
-  gl.uniform3f(gl.getUniformLocation(prog, 'uOps'), 0.96, 0.95, 0.92);
-  gl.uniform3f(gl.getUniformLocation(prog, 'uAcct'), 0.58, 0.64, 0.68);
-  gl.uniform3f(gl.getUniformLocation(prog, 'uDif'), 1.0, 0.83, 0.0);
+  var C_PAP = paletteVec('--paper', [0.96, 0.95, 0.92]);
+  var C_INK = paletteVec('--ink',   [0.05, 0.09, 0.13]);
+  var C_ACC = paletteVec('--hivis', [1.0, 0.83, 0.0]);
+  /* accounting reads as paper dimmed toward ink, so it stays on-palette */
+  var C_DIM = C_PAP.map(function (v, i) { return v * 0.62 + C_INK[i] * 0.38; });
+  gl.uniform3f(gl.getUniformLocation(prog, 'uOps'),  C_PAP[0], C_PAP[1], C_PAP[2]);
+  gl.uniform3f(gl.getUniformLocation(prog, 'uAcct'), C_DIM[0], C_DIM[1], C_DIM[2]);
+  gl.uniform3f(gl.getUniformLocation(prog, 'uDif'),  C_ACC[0], C_ACC[1], C_ACC[2]);
 
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.SRC_ALPHA, gl.ONE);   /* additive: the overlaps glow */
