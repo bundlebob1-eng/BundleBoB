@@ -32,12 +32,13 @@ export function experienceHero(video){return `<div class="ex-opening" data-exper
  <div class="wrap ex-hero-footer">
   <a href="#services" class="ex-scroll-link"><span>↓</span> SCROLL TO EXPLORE</a>
   <span class="ex-hero-footnote">Across industries. <a href="/construction">Deep in construction.</a></span>
-  <div class="ex-motion-controls"><button type="button" data-globe-toggle hidden aria-label="Pause globe animation"><span data-globe-toggle-icon>Ⅱ</span><span data-globe-toggle-label>Pause 3D</span></button><button class="en-video-toggle" type="button" data-video-toggle hidden aria-label="Play background video"><span data-video-toggle-icon>▶</span><span data-video-toggle-label>Play film</span></button></div>
+  <div class="ex-motion-controls"><button type="button" data-globe-toggle hidden aria-label="Pause 3D globe animation"><span data-globe-toggle-icon aria-hidden="true">Ⅱ</span><span data-globe-toggle-label>Pause 3D</span></button><button class="en-video-toggle" type="button" data-video-toggle hidden aria-label="Play film background video"><span data-video-toggle-icon aria-hidden="true">▶</span><span data-video-toggle-label>Play film</span></button></div>
  </div>
 </header></div>`;}
 
-export function fieldFilm(){return `<section class="ex-field-film" aria-labelledby="ex-film-heading">
- <img src="/assets/images/people-at-work.webp" alt="Colleagues looking through a workflow together" width="1600" height="900" loading="lazy">
+export function fieldFilm(){return `<section class="ex-field-film" data-video-region aria-labelledby="ex-film-heading">
+ <video class="ex-field-video" data-background-video muted loop playsinline preload="none" poster="/assets/images/people-at-work.webp" aria-hidden="true" tabindex="-1" data-src="/assets/video/people-at-work.mp4"></video>
  <div class="ex-field-shade"></div><div class="wrap ex-field-content"><p class="ex-eyebrow">THE PEOPLE BEHIND THE TECHNOLOGY</p><h2 id="ex-film-heading">We get inside<br>the problem.<br><em>Then we build.</em></h2><div><p>Your forward-deployed engineer works beside your team: observing the work, questioning the handoffs, and turning a real business need into working software.</p><a class="ex-button" href="/forward-deployed-engineering">Meet your working relationship ${icon('arrow',18)}</a></div></div>
  <span class="ex-film-caption">DISCOVER TOGETHER / BUILD TOGETHER / IMPROVE TOGETHER</span>
+ <button class="en-video-toggle ex-field-toggle" type="button" data-video-toggle hidden aria-label="Play film background video"><span data-video-toggle-icon aria-hidden="true">▶</span><span data-video-toggle-label>Play film</span></button>
 </section>`;}

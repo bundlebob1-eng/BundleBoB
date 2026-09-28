@@ -1,3 +1,5 @@
+> Historical design record. The current implementation and retained/retired decisions are documented in [reference-experience.md](reference-experience.md).
+
 # Across industries, with a direct engineering partner
 
 BundleBoB is positioned as a cross-industry technology services business. Construction remains a worked example and a specialty page; it does not define the whole business. Industry examples are possible applications, not evidence of completed projects or certifications.

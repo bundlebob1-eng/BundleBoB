@@ -37,72 +37,19 @@
 }
 
 /* ── hero ─────────────────────────────────────────────────── */
-.sg-hero{
-  position:relative;isolation:isolate;overflow:clip;color:var(--paper);
-  background:
-    radial-gradient(118% 92% at 76% 16%,rgba(255,212,0,.055),transparent 60%),
-    var(--ink);
-  min-height:min(95svh,920px);display:flex;align-items:flex-end;
-  padding:150px 0 68px;
-}
-.sg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
-.sg-hero::after{
-  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    radial-gradient(112% 88% at 74% 18%,transparent 0%,rgba(14,24,32,.20) 62%,rgba(14,24,32,.74) 100%),
-    linear-gradient(180deg,rgba(14,24,32,.56) 0%,transparent 22%,transparent 64%,var(--ink) 99%);
-}
-.sg-hero > .wrap{position:relative;z-index:2;width:min(1240px,calc(100% - 56px));margin-inline:auto}
-
-.sg-kicker{
-  font-family:var(--sg-mono);font-size:11px;font-weight:500;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--paper-3);display:flex;align-items:center;gap:11px;margin:0 0 26px;
-}
-.sg-kicker i{width:7px;height:7px;border-radius:2px;background:var(--hivis);flex:none;
-  box-shadow:0 0 0 4px rgba(255,212,0,.15)}
-
-.sg-hero h1{
-  font-family:var(--sg-display);font-weight:800;
-  font-size:clamp(42px,6.6vw,88px);line-height:1.0;letter-spacing:-.035em;
-  margin:0;max-width:17ch;text-wrap:balance;
-}
-.sg-hero h1 em{font-style:normal;color:var(--hivis)}
-.sg-lede{
-  font-family:var(--sg-body);color:var(--paper-2);
-  font-size:clamp(16px,1.4vw,20px);line-height:1.55;max-width:56ch;margin:26px 0 0;
-}
-
-.sg-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
-.sg-btn{
-  display:inline-flex;align-items:center;gap:11px;min-height:52px;padding:0 26px;
-  border-radius:8px;font-family:var(--sg-body);font-weight:600;font-size:15px;
-  background:var(--hivis);color:var(--ink);border:1px solid transparent;
-  transition:transform .18s cubic-bezier(.2,.7,.3,1),background .18s;
-}
-.sg-btn:hover{transform:translateY(-2px);background:var(--paper)}
-.sg-btn-ghost{background:transparent;color:var(--paper);border-color:var(--paper-line)}
-.sg-btn-ghost:hover{background:transparent;border-color:var(--paper)}
 
 /* live readout — proves the thing is actually running */
-.sg-readout{
-  position:absolute;right:0;bottom:68px;z-index:2;
-  font-family:var(--sg-mono);font-size:11px;letter-spacing:.05em;color:var(--paper-3);
-  display:grid;gap:7px;text-align:right;
-}
-.sg-readout b{font-weight:500}
-.sg-readout span{display:block;font-variant-numeric:tabular-nums}
-.sg-readout .on{color:var(--paper)}            /* operations — bright paper */
-.sg-readout .ac{color:var(--paper-3)}          /* accounting — dim paper   */
-.sg-readout .df{color:var(--hivis)}            /* the difference — hi-vis  */
-.sg-readout .ok{color:var(--paper-3)}
+
+            /* operations — bright paper */
+          /* accounting — dim paper   */
+            /* the difference — hi-vis  */
 
 @media(max-width:900px){
-  .sg-hero{min-height:auto;padding:118px 0 54px}
-  .sg-readout{position:static;text-align:left;margin-top:38px;justify-items:start}
+  
+  
 }
 
-@media (prefers-reduced-motion:reduce){ .sg-canvas{display:none} }
-.no-js .sg-canvas{display:none}
+@media (prefers-reduced-motion:reduce){  }
 
 /* ── scroll reveal — the behaviour from the live site ──────── */
 .rv{opacity:0;transform:translateY(22px);
@@ -133,18 +80,10 @@ h1,h2,h3,h4,.en-section h2{font-family:var(--sg-display)!important;letter-spacin
 .en-button-primary:hover{background:#20201f!important;color:#faf9f6!important}
 
 /* ── the interactive field, now its own section (video owns the hero) ── */
-.sg-field{position:relative;isolation:isolate;overflow:clip;border-radius:14px;
-  background:radial-gradient(112% 90% at 74% 18%,rgba(255,212,0,.07),transparent 60%),var(--ink-fieldbg,#0E1820);
-  color:#F4F1EA;padding:46px 40px 40px;min-height:520px;display:flex;align-items:flex-end}
-.sg-field .sg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
-.sg-field-copy{position:relative;z-index:2;max-width:46ch}
-.sg-field h3{font-family:var(--sg-display);font-weight:800;font-size:clamp(26px,3vw,40px);
-  line-height:1.05;letter-spacing:-.035em;margin:0 0 14px;color:#F4F1EA!important}
-.sg-field p{color:rgba(244,241,234,.7);font-size:16px;line-height:1.55;margin:0}
-.sg-field .sg-readout{position:absolute;right:40px;bottom:40px;z-index:2;text-align:right}
+
 @media(max-width:900px){
-  .sg-field{padding:32px 24px;min-height:600px}
-  .sg-field .sg-readout{position:static;text-align:left;margin-top:28px}
+  
+  
 }
 
 /* ── tap targets ───────────────────────────────────────────────

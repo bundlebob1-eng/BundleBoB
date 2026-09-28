@@ -1,3 +1,5 @@
+> Historical design record. The current implementation and retained/retired decisions are documented in [reference-experience.md](reference-experience.md).
+
 # BundleBoB reference-led draft
 
 This iteration continues the implementation at `86eaaff`. The user requested O.C. Tanner’s structure, typography, and visual style with BundleBoB’s business context, and approved close open fonts for this draft.

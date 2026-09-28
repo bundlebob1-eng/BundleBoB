@@ -1,3 +1,26 @@
+# September 28 reference-led experience verification
+
+Current direction: [reference-experience.md](reference-experience.md). This supersedes the visual measurements below.
+
+- Build: 20 pages and 6 redirects; palette lab, retired particle renderer, and generated business photographs are excluded from normal output.
+- Browser acceptance: 80 page/theme/viewport combinations; 96 local links; no browser, layout, link, or external-request errors.
+- Accessibility: zero automated violations in 48 checks — all 20 pages in both themes with reduced motion, plus the homepage, services, industries, and FDE page in both themes with normal motion. Spoken-label matching is explicitly enabled.
+- Lighthouse 12.6.1 mobile lab profile: Performance **94**, Accessibility **100**, Best Practices **100**, SEO **100**. LCP 3.0s, total blocking time 22ms, cumulative layout shift 0. These are local simulated measurements, not production field data.
+- Reference-experience checks: actual globe frame changes, paused frames staying unchanged, capability selection by mouse and keyboard, service destinations, scroll depth, offscreen suspension, and the FDE film passed.
+- Responsive label/copy collision checks passed at 320, 390, 600, 760, 761, 900, 1024, 1100, 1280, 1440, and 1920px.
+- JavaScript-disabled and WebGL-unavailable visits keep the globe illustration, useful content, and service links. Reduced motion has no running animations.
+- Background-video controls, mobile navigation, construction tour deep links and keyboard controls, FAQs, inquiry download, resource search, and both reconciliation video formats passed.
+- FDE checks confirmed Figtree/Inter loading, all thirteen industry links, eight responsibilities, the five-step illustrative client story, and changing scroll transforms.
+- The social image was regenerated using Figtree and the original globe. Screenshots and machine-readable evidence are in `audit/experience/`, `audit/enterprise/`, `audit/fde/`, and the root `audit/` reports.
+
+The normal-motion audit caught text fading through insufficient contrast and media controls with mismatched visible/spoken labels. Text now moves at full contrast; labels match their accessible names. The accessibility and Lighthouse checks above were rerun after those corrections.
+
+Local preview only. Contact prepares a local inquiry download until a monitored destination is configured. The construction example and FDE story are explicitly illustrative; named client proof remains unpublished.
+
+Earlier measurements below are historical and do not describe the current build.
+
+---
+
 # September 26 cinematic enterprise verification
 
 Current implementation: [enterprise-direction.md](enterprise-direction.md). Media provenance: [media-sources.md](media-sources.md).

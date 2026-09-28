@@ -1,3 +1,5 @@
+> Historical design record. The current implementation and retained/retired decisions are documented in [reference-experience.md](reference-experience.md).
+
 # BundleBoB studio direction
 
 September 2026 revision: present BundleBoB as a technology service partner for practical AI, custom software, and integrations. Construction is a specialty, supported by the existing reconciliation demonstration. No customer names, shipped-project claims, testimonials, or results are invented.

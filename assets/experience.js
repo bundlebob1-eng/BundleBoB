@@ -52,7 +52,7 @@ function glsl(v){ return 'vec3('+v.map(function(x){return x.toFixed(4)}).join(',
  });
  function paused(){return motion.matches||userPaused||Boolean(navigator.connection?.saveData)}
  function state(){
-  const stopped=paused();toggle.setAttribute('aria-label',stopped?'Play globe animation':'Pause globe animation');
+  const stopped=paused();toggle.setAttribute('aria-label',stopped?'Play 3D globe animation':'Pause 3D globe animation');
   toggle.querySelector('[data-globe-toggle-icon]').textContent=stopped?'▶':'Ⅱ';
   toggle.querySelector('[data-globe-toggle-label]').textContent=stopped?'Play 3D':'Pause 3D';
   globe.dataset.state=lost?'unavailable':!visible||document.hidden?'offscreen':motion.matches?'reduced':stopped?'paused':'running';

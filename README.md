@@ -1,6 +1,6 @@
 # BundleBoB
 
-Current design: [cinematic enterprise revision](docs/enterprise-direction.md), with [licensed live-action media](docs/media-sources.md). The homepage and construction specialty page use self-hosted background video. Service detail pages cover AI, custom software, and integrations.
+Current design: [reference-led globe and operations experience](docs/reference-experience.md), with [licensed live-action media](docs/media-sources.md). An original interactive globe, real video, and scroll-driven depth introduce services across industries. Construction is the worked example.
 
 A service-led marketing site for custom software, practical AI, and systems integration. Construction technology is a featured specialty. The reconciliation demonstration uses synthetic data; client case studies await verified project details.
 
@@ -26,7 +26,10 @@ Produces `dist/`, the only deployment directory. Vercel uses this command and di
 - `assets/studio.css` — warm ivory, charcoal, orange, responsive studio layouts, and CSS 3D geometry.
 - `site/editorial.mjs` — shared navigation and footer.
 - `assets/editorial.css` — shared navigation and footer presentation, photographic sections, gradients, and responsive layout.
-- `assets/signal.css` / `assets/signal.js` — the three-colour system (ink / paper / hi-vis), the self-hosted display faces, the WebGL divergence field, and scroll reveal. Concatenated last so it governs the final palette and typography.
+- `assets/signal.css` — active palette and self-hosted font tokens. Its old particle renderer in `signal.js` is retired and excluded from output.
+- `site/experience.mjs` / `assets/experience.css` / `assets/experience.js` — original globe, capability selector, cinematic opening and FDE film.
+- `assets/typography.css` / `assets/motion.css` — heading hierarchy, contrast refinements, and native scroll animation.
+- `scripts/experience-check.mjs` — controls, motion, fallback, and responsive acceptance checks.
 - `site/content.mjs` — business copy, industry examples, ownership and compliance status, resource metadata.
 - `site/pages.mjs` — page composition, operational guides, and shared layout.
 - `site/art.mjs` — authored SVG icons, reconciliation sequence, and report/diagram markup.
@@ -35,9 +38,9 @@ Produces `dist/`, the only deployment directory. Vercel uses this command and di
 - `assets/theme.js` — stored theme preference applied before rendering.
 - `/system` — rendered design documentation, component states, calculated contrast, and patterns.
 
-The page routes are `/`, `/services`, `/services/ai-solutions`, `/services/custom-software`, `/services/integrations`, `/construction`, `/approach`, `/how-it-works`, `/solutions`, `/why-bundlebob`, `/resources`, three resource details, `/about`, `/contact`, and `/system`. Previous marketing routes redirect to their equivalents. `/system` is marked noindex. The generated sitemap includes the other sixteen pages. `scroll3d/` is a retired experiment and is excluded from deployment.
+The twenty routes include the homepage, services and three service details, construction, approach, how it works, industries, forward-deployed engineering, why BundleBoB, resources and three guides, about, contact, privacy, terms, and `/system`. Six previous marketing routes redirect to their equivalents. `/system` is noindex; the sitemap contains the other nineteen pages. Optional palette review is available with `DESIGN_LAB=1 npm run build`; a normal build excludes it. `scroll3d/` is a retired experiment and is excluded from deployment.
 
-Typography uses locally hosted Figtree for headlines and Inter for body and interface text, with IBM Plex Mono for record identifiers and figures — the same three faces the current production site serves. Colour is restricted to three values: ink, paper, and hi-vis yellow, the only saturated colour anywhere. Font licenses are included in `assets/fonts/`. The redesigned pages use licensed live-action stock footage and original interface demonstrations. Legacy image assets remain in the asset directory. There are no analytics scripts or runtime packages. The original diagrams and reconciliation video remain authored code assets. See `docs/enterprise-direction.md` for the current reference mapping.
+Typography uses locally hosted Figtree for headlines and Inter for body and interface text, with IBM Plex Mono for record identifiers and figures — the same three faces the current production site serves. Colour is restricted to three values: ink, paper, and hi-vis yellow, the only saturated colour anywhere. Font licenses are included in `assets/fonts/`. The redesigned pages use licensed live-action stock footage and original interface demonstrations. Legacy generated images remain in source but are excluded from deployment. There are no analytics scripts or runtime packages. The original diagrams and reconciliation video remain authored code assets. See `docs/reference-experience.md` for the current reference mapping.
 
 ## Contact destination
 
@@ -75,13 +78,18 @@ The player is user-initiated, uses a poster, fetches source metadata near the vi
 After `npm ci` and installing a Playwright browser, keep `npm start` running and execute:
 
 ```sh
-npm run verify
-node scripts/accessibility.mjs
-node scripts/lighthouse.mjs
-node scripts/enterprise-check.mjs
+npm run check
 ```
 
-`TEST_URL` changes the target. Browser evidence goes to `audit/`: screenshots for all seventeen pages at 1440px and 390px in both themes, link checks, form and keyboard checks, both video formats, reduced motion, script failure, and main-thread idle sampling. Lighthouse writes HTML and JSON reports. `LIGHTHOUSE_MODULE` and `CHROME_PATH` are optional paths for an existing local audit installation.
+That runs every browser gate in sequence: `verify`, `check:a11y`,
+`check:experience`, `check:enterprise` and `check:fde`. Each is also
+available on its own, and `CHROME_CHANNEL` overrides the browser.
+Lighthouse stays separate: `node scripts/lighthouse.mjs`.
+
+`npm run build:lab` adds `/theme-lab`, the six candidate palettes on
+real page composition. Normal builds omit it and its stylesheets.
+
+`TEST_URL` changes the target. Browser evidence goes to `audit/`: screenshots for all twenty pages at 1440px and 390px in both themes, link checks, form and keyboard checks, both video formats, reduced motion, script failure, and main-thread idle sampling. Lighthouse writes HTML and JSON reports. `LIGHTHOUSE_MODULE` and `CHROME_PATH` are optional paths for an existing local audit installation.
 
 These are meaningful browser acceptance checks, not a unit suite for static copy. See `docs/verification.md` for the measured results and limits of the hardware simulation.
 

@@ -14,7 +14,7 @@
 .ex-film-shade{position:absolute;inset:0;z-index:-3;background:linear-gradient(90deg,rgba(14,24,32,.65),rgba(14,24,32,.84) 53%,#0E1820),linear-gradient(0deg,#0E1820,transparent 45%)}
 .ex-coordinate{position:absolute;left:56px;top:139px;font:400 11px var(--sg-mono);letter-spacing:.14em;color:rgba(244,241,234,.55);writing-mode:vertical-rl;transform:rotate(180deg)}
 .ex-hero-layout{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;gap:50px;align-items:end;padding:148px 0 162px;width:min(calc(100% - 160px),1360px);pointer-events:none}
-.ex-hero-copy{pointer-events:auto;max-width:690px;transform:translateY(calc(var(--ex-progress) * -45px));opacity:calc(1 - var(--ex-progress) * .35)}
+.ex-hero-copy{pointer-events:auto;max-width:690px;transform:translateY(calc(var(--ex-progress) * -45px));opacity:1}
 .ex-eyebrow{font:500 11px/1.6 var(--sg-body);letter-spacing:.085em;color:var(--ex-paper);margin-bottom:22px;display:flex;align-items:center;gap:11px}
 .ex-eyebrow>span{width:6px;height:6px;background:var(--ex-yellow);border-radius:50%;box-shadow:0 0 0 4px rgba(255,212,0,.08);flex-shrink:0}
 .ex-hero h1{font-size:clamp(70px,7.5vw,120px);line-height:.94;letter-spacing:-.058em;text-transform:uppercase;font-weight:800;max-width:none;position:relative;z-index:2}
@@ -99,3 +99,12 @@
   .ex-orbit-label-b{display:none}
   .ex-orbit-label-c{left:40%;top:30%}
 }
+
+.en-scroll-story-link{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.ex-field-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;filter:grayscale(.45);z-index:-3}
+.ex-field-toggle{position:absolute;right:56px;bottom:25px;z-index:2}
+.is-home .en-scroll-steps>article[data-active="false"]{opacity:1}
+.is-home .en-scroll-steps>article[data-active="true"]{border-top-color:var(--ex-yellow)}
+@media(max-width:760px){.ex-field-video{object-position:60% center}.ex-field-toggle{right:22px;bottom:24px}.ex-film-caption{max-width:195px}.ex-field-content{padding-bottom:130px}}
+
+@media(max-width:760px){.ex-film-caption{max-width:calc(100% - 175px)}}

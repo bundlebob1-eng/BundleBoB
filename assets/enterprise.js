@@ -2,8 +2,8 @@
  'use strict';
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  document.querySelectorAll('[data-background-video]').forEach(video=>{
-  const button=video.closest('header').querySelector('[data-video-toggle]');
-  let userPaused=false,visible=true,loaded=false,userStarted=false;
+  const button=video.closest('[data-video-region],header').querySelector('[data-video-toggle]');
+  let userPaused=false,visible=false,loaded=false,userStarted=false;
   // 6.2MB is not a thing to hand a phone uninvited: below 760px the
   // poster stands in until the visitor asks for the film.
   const compact=matchMedia('(max-width: 760px)');
@@ -11,7 +11,7 @@
   // Save-Data, and also any connection that would make a 6MB file a
   // punishment rather than a flourish.
   const saveData=Boolean(conn?.saveData)||/(^|-)(2g|3g)$/.test(conn?.effectiveType||'');
-  function label(){const paused=video.paused;button.setAttribute('aria-label',paused?'Play background video':'Pause background video');button.querySelector('[data-video-toggle-label]').textContent=paused?'Play film':'Pause film';button.querySelector('[data-video-toggle-icon]').textContent=paused?'▶':'Ⅱ';}
+  function label(){const paused=video.paused;button.setAttribute('aria-label',paused?'Play film background video':'Pause film background video');button.querySelector('[data-video-toggle-label]').textContent=paused?'Play film':'Pause film';button.querySelector('[data-video-toggle-icon]').textContent=paused?'▶':'Ⅱ';}
   async function play(){if(!loaded){video.src=video.dataset.src;loaded=true;video.load();}try{await video.play()}catch{}label();}
   function sync(){if(reduced.matches||saveData||userPaused||!visible||document.hidden||(compact.matches&&!userStarted)){video.pause();label();}else play();}
   video.muted=true;button.hidden=false;
@@ -55,4 +55,30 @@
   document.addEventListener('visibilitychange',schedule);
   reduced.addEventListener('change',schedule);compact.addEventListener('change',schedule);
  });
+})();
+
+/* ---- scroll reveal, the behaviour from the live site ----
+   Sections rise as they enter. Failsafe: anything still hidden
+   after 2.5s is revealed, so a script error can never leave the
+   page blank. Reduced motion skips it entirely (CSS handles it). */
+(function () {
+  var items = document.querySelectorAll('.rv');
+  if (!items.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  for (var k = 0; k < items.length; k++) io.observe(items[k]);
+  setTimeout(function () {
+    var left = document.querySelectorAll('.rv:not(.in)');
+    for (var n = 0; n < left.length; n++) left[n].classList.add('in');
+  }, 2500);
 })();

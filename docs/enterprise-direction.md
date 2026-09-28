@@ -1,3 +1,5 @@
+> Historical design record. The current implementation and retained/retired decisions are documented in [reference-experience.md](reference-experience.md).
+
 # Cinematic enterprise revision — September 25, 2026
 
 ## Reference mapping
