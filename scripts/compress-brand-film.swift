@@ -1,6 +1,7 @@
 import AVFoundation
 let root = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-for name in ["connected-world", "people-process-technology"] {
+let names = CommandLine.arguments.count > 1 ? Array(CommandLine.arguments.dropFirst()) : ["connected-world", "people-process-technology"]
+for name in names {
  let url = root.appendingPathComponent("assets/video/\(name).mp4")
  let asset = AVURLAsset(url: url)
  let track = asset.tracks(withMediaType: .video)[0]

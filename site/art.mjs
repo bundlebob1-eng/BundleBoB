@@ -18,7 +18,7 @@ export const icon = (name, size = 24) => {
  };
  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${shapes[name] || shapes.layers}</svg>`;
 };
-export const mark = `<svg class="brand-mark" width="30" height="32" viewBox="0 0 30 32" aria-hidden="true"><path d="M3 2h12a9 9 0 0 1 0 18H3Z" fill="currentColor"/><path d="M3 12h13a9 9 0 0 1 0 18H3Z" fill="currentColor" opacity=".55"/><path d="M9 8h6a3 3 0 0 1 0 6H9Zm0 12h7a3 3 0 0 1 0 6H9Z" fill="var(--paper)"/></svg>`;
+export const mark = `<svg class="brand-mark" width="38" height="38" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M9 5h12a9 9 0 0 1 6.4 15.3A9 9 0 0 1 21 35H9V5Zm7 6v6h5a3 3 0 1 0 0-6h-5Zm0 12v6h5a3 3 0 1 0 0-6h-5Z" fill="currentColor" fill-rule="evenodd"/><path d="M3 17h10v6H3z" fill="currentColor"/></svg>`;
 export function report(){return `<div class="report-visual" role="group" aria-label="Illustrative job profitability report; synthetic data">
  <div class="report-top"><span class="report-brand">${mark} <b>Job overview</b></span><span class="sample">Illustrative data</span></div>
  <div class="report-main"><div class="report-meta"><span>JOB 024 / EQUIPMENT OVERHAUL</span><span class="fresh"><i></i> Example nightly review</span></div><div class="report-total"><div><span class="small-label">Expected revenue</span><strong>$250,000<span>.00</span></strong></div><span class="trend">${icon('layers',16)} Connected view</span></div>

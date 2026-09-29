@@ -1,3 +1,31 @@
+# September 29 — brand, media, and all-page refinement
+
+Current direction: [site-polish-review.md](site-polish-review.md). Earlier records below describe superseded media controls and palettes.
+
+- All 20 routes passed desktop/mobile layout, link, form, and browser checks (80 combinations; 96 local links; no errors). Both system-color preferences now receive the same art-directed appearance.
+- New interaction checks: navigation hide/return and menu persistence; service selection and workflow disclosure; eleven viewport widths; no removed film/theme controls.
+- Both new films: 1920×1080, 12 seconds, explicit play, deferred download, offscreen pause. The generated source images are 1672×941.
+- Hero playback advances beyond five seconds, loops at the end, and resumes after returning onscreen; mobile and reduced motion keep the poster.
+- Accessibility: all 48 route/preference checks clear after rechecking the two corrected video-button labels.
+- Construction tour, keyboard navigation, FAQ, no-script fallback, and reduced-motion loading checks passed. Both workflow films decode distinct animated frames and pause offscreen.
+- Screenshots and review boards: audit/polish/.
+
+---
+
+# September 29 primary-reference redesign
+
+Current direction: [primary-reference-direction.md](primary-reference-direction.md). The prior globe and dark-homepage measurements below are historical.
+
+- Homepage: 84px / 92.4px display type at 1440px; medium weight, sentence case. Outfit is the current font substitute for licensed Gotham SSm.
+- Eleven viewport widths passed; no horizontal page overflow. Native carousel buttons and keyboard controls passed.
+- Four distinct hero-film scenes, 20-second loop, and offscreen pause passed. Mobile and reduced-motion visits defer video loading.
+- FDE responsibilities, illustrative engagement story, and all thirteen industry links passed.
+- Accessibility: 48 checks across pages, themes, and motion preferences; no automated violations after shared text-color corrections.
+- Full browser verification: 80 page/theme/viewport combinations, 96 local links, no browser or layout errors. Contact download, navigation, FAQ, search, and reconciliation media passed.
+- Visual evidence: audit/reference/ and audit/film/.
+
+---
+
 # September 28 reference-led experience verification
 
 Film replacement verified: four scene boundaries, 20-second looping, pause/resume, mobile poster without automatic video download, and explicit mobile playback passed. Final optimized assets were checked with the 80-combination browser suite, 48 accessibility checks, and enterprise controls suite; no errors or violations. Desktop/mobile and individual scene captures are in `audit/film/`. The experience suite also passed all eleven responsive widths.

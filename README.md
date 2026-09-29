@@ -1,6 +1,6 @@
 # BundleBoB
 
-Current design: [reference-led operations experience](docs/reference-experience.md), with [licensed live-action media](docs/media-sources.md). An original interactive globe, real video, and scroll-driven depth introduce services across industries. Construction is the worked example.
+Current design: [September 29 site-wide refinement](docs/site-polish-review.md), continuing the [O.C. Tanner UI / Avathon business context](docs/primary-reference-direction.md). One charcoal/ivory/sage appearance, generated photographic backgrounds, interactive services, and native scrolling. No 3D or night-mode control.
 
 A service-led marketing site for custom software, practical AI, and systems integration. Construction technology is a featured specialty. The reconciliation demonstration uses synthetic data; client case studies await verified project details.
 

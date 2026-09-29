@@ -1,38 +1,7 @@
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
-import fs from 'node:fs/promises';
-const browser=await chromium.launch({channel:'chrome'});
-const base=process.env.TEST_URL||'http://127.0.0.1:8080';
-await fs.mkdir('audit/film',{recursive:true});
-const results={};
-try {
- const page=await browser.newPage({viewport:{width:1440,height:1000}});
- await page.goto(base);
- await page.locator('.ex-film-screen').scrollIntoViewIfNeeded();
- await page.waitForFunction(()=>document.querySelector('.ex-field-video').currentTime>.1);
- const v=page.locator('.ex-field-video');
- await v.evaluate(v=>v.pause());
- assert.equal(Math.round(await v.evaluate(v=>v.duration)),20);
- results.scenes=[];
- for(const second of [2,7,12,17]){
-  await v.evaluate(async (v,t)=>{v.currentTime=t;await new Promise(r=>v.addEventListener('seeked',r,{once:true}));},second);
-  await page.waitForTimeout(100);
-  const active=await page.locator('.ex-film-chapters .is-active').innerText();
-  results.scenes.push({second,active});
-  await page.locator('.ex-film-screen').screenshot({path:`audit/film/scene-${second}.png`});
- }
- assert.deepEqual(results.scenes.map(s=>s.active),['01 / Real operations','02 / Human expertise','03 / Connected systems','04 / In the field']);
- await v.evaluate(v=>{v.currentTime=19.7;return v.play()});
- await page.waitForFunction(()=>document.querySelector('.ex-field-video').currentTime<1);
- results.loop=true;
- await page.locator('.ex-field-toggle').click();assert.equal(await v.evaluate(v=>v.paused),true);
- await page.locator('.ex-field-film').screenshot({path:'audit/film/desktop.png'});
- const mobile=await browser.newPage({viewport:{width:390,height:844}});
- const downloads=[];mobile.on('request',r=>{if(r.url().endsWith('.mp4'))downloads.push(r.url())});
- await mobile.goto(base);await mobile.locator('.ex-film-screen').scrollIntoViewIfNeeded();await mobile.waitForTimeout(500);
- assert.equal(downloads.length,0);results.mobilePosterWithoutDownload=true;
- await mobile.locator('.ex-field-film').screenshot({path:'audit/film/mobile.png'});
- await mobile.locator('.ex-field-toggle').click();await mobile.waitForFunction(()=>document.querySelector('.ex-field-video').currentTime>.1);results.mobileExplicitPlayback=true;
- assert.equal(await mobile.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
- console.log(JSON.stringify(results,null,2));await fs.writeFile('audit/film/results.json',JSON.stringify(results,null,2));
-} finally {await browser.close()}
+const b=await chromium.launch({channel:'chrome'});
+try{const p=await b.newPage({viewport:{width:1440,height:1000}});await p.goto(process.env.TEST_URL||'http://127.0.0.1:8080');
+for(let i=0;i<2;i++){const player=p.locator('[data-story-player]').nth(i),video=player.locator('video');await player.scrollIntoViewIfNeeded();assert.equal(await player.locator('button').count(),0);await p.waitForFunction(i=>document.querySelectorAll('[data-story-video]')[i].currentTime>.1,i);assert.equal(Math.round(await video.evaluate(v=>v.duration)),12);assert.equal(await video.evaluate(v=>v.videoWidth),1920);await video.evaluate(v=>v.pause());const frames=[];for(const second of [1,6,10])frames.push(await video.evaluate(async(v,t)=>{v.currentTime=t;await new Promise(r=>v.addEventListener('seeked',r,{once:true}));const c=document.createElement('canvas');c.width=320;c.height=180;c.getContext('2d').drawImage(v,0,0,320,180);return c.toDataURL()},second));assert.equal(new Set(frames).size,3);await video.evaluate(v=>v.play());await p.locator('h1').scrollIntoViewIfNeeded();await p.waitForFunction(i=>document.querySelectorAll('[data-story-video]')[i].paused,i);assert.equal(await video.evaluate(v=>v.paused),true)}
+console.log('Both 12-second 1080p workflow films decode, animate, autoplay while visible, and pause offscreen.');
+}finally{await b.close()}

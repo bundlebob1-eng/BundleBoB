@@ -1,3 +1,7 @@
+# Current media update — September 29
+
+Three generated HD background images and two authored motion illustrations are documented in [generated-campaign-assets.md](generated-campaign-assets.md). The original hero and construction footage retain the licenses below. Retired films remain archived in source; the production build uses an explicit video allowlist.
+
 # Live-action media sources
 
 Downloaded September 25, 2026. Pexels permits commercial website use and modification under its [license](https://www.pexels.com/license/). Credits also appear in the footer. These are stock scenes, not representations of BundleBoB employees or customers.
@@ -34,3 +38,9 @@ Videos are loaded only when visible on desktop. Mobile and reduced-motion/data-s
 ## Attribution
 
 Pexels does not require attribution, so the footer credit line was removed on request. Creator credits remain in the table above, which is the record of what was licensed and from whom. The people in this footage are stock performers and are not BundleBoB staff, clients or customers; no page presents them as such.
+
+## Primary-reference hero film
+
+`business-in-motion.mp4` is a new 20-second edit for the full-screen homepage hero. It uses the already credited cottonbro studio engineering footage (source 12–18s), Toàn BDS operations aerial (5–10s), Mikael Blomkvist field collaboration (existing edit 1–6s), and MrColo infrastructure detail (2–6s), in that order. It is edited real stock footage, not an AI-generated video and not a client/staff documentary.
+
+Reproduce: `swift -module-cache-path /private/tmp/bundlebob-swift-cache scripts/edit-business-film.swift`; `swift -module-cache-path /private/tmp/bundlebob-swift-cache scripts/compress-brand-film.swift business-in-motion`; `node scripts/prepare-film-posters.mjs business-in-motion`. The source paths match the preceding download list. The site's CSS applies a focused text-legibility overlay; the video itself has no baked-in copy.

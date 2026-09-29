@@ -4,10 +4,6 @@ const motion = matchMedia('(prefers-reduced-motion: reduce)');
 const root = document.documentElement;
 const $ = (s, scope = document) => scope.querySelector(s);
 const $$ = (s, scope = document) => [...scope.querySelectorAll(s)];
-const announceTheme = () => { const b = $('.theme-toggle'); if(b) b.setAttribute('aria-label', `Switch to ${root.dataset.theme === 'dark' ? 'light' : 'dark'} theme`); };
-$('.theme-toggle')?.addEventListener('click', () => {root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';try{localStorage.setItem('bundlebob-theme',root.dataset.theme)}catch{}announceTheme();palette();});
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change',e=>{let manual=false;try{manual=!!localStorage.getItem('bundlebob-theme')}catch{}if(!manual){root.dataset.theme=e.matches?'dark':'light';announceTheme();palette();}});
-announceTheme();
 const toggle = $('.menu-toggle'), menu = $('#mobile-menu');
 function closeMenu(focus=false){if(!menu||!toggle)return;menu.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');if(focus)toggle.focus();}
 toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');});
@@ -107,4 +103,15 @@ $$('[data-demo]').forEach(b=>b.addEventListener('click',async()=>{const status=$
   document.querySelectorAll('a[href^="#tour-"]:not([data-tour-tab])').forEach(link=>link.addEventListener('click',()=>{const i=panels.findIndex(panel=>'#'+panel.id===link.getAttribute('href'));if(i>=0)select(i)}));
   controls.hidden=false;select(0);syncHash();window.addEventListener('hashchange',syncHash);
  });
+})();
+
+// Navigation gives the page space during scrolling, then returns when movement stops.
+(() => {
+ const header=document.querySelector('.site-header');if(!header)return;
+ let timer;
+ const show=()=>header.classList.remove('is-scrolling');
+ const protectedState=()=>header.matches(':focus-within')||header.querySelector('.nav-item[open]')||header.querySelector('.menu-toggle[aria-expanded="true"]');
+ addEventListener('scroll',()=>{clearTimeout(timer);if(scrollY>100&&!protectedState())header.classList.add('is-scrolling');else show();timer=setTimeout(show,240)},{passive:true});
+ header.addEventListener('focusin',show);header.addEventListener('pointerenter',show);
+ document.addEventListener('keydown',e=>{if(e.key==='Tab'||e.key==='Escape')show()});
 })();

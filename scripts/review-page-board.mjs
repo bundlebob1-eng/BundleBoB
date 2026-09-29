@@ -1,0 +1,5 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs/promises';
+const b=await chromium.launch({channel:'chrome'});try{const all=(await fs.readdir('audit/screenshots')).filter(x=>x.endsWith('-1440-light.png')).sort();const p=await b.newPage({viewport:{width:1600,height:1800},deviceScaleFactor:1});
+for(const width of [1440,390]){const cards=[];for(const file of all){const n=file.replace('-1440-light.png',`-${width}-light.png`);const image=(await fs.readFile('audit/screenshots/'+n)).toString('base64');cards.push(`<article><h2>${file.replace('-1440-light.png','')}</h2><img src="data:image/png;base64,${image}"></article>`)}await p.setContent(`<style>*{box-sizing:border-box}body{margin:0;padding:16px;background:#ddd;font:14px Arial}main{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}article{background:white;overflow:hidden}h2{font-size:14px;margin:0;padding:10px;height:38px}img{display:block;width:100%;height:300px;object-fit:cover;object-position:top}</style><main>${cards.join('')}</main>`);await p.screenshot({path:`audit/polish/all-pages-${width}.png`,fullPage:true})}
+}finally{await b.close()}

@@ -39,17 +39,17 @@
    each family is normalised onto; `keep` is the set of exact
    values that pass through untouched. */
 export const DEFAULT_PALETTE = {
-  id: 'lime-graphite',
-  name: 'Lime Spark / Graphite',
-  ink:    '#23262F',   /* Graphite   — the ground, as supplied */
-  paper:  '#F4F5F2',   /* light surface for interior pages     */
-  accent: '#B6FF2E',   /* Lime Spark — the only saturated hue  */
+  id: 'sage-charcoal',
+  name: 'Sage / Charcoal',
+  ink:    '#202722',   /* Graphite   — the ground, as supplied */
+  paper:  '#F7F6F2',   /* light surface for interior pages     */
+  accent: '#B6C9A8',   /* Lime Spark — the only saturated hue  */
   families: {
-    ink:    { h: 226, s: 0.14 },
-    paper:  { h: 100, s: 0.06 },
-    accent: { h:  82, s: 1.00 }
+    ink:    { h: 137, s: 0.10 },
+    paper:  { h: 48, s: 0.12 },
+    accent: { h: 95, s: 0.24 }
   },
-  keep: ['#23262f', '#f4f5f2', '#b6ff2e', '#1a1d24', '#2c3039', '#0f1115']
+  keep: ['#202722', '#f7f6f2', '#b6c9a8', '#171d19', '#ffffff', '#141414', '#000000']
 };
 
 /* Below this saturation a colour is a neutral: it carries no hue

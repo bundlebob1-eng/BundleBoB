@@ -29,14 +29,14 @@ export const content = {
     {id:'contractors', name:'Contractors & specialty trades', short:'Current costs. Better conversations.', text:'Reconcile project activity with accounting. See approved changes, committed costs, and work in progress without rebuilding the picture in a spreadsheet.', labels:['Project costs','Approved changes','Work in progress'], example:'An approved change appears in operations before it is posted in accounting. Both values stay visible until the timing difference is resolved.', icon:'contractor'},
   ],
   comparison: [
-    ['When the picture updates','When someone rebuilds it','When a record moves','Nightly reconciliation'],
+    ['When the picture updates','When someone rebuilds it','When a record moves','Agreed checks and review'],
     ['When systems disagree','Someone investigates','Depends on the sync rules','Both values, source, and rule'],
     ['When your process changes','Update the spreadsheet','Update the connector','Ongoing mapping and review'],
   ],
   ownership: {
     yours:['Your business data','Your cost and job mappings','Your configurations','Your reports'],
-    ours:['The BundleBoB platform','The integrations','The reconciliation engine','Ongoing maintenance and upgrades'],
-    explanation:'Your business information remains yours. BundleBoB owns and maintains the technology that keeps it connected. Continued service keeps the platform operating and the mappings accurate as your systems and processes change.',
+    ours:['Source-code ownership in the agreement','Access and deployment responsibilities','Documentation and handover','Maintenance and support scope'],
+    explanation:'Your business information remains yours. Software ownership, licenses, access, documentation, and ongoing support are defined in the engagement agreement before the build begins.',
   },
   fit: {
     yes: [

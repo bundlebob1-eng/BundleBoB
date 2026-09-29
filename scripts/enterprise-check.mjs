@@ -8,15 +8,8 @@ const errors=[];const results={};
 const page=await browser.newPage({viewport:{width:1440,height:1000}});
 page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(15000);
 try{
- await page.goto(base,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
- const video=page.locator('[data-background-video]').first();await page.waitForFunction(()=>document.querySelector('[data-background-video]').currentTime>.2);
- assert.equal(await video.evaluate(v=>v.muted),true);results.backgroundPlays=true;
- await page.locator('.ref-hero').getByRole('button',{name:'Pause film background video',exact:true}).click();assert.equal(await video.evaluate(v=>v.paused),true);results.pause=true;
- await page.locator('.ref-hero').getByRole('button',{name:'Play film background video',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('[data-background-video]').paused);results.resume=true;
- await page.screenshot({path:'audit/enterprise/home-desktop.png'});
- await page.locator('#services').scrollIntoViewIfNeeded();await page.waitForFunction(()=>document.querySelector('[data-background-video]').paused);results.offscreenPauses=true;
- await page.evaluate(()=>scrollTo(0,0));await page.waitForFunction(()=>!document.querySelector('[data-background-video]').paused);
- await page.emulateMedia({reducedMotion:'reduce'});await page.waitForFunction(()=>document.querySelector('[data-background-video]').paused);results.reducedMotion=true;
+ await page.goto(base,{waitUntil:'domcontentloaded'});await page.evaluate(()=>document.fonts.ready);
+ assert.equal(await page.locator('[data-video-toggle],.theme-toggle').count(),0);results.removedControls=true;
  const menu=page.locator('.nav-item summary').filter({hasText:'Services'});await menu.focus();await page.keyboard.press('Enter');assert.equal(await page.locator('.nav-item[open]').count(),1);await page.keyboard.press('Escape');assert.equal(await menu.evaluate(e=>e===document.activeElement),true);results.menuKeyboard=true;
  for(const width of [320,390,768,1024,1440,1920]){
   await page.setViewportSize({width,height:900});await page.goto(base);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`Home overflow at ${width}`);

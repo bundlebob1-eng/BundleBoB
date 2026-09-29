@@ -7,7 +7,7 @@
      analytics scripts     0   (grep across dist/)
      cookies set           0   (no document.cookie anywhere)
      external requests     0   (scripts/verify.mjs)
-     localStorage keys     1   (theme preference, assets/theme.js)
+     localStorage keys     0   (no preference is stored)
      form submissions      0   (no endpoint; prepared locally)
 
    If any of those stop being true, this page becomes false and
@@ -18,7 +18,7 @@
    would be worse than leaving it out.
    ============================================================ */
 
-const UPDATED = '26 September 2026';
+const UPDATED = '29 September 2026';
 
 const hero = (tag, title, body) =>
   `<header class="page-hero wrap"><p class="eyebrow">${tag}</p><h1>${title}</h1><p class="lede">${body}</p></header>`;
@@ -30,11 +30,11 @@ export function privacy() {
   return `${hero(
     'Privacy',
     'We collect less than you expect.',
-    'This site has no analytics, no advertising, no tracking pixels and no cookies. That is not a policy position we aspire to; it is what the code currently does, and it is checked on every build.'
+    'This site has no analytics, no advertising, no tracking pixels and no cookies. The page loads its fonts, images, and videos from the same site.'
   )}
 
 ${block('What this site stores on your device', `
-<p>One thing: your light or dark theme preference, kept in your browser's local storage so the page does not flash the wrong theme when you return. It never leaves your device and is never sent to us. Clearing your browser data removes it.</p>
+<p>This version does not save theme preferences or other site settings in your browser’s local storage. Form details stay in the page while you prepare an inquiry and are not submitted automatically.</p>
 <p>No cookies are set by this site.</p>`)}
 
 ${block('What happens when you use the contact form', `
@@ -42,7 +42,7 @@ ${block('What happens when you use the contact form', `
 <p>That means if you fill the form in and close the tab, we never see it, and we have no record that you were here. When you do send, your message arrives in an ordinary mailbox and is kept for as long as it takes to answer you and to keep a record of the conversation.</p>`)}
 
 ${block('What our host records', `
-<p>The site is served by Vercel, which keeps standard server logs for security and reliability. Those logs typically include your IP address, the page requested, the time, and your browser's user-agent string. We do not combine those logs with anything else, and we do not use them to build a profile of you.</p>
+<p>The deployment is configured for Vercel. Hosting providers may keep standard server logs for security and reliability. Those logs typically include your IP address, the page requested, the time, and your browser's user-agent string. We do not combine those logs with anything else, and we do not use them to build a profile of you.</p>
 <p>Video and fonts are served from this same domain. There are no third-party embeds, so no other company receives a request when you load a page here.</p>`)}
 
 ${block('Demonstration data', `
@@ -69,7 +69,7 @@ ${block('Demonstrations and examples', `
 <p>The reconciliation demonstration and any figures beside it use synthetic data. Example engagements are labelled as examples. Neither is a representation of results achieved for a client, and neither should be relied on as a forecast of what your own numbers would do.</p>`)}
 
 ${block('Using this site', `
-<p>You are welcome to read, quote and link to this site. The text, code, diagrams and interface illustrations are our work and remain ours. Background footage is licensed stock, credited in the footer, and is not ours to sublicense.</p>
+<p>You are welcome to read, quote and link to this site. The text, code, diagrams and interface illustrations are our work and remain ours. Background footage includes licensed stock and is not ours to sublicense. Generated campaign images and authored workflow films are illustrative, not client or employee photography.</p>
 <p>Please do not attempt to disrupt the site, probe it for vulnerabilities without asking first, or use it to send anything unlawful. If you think you have found a security problem, tell us through the contact page and we will be glad to hear it.</p>`)}
 
 ${block('No warranty', `
