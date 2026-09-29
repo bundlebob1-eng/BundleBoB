@@ -197,3 +197,90 @@
    rather than centre itself against the whole block. */
 .ref-eyebrow{align-items:flex-start}
 .ref-eyebrow::before{margin-top:.42em}
+
+/* ============================================================
+   HEADER — the O.C. Tanner treatment.
+
+   Theirs is a solid black bar, heavily rounded, inset from the
+   page, with white type, each dropdown chevron in its own small
+   rounded square, a bordered control on the right, and a white
+   pill call to action. Ours was a translucent blurred bar that
+   dissolved into the film on the homepage.
+
+   Eight competing .nav-wrap rules have accumulated across the
+   inherited stylesheets, including one that deliberately made
+   the homepage header glassy. This is concatenated last and
+   settles all of them, so the bar is identical on every page and
+   on either ground -- black on a light page is exactly what
+   O.C. Tanner does.
+   ============================================================ */
+
+.site-header{top:16px}
+.site-header .nav-wrap,
+.is-home .site-header .nav-wrap,
+.is-home .site-header:not(.ex-header-scrolled) .nav-wrap{
+  background:#0A0B0D;
+  backdrop-filter:none;
+  border:0;
+  border-radius:46px;
+  height:88px;
+  padding:0 14px 0 34px;
+  color:#FFFFFF;
+  box-shadow:0 10px 38px rgba(0,0,0,.26);
+}
+
+/* white type throughout the bar */
+.site-header .brand,
+.site-header .brand span,
+.site-header .desktop-nav a,
+.site-header .desktop-nav summary,
+.site-header .nav-direct{color:#FFFFFF}
+.site-header .desktop-nav summary,
+.site-header .nav-direct{font-weight:500;letter-spacing:-.01em}
+.site-header .desktop-nav a:hover,
+.site-header .desktop-nav summary:hover{color:rgba(255,255,255,.72)}
+
+/* each dropdown chevron sits in its own rounded square */
+.site-header .nav-item > summary{display:inline-flex;align-items:center;gap:11px}
+.site-header .nav-item > summary svg{
+  width:24px;height:24px;padding:6px;box-sizing:border-box;
+  border-radius:8px;background:rgba(255,255,255,.16);
+  transition:background .18s;
+}
+.site-header .nav-item > summary:hover svg{background:rgba(255,255,255,.28)}
+.site-header .nav-item[open] > summary svg{background:rgba(255,255,255,.34)}
+
+/* the right-hand control: a bordered rounded rect, as their EN selector */
+.site-header .theme-toggle{
+  width:auto;min-width:60px;height:50px;padding:0 15px;
+  border-radius:13px;border:1px solid rgba(255,255,255,.3);
+  background:transparent;color:#FFFFFF;
+}
+.site-header .theme-toggle:hover{border-color:rgba(255,255,255,.6)}
+.site-header .menu-toggle{
+  border-radius:13px;border:1px solid rgba(255,255,255,.3);
+  background:transparent;color:#FFFFFF;width:50px;height:50px;
+}
+
+/* white pill call to action */
+.site-header .nav-cta{
+  background:#FFFFFF;color:#0A0B0D;border:0;
+  min-height:52px;padding:0 24px;border-radius:999px;
+  font-weight:600;letter-spacing:-.01em;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.site-header .nav-cta:hover{background:rgba(255,255,255,.88);color:#0A0B0D}
+
+@media(max-width:760px){
+  .site-header .nav-wrap,
+  .is-home .site-header .nav-wrap,
+  .is-home .site-header:not(.ex-header-scrolled) .nav-wrap{
+    height:68px;border-radius:34px;padding:0 10px 0 20px;
+  }
+  .site-header .theme-toggle,.site-header .menu-toggle{height:44px;min-width:44px;width:44px;padding:0;border-radius:12px}
+}
+
+/* O.C. Tanner centres its nav between the mark and the right-hand
+   controls; ours was pushed right by margin-left:auto, leaving a
+   dead gap after the logo. */
+.site-header .desktop-nav{margin-left:auto;margin-right:auto}

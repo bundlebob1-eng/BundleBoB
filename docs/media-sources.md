@@ -30,3 +30,7 @@ Reproduction on macOS: download the three new originals to `/private/tmp/bundleb
 - Racks: `https://videos.pexels.com/video-files/7140928/7140928-hd_1920_1080_24fps.mp4`
 
 Videos are loaded only when visible on desktop. Mobile and reduced-motion/data-saving visitors receive real-frame WebP posters; explicit play remains available. The below-fold montage is not downloaded with the initial hero.
+
+## Attribution
+
+Pexels does not require attribution, so the footer credit line was removed on request. Creator credits remain in the table above, which is the record of what was licensed and from whom. The people in this footage are stock performers and are not BundleBoB staff, clients or customers; no page presents them as such.
