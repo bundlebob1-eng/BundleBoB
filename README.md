@@ -1,8 +1,10 @@
 # BundleBoB
 
+Current client story and launch review: [Hours from the field](docs/client-story-launch-review.md).
+
 Current design: [September 29 site-wide refinement](docs/site-polish-review.md), continuing the [O.C. Tanner UI / Avathon business context](docs/primary-reference-direction.md). One charcoal/ivory/sage appearance, generated photographic backgrounds, interactive services, and native scrolling. No 3D or night-mode control.
 
-A service-led marketing site for custom software, practical AI, and systems integration. Construction technology is a featured specialty. The reconciliation demonstration uses synthetic data; client case studies await verified project details.
+A service-led marketing site for custom software, practical AI, and systems integration. Construction technology is a featured specialty. The reconciliation demonstration uses synthetic data; the client story at `/client-story` describes the owner-confirmed mechanical/HVAC platform engagement.
 
 ## Run
 
