@@ -46,7 +46,7 @@ export async function build(){
   const themed=enforceTypeFloor(enforcePalette(rawStyles,t).css).css+tokenBlock(t);
   await fs.writeFile(path.join(output,'assets',`theme-${t.id}.css`),themed);
  }
- await fs.writeFile(path.join(output,'theme-lab.html'),themeLab(THEMES,home(),config));
+ await fs.writeFile(path.join(output,'theme-lab.html'),themeLab(THEMES,referenceHome(),config));
  console.log(`Themes:  ${THEMES.length} candidate palettes emitted -> /theme-lab`);
  }
  await fs.writeFile(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://bundlebob.com/sitemap.xml\n');

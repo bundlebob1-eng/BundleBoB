@@ -40,6 +40,32 @@ function hslToHex(h,s,l){
 }
 const hsl = hex => rgbToHsl(...hexToRgb(hex));
 
+/* WCAG relative luminance, to decide which ground a palette can use. */
+function lumHex(hex){
+  const v=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255)
+    .map(c=>c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4));
+  return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2];
+}
+const ratio=(a,b)=>{const[x,y]=[lumHex(a),lumHex(b)].sort((p,q)=>q-p);return (x+0.05)/(y+0.05);};
+
+/* The hero and the second film always sit on a dark scrim, whatever
+   ground the palette uses. A light-ground accent like Signal Blue is
+   only 2.74:1 there, so it gets lifted -- same hue, raised lightness
+   -- until it clears 4.5:1 on the scrim. Dark-ground accents already
+   pass and come back unchanged. */
+const SCRIM='#1A1D24';
+function onScrim(hex){
+  if(ratio(hex,SCRIM)>=4.5) return hex;
+  const [h,sat]=hsl(hex);
+  for(let l=0.5;l<=0.92;l+=0.02){
+    const c=hslToHex(h,Math.max(sat*0.92,0.55),l);
+    if(ratio(c,SCRIM)>=4.5) return c;
+  }
+  return '#F4F5F2';
+}
+
+
+
 /* Build a palette from the supplied pair.
      brand  the saturated colour from the card
      ground the other colour from the card
@@ -71,8 +97,13 @@ function palette({id, name, brand, ground, accent}){
   const [ph, ps] = hsl(paper);
   const [ah, as] = hsl(acc);
 
+  /* An accent is only usable as text on the ground it clears 4.5:1
+     against. That decides whether the palette is a dark-ground
+     scheme (Avathon) or a light-ground one (O.C. Tanner). */
+  const mode = ratio(acc, ink) >= 4.5 ? 'dark' : 'light';
+
   return {
-    id, name, ink, paper, accent: acc,
+    id, name, ink, paper, accent: acc, mode,
     source: { brand, ground },
     families: {
       ink:    { h: ih, s: Math.min(is, 0.45) },
@@ -97,8 +128,26 @@ export const THEMES = [
    the components read from. Values are literal, and each is in
    the palette's `keep` list, so the remap leaves them alone. */
 export function tokenBlock(t){
+  const dark = t.mode === 'dark';
+  const ground   = dark ? t.ink   : t.paper;
+  const onGround = dark ? t.paper : t.ink;
+  const alpha = (a) => dark
+    ? `rgba(244,245,242,${a})`
+    : `rgba(20,22,26,${a})`;
+
+  /* a four-stop ramp in the accent's own hue, dark end to full accent */
+  const [ah, as] = hsl(t.accent);
+  const gradA = hslToHex(ah, Math.min(as, 0.95), 0.10);
+  const gradB = hslToHex(ah, Math.min(as, 0.95), 0.26);
+  const gradC = hslToHex(ah, Math.min(as, 0.98), 0.46);
+  /* the heading sits against roughly the middle of that ramp */
+  const gradMid = gradC;
+  const gradText = ratio('#101408', gradMid) >= ratio('#F4F5F2', gradMid) ? '#101408' : '#F4F5F2';
+  const gradTextSoft = gradText === '#101408' ? 'rgba(16,20,8,.72)' : 'rgba(244,245,242,.78)';
+  const cardBg = dark ? 'rgba(18,20,26,.88)' : 'rgba(18,20,26,.9)';
+
   return `
-/* ${t.name} */
+/* ${t.name} — ${t.mode}-ground */
 :root{
   --ink:${t.ink};--ink-2:${t.ink};--ink-3:${t.ink};
   --paper:${t.paper};
@@ -107,12 +156,50 @@ export function tokenBlock(t){
   --surface:${t.paper};
   --ex-paper:${t.paper};
 }
-:root[data-theme="dark"]{--paper:${t.paper};--accent:${t.accent}}
-body{background:${t.paper}}
-.en-closing{
-  background:radial-gradient(118% 120% at 86% 10%,${t.accent}2b,transparent 62%),
-             linear-gradient(158deg,${t.ink} 0%,${t.ink} 68%)!important;
+body{background:${ground}}
+
+/* the rebuilt homepage, on whichever ground this palette supports */
+.ref{
+  --g:${ground};
+  --g-deep:${dark ? t.ink : '#ECEDE9'};
+  --g-lift:${dark ? '#2C3039' : '#FFFFFF'};
+  --lime:${t.accent};
+  --lime-deep:${t.accent};
+  --on-dark:${onGround};
+  --on-dark-2:${alpha('.74')};
+  --on-dark-3:${alpha(dark ? '.58' : '.62')};
+  --line:${alpha('.14')};
+  background:${ground};
+  color:${onGround};
 }
-.sg-field,.ex-hero,.en-hero{--ink-fieldbg:${t.ink}}
+/* Films keep their own dark scrim on either ground, which is exactly
+   what O.C. Tanner does on a light page. */
+.ref-hero,.ref-film{color:#F4F5F2}
+.ref-hero em,.ref-film em{color:${onScrim(t.accent)}}
+.ref-hero .ref-eyebrow::before,.ref-film .ref-eyebrow::before{background:${onScrim(t.accent)}}
+.ref-hero .ref-ghost,.ref-film .ref-ghost{color:#F4F5F2;border-color:rgba(244,245,242,.3)}
+.ref-hero .ref-ghost:hover,.ref-film .ref-ghost:hover{border-color:#F4F5F2}
+.ref-hero .ref-lede,.ref-film .ref-lede,
+.ref-hero p,.ref-film p{color:rgba(244,245,242,.74)}
+.ref-hero .ref-eyebrow,.ref-film .ref-eyebrow,
+.ref-hero-foot{color:rgba(244,245,242,.62)}
+.ref-hero-foot a{color:rgba(244,245,242,.62)}
+.ref-cta{background:${t.accent};color:${ratio(t.accent,'#14161A')>=4.5?'#14161A':'#F4F5F2'}}
+.ref-demo{background:${dark ? '#1A1D24' : '#ECEDE9'}}
+.ref-demo-panel{background:${dark ? '#2C3039' : '#FFFFFF'}}
+
+/* The gradient section runs from a deep shade of the accent to the
+   accent itself, so it stays a single-hue statement rather than a
+   wash. Its heading takes whichever of ink or paper is legible
+   against the middle of that ramp, and the cards sit on the
+   palette's own dark rather than a fixed olive-black. */
+.ref-gradient{background:linear-gradient(108deg,${gradA} 0%,${gradB} 38%,${gradC} 72%,${t.accent} 100%)}
+.ref-gradient h2,.ref-gradient .ref-eyebrow{color:${gradText}}
+.ref-gradient .ref-eyebrow{color:${gradTextSoft}}
+.ref-gradient .ref-eyebrow::before{background:${gradText}}
+.ref-card{background:${cardBg};border-color:rgba(244,245,242,.12)}
+.ref-card h3{color:#F4F5F2}
+.ref-card p{color:rgba(244,245,242,.74)}
+.ref-card span{color:${onScrim(t.accent)}}
 `;
 }
