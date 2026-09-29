@@ -1,0 +1,29 @@
+/* RETIRED — the WebGL globe.
+   Styles for the hero globe, its orbit labels and its static SVG
+   fallback. Removed from the opening on request; kept here, out of
+   the concatenated build, alongside experience-globe.js.bak. */
+
+.ex-globe{position:absolute;z-index:-1;pointer-events:none;width:min(77vw,1120px);aspect-ratio:1;left:43%;top:45%;transform:translateY(-50%)}
+.ex-globe canvas,.ex-globe-fallback{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+.ex-globe canvas{opacity:0}
+.ex-globe[data-ready] canvas{opacity:1}
+.ex-globe[data-ready] .ex-globe-fallback{visibility:hidden}
+.ex-orbit-label{position:absolute;background:rgba(14,24,32,.8);border:1px solid rgba(244,241,234,.23);padding:6px 10px;border-radius:3px;display:flex;align-items:center;gap:8px;font:400 10px/1.4 var(--sg-mono);letter-spacing:.06em;color:var(--ex-paper);box-shadow:0 3px 30px #0003}
+.ex-orbit-label i{width:4px;height:4px;background:var(--ex-yellow);border-radius:50%}
+.ex-orbit-label-a{left:23%;top:28%}
+.ex-orbit-label-b{left:60%;top:44%}
+.ex-orbit-label-c{left:16%;top:52%}
+.ex-globe{left:40%;width:83vw}
+.ex-globe{left:37%;width:95vw;top:40%}
+.ex-globe{width:690px;left:calc(50% - 225px);top:595px;transform:translateY(-50%);opacity:.77}
+.ex-orbit-label{font-size:9px}
+.ex-orbit-label-a{left:25%;top:30%}
+.ex-orbit-label-b{display:none}
+.ex-orbit-label-c{left:47%;top:69%}
+.ex-globe{top:635px}
+.ex-globe{width:min(77vw,1000px)}
+.ex-globe{order:2;position:relative;z-index:0;align-self:center;left:auto;top:auto;width:560px;height:560px;flex-shrink:0;transform:none;opacity:1;margin-top:-40px;margin-bottom:-115px}
+.ex-orbit-label{display:none}
+.ex-globe{margin-top:-28px;width:500px;height:500px;margin-bottom:-90px}
+.ex-orbit-label-b{display:none}
+.ex-orbit-label-c{left:40%;top:30%}

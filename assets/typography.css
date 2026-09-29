@@ -1,0 +1,127 @@
+/* ============================================================
+   TYPOGRAPHY — the reference type system, measured.
+
+   Both reference sites were loaded in a browser and their
+   computed styles read, rather than eyeballed from a screenshot:
+
+                 O.C. Tanner (primary/UI)   Avathon (context)
+     family      Gotham SSm, one family     Outfit, one family
+     base        16px                       17px
+     H1          84px  lh 1.10  w500        78px  lh 1.02  w250
+     H2          56px  lh 1.10  w500        82/40 lh 1.03  w250-300
+     H3          48/32/24/20/18px  w500     16px  w600
+     body        21/16/14/12px lh 1.4-1.5   21/15/14px lh 1.4-1.75
+     tracking    -3.6px on H1 (-0.043em)    -1.18px on H1
+
+   Two things carry across both, and they drove this file.
+
+   ONE FAMILY. Neither site mixes a display face with a separate
+   body face; both set everything in a single geometric sans. So
+   Outfit does both jobs here and Figtree and Inter are retired,
+   which also drops 67KB of font payload.
+
+   LIGHT DISPLAY WEIGHTS. Both references set large type at
+   250-500. This site was at 800 -- heavier than either, and the
+   main reason it read as a product page rather than a considered
+   brand site. The ladder below is 500 throughout, with tracking
+   tightened to the measured values.
+
+   Gotham SSm is commercial (Hoefler&Co) and cannot be licensed
+   here. Outfit is what Avathon actually serves, is SIL OFL, and
+   is the closest licensable relative of Gotham. Self-hosted, as
+   CSP font-src 'self' requires.
+   ============================================================ */
+
+@font-face{
+  font-family:Outfit;
+  src:url(/assets/fonts/outfit-latin.woff2) format('woff2');
+  font-weight:100 900;
+  font-display:swap;
+}
+
+:root{
+  --ref-sans:Outfit,"Helvetica Neue",Arial,sans-serif;
+  --sg-display:var(--ref-sans);
+  --sg-body:var(--ref-sans);
+  --sans:var(--ref-sans);
+  --font-display:var(--ref-sans);
+
+  /* the measured scale, fluid between mobile and reference desktop */
+  --t-h1:clamp(42px,5.85vw,84px);
+  --t-h2:clamp(32px,3.9vw,56px);
+  --t-h3:clamp(23px,2.25vw,32px);
+  --t-h4:clamp(18px,1.4vw,20px);
+  --t-lede:clamp(18px,1.5vw,21px);
+  --t-body:16px;
+  --t-small:14px;
+  --t-label:12px;
+}
+
+body,button,input,select,textarea{font-family:var(--ref-sans)}
+
+/* ── the ladder ────────────────────────────────────────────────
+   Specificity (0,0,1): later than the base rule in enterprise.css
+   so it wins there, weaker than any component rule so tuned
+   exceptions survive. Weight 500 is the reference's own choice. */
+h1{font-family:var(--ref-sans);font-size:var(--t-h1);line-height:1.06;font-weight:500;letter-spacing:-.043em}
+h2{font-family:var(--ref-sans);font-size:var(--t-h2);line-height:1.10;font-weight:500;letter-spacing:-.05em}
+h3{font-family:var(--ref-sans);font-size:var(--t-h3);line-height:1.20;font-weight:500;letter-spacing:-.025em}
+h4{font-family:var(--ref-sans);font-size:var(--t-h4);line-height:1.30;font-weight:500;letter-spacing:-.015em}
+
+p{font-size:var(--t-body);line-height:1.5;font-weight:400}
+.lede,.en-large-copy,.ex-hero-lede{font-size:var(--t-lede);line-height:1.45;font-weight:400}
+
+/* Labels: the references set these small and in caps, and this is
+   the one place tracking opens up rather than tightening. */
+.eyebrow,.en-kicker,.ex-eyebrow{
+  font-size:var(--t-label);line-height:1.5;font-weight:500;
+  letter-spacing:.09em;text-transform:uppercase;
+}
+
+/* ── rhythm ────────────────────────────────────────────────────
+   :where() carries zero specificity, so these are floors that any
+   existing rule overrides. In em, so an 84px hero and a 23px card
+   heading each get proportional air. */
+:where(h1){margin-block:0 .42em}
+:where(h2){margin-block:0 .48em}
+:where(h3){margin-block:0 .55em}
+:where(h4){margin-block:0 .6em}
+:where(h1,h2,h3,h4)+p,:where(h1,h2,h3,h4)+ul,:where(h1,h2,h3,h4)+ol{margin-top:0}
+:where(p,ul,ol,figure,table)+:where(h2){margin-top:1.1em}
+:where(p,ul,ol,figure,table)+:where(h3){margin-top:1.35em}
+
+/* ── AAA text colour ───────────────────────────────────────────
+   Retained from the contrast pass: 85.5% -> 99.8% AAA. Each value
+   is the lightest at its own hue that clears 7.0:1 on every
+   background the site puts text on. No theme selector, so this is
+   the LIGHT default only; the dark themes declare the same tokens
+   at higher specificity and keep their light-on-dark values. */
+:root{--muted:#475056;--accent-ink:#5c4f07}
+:root[data-theme="light"]{--muted:#475056;--accent-ink:#5c4f07}
+.en-service-copy .en-kicker{--accent-ink:#5c4f07}
+.preview-foot{color:#42515b}
+.service-preview .preview-foot{color:#3c4a52}
+.en-depth-layer.en-depth-software span{color:#0E1820}
+
+/* ── the hero, brought to the reference ────────────────────────
+   The opening H1 was clamp(70px,7.5vw,120px) at weight 800, in
+   caps. Measured against the references that is wrong on three
+   counts: O.C. Tanner sets its H1 at 84px / lh 1.1 / weight 500
+   and Avathon at 78px / lh 1.02 / weight 250, and neither uses
+   uppercase for display copy. Caps at 120px is what made the
+   page shout rather than speak.
+
+   typography.css is concatenated after experience.css, so these
+   match its specificity and win on order. The clamp keeps the
+   responsive behaviour that the media-query rules provided. */
+.ex-hero h1,
+.en-hero h1,
+.en-construction-hero h1{
+  font-size:clamp(42px,5.85vw,84px);
+  line-height:1.06;
+  font-weight:500;
+  letter-spacing:-.043em;
+  text-transform:none;
+}
+.ex-hero h1 em,.ex-hero h1 span{font-weight:500}
+.ex-hero-lede{font-size:var(--t-lede);line-height:1.45;font-weight:400}

@@ -1,0 +1,27 @@
+{
+  "name": "bundlebob-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/build.mjs && node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "video": "node scripts/render-video.mjs",
+    "verify": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/verify.mjs",
+    "check:a11y": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/accessibility.mjs",
+    "check:enterprise": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/enterprise-check.mjs",
+    "check:fde": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/fde-check.mjs",
+    "check": "npm run verify && npm run check:a11y && npm run check:home && npm run check:enterprise && npm run check:fde",
+    "build:lab": "DESIGN_LAB=1 node scripts/build.mjs",
+    "check:film": "node scripts/film-check.mjs",
+    "check:home": "CHROME_CHANNEL=${CHROME_CHANNEL:-chrome} node scripts/home-check.mjs",
+    "check:polish": "node scripts/polish-check.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "lighthouse": "12.6.1",
+    "playwright": "1.58.2"
+  }
+}

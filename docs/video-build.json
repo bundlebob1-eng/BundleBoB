@@ -1,0 +1,14 @@
+{
+  "durationSeconds": 8,
+  "fps": 24,
+  "width": 960,
+  "height": 540,
+  "frames": 192,
+  "sizes": {
+    "reconciliation.mp4": 92393,
+    "reconciliation.webm": 113145,
+    "reconciliation-poster.png": 53192
+  },
+  "technique": "Authored Canvas frames encoded with ffmpeg",
+  "reproduce": "npm run video (Playwright and ffmpeg installed)"
+}

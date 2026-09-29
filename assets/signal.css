@@ -1,0 +1,131 @@
+/* ============================================================
+   SIGNAL — three colours, no more.
+
+   60  --ink     the ground
+   30  --paper   surfaces and type
+   10  --hivis   the accent, and the ONLY saturated colour anywhere
+
+   Hi-vis is this audience's own colour: it is what they already
+   wear and already mean by "look here". Because nothing else on
+   the page is saturated, the disagreement between two systems is
+   the single loudest thing on screen. That is the whole product.
+   ============================================================ */
+
+@font-face{font-family:Figtree;src:url(/assets/fonts/figtree-latin.woff2) format('woff2');font-weight:400 800;font-display:swap}
+@font-face{font-family:InterVF;src:url(/assets/fonts/inter-latin.woff2) format('woff2');font-weight:400 600;font-display:swap}
+@font-face{font-family:PlexMono;src:url(/assets/fonts/plexmono-latin.woff2) format('woff2');font-weight:400 500;font-display:swap}
+
+:root{
+  /* 60 — ground */
+  --ink:#23262F;
+  --ink-2:#2C3039;
+  --ink-3:#343947;
+
+  /* 30 — paper */
+  --paper:#F4F5F2;
+  --paper-2:rgba(244,241,234,.66);
+  --paper-3:rgba(244,241,234,.38);
+  --paper-line:rgba(244,241,234,.14);
+
+  /* 10 — hi-vis, the only saturated colour on the site */
+  --hivis:#B6FF2E;
+  --hivis-deep:#93D419;
+
+  --sg-display:Figtree,"Helvetica Neue",Arial,sans-serif;
+  --sg-body:InterVF,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --sg-mono:PlexMono,ui-monospace,SFMono-Regular,monospace;
+}
+
+/* ── hero ─────────────────────────────────────────────────── */
+
+/* live readout — proves the thing is actually running */
+
+            /* operations — bright paper */
+          /* accounting — dim paper   */
+            /* the difference — hi-vis  */
+
+@media(max-width:900px){
+  
+  
+}
+
+@media (prefers-reduced-motion:reduce){  }
+
+/* ── scroll reveal — the behaviour from the live site ──────── */
+.rv{opacity:0;transform:translateY(22px);
+  transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} }
+
+/* ── enforce the three colours + the display face over enterprise.css ──
+   signal.css is concatenated last, so these win. The enterprise sheet
+   is a light ground with an orange accent and its own display face;
+   all three are replaced here. */
+
+h1,h2,h3,h4,.en-section h2{font-family:var(--sg-display)!important;letter-spacing:-.035em}
+
+:root{
+  --accent:#FFD400;          /* hi-vis fills */
+  --accent-ink:#7A5E00;      /* accent text on paper */
+  --positive:#20201f;        /* three colours means no fourth hue */
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){ --accent-ink:#FFD400 }
+}
+:root[data-theme="dark"]{ --accent:#FFD400; --accent-ink:#FFD400; --positive:#f8f6f1 }
+:root[data-theme="light"]{ --accent-ink:#7A5E00 }
+
+/* hi-vis reads as a safety fill with ink on top, never as text on paper */
+.en-button-primary{background:var(--accent)!important;color:#20201f!important}
+.en-button-primary:hover{background:#20201f!important;color:#faf9f6!important}
+
+/* ── the interactive field, now its own section (video owns the hero) ── */
+
+@media(max-width:900px){
+  
+  
+}
+
+/* ── tap targets ───────────────────────────────────────────────
+   Measured at 390px: 25 controls came in under 44px, the smallest
+   25px tall. Applied only to coarse pointers, so the desktop
+   layout keeps its tighter rhythm. */
+@media (max-width:760px),(pointer:coarse){
+  .site-footer a,
+  .en-hero .wrap > a,
+  a.brand{
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+  /* matches the specificity of the existing 34px floor, and follows it */
+  .footer-grid>div>a:not(.brand){
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+  .site-footer a[aria-label],
+  .site-footer a>svg{min-width:44px}
+  .site-header .icon-button{min-width:44px;min-height:44px}
+}
+
+/* footer legal line */
+.footer-legal{display:flex;gap:18px;margin-top:10px}
+.footer-legal a{font-size:12px;opacity:.7}
+.footer-legal a:hover{opacity:1}
+
+/* ── closing panel ─────────────────────────────────────────────
+   Five vivid stops mapped onto one hue leave only a lightness
+   wash, which reads muddy. Ink ground with a single hi-vis glow
+   is both on-rule and the more expensive-looking of the two. */
+.en-closing{
+  background:
+    radial-gradient(118% 120% at 86% 10%,rgba(255,212,0,.17),transparent 62%),
+    linear-gradient(158deg,#1E313E 0%,#0E1820 68%)!important;
+  color:var(--paper)!important;
+}
+.en-closing .en-button-white{background:var(--hivis)!important;color:#0E1820!important}
+.en-closing .en-button-white:hover{background:var(--paper)!important;color:#0E1820!important}
+
+/* the 12px rule under the hero: a hi-vis edge, not a rainbow */
+.en-color-line{background:linear-gradient(90deg,var(--hivis),var(--hivis-deep) 55%,#6b5a00)!important}
