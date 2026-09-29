@@ -6,7 +6,7 @@ The approved homepage structure remains. The hero MP4 is unchanged. Three new ge
 
 - One art-directed appearance: charcoal, warm ivory, muted sage. No night-mode button or stored theme preference.
 - Navigation hides during page scrolling and returns after 240ms without scrolling. Keyboard focus and an open menu keep it available. Reduced motion removes its transition.
-- No floating “Pause film” control. Decorative videos loop continuously while visible and resume after returning onscreen. Mobile, reduced-motion, and data-saving visits keep the poster. The underlying hero edit remains unchanged.
+- No floating “Pause film” control. Decorative videos loop continuously while visible and resume after returning onscreen. Reduced-motion and data-saving visits keep the poster. The underlying hero edit remains unchanged.
 - Workflow films autoplay silently and loop while visible, without watch buttons or imagery captions. They pause when offscreen or the tab is hidden, with the same poster fallback preferences as the hero.
 - Service selectors, keyboard navigation, native horizontal scrolling, and expandable workflow examples add useful interaction. The scrollbar is hidden visually; buttons and keyboard access remain.
 - Closing sections use large photographic backgrounds with readable overlays. Decorative layered logo artwork and neon gradients are retired from the visible design.

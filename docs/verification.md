@@ -5,7 +5,7 @@ Current direction: [site-polish-review.md](site-polish-review.md). Earlier recor
 - All 20 routes passed desktop/mobile layout, link, form, and browser checks (80 combinations; 96 local links; no errors). Both system-color preferences now receive the same art-directed appearance.
 - New interaction checks: navigation hide/return and menu persistence; service selection and workflow disclosure; eleven viewport widths; no removed film/theme controls.
 - Both new films: 1920×1080, 12 seconds, explicit play, deferred download, offscreen pause. The generated source images are 1672×941.
-- Hero playback advances beyond five seconds, loops at the end, and resumes after returning onscreen; mobile and reduced motion keep the poster.
+- Hero playback advances beyond five seconds, loops at the end, and resumes after returning onscreen; reduced motion keeps the poster; mobile supports inline autoplay.
 - Accessibility: all 48 route/preference checks clear after rechecking the two corrected video-button labels.
 - Construction tour, keyboard navigation, FAQ, no-script fallback, and reduced-motion loading checks passed. Both workflow films decode distinct animated frames and pause offscreen.
 - Screenshots and review boards: audit/polish/.
