@@ -1,20 +1,19 @@
 // Decorative background motion loops while visible.
-// No floating film controls. Reduced motion, narrow screens, and Save-Data use the poster.
+// No floating film controls. Reduced motion and Save-Data use the poster.
 (() => {
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
- const compact=matchMedia('(max-width:760px)');
  const connection=navigator.connection;
  const limited=connection?.saveData||/(^|-)(2g|3g)$/.test(connection?.effectiveType||'');
  document.querySelectorAll('[data-background-video]').forEach(video=>{
   let visible=false;
-  video.loop=true;video.muted=true;
+  video.loop=true;video.muted=true;video.defaultMuted=true;video.playsInline=true;
   function sync(){
-   if(!visible||document.hidden||reduced.matches||compact.matches||limited){video.pause();return}
+   if(!visible||document.hidden||reduced.matches||limited){video.pause();return}
    if(!video.getAttribute('src')){video.src=video.dataset.src;video.load()}
    video.play().catch(()=>{});
   }
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()},{threshold:.05}).observe(video);
-  document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);compact.addEventListener('change',sync);
+  document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);
  });
 
 })();

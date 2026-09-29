@@ -24,7 +24,7 @@ try{const p=await b.newPage({viewport:{width:1440,height:1000}});p.on('pageerror
  await p.emulateMedia({reducedMotion:'reduce'});results.widths=[];
  for(const width of [320,390,600,760,761,900,1024,1100,1280,1440,1920]){await p.setViewportSize({width,height:900});await p.goto(base);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Overflow '+width);results.widths.push(width)}
  await p.setViewportSize({width:390,height:844});await p.goto(base);await p.screenshot({path:'audit/polish/home-mobile.png'});await p.locator('#services').scrollIntoViewIfNeeded();await p.locator('[data-service-index="0"]').click();await p.locator('.ref-card').first().locator('summary').click();await p.screenshot({path:'audit/polish/services-mobile.png'});
- assert.equal(await p.locator('.ref-hero video').getAttribute('src'),null);assert.equal(await p.locator('[data-story-video][src]').count(),0);results.reducedAndMobileDeferVideos=true;
+ assert.equal(await p.locator('.ref-hero video').getAttribute('src'),null);assert.equal(await p.locator('[data-story-video][src]').count(),0);results.reducedMotionDefersVideos=true;
  await p.evaluate(()=>document.activeElement.blur());await p.evaluate(()=>scrollTo({top:0,behavior:'instant'}));await p.waitForTimeout(350);await p.locator('.menu-toggle').click();await p.evaluate(()=>scrollBy({top:100,behavior:'instant'}));await p.waitForTimeout(60);assert.equal(await p.locator('.site-header').evaluate(e=>e.classList.contains('is-scrolling')),false);results.openMenuRemainsAvailable=true;
  assert.deepEqual(errors,[]);results.errors=errors;console.log(JSON.stringify(results,null,2));await fs.writeFile('audit/polish/results.json',JSON.stringify(results,null,2));
 }finally{await b.close()}
