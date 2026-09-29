@@ -1,3 +1,13 @@
+# September 29 — real client story and launch polish
+
+- Production build: 21 pages, five redirects; client story is indexable and included in the sitemap.
+- Browser acceptance: 84 route/viewport/preference combinations, 100 local links, zero browser or layout errors, zero external runtime requests.
+- Accessibility review covered 50 route/preference combinations. The sole finding was a dark-section paragraph on the new story; corrected to ivory and rechecked with the complete story at five widths (320–1440px), with no violations.
+- Story-specific checks: real route (no About redirect), keyboard disclosures, five role steps, incoming links, no pre-pilot/fictional/AI-generated framing, exact bright accent, design lab excluded.
+- Story screenshots: `audit/launch/`. Source mapping and remaining contact destination dependency: [client-story-launch-review.md](client-story-launch-review.md).
+
+---
+
 # September 29 — brand, media, and all-page refinement
 
 Current direction: [site-polish-review.md](site-polish-review.md). Earlier records below describe superseded media controls and palettes.

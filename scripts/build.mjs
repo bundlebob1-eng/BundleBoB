@@ -1,3 +1,4 @@
+import {clientStory} from '../site/client-story.mjs';
 import {industriesPage,fdePage} from '../site/partnership.mjs';
 import {servicesOverview,serviceDetail,constructionPage,enterpriseApproach,enterpriseClosing} from '../site/enterprise.mjs';
 import fs from 'node:fs/promises';
@@ -12,7 +13,7 @@ import {privacy,terms} from '../site/legal.mjs';
 import {referenceHome} from '../site/reference-home.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const output=path.join(root,'dist');
-export const aliases={'/platform':'/how-it-works','/integrations':'/how-it-works#integrations','/compare':'/why-bundlebob','/demo':'/contact','/article':'/resources/when-systems-disagree','/client-story':'/about'};
+export const aliases={'/platform':'/how-it-works','/integrations':'/how-it-works#integrations','/compare':'/why-bundlebob','/demo':'/contact','/article':'/resources/when-systems-disagree'};
 export async function build(){
  const email=process.env.CONTACT_EMAIL||'';const booking=process.env.BOOKING_URL||'';
  if(email&&!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))throw new Error('CONTACT_EMAIL must be a valid business email address');
@@ -24,10 +25,10 @@ export async function build(){
  const styles=type.css;
  console.log(`Palette: normalised ${palette.remapped.size} off-palette colours onto ink/paper/hi-vis.`);
  console.log(`Type:    raised ${type.raised} declarations to a ${12}px floor (smallest was ${type.smallest}px).`);
- const routes=[['/','Software for the work that runs your business',referenceHome()],['/services','Technology services',servicesOverview()],['/approach','Our approach',enterpriseApproach()],['/services/ai-solutions','Applied AI services',serviceDetail('ai')],['/services/custom-software','Custom software development',serviceDetail('software')],['/services/integrations','Systems integration services',serviceDetail('systems')],['/construction','Construction technology',constructionPage()],['/how-it-works','How it works',how()],['/solutions','Technology solutions across industries',industriesPage()+enterpriseClosing()],['/forward-deployed-engineering','An FDE working directly with your team',fdePage()+enterpriseClosing()],['/why-bundlebob','Why BundleBoB',why()],['/resources','Practical guides to clearer job reporting',resources()],...content.resources.map(r=>['/resources/'+r.id,r.title,article(r.id)]),['/about','About BundleBoB',about()],['/contact','Start a conversation',contact(config)],['/privacy','Privacy',privacy()],['/terms','Terms',terms()],['/system','Design system',system()]];
+ const routes=[['/client-story','Hours from the field: a mechanical contractor client story',clientStory()],['/','Software for the work that runs your business',referenceHome()],['/services','Technology services',servicesOverview()],['/approach','Our approach',enterpriseApproach()],['/services/ai-solutions','Applied AI services',serviceDetail('ai')],['/services/custom-software','Custom software development',serviceDetail('software')],['/services/integrations','Systems integration services',serviceDetail('systems')],['/construction','Construction technology',constructionPage()],['/how-it-works','How it works',how()],['/solutions','Technology solutions across industries',industriesPage()+enterpriseClosing()],['/forward-deployed-engineering','An FDE working directly with your team',fdePage()+enterpriseClosing()],['/why-bundlebob','Why BundleBoB',why()],['/resources','Practical guides to clearer job reporting',resources()],...content.resources.map(r=>['/resources/'+r.id,r.title,article(r.id)]),['/about','About BundleBoB',about()],['/contact','Start a conversation',contact(config)],['/privacy','Privacy',privacy()],['/terms','Terms',terms()],['/system','Design system',system()]];
  await fs.rm(output,{recursive:true,force:true});
  await fs.mkdir(output,{recursive:true});
- for(const [url,title,body] of routes){const destination=path.join(output,url==='/'?'index.html':url.slice(1)+'.html');await fs.mkdir(path.dirname(destination),{recursive:true});await fs.writeFile(destination,layout({title,path:url,body,config,styles,noindex:url==='/system'}));}
+ for(const [url,title,body] of routes){const destination=path.join(output,url==='/'?'index.html':url.slice(1)+'.html');await fs.mkdir(path.dirname(destination),{recursive:true});await fs.writeFile(destination,layout({title,description:url==='/client-story'?'How BundleBoB built a field-operations platform for a mechanical contractor: mobile labour capture, enforced approvals, leadership reporting, and locally hosted AI.':undefined,path:url,body,config,styles,noindex:url==='/system'}));}
  for(const [from,to] of Object.entries(aliases)){await fs.writeFile(path.join(output,from.slice(1)+'.html'),`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="https://bundlebob.com${to.split('#')[0]}"><title>Page moved | BundleBoB</title><body><p>This page has moved. <a href="${to}">Continue to BundleBoB</a>.</p></body></html>`)}
  await fs.mkdir(path.join(output,'assets'),{recursive:true});
  const assets=['site.js','enterprise.js','experience.js','theme.js','favicon.svg','logo.svg','og-image.png'];

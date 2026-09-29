@@ -69,7 +69,7 @@ ${block('Demonstrations and examples', `
 <p>The reconciliation demonstration and any figures beside it use synthetic data. Example engagements are labelled as examples. Neither is a representation of results achieved for a client, and neither should be relied on as a forecast of what your own numbers would do.</p>`)}
 
 ${block('Using this site', `
-<p>You are welcome to read, quote and link to this site. The text, code, diagrams and interface illustrations are our work and remain ours. Background footage includes licensed stock and is not ours to sublicense. Generated campaign images and authored workflow films are illustrative, not client or employee photography.</p>
+<p>You are welcome to read, quote and link to this site. The text, code, diagrams and interface illustrations are our work and remain ours. Background footage includes licensed stock and is not ours to sublicense. </p>
 <p>Please do not attempt to disrupt the site, probe it for vulnerabilities without asking first, or use it to send anything unlawful. If you think you have found a security problem, tell us through the contact page and we will be glad to hear it.</p>`)}
 
 ${block('No warranty', `
