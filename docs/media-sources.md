@@ -1,3 +1,9 @@
+## Marketing refinement — September 30 review
+
+The two workflow films have been re-exported as photographic loops without any burned-in words or graphical text cards. Their authored motion uses the existing generated campaign photos; it is not footage of the client’s staff. Supporting explanation remains accessible HTML on the page.
+
+Mobile H.264 exports at 1280×720 are selected before loading on viewports at or below 760px. The desktop hero edit is unchanged. Reduced motion and Save-Data still defer all background footage.
+
 # Current media update — September 29
 
 Three generated HD background images and two authored motion illustrations are documented in [generated-campaign-assets.md](generated-campaign-assets.md). The original hero and construction footage retain the licenses below. Retired films remain archived in source; the production build uses an explicit video allowlist.

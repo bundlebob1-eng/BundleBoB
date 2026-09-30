@@ -4,7 +4,7 @@ import {createRequire} from 'node:module';
 const require = createRequire(import.meta.url);
 const axe = await fs.readFile(require.resolve('axe-core/axe.min.js'), 'utf8');
 const base = process.env.TEST_URL || 'http://127.0.0.1:8080';
-const routes = ['/client-story','/forward-deployed-engineering', '/services/ai-solutions', '/services/custom-software', '/services/integrations', '/construction', '/services', '/approach', '/', '/how-it-works', '/solutions', '/why-bundlebob', '/resources', '/resources/when-systems-disagree', '/resources/wip-review', '/resources/mapping-first', '/about', '/contact', '/privacy', '/terms', '/system'];
+const routes = ['/client-story','/forward-deployed-engineering', '/services/ai-solutions', '/services/custom-software', '/services/integrations', '/construction', '/services', '/approach', '/', '/how-it-works', '/solutions', '/why-bundlebob', '/resources', '/resources/when-systems-disagree', '/resources/wip-review', '/resources/mapping-first', '/about', '/contact', '/privacy', '/terms'];
 const browser = await chromium.launch({channel: process.env.CHROME_CHANNEL || 'chrome'});
 const results = [];
 try {

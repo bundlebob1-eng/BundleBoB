@@ -9,7 +9,7 @@
   video.loop=true;video.muted=true;video.defaultMuted=true;video.playsInline=true;
   function sync(){
    if(!visible||document.hidden||reduced.matches||limited){video.pause();return}
-   if(!video.getAttribute('src')){video.src=video.dataset.src;video.load()}
+   if(!video.getAttribute('src')){video.src=matchMedia('(max-width:760px)').matches&&video.dataset.mobileSrc?video.dataset.mobileSrc:video.dataset.src;video.load()}
    video.play().catch(()=>{});
   }
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()},{threshold:.05}).observe(video);

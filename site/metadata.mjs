@@ -1,0 +1,23 @@
+export const descriptions={
+ '/':'Custom software, practical AI, and connected systems. Work directly with a BundleBoB engineer to solve the operational problems slowing your team down.',
+ '/services':'Explore practical AI, custom software, and systems integration services, designed and built around your business by an engineer working with your team.',
+ '/services/ai-solutions':'Turn documents, knowledge, and repetitive tasks into useful AI workflows. BundleBoB builds practical solutions with human review and clear boundaries.',
+ '/services/custom-software':'Applications, portals, and internal tools built around your workflow. BundleBoB works with your team from prototype through rollout and handover.',
+ '/services/integrations':'Connect existing systems, map the meaning behind your records, and make exceptions reviewable. Build maintainable integrations with BundleBoB.',
+ '/solutions':'Explore how BundleBoB approaches operational software across industries, from construction and manufacturing to logistics and professional services.',
+ '/construction':'Connect field workflows, project information, and financial reporting. Explore BundleBoB’s construction expertise and mechanical contractor client story.',
+ '/client-story':'How BundleBoB built a mechanical contractor’s field platform: mobile hours, enforced approvals, leadership reporting, and locally hosted AI.',
+ '/forward-deployed-engineering':'Work directly with a forward-deployed engineer who understands your business, designs the solution, and stays involved through build and adoption.',
+ '/approach':'Discover, design, build, and evolve. See how BundleBoB works with your people to turn a real operational problem into useful, maintainable software.',
+ '/how-it-works':'Walk through a construction reconciliation example. See how source records, timing differences, and human review produce a clear next step.',
+ '/why-bundlebob':'Understand BundleBoB’s delivery model, software ownership, and approach to data handling. A direct working relationship with clear responsibilities.',
+ '/resources':'Practical guides to connected records, work-in-progress reviews, and system mapping, alongside BundleBoB’s real field-operations client story.',
+ '/resources/when-systems-disagree':'Learn how to distinguish timing differences from data errors, preserve source values, and assign a next step when accounting and operations disagree.',
+ '/resources/wip-review':'Five questions for a clearer work-in-progress review: completed work, billing gaps, arriving costs, comparable periods, and changes since last review.',
+ '/resources/mapping-first':'Agree what a job means before connecting systems. A practical guide to shared identifiers, cost rules, exceptions, and maintaining field mappings.',
+ '/about':'BundleBoB brings custom software, practical AI, and connected systems together around real business problems, with an engineer working directly with you.',
+ '/contact':'Tell BundleBoB about the workflow you want to improve. Prepare your business context and discuss a useful first step for software, AI, or integration.',
+ '/privacy':'Read how BundleBoB’s website handles enquiry details, local media, hosting logs, and privacy requests. Clear information about what the site collects.',
+ '/terms':'Read the terms for using the BundleBoB website, including informational content, method examples, media rights, and links to external websites.',
+ '/system':'BundleBoB’s internal design reference for typography, color, spacing, and interaction patterns. Available only in an explicit design-lab build.'
+};

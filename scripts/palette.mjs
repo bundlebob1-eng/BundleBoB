@@ -39,17 +39,10 @@
    each family is normalised onto; `keep` is the set of exact
    values that pass through untouched. */
 export const DEFAULT_PALETTE = {
-  id: 'sage-charcoal',
-  name: 'Sage / Charcoal',
-  ink:    '#202722',   /* Graphite   — the ground, as supplied */
-  paper:  '#F7F6F2',   /* light surface for interior pages     */
-  accent: '#B6C9A8',   /* Lime Spark — the only saturated hue  */
-  families: {
-    ink:    { h: 137, s: 0.10 },
-    paper:  { h: 48, s: 0.12 },
-    accent: { h: 95, s: 0.24 }
-  },
-  keep: ['#c7ed8a', '#e5eedc', '#202722', '#f7f6f2', '#b6c9a8', '#171d19', '#ffffff', '#141414', '#000000']
+  id: 'oct-editorial', name: 'Black / Ivory / Orange',
+  ink: '#1B1C1E', paper: '#F7F7F3', accent: '#FF5A00',
+  families: {ink:{h:220,s:0.05},paper:{h:60,s:0.07},accent:{h:21,s:0.9}},
+  keep: ['#1b1c1e','#f7f7f3','#ff5a00','#8d53a8','#f5a413','#f0f0ea','#e5e5dd','#d0d2d3','#a12e24','#ffffff','#141414','#000000','#fff0e5','#f2eaf6','#5b326b']
 };
 
 /* Below this saturation a colour is a neutral: it carries no hue

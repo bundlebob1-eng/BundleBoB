@@ -22,8 +22,8 @@ try {
   await p.goto(base+route);assert.ok(await p.locator('main a[href="/client-story"]').count()>0);
   assert.doesNotMatch(await p.locator('body').innerText(),/pre-pilot|AI.generated|fictional|not a completed customer/i);
  }
- await p.goto(base);assert.equal(await p.locator('.nav-cta').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(199, 237, 138)');
+ await p.goto(base);assert.equal(await p.locator('.nav-cta').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 255, 254)');
  await p.screenshot({path:'audit/launch/home-1440.png',fullPage:true});
  assert.equal((await p.request.get(base+'/theme-lab')).status(),404);
- console.log('Client story: five widths, keyboard disclosures, accessibility, launch copy, bright accent, links and production exclusions passed.');
+ console.log('Client story: five widths, keyboard disclosures, accessibility, launch copy, reference palette, links and production exclusions passed.');
 }finally{await browser.close()}
