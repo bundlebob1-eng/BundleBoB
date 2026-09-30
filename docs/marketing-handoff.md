@@ -17,7 +17,7 @@ White buttons on dark photography keep primary actions clear. Natural greens in 
 ## Visible changes
 
 - **Logo:** replaced the block B with an original SVG mark of three bundled work cards. Lowercase `bundlebob` wordmark, matching favicon, footer and social share image.
-- **Navigation:** centered desktop bar capped at 1,180px, 76px high, with tighter spacing. Mobile navigation begins at 1,100px to avoid squeezing the links. Mobile bar is 64px high.
+- **Navigation:** restored the wider desktop bar, capped at 1,440px and 88px high, with 17px navigation text and roomier padding. Mobile navigation begins at 1,100px to avoid squeezing the links. Mobile bar is 64px high.
 - **Scrolling:** the whole page follows the document. The pinned workflow, scroll-selected steps and rotating paper surfaces are removed. One compact supplier-invoice sequence reads left to right on desktop and top to bottom on phones. It works without JavaScript.
 - **Services:** three full-width photographic features follow one another vertically. Desktop alternates photography and solid text panels; tablet and phone put the image above the copy. Every service has a direct link and a short application example. There are no sideways tracks, selectors, hidden services or expandable rows.
 - **Reading order:** hero → services → genuine client story → compact workflow → embedded engineer → everyday work → industries → contact. Repeated process copy is removed.

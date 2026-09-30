@@ -1,6 +1,6 @@
 # BundleBoB
 
-Latest: [Marketing design handoff](docs/marketing-handoff.md) — ink/ivory/orange palette, new bundled-work logo, compact navigation, natural page flow, responsive high-resolution films and a working public email destination.
+Latest: [Marketing design handoff](docs/marketing-handoff.md) — ink/ivory/orange palette, new bundled-work logo, roomier navigation, natural page flow, responsive high-resolution films and a working public email destination.
 
 Current client story and launch review: [Hours from the field](docs/client-story-launch-review.md).
 
