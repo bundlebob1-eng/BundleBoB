@@ -1,10 +1,10 @@
 # BundleBoB
 
-Latest: [Marketing design handoff](docs/marketing-handoff.md) — ink/ivory/orange palette, new bundled-work logo, compact navigation, sharp scroll narrative, responsive high-resolution films and a working public email destination.
+Latest: [Marketing design handoff](docs/marketing-handoff.md) — ink/ivory/orange palette, new bundled-work logo, compact navigation, natural page flow, responsive high-resolution films and a working public email destination.
 
 Current client story and launch review: [Hours from the field](docs/client-story-launch-review.md).
 
-The current direction uses O.C. Tanner as the UI reference and Avathon for business context. Locally hosted Outfit, photographic backgrounds, native scrolling, a desktop 3D card sequence with a static reduced-motion fallback, and no night-mode control. See `assets/oct-direction.css` and `site/work-story.mjs` for the latest visual layer.
+The current direction uses O.C. Tanner as the UI reference and Avathon for business context. Locally hosted Outfit, photographic backgrounds, native vertical scrolling, full-width service features, a compact workflow and no night-mode control. The pinned 3D scene and service carousel have been removed. See `assets/home-flow.css`, `site/reference-home.mjs` and `site/work-story.mjs` for the current layout.
 
 A service-led marketing site for custom software, practical AI, and systems integration. Construction technology is a featured specialty. The reconciliation demonstration uses synthetic data; the client story at `/client-story` describes the owner-confirmed mechanical/HVAC platform engagement.
 
@@ -31,9 +31,10 @@ Produces `dist/`, the only deployment directory. Vercel uses this command and di
 - `site/editorial.mjs` — shared navigation and footer.
 - `assets/editorial.css` — shared navigation and footer presentation, photographic sections, gradients, and responsive layout.
 - `assets/signal.css` — active palette and self-hosted font tokens. Its old particle renderer in `signal.js` is retired and excluded from output.
-- `site/experience.mjs` / `assets/experience.css` / `assets/experience.js` — capability selector, cinematic opening and FDE film.
+- `site/reference-home.mjs` / `assets/home-flow.css` — current homepage and its vertical service features.
+- `site/work-story.mjs` — compact workflow example in normal document flow.
 - `assets/typography.css` / `assets/motion.css` — heading hierarchy, contrast refinements, and native scroll animation.
-- `scripts/experience-check.mjs` — controls, motion, fallback, and responsive acceptance checks.
+- `scripts/scrolling-check.mjs` — Chrome/WebKit document flow, service links, motion preferences and responsive checks.
 - `site/content.mjs` — business copy, industry examples, ownership and compliance status, resource metadata.
 - `site/pages.mjs` — page composition, operational guides, and shared layout.
 - `site/art.mjs` — authored SVG icons, reconciliation sequence, and report/diagram markup.
@@ -42,7 +43,7 @@ Produces `dist/`, the only deployment directory. Vercel uses this command and di
 - `assets/theme.js` — stored theme preference applied before rendering.
 - `/system` — rendered design documentation, component states, calculated contrast, and patterns.
 
-The production build emits 20 public pages and five legacy redirects. The sitemap covers the public pages, including the real client story. `/system` and `/theme-lab` are excluded unless an explicit design-lab build is requested. `scroll3d/` is a retired experiment and is excluded from deployment; the current homepage scroll scene is implemented in `site/work-story.mjs` and `assets/finish.js`.
+The production build emits 20 public pages and five legacy redirects. The sitemap covers the public pages, including the real client story. `/system` and `/theme-lab` are excluded unless an explicit design-lab build is requested. `scroll3d/` is a retired experiment and is excluded from deployment; the homepage uses ordinary document flow, implemented in `site/work-story.mjs` and `assets/home-flow.css`.
 
 Typography uses locally hosted Outfit. Font licenses are included in `assets/fonts/`. The current palette is defined in `scripts/palette.mjs`, with the final presentation layer in `assets/oct-direction.css`. The homepage retains its video hero and photographic campaign assets. There are no analytics scripts or runtime packages. Service illustrations explain capabilities; they are not representations of the client’s delivered platform.
 

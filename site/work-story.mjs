@@ -1,7 +1,14 @@
 import {icon} from './art.mjs';
+
 const stages=[
- {label:'The request',title:'Capture it once.',copy:'The invoice and its details arrive together.',icon:'document',meta:'One source',detail:'Document + reference'},
- {label:'The review',title:'Keep a person in control.',copy:'A named reviewer checks what needs attention.',icon:'check',meta:'Clear ownership',detail:'Review before approval'},
- {label:'The handoff',title:'Move the work forward.',copy:'The approved record reaches the next system.',icon:'arrow',meta:'Connected systems',detail:'Status everyone can see'}
+ {label:'Capture',title:'Enter the details once.',copy:'The invoice and its details arrive together, with the original document attached.',icon:'document'},
+ {label:'Review',title:'Keep a person in control.',copy:'A named reviewer checks the details and resolves anything that needs attention.',icon:'check'},
+ {label:'Connect',title:'Give the next person a clear start.',copy:'The approved record moves to the next system, with a status your team can see.',icon:'arrow'}
 ];
-export function workStory(){return `<section class="work-story" id="work-in-motion" aria-labelledby="work-story-title"><div class="work-story-pin"><div class="wrap work-story-layout"><div class="work-story-copy"><p class="ref-eyebrow">A better working day</p><h2 id="work-story-title">Less chasing.<br> More getting<br> things done.</h2><p>When requests, approvals, and updates live in different places, your people fill the gaps. We bring the process together.</p><ol class="work-story-steps">${[['Understand the real work.','We sit with your team and follow the process.'],['Build around your people.','Clear ownership. The right review steps.'],['Make the improvement last.','Test together, support the rollout, keep improving.']].map(([title,copy],i)=>`<li data-work-step="${i}"><span>0${i+1}</span><div><b>${title}</b><small>${copy}</small></div></li>`).join('')}</ol><a class="work-story-link" href="/approach">How we work with you ${icon('arrow',22)}</a></div><div class="work-stage"><div class="work-stage-orbit" aria-hidden="true"></div><div class="work-stage-label"><span>One example: a supplier invoice</span><span class="work-stage-tag">Connected workflow</span></div><div class="work-cards">${stages.map((s,i)=>`<article class="work-card work-card-${['request','approval','update'][i]}"><div class="work-card-surface" aria-hidden="true"></div><div class="work-card-content"><div class="work-card-top"><span class="work-card-kicker">0${i+1} / ${s.label}</span>${icon(s.icon,22)}</div><h3>${s.title}</h3><p>${s.copy}</p><div class="work-card-meta"><span>${s.meta}</span><span>${s.detail}</span></div></div></article>`).join('')}</div><div class="work-stage-foot"><span>Less re-entry. A clear next step.</span><span class="work-scroll-cue" aria-hidden="true">Follow the flow ↓</span></div></div></div></div></section>`;}
+
+export function workStory(){return `<section class="workflow-overview" id="work-in-motion" aria-labelledby="workflow-title"><div class="wrap" id="problem">
+ <div class="workflow-heading"><div><p class="ref-eyebrow">A better working day</p><h2 id="workflow-title">Less chasing.<br>More getting things done.</h2></div><p>We work alongside your people to understand the process, then build the tools that make each handoff easier.</p></div>
+ <p class="workflow-example">One example: a supplier invoice</p>
+ <ol class="workflow-sequence">${stages.map((s,i)=>`<li class="workflow-step"><div class="workflow-step-label"><span>0${i+1} / ${s.label}</span>${icon(s.icon,24)}</div><h3>${s.title}</h3><p>${s.copy}</p></li>`).join('')}</ol>
+ <a class="workflow-link" href="/approach">How we work with you ${icon('arrow',20)}</a>
+ </div></section>`;}

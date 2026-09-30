@@ -1,4 +1,4 @@
-// Native scrolling, a reading indicator, and depth on decorative layers only.
+// Native page scrolling, a reading indicator, and subtle once-only entrances.
 (() => {
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const progress=document.createElement('div');progress.className='reading-progress';progress.setAttribute('aria-hidden','true');document.body.append(progress);
@@ -7,24 +7,7 @@
  addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update)}},{passive:true});addEventListener('resize',update);update();
  const animations=new Set();
  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;observer.unobserve(entry.target);if(reduced.matches)return;const animation=entry.target.animate([{transform:'translateY(16px)'},{transform:'none'}],{duration:520,easing:'cubic-bezier(.2,.7,.3,1)'});animations.add(animation);animation.finished.then(()=>animations.delete(animation)).catch(()=>{});}),{threshold:.12});
- document.querySelectorAll('.ref-statement-grid article,.en-feature-grid article,.case-workflow li,.story-proof').forEach(e=>observer.observe(e));
+ document.querySelectorAll('.en-feature-grid article,.case-workflow li,.story-proof').forEach(e=>observer.observe(e));
 
  reduced.addEventListener('change',()=>{if(reduced.matches)for(const animation of animations)animation.cancel()});
-})();
-
-// Depth belongs to the paper surfaces; foreground text stays on the pixel grid.
-(() => {
- const section=document.querySelector('.work-story');if(!section)return;
- const reduced=matchMedia('(prefers-reduced-motion: reduce)');
- const cards=[...section.querySelectorAll('.work-card')],surfaces=[...section.querySelectorAll('.work-card-surface')],steps=[...section.querySelectorAll('[data-work-step]')];
- const offsets=[[-14,-3,-8,-2],[12,0,7,2],[-10,3,-5,-1]];
- let visible=false,queued=false;
- function render(){queued=false;const r=section.getBoundingClientRect();const desktop=innerWidth>1100&&innerHeight>=820;const raw=desktop?-r.top/Math.max(1,r.height-innerHeight):(innerHeight-r.top)/(innerHeight+r.height*.55);const progress=reduced.matches?1:Math.max(0,Math.min(1,raw));const rest=1-progress*progress*(3-2*progress);const current=Math.min(2,Math.floor(progress*3));
-  surfaces.forEach((surface,i)=>{const [x,y,ry,rz]=offsets[i];surface.style.transform=reduced.matches?'none':`perspective(1200px) translate(${Math.round(x*rest)}px,${Math.round(y*rest)}px) rotateY(${ry*rest}deg) rotateZ(${rz*rest}deg)`});
-  cards.forEach((card,i)=>card.classList.toggle('is-current',i===current));steps.forEach((step,i)=>step.classList.toggle('is-current',i===current));section.dataset.progress=progress.toFixed(3);
- }
- function schedule(){if(!visible||queued)return;queued=true;requestAnimationFrame(render)}
- function preference(){section.classList.toggle('is-animated',!reduced.matches);render()}
- new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)render()},{rootMargin:'100px'}).observe(section);
- addEventListener('scroll',schedule,{passive:true});addEventListener('resize',preference);reduced.addEventListener('change',preference);preference();
 })();

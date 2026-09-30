@@ -20,7 +20,7 @@ export async function build(){
  if(email&&!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))throw new Error('CONTACT_EMAIL must be a valid business email address');
  if(booking&&new URL(booking).protocol!=='https:')throw new Error('BOOKING_URL must use HTTPS');
  const config={email,booking};
- const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css','typography.css','motion.css','reference.css','polish.css','finish.css','oct-direction.css','media-motion.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
+ const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css','typography.css','motion.css','reference.css','polish.css','finish.css','oct-direction.css','media-motion.css','home-flow.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
  const palette=enforcePalette(rawStyles);
  const type=enforceTypeFloor(palette.css);
  const styles=type.css;
@@ -33,7 +33,7 @@ export async function build(){
  for(const [url,title,body] of routes){const destination=path.join(output,url==='/'?'index.html':url.slice(1)+'.html');await fs.mkdir(path.dirname(destination),{recursive:true});await fs.writeFile(destination,layout({title,description:descriptions[url],path:url,body,config,styles,noindex:url==='/system'}));}
  for(const [from,to] of Object.entries(aliases)){await fs.writeFile(path.join(output,from.slice(1)+'.html'),`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="https://bundlebob.com${to.split('#')[0]}"><title>Page moved | BundleBoB</title><body><p>This page has moved. <a href="${to}">Continue to BundleBoB</a>.</p></body></html>`)}
  await fs.mkdir(path.join(output,'assets'),{recursive:true});
- const assets=['site.js','enterprise.js','finish.js','experience.js','theme.js','favicon.svg','logo.svg','og-image.png'];
+ const assets=['site.js','enterprise.js','finish.js','theme.js','favicon.svg','logo.svg','og-image.png'];
  for(const asset of assets)await fs.copyFile(path.join(root,'assets',asset),path.join(output,'assets',asset));
  for(const folder of ['fonts'])await fs.cp(path.join(root,'assets',folder),path.join(output,'assets',folder),{recursive:true});
  await fs.mkdir(path.join(output,'assets/video'),{recursive:true});
