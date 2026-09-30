@@ -9,7 +9,7 @@
  const max=()=>Math.max(0,track.scrollWidth-track.clientWidth);
  const position=i=>Math.min(max(),cards[i].offsetLeft-cards[0].offsetLeft);
  function paint(i){active=i;buttons.forEach((b,n)=>b.setAttribute('aria-pressed',String(n===i)));previous.disabled=i===0;next.disabled=i===cards.length-1;}
- function sync(){if(pending!==null)return;const left=track.scrollLeft;const index=left>=max()-3&&max()>0?cards.length-1:cards.reduce((best,_,i)=>Math.abs(position(i)-left)<Math.abs(position(best)-left)?i:best,0);paint(index);}
+ function sync(){if(pending!==null)return;const left=track.scrollLeft;if(Math.abs(position(active)-left)<3)return;const index=left>=max()-3&&max()>0?cards.length-1:cards.reduce((best,_,i)=>Math.abs(position(i)-left)<Math.abs(position(best)-left)?i:best,0);paint(index);}
  function select(i){pending=Math.max(0,Math.min(cards.length-1,i));paint(pending);track.scrollTo({left:position(pending),behavior:reduced.matches?'instant':'smooth'});clearTimeout(settle);settle=setTimeout(()=>{pending=null;sync()},600);}
  track.addEventListener('scroll',()=>{clearTimeout(settle);if(pending===null)sync();settle=setTimeout(()=>{pending=null;sync()},120)},{passive:true});
  for(const event of ['pointerdown','wheel'])track.addEventListener(event,()=>{pending=null},{passive:true});

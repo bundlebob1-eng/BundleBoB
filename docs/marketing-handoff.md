@@ -1,32 +1,36 @@
 # BundleBoB — marketing design handoff
 
-## Direction: charcoal, ivory, sage and bright green
+## Direction: black, ivory, orange and purple
 
-Keep the approved brand and sharpen its execution. The independent review included the live BundleBoB site, the supplied 37-page review, and fresh browser inspection of [O.C. Tanner](https://www.octanner.com/) and [Avathon](https://avathon.com/). The reference lesson is a clear visual hierarchy, human-scale photography and a limited accent palette; BundleBoB’s message remains a human-led service business across industries.
+The latest owner feedback supersedes the earlier green direction. The palette follows the current [O.C. Tanner](https://www.octanner.com/) reference, measured in its live styles. BundleBoB keeps its own human-led, cross-industry service positioning and real construction client story. Typography remains locally hosted Outfit.
 
 | Role | Color | Use |
 | --- | --- | --- |
-| Charcoal | `#202722` | Navigation, text, dark sections |
-| Warm ivory | `#F7F6F2` | Main page background |
-| Sage | `#B6C9A8` | Borders and supporting detail |
-| Pale sage | `#E5EEDC` | Service boards and proof surfaces |
-| Bright green | `#C7ED8A` | Primary actions and active selections |
-| Error | `#A12E24` | Invalid fields, with text and an icon |
+| Near black | `#1B1C1E` | Text and dark sections |
+| Black | `#000000` | Navigation and footer |
+| Off-white | `#F7F7F3` | Reading surfaces |
+| Orange | `#FF5A00` | Light-page actions and progress |
+| Purple | `#8D53A8` | Scroll scene and proof accents |
+| Light neutral | `#F0F0EA` | Supporting panels |
 
-Typography remains locally hosted Outfit. No new font or third-party runtime dependency was introduced.
+White buttons on dark photography keep primary actions clear. Natural greens in photographs remain; the interface no longer uses green as its brand accent.
 
-## Verified findings and changes
+## Visible changes
 
-- **Soft service cards:** the live service diagram had a `matrix3d` transform even with reduced motion enabled. Replaced rotated, miniature previews with flat HTML diagrams, larger labels, solid backgrounds and clean borders. Removed redundant diagrams from service overview photo cards. Removed blur from homepage workflow disclosures.
-- **Color drift:** legacy `!important` button rules overrode the approved bright green. Removed those rules and unified primary actions. Removed an old gradient override hiding the intended closing-section photography.
-- **Video captions:** the lower films contained captions in their actual frames. Re-rendered both without text or miniature UI graphics; the explanation stays in HTML. These remain photographic motion illustrations made from the existing campaign assets, not footage of client employees.
-- **Mobile video:** added four 720p mobile variants. The hero is about 1.6 MB; each lower film is about 1 MB. Mobile sources load instead of the desktop versions. Desktop hero edit is unchanged.
-- **Scrolling:** native scrolling remains. Navigation reveals immediately on upward movement and after downward movement settles. Added a thin reading-progress line and small, once-only section entrances. Mobile menus lock the page and restore its previous position.
-- **Depth:** the decorative outline behind the client-story summary responds subtly to a fine pointer. Foreground text is never tilted or transformed. Touch devices and reduced-motion visits get a static treatment. No WebGL, scroll capture, pinned scenes or continuous animation loop.
-- **Interaction:** corrected last-card selection in the services carousel; moved walkthrough controls above changing panels so they do not jump.
-- **Copy and proof:** retained the real client story; added contextual links from all four service pages; removed stale formation/in-preparation badges without inventing legal status. Added a short, specific hero subline. Corrected “applied AI”.
-- **Editorial quality:** added paragraph spacing, fixed the About page’s empty column, replaced the blank logo block with an intentional brand panel, reduced guide reading width, and made form errors visually distinct.
-- **Search and production:** unique descriptions across all 20 public pages; internal `/system` is emitted only for an explicit design-lab build. Production `/system` and `/theme-lab` return 404.
+- **Logo:** replaced the block B with an original SVG mark of three bundled work cards. Lowercase `bundlebob` wordmark, matching favicon, footer and social share image.
+- **Navigation:** centered desktop bar capped at 1,180px, 76px high, with tighter spacing. Mobile navigation begins at 1,100px to avoid squeezing the links. Mobile bar is 64px high.
+- **Scroll narrative:** requests, approvals and updates visibly rotate and settle into a shared flow below the hero. Desktop uses a sticky scene driven by native scrolling. Mobile has a normal-flow layout; reduced-motion visits get static cards. No WebGL or continuous rendering loop.
+- **Service cards:** clear photography above solid light panels, larger text and simple selectors: Cut paperwork, Build better tools, Connect your systems. All selectors work when multiple cards share the end of the scroll track.
+- **Plain language:** the homepage leads with reducing paperwork, connecting teams and improving everyday work. Technical service details remain available on their dedicated pages.
+- **Proof:** the genuine mechanical/HVAC client story remains intact and is linked from the service pages. Purple and ivory distinguish proof from the main service sections.
+
+## Retained finishing work
+
+- Sharp, flat HTML service diagrams; no blurred miniature text.
+- Mobile video variants, scroll-up navigation, mobile menu scroll lock/restore, stable walkthrough controls and unique descriptions for 20 pages.
+- Desktop hero edit preserved. Lower films contain no baked-in captions or tiny diagrams; these are photographic motion illustrations, not footage of client employees.
+- Clear paragraph spacing, repaired About layout and distinct form errors.
+- Internal design pages excluded from normal production builds.
 
 ## Report recommendations deliberately not followed
 
@@ -43,8 +47,10 @@ Legal name/location and privacy contact are owner inputs, not facts to fabricate
 
 ## Verification and limits
 
-Targeted browser checks cover 320, 390, 1024 and 1440px, every carousel selector, sharp service diagrams, consistent CTA color, stable tour controls, scroll-up navigation, mobile scroll lock/restore, reduced-motion depth fallback, unique descriptions, and mobile-only video requests. No browser errors.
+Targeted review covers ten widths from 320 to 1,920px, the 1,180px desktop menu, mobile menu and Escape behavior, all service selectors, changing 3D transforms and the static reduced-motion fallback. Browser evidence is in `audit/oct-direction/`. The complete route, link and accessibility results are recorded in `docs/verification.md`.
 
-Accessibility scan: 48 route/preference checks, no reported violations. The subsequent closing-photo correction is separately rechecked. Film decoding/playback tests and the complete site browser review are recorded in `docs/verification.md` and `audit/owner-review/`.
+Mobile checks use Chromium device emulation. Physical iPhone/Safari and Android testing remains a separate release check. Automated accessibility scans are not a full conformance assessment. No enquiries were transmitted.
 
-Mobile checks use Chromium device emulation. A physical iPhone/Safari or Android device was not available. No enquiries were transmitted. No customer data, source PDF editorial notes, or invented customer imagery is published.
+## Review and release status
+
+This design is on the `refinement/marketing-handoff` review branch in [PR #41](https://github.com/bundlebob1-eng/BundleBoB/pull/41). Review the [branch preview](https://bundle-bo-b-git-refinement-marketing-handoff-bundle-bo-b.vercel.app/); production remains unchanged until merge and deployment.

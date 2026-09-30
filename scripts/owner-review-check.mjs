@@ -11,7 +11,7 @@ try{
   for(const i of [0,1,2,0]){await p.locator(`[data-service-index="${i}"]`).click();await p.waitForTimeout(750);assert.equal(await p.locator(`[data-service-index="${i}"]`).getAttribute('aria-pressed'),'true',`Selector ${i} at ${width}`)}
   assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   if(width===390||width===1440)await p.screenshot({path:`audit/owner-review/services-${width}.png`});
-  await p.goto(base+'/services/ai-solutions');const board=p.locator('.service-board');assert.equal(await board.evaluate(e=>getComputedStyle(e).transform),'none');assert.equal(await p.locator('.en-button-primary').first().evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(199, 237, 138)');
+  await p.goto(base+'/services/ai-solutions');const board=p.locator('.service-board');assert.equal(await board.evaluate(e=>getComputedStyle(e).transform),'none');assert.equal(await p.locator('.en-button-primary').first().evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 90, 0)');
   assert.ok(await p.locator('main a[href="/client-story"]').count()>0);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   if(width===390||width===1440)await p.screenshot({path:`audit/owner-review/ai-${width}.png`,fullPage:width===390});
   await p.goto(base+'/construction');await p.locator('[data-tour]').scrollIntoViewIfNeeded();await p.waitForTimeout(600);
@@ -20,8 +20,8 @@ try{
  }
  results.carouselAndCrispCardsAndStableTour=true;
  await p.setViewportSize({width:1440,height:1000});await p.goto(base);await p.evaluate(()=>scrollTo({top:900,behavior:'instant'}));await p.waitForTimeout(400);await p.evaluate(()=>scrollBy({top:-100,behavior:'instant'}));await p.waitForTimeout(60);assert.equal(await p.locator('.site-header').evaluate(e=>e.classList.contains('is-scrolling')),false);results.scrollUpNavigation=true;
- await p.locator('.case-flow-preview').scrollIntoViewIfNeeded();const panel=p.locator('.case-flow-preview');await panel.hover({position:{x:25,y:25}});await p.waitForTimeout(250);assert.equal(await panel.evaluate(e=>getComputedStyle(e).transform),'none');assert.notEqual(await panel.evaluate(e=>getComputedStyle(e,'::after').transform),'none');
- await p.emulateMedia({reducedMotion:'reduce'});assert.equal(await panel.evaluate(e=>getComputedStyle(e,'::after').transform),'none');results.decorativeOnlyDepth=true;
+ await p.locator('.work-story').scrollIntoViewIfNeeded();const card=p.locator('.work-card').first();const firstTransform=await card.evaluate(e=>getComputedStyle(e).transform);await p.evaluate(()=>scrollBy({top:300,behavior:'instant'}));await p.waitForTimeout(100);assert.notEqual(await card.evaluate(e=>getComputedStyle(e).transform),firstTransform);
+ await p.emulateMedia({reducedMotion:'reduce'});assert.equal(await card.evaluate(e=>getComputedStyle(e).transform),'none');results.scrollNarrative=true;
  for(const route of ['/','/services','/about','/client-story']){await p.goto(base+route);await p.screenshot({path:`audit/owner-review/final-${route==='/'?'home':route.slice(1)}.png`,fullPage:true})}
  const sitemap=await (await p.request.get(base+'/sitemap.xml')).text(),routes=[...sitemap.matchAll(/<loc>https:\/\/bundlebob.com([^<]*)<\/loc>/g)].map(m=>m[1]);const descriptions=[];
  for(const route of routes){await p.goto(base+route);descriptions.push(await p.locator('meta[name=description]').getAttribute('content'));assert.equal(await p.locator('meta[property="og:description"]').getAttribute('content'),descriptions.at(-1))}

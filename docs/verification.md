@@ -1,3 +1,18 @@
+# September 29 — new identity, reference palette and visible scroll narrative
+
+- Production build: 20 public pages and five redirects.
+- Complete browser review: 80 route/viewport/preference combinations and 96 local links; no browser/layout errors or external runtime requests. Keyboard navigation, resource search, validation and inquiry download passed.
+- Responsive design review: ten widths from 320 to 1,920px; no horizontal overflow. Desktop header is 1,180px at a 1,440px viewport; mobile menu works through 1,100px. All service selectors remain correct, including wide screens where multiple cards share the last scroll position.
+- Scroll narrative: three distinct start/middle/end transforms, ending at identity. Reduced motion removes the transforms and sticky positioning; no running animations under that preference.
+- Accessibility: 48 route/preference scans, no automated violations. These do not establish full WCAG conformance.
+- Updated original SVG logo, favicon and social image. Marketing handoff regenerated as a three-page PDF and verified for page count/content.
+- Screenshots: `audit/oct-direction/`. Full browser data: `audit/browser-results.json`.
+- Review branch only: PR #41. Physical mobile testing and the public enquiry destination remain release dependencies; see [marketing-handoff.md](marketing-handoff.md).
+
+Earlier verification records below describe their respective iterations, including superseded colors and motion.
+
+---
+
 # Marketing handoff — independent review and finishing pass
 
 - Production: 20 public pages and five redirects; `/system` and `/theme-lab` excluded from normal builds.

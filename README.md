@@ -1,10 +1,10 @@
 # BundleBoB
 
-Latest: [Marketing design handoff](docs/marketing-handoff.md) — clearer service diagrams, unified bright actions, refined scrolling, mobile video variants, and production cleanup.
+Latest: [Marketing design handoff](docs/marketing-handoff.md) — black/ivory/orange/purple palette, new bundled-work logo, compact navigation, visible scroll narrative and clearer service cards.
 
 Current client story and launch review: [Hours from the field](docs/client-story-launch-review.md).
 
-Current design: [September 29 site-wide refinement](docs/site-polish-review.md), continuing the [O.C. Tanner UI / Avathon business context](docs/primary-reference-direction.md). One charcoal/ivory/sage appearance, generated photographic backgrounds, interactive services, and native scrolling. No 3D or night-mode control.
+The current direction uses O.C. Tanner as the UI reference and Avathon for business context. Locally hosted Outfit, photographic backgrounds, native scrolling, a desktop 3D card sequence with a static reduced-motion fallback, and no night-mode control. See `assets/oct-direction.css` and `site/work-story.mjs` for the latest visual layer.
 
 A service-led marketing site for custom software, practical AI, and systems integration. Construction technology is a featured specialty. The reconciliation demonstration uses synthetic data; the client story at `/client-story` describes the owner-confirmed mechanical/HVAC platform engagement.
 
@@ -42,9 +42,9 @@ Produces `dist/`, the only deployment directory. Vercel uses this command and di
 - `assets/theme.js` — stored theme preference applied before rendering.
 - `/system` — rendered design documentation, component states, calculated contrast, and patterns.
 
-The twenty routes include the homepage, services and three service details, construction, approach, how it works, industries, forward-deployed engineering, why BundleBoB, resources and three guides, about, contact, privacy, terms, and `/system`. Six previous marketing routes redirect to their equivalents. `/system` is noindex; the sitemap contains the other nineteen pages. Optional palette review is available with `DESIGN_LAB=1 npm run build`; a normal build excludes it. `scroll3d/` is a retired experiment and is excluded from deployment.
+The production build emits 20 public pages and five legacy redirects. The sitemap covers the public pages, including the real client story. `/system` and `/theme-lab` are excluded unless an explicit design-lab build is requested. `scroll3d/` is a retired experiment and is excluded from deployment; the current homepage scroll scene is implemented in `site/work-story.mjs` and `assets/finish.js`.
 
-Typography uses locally hosted Figtree for headlines and Inter for body and interface text, with IBM Plex Mono for record identifiers and figures — the same three faces the current production site serves. Colour is restricted to three values: ink, paper, and hi-vis yellow, the only saturated colour anywhere. Font licenses are included in `assets/fonts/`. The redesigned pages use licensed live-action stock footage and original interface demonstrations. Legacy generated images remain in source but are excluded from deployment. There are no analytics scripts or runtime packages. The original diagrams and reconciliation video remain authored code assets. See `docs/reference-experience.md` for the current reference mapping.
+Typography uses locally hosted Outfit. Font licenses are included in `assets/fonts/`. The current palette is defined in `scripts/palette.mjs`, with the final presentation layer in `assets/oct-direction.css`. The homepage retains its video hero and photographic campaign assets. There are no analytics scripts or runtime packages. Service illustrations explain capabilities; they are not representations of the client’s delivered platform.
 
 ## Contact destination
 
