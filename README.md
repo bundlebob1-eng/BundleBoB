@@ -1,5 +1,7 @@
 # BundleBoB
 
+Latest: [Marketing design handoff](docs/marketing-handoff.md) — clearer service diagrams, unified bright actions, refined scrolling, mobile video variants, and production cleanup.
+
 Current client story and launch review: [Hours from the field](docs/client-story-launch-review.md).
 
 Current design: [September 29 site-wide refinement](docs/site-polish-review.md), continuing the [O.C. Tanner UI / Avathon business context](docs/primary-reference-direction.md). One charcoal/ivory/sage appearance, generated photographic backgrounds, interactive services, and native scrolling. No 3D or night-mode control.

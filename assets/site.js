@@ -5,8 +5,10 @@ const root = document.documentElement;
 const $ = (s, scope = document) => scope.querySelector(s);
 const $$ = (s, scope = document) => [...scope.querySelectorAll(s)];
 const toggle = $('.menu-toggle'), menu = $('#mobile-menu');
-function closeMenu(focus=false){if(!menu||!toggle)return;menu.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');if(focus)toggle.focus();}
-toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');});
+let menuScroll=0;
+function unlockPage(){if(!root.classList.contains('menu-open'))return;root.classList.remove('menu-open');document.body.style.position='';document.body.style.top='';document.body.style.width='';window.scrollTo({top:menuScroll,behavior:'instant'});}
+function closeMenu(focus=false){unlockPage();if(!menu||!toggle)return;menu.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');if(focus)toggle.focus();}
+toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';if(open){menuScroll=scrollY;root.classList.add('menu-open');document.body.style.position='fixed';document.body.style.top=`-${menuScroll}px`;document.body.style.width='100%';}else unlockPage();menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu&&!menu.hidden)closeMenu(true)});
 document.addEventListener('click',e=>{if(menu&&!menu.hidden&&!e.target.closest('.site-header'))closeMenu()});
 menu?.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
@@ -101,17 +103,17 @@ $$('[data-demo]').forEach(b=>b.addEventListener('click',async()=>{const status=$
   }));
   function syncHash(){const i=panels.findIndex(panel=>'#'+panel.id===location.hash);if(i>=0)select(i)}
   document.querySelectorAll('a[href^="#tour-"]:not([data-tour-tab])').forEach(link=>link.addEventListener('click',()=>{const i=panels.findIndex(panel=>'#'+panel.id===link.getAttribute('href'));if(i>=0)select(i)}));
-  controls.hidden=false;select(0);syncHash();window.addEventListener('hashchange',syncHash);
+  tour.querySelector('.tour-panels').classList.add('is-enhanced');controls.hidden=false;select(0);syncHash();window.addEventListener('hashchange',syncHash);
  });
 })();
 
 // Navigation gives the page space during scrolling, then returns when movement stops.
 (() => {
  const header=document.querySelector('.site-header');if(!header)return;
- let timer;
+ let timer,lastY=scrollY;
  const show=()=>header.classList.remove('is-scrolling');
  const protectedState=()=>header.matches(':focus-within')||header.querySelector('.nav-item[open]')||header.querySelector('.menu-toggle[aria-expanded="true"]');
- addEventListener('scroll',()=>{clearTimeout(timer);if(scrollY>100&&!protectedState())header.classList.add('is-scrolling');else show();timer=setTimeout(show,240)},{passive:true});
+ addEventListener('scroll',()=>{clearTimeout(timer);const upwards=scrollY<lastY-2;if(scrollY>100&&!upwards&&!protectedState())header.classList.add('is-scrolling');else show();lastY=scrollY;timer=setTimeout(show,240)},{passive:true});
  header.addEventListener('focusin',show);header.addEventListener('pointerenter',show);
  document.addEventListener('keydown',e=>{if(e.key==='Tab'||e.key==='Escape')show()});
 })();

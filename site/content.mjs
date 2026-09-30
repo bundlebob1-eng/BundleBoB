@@ -61,8 +61,8 @@ export const content = {
     action: 'Flagged for a person. Nothing is written back without approval.',
   },
   compliance: {
-    intro:'Client work begins after entity formation and completion of the data-handling agreement and hosting documentation.',
-    items:[['Data processing agreement','In preparation','A standard agreement will define the processing purpose, responsibilities, subprocessors, and deletion requirements.'],['U.S. data residency','Documentation in progress','The hosting and data-flow documentation will identify where source records, reports, backups, and support data are processed.'],['Legal entity','Formation in progress','The contracting entity will be established before client work begins.']],
+    intro:'Data handling, hosting, and access are part of the engagement scope. Agree the requirements with your team before connecting business systems.',
+    items:[['Data handling','Agreed scope','Define the processing purpose, responsibilities, retention, and deletion requirements in the engagement agreement.'],['Hosting & residency','Your requirements','Document where records, reports, backups, and support data will be processed. Scope client-hosted options where needed.'],['Access & accountability','Named responsibilities','Agree permissions, approval steps, and support ownership. Give people access appropriate to their role.']],
   },
   resources: [
     {id:'when-systems-disagree',category:'Field guide',title:'When two systems tell two different stories.',description:'A practical way to distinguish a missing record, a timing difference, and a mapping problem.',time:'5 minute read'},

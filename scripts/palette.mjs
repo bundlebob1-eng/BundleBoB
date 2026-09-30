@@ -49,7 +49,7 @@ export const DEFAULT_PALETTE = {
     paper:  { h: 48, s: 0.12 },
     accent: { h: 95, s: 0.24 }
   },
-  keep: ['#c7ed8a', '#e5eedc', '#202722', '#f7f6f2', '#b6c9a8', '#171d19', '#ffffff', '#141414', '#000000']
+  keep: ['#a12e24', '#b6de77', '#c7ed8a', '#e5eedc', '#202722', '#f7f6f2', '#b6c9a8', '#171d19', '#ffffff', '#141414', '#000000']
 };
 
 /* Below this saturation a colour is a neutral: it carries no hue

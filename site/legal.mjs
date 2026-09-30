@@ -24,7 +24,7 @@ const hero = (tag, title, body) =>
   `<header class="page-hero wrap"><p class="eyebrow">${tag}</p><h1>${title}</h1><p class="lede">${body}</p></header>`;
 
 const block = (title, body) =>
-  `<section class="section wrap section-tight"><h2>${title}</h2>${body}</section>`;
+  `<section class="section wrap section-tight legal-prose"><h2>${title}</h2>${body}</section>`;
 
 export function privacy() {
   return `${hero(
