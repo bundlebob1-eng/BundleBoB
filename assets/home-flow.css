@@ -1,0 +1,65 @@
+/* Content follows the document. No pinning, sideways tracks or scroll-driven transforms. */
+.ref .service-overview{background:#f7f7f3}
+.service-heading,.workflow-heading{display:grid;grid-template-columns:1.2fr 1fr;gap:72px;align-items:end}
+.ref .service-heading>p,.ref .workflow-heading>p{font-size:20px;line-height:1.55;max-width:440px;padding-bottom:4px}
+.service-features{display:grid;gap:32px;margin-top:56px}
+.service-feature{display:grid;grid-template-columns:1fr 1fr;border:1px solid #1b1c1e26;border-radius:24px;overflow:hidden;background:#f7f7f3}
+.service-feature-media{min-width:0;position:relative;background:#1b1c1e}
+.service-feature-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center;display:block}
+.service-feature-copy{padding:48px;align-self:center;min-width:0}
+.ref .service-category{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:500;line-height:1.4;margin-bottom:28px}
+.service-category span{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#ff5a00;color:#1b1c1e;font-size:12px;flex-shrink:0}
+.ref .service-feature h3{font-size:clamp(32px,2.8vw,40px);line-height:1.12;max-width:440px;letter-spacing:-.04em}
+.ref .service-description{font-size:18px;line-height:1.6;margin-top:22px;max-width:470px}
+.ref .service-example{border-top:1px solid #1b1c1e33;padding-top:18px;margin-top:24px;font-size:16px;line-height:1.5;max-width:470px}
+.service-example b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-bottom:6px}
+.service-feature .ref-cta{margin-top:26px;background:#1b1c1e;color:#f7f7f3;min-height:50px}
+.service-feature .ref-cta:hover{background:#333437}
+.service-feature:nth-child(2){background:#1b1c1e;color:#f7f7f3}
+.service-feature:nth-child(2) .service-feature-media{order:2}
+.service-feature:nth-child(2) .service-example{border-color:#f7f7f34d}
+.service-feature:nth-child(2) .ref-cta{background:#f7f7f3;color:#1b1c1e}
+.service-feature:nth-child(2) .ref-cta:hover{background:#e5e5e1}
+.ref .workflow-overview{background:#f7f7f3}
+.ref .workflow-example{font-size:15px;font-weight:500;margin-top:52px;padding-bottom:18px;border-bottom:1px solid #1b1c1e33}
+.workflow-sequence{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;padding:0;margin:32px 0;list-style:none}
+.workflow-step{min-width:0}
+.workflow-step-label{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px;font-size:13px;font-weight:500}
+.workflow-step-label svg{color:#1b1c1e}
+.workflow-step-label span{border-left:3px solid #ff5a00;padding-left:10px}
+.ref .workflow-step h3{font-size:28px;line-height:1.18;letter-spacing:-.035em;max-width:320px}
+.ref .workflow-step p{font-size:17px;line-height:1.6;margin-top:16px;max-width:360px}
+.workflow-link{display:inline-flex;align-items:center;gap:24px;min-height:48px;margin-top:8px;border-bottom:1px solid #1b1c1e;font-size:17px;font-weight:500}
+.workflow-link:hover{border-bottom-width:2px}
+@media(max-width:1100px){
+ .service-heading,.workflow-heading{grid-template-columns:1fr;gap:24px}
+ .ref .service-heading>p,.ref .workflow-heading>p{max-width:640px}
+ .service-feature-copy{padding:32px}
+ .workflow-sequence{gap:28px}
+ .ref .workflow-step h3{font-size:25px}
+}
+@media(max-width:1000px){
+ .service-feature{grid-template-columns:1fr}
+ .service-feature-media{aspect-ratio:16/9}
+ .service-feature:nth-child(2) .service-feature-media{order:0}
+ .ref .service-description,.ref .service-example{max-width:620px}
+}
+@media(max-width:760px){
+ .service-features{gap:32px;margin-top:36px}
+ .service-feature{grid-template-columns:1fr;border-radius:18px}
+ .service-feature-media{aspect-ratio:4/3}
+ .service-feature:nth-child(2) .service-feature-media{order:0}
+ .service-feature-copy{padding:28px 24px 32px}
+ .ref .service-heading>p,.ref .workflow-heading>p{font-size:18px}
+ .ref .service-category{margin-bottom:22px;font-size:13px}
+ .ref .service-feature h3{font-size:32px}
+ .ref .service-description{font-size:17px;margin-top:18px}
+ .ref .service-example{font-size:16px}
+ .service-feature .ref-cta{gap:16px;font-size:16px}
+ .workflow-sequence{grid-template-columns:1fr;gap:28px;margin:28px 0}
+ .workflow-step+.workflow-step{border-top:1px solid #1b1c1e26;padding-top:28px}
+ .workflow-step-label{margin-bottom:16px}
+ .ref .workflow-step h3{font-size:27px;max-width:none}
+ .ref .workflow-step p{max-width:none}
+ .ref .workflow-example{margin-top:36px}
+}

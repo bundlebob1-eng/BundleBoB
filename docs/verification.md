@@ -1,3 +1,19 @@
+# September 29 — natural scrolling refinement
+
+- Removed the pinned workflow, rotating card surfaces, progress-selected steps and horizontal service carousel. All services, examples and workflow steps follow ordinary document flow, including when JavaScript is disabled.
+- Rechecked the live O.C. Tanner and Briq homepages at desktop and phone sizes. Current reference and implementation screenshots: `audit/scrolling/`.
+- Build: 20 public pages and five redirects. Full Chrome regression: **160** route/viewport/preference combinations and **96** local links; no layout/browser errors or external runtime requests. Navigation, resource search, contact validation and enquiry download passed.
+- Scrolling: **16** engine/device/motion combinations across Chrome and WebKit, phone, portrait iPad, landscape iPad and desktop. A 240px document scroll moved each tested service/workflow element by the same 240px. No pinned, transformed, blurred, overlapping or horizontally overflowing content in either rebuilt section.
+- Wheel and Page Down input passed in Chrome and desktop WebKit. Mobile WebKit’s automation interface does not support wheel events; those layouts were checked through document scrolling, geometry, links and rendered screenshots. This is not a physical touch-device test.
+- All three service links and the hero’s service anchor passed on every tested device/engine. Additional checks passed at 320px and with JavaScript disabled in both engines.
+- Homepage accessibility: four viewport scans, no automated violations. Existing reduced-motion media preferences remain in place. Automated scans do not establish full conformance.
+- Homepage acceptance: 11 widths from 320–1,920px; video playback/loop/resume, navigation hide/return, open-menu behavior and reduced-motion deferral all passed. The two existing supporting films are 1280px-wide HD exports, 10 and 8 seconds; stale assertions for an older 1920px/12-second export were corrected.
+- The marketing handoff was regenerated and its three-page count/content verified. No new media export or Lighthouse run was needed for this layout change; earlier performance/media results below belong to the preceding release.
+
+Earlier records below describe their respective iterations; the pinned/rotating workflow and service selectors are superseded.
+
+---
+
 # September 29 — final media, motion and enquiry patch
 
 - Production build: 20 public pages and five redirects; the configured public address is `contact@bundlebob.com`.

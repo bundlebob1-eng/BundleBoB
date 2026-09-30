@@ -18,8 +18,10 @@ White buttons on dark photography keep primary actions clear. Natural greens in 
 
 - **Logo:** replaced the block B with an original SVG mark of three bundled work cards. Lowercase `bundlebob` wordmark, matching favicon, footer and social share image.
 - **Navigation:** centered desktop bar capped at 1,180px, 76px high, with tighter spacing. Mobile navigation begins at 1,100px to avoid squeezing the links. Mobile bar is 64px high.
-- **Scroll narrative:** a concrete supplier-invoice workflow shows capture, human review and connected handoff. Only decorative paper surfaces rotate; the text stays sharp. Desktop uses native scrolling; tablet/short screens stay in normal flow and reduced motion gets static cards. No WebGL or continuous rendering loop.
-- **Service cards:** clear photography above solid light panels, larger text and simple selectors: Cut paperwork, Build better tools, Connect your systems. All selectors work when multiple cards share the end of the scroll track.
+- **Scrolling:** the whole page follows the document. The pinned workflow, scroll-selected steps and rotating paper surfaces are removed. One compact supplier-invoice sequence reads left to right on desktop and top to bottom on phones. It works without JavaScript.
+- **Services:** three full-width photographic features follow one another vertically. Desktop alternates photography and solid text panels; tablet and phone put the image above the copy. Every service has a direct link and a short application example. There are no sideways tracks, selectors, hidden services or expandable rows.
+- **Reading order:** hero → services → genuine client story → compact workflow → embedded engineer → everyday work → industries → contact. Repeated process copy is removed.
+- **Reference review:** O.C. Tanner’s live homepage was rechecked for large type, generous spacing and photography beside clear text. Briq was rechecked for explicit offerings and its delivery narrative. Those observations inform the layout; BundleBoB retains its own positioning and claims.
 - **Plain language:** the homepage leads with reducing paperwork, connecting teams and improving everyday work. Technical service details remain available on their dedicated pages.
 - **Proof:** the genuine mechanical/HVAC client story remains intact and is linked from the service pages. Orange and ivory distinguish proof from the main service sections.
 
@@ -46,10 +48,10 @@ Legal entity name/location remains an owner input. No entity or jurisdiction has
 
 ## Verification and limits
 
-The final pass expands the site review to desktop, phone and both tablet widths. Chrome and WebKit checks cover playback, rotation, offscreen resume, sharp text, service controls and reduced-motion behavior. Every public page is checked for off-palette saturated interface colors. Results are recorded in `docs/verification.md`; current screenshots are in `audit/final-patch/`.
+The final pass expands the site review to desktop, phone and both tablet widths. Chrome and WebKit checks cover playback, rotation, offscreen resume, sharp text, natural scrolling, service links and reduced-motion behavior. Every public page is checked for off-palette saturated interface colors. Results are recorded in `docs/verification.md`; current scrolling screenshots are in `audit/scrolling/`; earlier media results remain in `audit/final-patch/`.
 
 Physical iPhone/iPad/Android hardware was not available. Browser emulation is not a physical-device test. Automated accessibility scans are not a full conformance assessment. No enquiries were transmitted.
 
 ## Final quality and competitor review
 
-See [final-quality-review.md](final-quality-review.md) for the Briq comparison, exact media changes, motion corrections and release checks. This handoff supersedes the earlier PR #41 preview document.
+See [final-quality-review.md](final-quality-review.md) for the Briq comparison, exact media changes, motion corrections and release checks. This handoff supersedes the pinned-workflow and service-carousel layout from PR #42.

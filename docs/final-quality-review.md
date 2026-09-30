@@ -1,6 +1,16 @@
 # Final media, motion and conversion review
 
-## Scope
+## Scrolling refinement — latest owner feedback
+
+The owner identified both the pinned workflow and horizontal service carousel as confusing. Both are removed. Services now appear immediately after the hero in three normal-flow photographic features, followed by the genuine client story and a single short invoice workflow. The duplicated process section is removed. All steps and examples are available without interaction or JavaScript.
+
+The live [O.C. Tanner homepage](https://www.octanner.com/) and [Briq homepage](https://briq.ai/) were reviewed again in Chrome at desktop and phone widths. O.C. Tanner informs the scale, whitespace and relationship between imagery and text; Briq informs the direct service grouping and delivery narrative. O.C. Tanner also uses a carousel; BundleBoB now uses a vertical layout because the owner explicitly found the horizontal experience confusing. No competitor claims, customer logos or metrics are copied.
+
+The retired scene’s viewport-height padding, sticky wrapper, rotating card layers, progress-driven states and carousel JavaScript are deleted. One service link leads directly to each detail page. On tablet and phone, full-width photography avoids the previous narrow crop. The three-color palette, original logo, media playback, business email and delivered client story remain in place.
+
+Results and limits for this refinement are recorded at the top of `docs/verification.md`. Current screenshots are in `audit/scrolling/`. The earlier media review below is retained as a record of that release; its rotating-surface design has been superseded.
+
+## Earlier media review scope
 
 The owner requested a final desktop, phone and iPad quality pass, a strict three-color brand palette with purple removed, and a review against the latest Briq site. The owner supplied **contact@bundlebob.com** as the public enquiry destination.
 
