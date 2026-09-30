@@ -1,3 +1,4 @@
+import {backgroundFilm} from './media.mjs';
 import {clientStoryFeature,clientStoryLink} from './client-story.mjs';
 import {experienceHero,fieldFilm} from './experience.mjs';
 import {industryIntro,scrollStory} from './partnership.mjs';
@@ -22,7 +23,7 @@ export function enterpriseProcess(){return `<section class="en-section en-proces
  ['03','Build','Review working software.','We deliver in useful increments, test the edge cases, and work through feedback with your team.','A tested, usable first release'],
  ['04','Evolve','Make it last.','We plan the rollout, document the solution, and agree on support as your people and processes evolve.','Training, ownership, and support']
 ].map(([n,label,title,text,out])=>`<article><div class="en-process-index"><span>${n}</span><b>${label}</b></div><h3>${title}</h3><p>${text}</p><small>YOUR TAKEAWAY</small><strong>${out}</strong></article>`).join('')}</div>${button('/approach','Get to know our process','text')}</div></section>`;}
-export function heroVideo({construction=false}={}){const name=construction?'construction-field':'connected-world';return `<video class="en-background-video" data-background-video muted loop playsinline preload="none" poster="/assets/images/${name}.webp" aria-hidden="true" tabindex="-1" data-src="/assets/video/${name}.mp4" data-mobile-src="/assets/video/${name}-mobile.mp4"></video>`;}
+export function heroVideo({construction=false}={}){return backgroundFilm(construction?'construction-field':'business-in-motion','en-background-video')}
 export function enterpriseHome(){return `${experienceHero(heroVideo())}
 <section class="en-promise-strip wrap" aria-label="Our focus"><p>BUILT AROUND YOUR BUSINESS</p><span>AI & automation</span><span>Software engineering</span><span>Systems integration</span><span>Across industries</span></section>
 <section class="rv en-section wrap" id="services"><div class="en-heading-row"><div>${kicker('YOUR AMBITION. OUR ENGINEERING.')}<h2>Complex operations. <br>Clearer possibilities.</h2></div><p>Connect the information. Support the decision. Improve the workflow. We bring AI and engineering to the operational problems your team deals with every day.</p></div>${enterpriseCards()}</section>

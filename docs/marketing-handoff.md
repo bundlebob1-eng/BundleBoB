@@ -1,8 +1,8 @@
 # BundleBoB — marketing design handoff
 
-## Direction: black, ivory, orange and purple
+## Final direction: ink, ivory and orange
 
-The latest owner feedback supersedes the earlier green direction. The palette follows the current [O.C. Tanner](https://www.octanner.com/) reference, measured in its live styles. BundleBoB keeps its own human-led, cross-industry service positioning and real construction client story. Typography remains locally hosted Outfit.
+The latest owner feedback supersedes the earlier green and purple directions. The palette follows the current [O.C. Tanner](https://www.octanner.com/) reference, measured in its live styles. BundleBoB keeps its own human-led, cross-industry service positioning and real construction client story. Typography remains locally hosted Outfit.
 
 | Role | Color | Use |
 | --- | --- | --- |
@@ -10,7 +10,6 @@ The latest owner feedback supersedes the earlier green direction. The palette fo
 | Black | `#000000` | Navigation and footer |
 | Off-white | `#F7F7F3` | Reading surfaces |
 | Orange | `#FF5A00` | Light-page actions and progress |
-| Purple | `#8D53A8` | Scroll scene and proof accents |
 | Light neutral | `#F0F0EA` | Supporting panels |
 
 White buttons on dark photography keep primary actions clear. Natural greens in photographs remain; the interface no longer uses green as its brand accent.
@@ -19,16 +18,16 @@ White buttons on dark photography keep primary actions clear. Natural greens in 
 
 - **Logo:** replaced the block B with an original SVG mark of three bundled work cards. Lowercase `bundlebob` wordmark, matching favicon, footer and social share image.
 - **Navigation:** centered desktop bar capped at 1,180px, 76px high, with tighter spacing. Mobile navigation begins at 1,100px to avoid squeezing the links. Mobile bar is 64px high.
-- **Scroll narrative:** requests, approvals and updates visibly rotate and settle into a shared flow below the hero. Desktop uses a sticky scene driven by native scrolling. Mobile has a normal-flow layout; reduced-motion visits get static cards. No WebGL or continuous rendering loop.
+- **Scroll narrative:** a concrete supplier-invoice workflow shows capture, human review and connected handoff. Only decorative paper surfaces rotate; the text stays sharp. Desktop uses native scrolling; tablet/short screens stay in normal flow and reduced motion gets static cards. No WebGL or continuous rendering loop.
 - **Service cards:** clear photography above solid light panels, larger text and simple selectors: Cut paperwork, Build better tools, Connect your systems. All selectors work when multiple cards share the end of the scroll track.
 - **Plain language:** the homepage leads with reducing paperwork, connecting teams and improving everyday work. Technical service details remain available on their dedicated pages.
-- **Proof:** the genuine mechanical/HVAC client story remains intact and is linked from the service pages. Purple and ivory distinguish proof from the main service sections.
+- **Proof:** the genuine mechanical/HVAC client story remains intact and is linked from the service pages. Orange and ivory distinguish proof from the main service sections.
 
 ## Retained finishing work
 
 - Sharp, flat HTML service diagrams; no blurred miniature text.
 - Mobile video variants, scroll-up navigation, mobile menu scroll lock/restore, stable walkthrough controls and unique descriptions for 20 pages.
-- Desktop hero edit preserved. Lower films contain no baked-in captions or tiny diagrams; these are photographic motion illustrations, not footage of client employees.
+- High-resolution hero variants are framed for desktop, portrait phone and portrait iPad. Lower films now use actual licensed footage; posters match their opening frames. Neither footage nor photos are presented as the client’s employees.
 - Clear paragraph spacing, repaired About layout and distinct form errors.
 - Internal design pages excluded from normal production builds.
 
@@ -39,18 +38,18 @@ White buttons on dark photography keep primary actions clear. Natural greens in 
 - Do not collapse eight FDE responsibilities into four stages. These describe different things: responsibilities within the Discover → Design → Build → Evolve process.
 - Keep broad industry coverage and construction expertise. Potential applications remain distinct from delivered client work.
 
-## Marketing release dependencies
+## Contact and business details
 
-**A public enquiry destination is still missing.** The current contact flow prepares a download. It cannot receive a new lead. A monitored email or booking URL is required; the owner has been asked. Do not promote the site as a working inbound lead channel until configured and checked.
+The owner confirmed **contact@bundlebob.com**. It is configured as the default public contact address in the build, footer, contact page and privacy contact. The enquiry builder prepares an email to that inbox; visitors review and send it in their own mail application. No message is submitted automatically and no test email was transmitted.
 
-Legal name/location and privacy contact are owner inputs, not facts to fabricate. The owner has been asked for them. Real anonymised product screenshots can strengthen the case study, but none were supplied; no invented product screenshots have been added.
+Legal entity name/location remains an owner input. No entity or jurisdiction has been invented. The genuine client story does not rely on invented savings, testimonials or product screenshots.
 
 ## Verification and limits
 
-Targeted review covers ten widths from 320 to 1,920px, the 1,180px desktop menu, mobile menu and Escape behavior, all service selectors, changing 3D transforms and the static reduced-motion fallback. Browser evidence is in `audit/oct-direction/`. The complete route, link and accessibility results are recorded in `docs/verification.md`.
+The final pass expands the site review to desktop, phone and both tablet widths. Chrome and WebKit checks cover playback, rotation, offscreen resume, sharp text, service controls and reduced-motion behavior. Every public page is checked for off-palette saturated interface colors. Results are recorded in `docs/verification.md`; current screenshots are in `audit/final-patch/`.
 
-Mobile checks use Chromium device emulation. Physical iPhone/Safari and Android testing remains a separate release check. Automated accessibility scans are not a full conformance assessment. No enquiries were transmitted.
+Physical iPhone/iPad/Android hardware was not available. Browser emulation is not a physical-device test. Automated accessibility scans are not a full conformance assessment. No enquiries were transmitted.
 
-## Review and release status
+## Final quality and competitor review
 
-This design is on the `refinement/marketing-handoff` review branch in [PR #41](https://github.com/bundlebob1-eng/BundleBoB/pull/41). Review the [branch preview](https://bundle-bo-b-git-refinement-marketing-handoff-bundle-bo-b.vercel.app/); production remains unchanged until merge and deployment.
+See [final-quality-review.md](final-quality-review.md) for the Briq comparison, exact media changes, motion corrections and release checks. This handoff supersedes the earlier PR #41 preview document.

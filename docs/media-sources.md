@@ -1,3 +1,21 @@
+# Current media — final quality patch
+
+The active background videos now use real licensed footage, rendered directly from the original sources. The prior lower photographic zoom loops are retired from deployment. Source imagery is contextual stock footage, not a representation of BundleBoB employees or the client team.
+
+- Hero: cottonbro studio source 12–18s; Toàn BDS warehouse source 5–10s; Mikael Blomkvist construction source 1–6s. Total 16s. Desktop 2560×1440 / 6.5 Mbps target, phone 1080×1920 / 3.5 Mbps, tablet 1440×1920 / 4.5 Mbps.
+- A balanced tier is available for connections reporting under 4 Mbps with at least 100ms RTT: 1920×1080 / 2 Mbps, 1080×1440 / 1.6 Mbps, and 720×1280 / 1.3 Mbps. Standard quality remains the default when connection estimates are unavailable or latency is low.
+- Construction: original 4K field footage 0–8s; the same three aspect variants.
+- Administrative work: cottonbro source 2–12s, 1920×1080; 1280×720 for smaller rendered players.
+- Clearer handoffs: Antoni Shkraba collaboration source 0–8s, at the same landscape sizes.
+- Posters are actual opening frames, WebP quality 90; no artificial sharpening or generative edits.
+- All exports are silent H.264, 25fps, with one-second keyframe intervals and the MP4 index at the front. A source is chosen from the video’s rendered shape and size; rotation preserves the current playback position.
+
+Additional source retrieval: [original 4K construction file](https://videos.pexels.com/video-files/8964771/8964771-uhd_3840_2160_25fps.mp4); [collaboration download](https://www.pexels.com/download/video/7165691/). Creator/source page references are recorded below. Reproduce with `scripts/render-responsive-media.swift` and `scripts/prepare-responsive-posters.mjs`; source paths are explicit in the renderer. JPEG intermediates remain in `/private/tmp/bundlebob-responsive-posters`.
+
+Earlier records below describe prior edits and controls and do not describe the current production treatment.
+
+---
+
 ## Marketing refinement — September 30 review
 
 The two workflow films have been re-exported as photographic loops without any burned-in words or graphical text cards. Their authored motion uses the existing generated campaign photos; it is not footage of the client’s staff. Supporting explanation remains accessible HTML on the page.

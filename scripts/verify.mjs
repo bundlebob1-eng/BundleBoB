@@ -10,7 +10,7 @@ const routes=['/client-story','/forward-deployed-engineering','/services/ai-solu
 const results={pages:[],links:[],interactions:{},motion:{},video:{},errors:[],externalRequests:[]};
 const browser=await chromium.launch({...(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{})});
 const links=new Set();
-for(const theme of ['light','dark'])for(const width of [1440,390]){
+for(const theme of ['light','dark'])for(const width of [1440,390,820,1180]){
  const context=await browser.newContext({viewport:{width,height:900},colorScheme:theme,reducedMotion:'no-preference'});
  const page=await context.newPage();
  page.on('pageerror',e=>results.errors.push({page:page.url(),error:e.message}));

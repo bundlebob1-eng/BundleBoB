@@ -16,11 +16,11 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const output=path.join(root,'dist');
 export const aliases={'/platform':'/how-it-works','/integrations':'/how-it-works#integrations','/compare':'/why-bundlebob','/demo':'/contact','/article':'/resources/when-systems-disagree'};
 export async function build(){
- const email=process.env.CONTACT_EMAIL||'';const booking=process.env.BOOKING_URL||'';
+ const email=process.env.CONTACT_EMAIL||'contact@bundlebob.com';const booking=process.env.BOOKING_URL||'';
  if(email&&!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))throw new Error('CONTACT_EMAIL must be a valid business email address');
  if(booking&&new URL(booking).protocol!=='https:')throw new Error('BOOKING_URL must use HTTPS');
  const config={email,booking};
- const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css','typography.css','motion.css','reference.css','polish.css','finish.css','oct-direction.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
+ const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css','typography.css','motion.css','reference.css','polish.css','finish.css','oct-direction.css','media-motion.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
  const palette=enforcePalette(rawStyles);
  const type=enforceTypeFloor(palette.css);
  const styles=type.css;
@@ -37,10 +37,10 @@ export async function build(){
  for(const asset of assets)await fs.copyFile(path.join(root,'assets',asset),path.join(output,'assets',asset));
  for(const folder of ['fonts'])await fs.cp(path.join(root,'assets',folder),path.join(output,'assets',folder),{recursive:true});
  await fs.mkdir(path.join(output,'assets/video'),{recursive:true});
- for(const file of ['business-in-motion.mp4','admin-overhead.mp4','clearer-handoffs.mp4','construction-field.mp4','business-in-motion-mobile.mp4','admin-overhead-mobile.mp4','clearer-handoffs-mobile.mp4','construction-field-mobile.mp4','reconciliation.mp4','reconciliation.webm','reconciliation.vtt'])await fs.copyFile(path.join(root,'assets/video',file),path.join(output,'assets/video',file));
+ for(const file of ['business-in-motion-hd.mp4','business-in-motion-balanced.mp4','business-in-motion-tablet-balanced.mp4','business-in-motion-portrait-balanced.mp4','business-in-motion-tablet.mp4','business-in-motion-portrait.mp4','admin-overhead-hd.mp4','clearer-handoffs-hd.mp4','admin-overhead-mobile-hd.mp4','clearer-handoffs-mobile-hd.mp4','construction-field-hd.mp4','construction-field-balanced.mp4','construction-field-tablet-balanced.mp4','construction-field-portrait-balanced.mp4','construction-field-tablet.mp4','construction-field-portrait.mp4','reconciliation.mp4','reconciliation.webm','reconciliation.vtt'])await fs.copyFile(path.join(root,'assets/video',file),path.join(output,'assets/video',file));
  await fs.mkdir(path.join(output,'assets/images'),{recursive:true});
  // Deploy only current media; earlier generated business scenes remain archived in source.
- for(const file of ['service-ai.webp','service-software.webp','service-systems.webp','business-in-motion.webp','connected-world.webp','people-process-technology.webp','construction-field.webp','engineering.webp','people-at-work.webp','reconciliation-poster.webp'])await fs.copyFile(path.join(root,'assets/images',file),path.join(output,'assets/images',file));
+ for(const file of ['service-ai.webp','service-software.webp','service-systems.webp','business-in-motion.webp','business-in-motion-hd.webp','business-in-motion-tablet.webp','business-in-motion-portrait.webp','admin-overhead-hd.webp','clearer-handoffs-hd.webp','construction-field-hd.webp','construction-field-tablet.webp','construction-field-portrait.webp','connected-world.webp','people-process-technology.webp','construction-field.webp','engineering.webp','people-at-work.webp','reconciliation-poster.webp'])await fs.copyFile(path.join(root,'assets/images',file),path.join(output,'assets/images',file));
  // Optional design review tool; never part of a normal deployment.
  if(process.env.DESIGN_LAB==='1'){
  await fs.copyFile(path.join(root,'assets/themelab.js'),path.join(output,'assets/themelab.js'));

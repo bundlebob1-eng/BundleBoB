@@ -1,5 +1,6 @@
 export const icon = (name, size = 24) => {
  const shapes = {
+  document:'<path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h4M9 12h6m-6 4h6"/>',
   arrow:'<path d="M5 12h14m-5-5 5 5-5 5"/>',
   chevron:'<path d="m9 5 7 7-7 7"/>',
   plus:'<path d="M12 5v14M5 12h14"/>',
