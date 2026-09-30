@@ -1,3 +1,12 @@
+# September 30 — restore the larger navigation bar
+
+- Restored the desktop header to a 1,440px maximum width and 88px height, with 17px links, 24px menu gaps and roomier padding. The new logo and natural page flow remain in place.
+- Updated desktop anchor spacing for the taller header. Mobile retains its 64px header and existing menu breakpoint.
+- Build passed. Chrome visual/layout checks passed at 12 widths from 320 to 2,048px: no horizontal overflow, no overlap among logo, links and action, and functioning desktop/mobile menus. Shared header checks also passed on Services, Client Story and Contact.
+- The marketing PDF and current handoff notes were updated. Screenshots: `audit/navigation/`.
+
+---
+
 # September 29 — natural scrolling refinement
 
 - Removed the pinned workflow, rotating card surfaces, progress-selected steps and horizontal service carousel. All services, examples and workflow steps follow ordinary document flow, including when JavaScript is disabled.

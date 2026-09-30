@@ -1,12 +1,12 @@
 /* Three brand colors: ink, ivory and orange. Neutral tints provide hierarchy. */:root{--brand-charcoal:#1b1c1e;--brand-ivory:#f7f7f3;--brand-sage:#d0d2d3;--brand-spark:#ff5a00;--action:#ff5a00;--action-hover:#ff5a00;--oct-paper:#f7f7f3;--oct-ink:#1b1c1e}
 body,.ref{background:#f7f7f3;color:#1b1c1e}
-.site-header{top:22px;width:min(1180px,calc(100% - 80px))}
-.site-header .nav-wrap,.is-home .site-header .nav-wrap,.is-home .site-header:not(.ex-header-scrolled) .nav-wrap{height:76px;padding:0 12px 0 24px;border-radius:20px;background:#000;box-shadow:0 10px 28px #00000014}
+.site-header{top:22px;width:min(1440px,calc(100% - 112px))}
+.site-header .nav-wrap,.is-home .site-header .nav-wrap,.is-home .site-header:not(.ex-header-scrolled) .nav-wrap{height:88px;padding:0 16px 0 32px;border-radius:24px;background:#000;box-shadow:0 10px 28px #00000014}
 .site-header .brand{font-size:25px;gap:10px;flex-shrink:0}
 .site-header .brand-mark{width:30px;height:30px}
-.site-header .desktop-nav{gap:20px}
-.site-header .desktop-nav summary,.site-header .nav-direct{font-size:15px}
-.site-header .nav-cta{min-height:48px;padding:12px 17px;background:#fff;color:#1b1c1e;font-size:15px;border-radius:10px}
+.site-header .desktop-nav{gap:24px}
+.site-header .desktop-nav summary,.site-header .nav-direct{font-size:17px}
+.site-header .nav-cta{min-height:50px;padding:12px 18px;background:#fff;color:#1b1c1e;font-size:17px;border-radius:12px}
 .site-header .nav-cta:hover{background:#f0f0ea}
 .ref-hero .ref-cta,.ref-film .ref-cta,.ref-closing .ref-cta,.en-closing .en-button{background:#fff;color:#1b1c1e}
 .ref-hero .ref-cta:hover,.ref-film .ref-cta:hover{background:#f0f0ea}
@@ -38,6 +38,7 @@ body,.ref{background:#f7f7f3;color:#1b1c1e}
 .depth-surface:after{display:none}
 .about-brand-panel svg{color:#ff5a00}
 .site-footer{background:#000}
+@media(min-width:761px){html{scroll-padding-top:130px}}
 @media(max-width:1250px){.site-header{width:calc(100% - 64px)}
 .site-header .desktop-nav{gap:14px}
 .site-header .desktop-nav summary,.site-header .nav-direct{font-size:14px}
