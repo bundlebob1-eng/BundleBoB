@@ -1,3 +1,20 @@
+# September 29 — final media, motion and enquiry patch
+
+- Production build: 20 public pages and five redirects; the configured public address is `contact@bundlebob.com`.
+- Full Chrome review: **160** route/viewport/preference combinations across phone, portrait tablet, landscape tablet and desktop; **96** local links. No browser/layout errors or external runtime requests. Keyboard navigation, resource search, validation and local download passed.
+- Final targeted checks: dedicated high-resolution source selection on four screen shapes, supporting-film playback, construction media, service controls, non-overlapping cards and untransformed foreground text. Decorative surfaces retain three distinct scroll states; reduced motion removes them.
+- WebKit: phone, iPad and desktop continuous playback, offscreen resume and reduced motion passed. iPad portrait → landscape → portrait source switching preserved playback.
+- Slow mobile connection: 1.6 Mbps / 100ms latency, lower-bandwidth portrait source, a complete loop, **0 dropped frames / 404 decoded frames**; one waiting event recorded. Save-Data loads a poster without a video request.
+- Accessibility: 48 route/preference checks reported no violations. Four final route checks cover the updated home, contact, privacy and construction pages. Automated scans are not a full conformance assessment.
+- Rendered palette audit: all 20 public routes; no saturated interface hue outside the orange family. Purple removed, with ink/ivory/orange and neutral tints retained.
+- Local Lighthouse mobile lab: **Performance 96, Accessibility 100, Best Practices 100, SEO 100**. FCP 1.4s, LCP 2.7s, TBT 0ms, CLS 0. This is one local simulated run, not production field data. Initial transferred data in the run: approximately 509 KiB.
+- Contact preparation creates a `mailto:contact@bundlebob.com` draft with the visitor’s details and focuses the primary email action. No email was sent; mailbox delivery is not independently asserted.
+- The marketing handoff remains three pages. Current screenshots and detailed reports: `audit/final-patch/`; decisions: [final-quality-review.md](final-quality-review.md).
+
+Earlier records below describe their respective iterations and may contain superseded palettes, media and release status.
+
+---
+
 # September 29 — new identity, reference palette and visible scroll narrative
 
 - Production build: 20 public pages and five redirects.

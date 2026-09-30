@@ -1,6 +1,6 @@
 # BundleBoB
 
-Latest: [Marketing design handoff](docs/marketing-handoff.md) — black/ivory/orange/purple palette, new bundled-work logo, compact navigation, visible scroll narrative and clearer service cards.
+Latest: [Marketing design handoff](docs/marketing-handoff.md) — ink/ivory/orange palette, new bundled-work logo, compact navigation, sharp scroll narrative, responsive high-resolution films and a working public email destination.
 
 Current client story and launch review: [Hours from the field](docs/client-story-launch-review.md).
 
@@ -48,15 +48,13 @@ Typography uses locally hosted Outfit. Font licenses are included in `assets/fon
 
 ## Contact destination
 
-The site currently prepares a **downloadable inquiry locally**. Nothing is submitted, stored remotely, or described as sent. A usable destination was not supplied. This behavior keeps the page functional without inventing an inbox.
+The owner-confirmed public address is **contact@bundlebob.com**. The contact page offers a direct email link and prepares a draft addressed to this inbox. Visitors review and send it in their own mail application; the site does not submit automatically. A local download remains available.
 
-To offer a prepared email draft, set `CONTACT_EMAIL` when building. To add a booking link, set `BOOKING_URL` to a verified HTTPS address. These are public configuration values, not secrets. `.env.example` documents them; the build reads the process environment, not `.env` files automatically.
+`CONTACT_EMAIL` can override the public address at build time. `BOOKING_URL` can add a verified HTTPS booking destination. `.env.example` documents these public values; the build reads the process environment, not `.env` files automatically. No test enquiry has been sent.
 
-```sh
-CONTACT_EMAIL=your-monitored-address@your-domain.example npm start
-```
+## Current media and motion
 
-Replace that example with a real monitored address. The visitor still reviews and sends the email in their own mail client. There is no automatic email delivery, form endpoint, file upload, or financial-data intake in this repository. The customer-data workflow requires its own verified access, retention, storage, and processing controls.
+See [the final quality review](docs/final-quality-review.md). Responsive hero masters use 1440p landscape, 1080×1920 phone and 1440×1920 tablet crops. The lower films use real licensed footage. Only decorative card surfaces transform; foreground text stays sharp. Media reproduction and licenses are in [media-sources.md](docs/media-sources.md).
 
 ## Generated video and share image
 

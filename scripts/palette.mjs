@@ -39,10 +39,10 @@
    each family is normalised onto; `keep` is the set of exact
    values that pass through untouched. */
 export const DEFAULT_PALETTE = {
-  id: 'oct-editorial', name: 'Black / Ivory / Orange',
+  id: 'three-color', name: 'Ink / Ivory / Orange',
   ink: '#1B1C1E', paper: '#F7F7F3', accent: '#FF5A00',
   families: {ink:{h:220,s:0.05},paper:{h:60,s:0.07},accent:{h:21,s:0.9}},
-  keep: ['#1b1c1e','#f7f7f3','#ff5a00','#8d53a8','#f5a413','#f0f0ea','#e5e5dd','#d0d2d3','#a12e24','#ffffff','#141414','#000000','#fff0e5','#f2eaf6','#5b326b']
+  keep: ['#1b1c1e','#f7f7f3','#ff5a00','#f0f0ea','#e5e5dd','#d0d2d3','#ffffff','#141414','#000000','#fff0e5']
 };
 
 /* Below this saturation a colour is a neutral: it carries no hue
@@ -144,10 +144,16 @@ export function enforcePalette(css, palette = DEFAULT_PALETTE) {
 
   const out = parts.map((part, i) => {
     if (i % 2 === 1) return part;               // the url(...) captures
-    return part.replace(/#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g, (m) => {
-      const to = remapOne(m, P, KEEP);
+    return part.replace(/#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{4}|[0-9a-fA-F]{3})\b/g, (m) => {
+      const expanded=m.length===4||m.length===5?'#'+[...m.slice(1)].map(c=>c+c).join(''):m;
+      const alpha=expanded.length===9?expanded.slice(7):'';
+      const to = remapOne(expanded.slice(0,7), P, KEEP)+alpha;
       if (to.toLowerCase() !== m.toLowerCase()) seen.set(m.toLowerCase(), to);
       return to;
+    }).replace(/rgba?\(\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)(\s*,\s*[\d.]+)?\s*\)/g,(m,r,g,b,alpha='')=>{
+      const hex='#'+[r,g,b].map(v=>Math.round(Number(v)).toString(16).padStart(2,'0')).join('');
+      const mapped=remapOne(hex,P,KEEP);const rgb=hexToRgb(mapped);
+      return `${alpha?'rgba':'rgb'}(${rgb.join(',')}${alpha})`;
     });
   }).join('');
 

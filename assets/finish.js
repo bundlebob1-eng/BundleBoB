@@ -1,6 +1,6 @@
 // Native scrolling, a reading indicator, and depth on decorative layers only.
 (() => {
- const reduced=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(hover:hover) and (pointer:fine)');
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const progress=document.createElement('div');progress.className='reading-progress';progress.setAttribute('aria-hidden','true');document.body.append(progress);
  let scheduled=false;
  function update(){scheduled=false;const total=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${total>0?Math.min(1,Math.max(0,scrollY/total)):0})`;}
@@ -12,19 +12,19 @@
  reduced.addEventListener('change',()=>{if(reduced.matches)for(const animation of animations)animation.cancel()});
 })();
 
-// Requests, approvals and updates settle into one shared flow as the visitor scrolls.
+// Depth belongs to the paper surfaces; foreground text stays on the pixel grid.
 (() => {
  const section=document.querySelector('.work-story');if(!section)return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
- const cards=[...section.querySelectorAll('.work-card')],steps=[...section.querySelectorAll('[data-work-step]')];
- const offsets=[[-54,-12,80,-22,-8],[38,0,135,20,7],[-30,18,55,-15,-5]];
+ const cards=[...section.querySelectorAll('.work-card')],surfaces=[...section.querySelectorAll('.work-card-surface')],steps=[...section.querySelectorAll('[data-work-step]')];
+ const offsets=[[-14,-3,-8,-2],[12,0,7,2],[-10,3,-5,-1]];
  let visible=false,queued=false;
- function render(){queued=false;const r=section.getBoundingClientRect();const desktop=innerWidth>1000;const raw=desktop?-r.top/Math.max(1,r.height-innerHeight):(innerHeight-r.top)/(innerHeight+r.height*.55);const progress=reduced.matches?1:Math.max(0,Math.min(1,raw));const eased=progress*progress*(3-2*progress);const rest=1-eased;
-  cards.forEach((card,i)=>{const [x,y,z,ry,rz]=offsets[i];const mobile=innerWidth<760?.4:1;card.style.transform=reduced.matches?'none':`translate3d(${x*rest*mobile}px,${y*rest}px,${z*rest}px) rotateY(${ry*rest}deg) rotateZ(${rz*rest}deg)`});
-  steps.forEach((step,i)=>step.classList.toggle('is-current',i===Math.min(2,Math.floor(progress*3))));section.dataset.progress=progress.toFixed(3);
+ function render(){queued=false;const r=section.getBoundingClientRect();const desktop=innerWidth>1100&&innerHeight>=820;const raw=desktop?-r.top/Math.max(1,r.height-innerHeight):(innerHeight-r.top)/(innerHeight+r.height*.55);const progress=reduced.matches?1:Math.max(0,Math.min(1,raw));const rest=1-progress*progress*(3-2*progress);const current=Math.min(2,Math.floor(progress*3));
+  surfaces.forEach((surface,i)=>{const [x,y,ry,rz]=offsets[i];surface.style.transform=reduced.matches?'none':`perspective(1200px) translate(${Math.round(x*rest)}px,${Math.round(y*rest)}px) rotateY(${ry*rest}deg) rotateZ(${rz*rest}deg)`});
+  cards.forEach((card,i)=>card.classList.toggle('is-current',i===current));steps.forEach((step,i)=>step.classList.toggle('is-current',i===current));section.dataset.progress=progress.toFixed(3);
  }
  function schedule(){if(!visible||queued)return;queued=true;requestAnimationFrame(render)}
  function preference(){section.classList.toggle('is-animated',!reduced.matches);render()}
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)render()},{rootMargin:'100px'}).observe(section);
- addEventListener('scroll',schedule,{passive:true});addEventListener('resize',()=>{preference()});reduced.addEventListener('change',preference);preference();
+ addEventListener('scroll',schedule,{passive:true});addEventListener('resize',preference);reduced.addEventListener('change',preference);preference();
 })();

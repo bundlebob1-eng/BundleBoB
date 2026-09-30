@@ -49,7 +49,7 @@ ${block('Demonstration data', `
 <p>The reconciliation figures shown on this site are synthetic. They are constructed to explain a method. They are not a customer's data, and they are not a record of a result we have produced for anyone.</p>`)}
 
 ${block('Your rights', `
-<p>If you have sent us a message and want a copy of it, want it corrected, or want it deleted, reply to that message or use the contact page and we will do it. Because we hold nothing until you write to us, there is usually very little to act on.</p>`)}
+<p>If you have sent us a message and want a copy of it, want it corrected, or want it deleted, reply to that message or email <a href="mailto:contact@bundlebob.com">contact@bundlebob.com</a>. Because we hold nothing until you write to us, there is usually very little to act on.</p>`)}
 
 ${block('Changes', `
 <p>Last updated ${UPDATED}. If the site starts collecting anything &mdash; analytics, a form endpoint, a booking tool &mdash; this page changes in the same release, not afterwards.</p>`)}`;
