@@ -16,9 +16,29 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const output=path.join(root,'dist');
 export const aliases={'/platform':'/how-it-works','/integrations':'/how-it-works#integrations','/compare':'/why-bundlebob','/demo':'/contact','/article':'/resources/when-systems-disagree'};
 export async function build(){
- const email=process.env.CONTACT_EMAIL||'contact@bundlebob.com';const booking=process.env.BOOKING_URL||'';
- if(email&&!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))throw new Error('CONTACT_EMAIL must be a valid business email address');
- if(booking&&new URL(booking).protocol!=='https:')throw new Error('BOOKING_URL must use HTTPS');
+ // Configuration must never be able to take the site offline. Both of these
+ // are optional presentation settings; a typo in one used to throw, which
+ // failed the build, which left the domain with no deployment to serve and
+ // returned DEPLOYMENT_NOT_FOUND on bundlebob.com. Now a bad value is
+ // trimmed, warned about loudly in the build log, and degraded to the
+ // documented fallback. STRICT_ENV=1 restores throwing, for CI.
+ const strict=process.env.STRICT_ENV==='1';
+ const DEFAULT_EMAIL='contact@bundlebob.com';
+ const complain=(m)=>{if(strict)throw new Error(m);console.warn(`WARNING: ${m}`)};
+ const rawEmail=(process.env.CONTACT_EMAIL||'').trim();
+ const rawBooking=(process.env.BOOKING_URL||'').trim();
+ let email=rawEmail||DEFAULT_EMAIL;
+ if(!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)){
+  complain(`CONTACT_EMAIL is not a valid address (${JSON.stringify(rawEmail)}); using ${DEFAULT_EMAIL} instead`);
+  email=DEFAULT_EMAIL;
+ }
+ let booking='';
+ if(rawBooking){
+  let parsed=null;try{parsed=new URL(rawBooking)}catch{}
+  if(!parsed)complain(`BOOKING_URL is not a valid URL (${JSON.stringify(rawBooking)}); the booking link is omitted`);
+  else if(parsed.protocol!=='https:')complain(`BOOKING_URL must use HTTPS (${JSON.stringify(rawBooking)}); the booking link is omitted`);
+  else booking=rawBooking;
+ }
  const config={email,booking};
  const rawStyles=(await Promise.all(['site.css','editorial.css','studio.css','enterprise.css','signal.css','experience.css','typography.css','motion.css','reference.css','polish.css','finish.css','oct-direction.css','media-motion.css','home-flow.css'].map(file=>fs.readFile(path.join(root,'assets',file),'utf8')))).join('\n');
  const palette=enforcePalette(rawStyles);

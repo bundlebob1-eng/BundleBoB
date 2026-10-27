@@ -18,7 +18,7 @@
     "check:polish": "node scripts/polish-check.mjs"
   },
   "engines": {
-    "node": ">=18"
+    "node": "24.x"
   },
   "devDependencies": {
     "lighthouse": "12.6.1",
